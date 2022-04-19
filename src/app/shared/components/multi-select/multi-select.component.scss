@@ -1,0 +1,79 @@
+.custom-control{
+  padding: 6px 0px !important;
+  padding-left: 1.5rem !important;
+  color: var(--secondaryText) !important;
+}
+::ng-deep .custom-multi-select 
+{
+  .ng-dropdown-panel {
+    background: var(--secondaryBg) !important;
+    border-color: var(--borderColor) !important;
+  }
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option
+  {
+      input[type=checkbox]{
+          width: 10px !important;
+          height: 10px !important;
+          margin-right: 5px;
+      }
+  }
+  .ng-optgroup
+  {
+    padding: 0px 10px !important;
+  }
+  .ng-dropdown-panel .ng-dropdown-panel-items .ng-option
+  {
+      height: 30px !important;
+      display: flex;
+      align-items: center;      
+  }
+  .ng-dropdown-panel .ng-dropdown-footer {
+    border: 1px solid var(--borderColor) !important;
+  }
+  .custom-control-label::after{
+    border-radius: 5px !important;
+    top: 1px !important;
+  }
+  .custom-checkbox .custom-control-label::before{
+    top : 1px !important;
+
+  }
+  .custom-control-input:checked~.custom-control-label::before{
+    border-color: #ffffff !important;
+    background-color: #ffffff !important;
+    cursor: pointer !important;
+    border-radius: 8px;
+  }
+  .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+      background-color: #5245B5 !important;
+      cursor: pointer !important;
+  }
+  .ng-value-label{
+    display: block !important;
+    max-width: 85px !important;
+    height: 17px;
+    padding: 1px 2px !important;
+  }
+  .ng-select-disabled .ng-arrow-wrapper {
+    display: none;
+  }
+
+  // For below 15 inch devices
+  @media screen and (max-width:1440px){
+    .ng-value-label{
+      display: block !important;
+      max-width: 45px !important;
+      height: 17px;
+    }
+  }
+  // For Small devices
+  @media screen and (max-width:768px){
+    .ng-value-label{
+      display: block !important;
+      max-width: 85px !important;
+      height: 17px;
+    }
+  }
+
+ 
+}

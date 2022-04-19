@@ -1,0 +1,62 @@
+.app-footer {
+    .footer-main-content {
+        background: #05386b;
+
+        .footer-logo-content {
+            font-family: Roboto;
+            font-style: normal;
+
+            .dept-content {
+                font-weight: 500;
+                font-size: 1.05rem;
+            }
+
+            .dept-sub-content {
+                font-weight: 400;
+                font-size: 1rem;
+            }
+
+            line-height: 32px;
+            color: #ffffff;
+        }
+
+        .footer-content {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            // font-size: 1rem;
+            line-height: 2;
+            color: #ffffff;
+            font-size: 14px !important;
+        }
+
+        .footer-content-links {
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 0.85rem;
+            line-height: 23px;
+            /* or 133% */
+
+            color: #f4f4f4;
+        }
+    }
+
+    .bottom-links {
+        background: #042d56;
+
+        a {
+            font-size: 0.75rem;
+            text-decoration: underline;
+            color: #fff !important;
+
+            &:hover {
+                color: #e4e4e4 !important;
+            }
+        }
+    }
+}
+
+.fs-12 {
+    font-size: 12px;
+}

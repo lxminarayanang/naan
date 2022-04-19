@@ -1,0 +1,244 @@
+@import "../../../../styles/styles.scss";
+
+form {
+  display: contents;
+}
+.notifi-bell {
+  font-size: 22px;
+  color: $d-blue;
+}
+
+.landing-page-header {
+  background: #fdfdfd;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+
+  .header-row .row {
+    align-items: center;
+    justify-content: space-between;
+
+    .app-logo-container {
+      display: flex;
+      align-items: center;
+
+      .app-logo {
+        width: 80px;
+      }
+
+      h3 {
+        font-family: Mukta Malar;
+        font-style: normal;
+        font-weight: 800;
+        letter-spacing: 0px;
+        font-size: 20px;
+        margin-left: 15px;
+        /* identical to box height, or 37% */
+        color: #073b69;
+      }
+    }
+
+    .translate-toggle-switch {
+      display: flex;
+      align-items: center;
+      appearance: none;
+      width: 56px;
+      height: 26px;
+      cursor: pointer;
+      padding-left: 32px;
+      margin: 0;
+      border-radius: 20px;
+      background: radial-gradient(
+          circle 10px,
+          white 100%,
+          transparent calc(100% + 1px)
+        )
+        #ccc -14px;
+      transition: 0.3s ease-in-out;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      background-color: #05396b;
+    }
+
+    .translate-toggle-switch::before {
+      content: "A";
+      color: white;
+      text-shadow: 0 1px black;
+    }
+
+    .translate-toggle-switch:checked {
+      padding-left: 6px;
+      background-color: #379683;
+      background-position: 14px;
+    }
+
+    .translate-toggle-switch:checked::before {
+      content: "அ";
+    }
+
+    .langing-page-input {
+      mix-blend-mode: normal;
+      border: 2px solid #05396b;
+      border-radius: 4px;
+      color: #05396b;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      margin-left: 1rem;
+    }
+
+    .blink {
+      animation: blink-animation 1s steps(5, start) infinite;
+      -webkit-animation: blink-animation 1s steps(5, start) infinite;
+    }
+
+    @keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+.screen-reader-btn {
+  color: #05396b !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  margin-left: 1rem;
+  background: #fdfdfd;
+  border: 2px solid #05396b;
+  box-sizing: border-box;
+  border-radius: 0.35rem;
+  text-decoration: none;
+}
+
+.login-btn {
+  background: #05396b;
+  color: #fff !important;
+}
+
+::ng-deep .login-modal {
+  .modal-close {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+    width: 1.5rem;
+    border-radius: 100%;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px 2px #b8b8b8;
+    font-size: 1.1rem;
+    height: 1.5rem;
+    text-align: center;
+    align-self: center;
+
+    i {
+      color: #000;
+    }
+  }
+
+  .login-modal-input {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    border: none;
+    border-bottom: 1px solid #9f9999;
+    outline: none;
+
+    &:hover,
+    :focus,
+    :active {
+      border: none;
+      border-bottom: 1px solid #9f9999;
+      outline: none;
+    }
+  }
+
+  .login-btn {
+    padding: 0.4rem 3rem;
+    font-size: 1rem;
+    box-shadow: 2px 4px 4px 1px #cecece;
+  }
+}
+
+.dropdown {
+  position: relative;
+  display: contents;
+}
+ul {
+  inset: 1px auto auto -100px !important;
+  background-color: $d-blue;
+}
+.dropdown-item:hover {
+  background-color: rgb(114, 114, 167);
+}
+.sortBy {
+  color: #000 !important;
+}
+.landing-page-header {
+  border-bottom: 1px solid #d7d1d1;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+  width: 100%;
+}
+.dropdown-menu {
+  position: relative;
+}
+
+.br-20 {
+  border-radius: 20px;
+}
+
+@media only screen and (min-width: 1400px) {
+  .mobile-dd {
+    margin-left: 96vw !important;
+  }
+}
+
+.dropbtn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 150px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}

@@ -1,0 +1,236 @@
+<div class="container-fluid mt-4rem pt-2">
+    <div class="d-flex justify-content-center mt-5 ">
+        <img src="/assets/images/icons/education.png" class="h-50">
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <h3 class="section-header">{{lang.language.sponsorFormTilte}}</h3>
+    </div>
+</div>
+
+<!-- <img class="" src="/assets/images/icons/dots.png" height="">
+<img class="" src="/assets/images/icons/dots.png" height=""> -->
+
+<div class="container mt-3" [formGroup]="regForm">
+    <div class="justify-content-between align-items-center">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center">
+                <img class="img-radius" src="/assets/images/banner/mentor.png">
+            </div>
+
+            <div class="mt-2 col-sm-12 col-md-12 col-lg-6 col-xl-6  d-flex justify-content-center">
+                <div class="w-100">
+                    <div class="mb-4">
+                        <input type="text" maxlength="45" class="form-control" formControlName="pancardName"
+                            [placeholder]="lang.language.pancardName">
+                        <small *ngIf="submitted && f.pancardName.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" maxlength="45" class="form-control" formControlName="email"
+                            [placeholder]="lang.language.email">
+                        <small *ngIf="submitted && f.email.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                    <div class="mb-4">
+                        <input type="number" class="form-control" formControlName="mobileNumber"
+                            [placeholder]="lang.language.mobileNumber">
+                        <small *ngIf="submitted && f.mobileNumber.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                    <div class="mb-4">
+                        <input type="number" class="form-control" formControlName="amount"
+                            [placeholder]="lang.language.amount">
+                        <small *ngIf="submitted && f.amount.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" maxlength="25" class="form-control" formControlName="nationality"
+                            [placeholder]="lang.language.nationality">
+                        <small *ngIf="submitted && f.nationality.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="row d-flex justify-content-evenly px-5 ">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class="mb-3">
+                    <input type="text" maxlength="150" formControlName="address" class="form-control"
+                        [placeholder]="lang.language.address">
+                    <small *ngIf="submitted && f.address.errors"
+                        class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="row d-flex justify-content-evenly px-5 ">
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="mb-3">
+                        <input type="number" formControlName="pincode" class="form-control"
+                            [placeholder]="lang.language.pincode">
+                        <small *ngIf="submitted && f.pincode.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="mb-3">
+                        <input type="text" formControlName="state" class="form-control"
+                            [placeholder]="lang.language.state">
+                        <small *ngIf="submitted && f.state.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="mb-3">
+                        <input type="text" formControlName="country" class="form-control"
+                            [placeholder]="lang.language.country">
+                        <small *ngIf="submitted && f.country.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row d-flex px-5 py-3">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-between">
+                    {{lang.language.taxCertificate}}
+                    <div class="form-check d-flex align-items-center">
+                        <input class="form-check-input" type="radio" value="true" name="taxCertificate"
+                            id="taxCertificate1" formControlName="taxCertificate">
+                        <label class="form-check-label ps-2" for="taxCertificate1">
+                            Yes
+                        </label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input class="form-check-input" type="radio" value="false" name="taxCertificate"
+                            id="taxCertificate1" formControlName="taxCertificate">
+                        <label class="form-check-label ps-2" for="taxCertificate1">
+                            No
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="px-3 mt-1 space bg-blue">
+            <div class=" py-2 pt-3 fw-500">{{lang.language.sponsorPerticularSchool}}</div>
+            <div class="row d-flex justify-content-between">
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 px-2">
+                    <div class="mb-3">
+                        <select id="disabledSelect" formControlName="district" class="form-select"
+                            (change)="fetchBlocks($any($event.target).value)">
+                            <option value=null disabled selected>{{lang.language.district}}</option>
+                            <option *ngFor="let item of jsondata.districts" [value]="item?.district_name">
+                                {{item?.id}}.{{item?.district_name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 px-2">
+                    <div class="mb-3">
+                        <select id="disabledSelect" formControlName="block" class="form-select"
+                            (change)="fetchSchools($any($event.target).value)">
+                            <option value=null disabled selected>{{lang.language.block}}</option>
+                            <option *ngFor="let item of blocksList;let i =index" [value]="item.block_name">
+                                {{i+1}}.{{item.block_name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 px-2">
+                    <div class="mb-3">
+                        <select id="disabledSelect" formControlName="school" class="form-select">
+                            <option value=null disabled selected>{{lang.language.preferedSchool}}</option>
+                            <option *ngFor="let item of schoolList;let i =index" [value]="item.school_name">
+                                {{i+1}}.{{item.school_name}}</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-2 pt-3 fw-500">{{lang.language.sponsorPerticularDistrict}}</div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 px-2">
+                    <div class="mb-3">
+                        <select id="disabledSelect" formControlName="anyDistrict" class="form-select">
+                            <option value=null>{{lang.language.anyDistrict}}</option>
+                            <option *ngFor="let item of jsondata.districts" [value]="item?.district_name">
+                                {{item?.id}}.{{item?.district_name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="text-center pb-4">
+    <button class="btn me-3 btn-secondary" (click)="toBack()">{{lang.language.back}}</button>
+    <button class="btn me-3 btn-danger" (click)="resetForm()">{{lang.language.reset}}</button>
+    <button class="btn btn-success" (click)="submitForm()">{{lang.language.btnContribute}}</button>
+</div>
+
+<!--Phone Modal -->
+<div class="modal fade" id="successModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content br-20">
+            <div class="text-end pe-3 pt-2">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="toBack()"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="d-flex justify-content-center pb-2">
+                    <img src="/assets/images/icons/education.png" height="60">
+                </div>
+                <h1 class="d-blue pb-2">Thank You!</h1>
+                <div class="pb-3">
+                    <h6>You will be contacted in 2 weeks</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Payment Model -->
+
+<div class="modal fade" id="paymentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+   aria-labelledby="successModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content br-20">
+         <div class="modal-body text-center">
+            <div [formGroup]="PaymentForm">
+               <p class="quote" style="margin-top:4px;text-align: center">&#8221;Alone we can do so little,<br> together we can do so much&#8221; <br/>- Hellen Keller</p>
+               <h5 class="text-center mt-2"> Sponsor a Student</h5>
+               <div class="modalbody">
+                   <div class="row">
+                        <input  type="tel" formControlName="total_amount"OnlyNumber="true" class="form-control" placeholder="Amount in Rs." maxlength="10"  onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                   </div>
+                   <div class="row mt-2">
+                  <textarea  placeholder="Comments" formControlName="comments" class="form-control" rows="5"></textarea>
+                   </div>
+                  <button class="btn btn-success mt-3 mb-3" (click)="Payment()">Proceed to Contribute</button> &nbsp; 
+                  <button class="btn btn-secondary mt-3 mb-3" (click)="cancel()">Cancel</button>                      
+                  <p class="quote">&#8221;We make a living by what we get.<br> But we make a life by what we give&#8221; <br/>- Winston Churchill</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+
+
+<!-- <button (click)="button()">button</button> -->

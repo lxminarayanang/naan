@@ -1,0 +1,17 @@
+<ng-template #modal>
+    <div class="modal-header" *ngIf="showHeader">
+      <h3 class="modal-title mb-0">{{ title }}</h3>
+      <i class='bx bx-x close-btn' (click)="close()"></i>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+    <div class="modal-footer" *ngIf="cancelSaveBtn || showSaveBtn">
+      <button *ngIf="cancelSaveBtn" type="button" class="btn btn-default cancel-btn" (click)="close()" [disabled]="isDisable"> 
+          <i class="bi bi-x-circle-fill"></i> Cancel 
+      </button>
+      <button *ngIf="showSaveBtn" type="button" class="btn btn-default app-btn-success save-btn"  (click)="submit()" [disabled]="isDisable"> 
+        <i class="bi bi-check2"></i> Save
+      </button>
+    </div>
+</ng-template>

@@ -1,0 +1,384 @@
+@import "../../../styles/styles.scss";
+
+.card-banner {
+  border-radius: 15px;
+  border: 2px solid #e7556c;
+}
+
+.collapsible {
+  background-color: $white;
+  color: $d-blue;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active,
+.collapsible:hover {
+  background-color: $white;
+}
+
+.content {
+  padding: 0 18px;
+  overflow: hidden;
+  background-color: $white;
+  color: black;
+  text-align: left;
+}
+
+.font-36 {
+  font-size: 36px;
+}
+
+.menu-select {
+  color: rgb(185, 185, 185);
+  font-weight: 500;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.menu-select:hover {
+  background-color: #f3eaf5;
+  border-left: 3px solid #e7556c;
+  padding-left: 4px;
+  color: $d-blue !important;
+  cursor: pointer;
+}
+
+.centered-back {
+  position: absolute;
+  top: 60%;
+  left: 4%;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+.centered {
+  position: absolute;
+  font-weight: 600;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  background-color: #ffdddd;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+.centered-badge {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+.centered-button {
+  position: absolute;
+  top: 89%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $white;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.badge-1 {
+  color: #000;
+  background-color: $white;
+  width: 200px;
+  background: rgba(254, 247, 247, 0.8);
+  border: 1px solid #ad1313;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  font-weight: 500;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  padding: 0;
+}
+.bi-chevron-up,
+.bi-chevron-down {
+  color: black !important;
+}
+.apply_now {
+  background: #43cb80;
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .d-block-overwiew {
+    display: none !important;
+  }
+  .fs-30 {
+    font-size: 15px;
+  }
+}
+
+.card-colleges {
+  border-radius: 15px;
+  border: 2px solid #68c27a;
+  background-color: $white;
+  // height: 250px;
+}
+.card-exams {
+  border-radius: 15px;
+  border: 2px solid #6871c2;
+  background-color: $white;
+  // height: 250px;
+}
+.card-courses {
+  border-radius: 15px;
+  border: 2px solid #e7556c;
+  background-color: $white;
+}
+
+.overview-badge {
+  color: #fff;
+  padding: 15px !important;
+  font-weight: 500;
+  width: 200px;
+  font-size: 16px;
+  background: #ad1313;
+  border: 1px solid #ad1313;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px #ffcbcb, 0px 4px 4px #4d4d4d, 0px 4px 4px #000000;
+  border-radius: 10px;
+}
+
+.overview-detail-card {
+  margin-top: 90px;
+}
+.heading-overview {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 18px;
+  text-decoration-line: underline;
+  color: #05396b;
+  text-align: left;
+  margin-bottom: 20px;
+}
+.overview-ul {
+  list-style: none;
+  margin-top: 10px;
+}
+.overview-ul li {
+  text-align: justify;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+.card-carreer {
+  padding: 19px;
+  background: #ffdddd;
+  border-radius: 25px;
+  height: auto;
+  min-height: 20em;
+}
+.card-carreer-content {
+  margin-left: 115px;
+}
+.colleges-card {
+  margin-top: 30px;
+}
+.colleges-card {
+  background: #ffeeee;
+  padding: 30px;
+}
+
+.x0 {
+  float: left;
+  width: 100%;
+}
+.x1 {
+  margin: 0px auto;
+}
+.x2 {
+  overflow: hidden;
+  display: block;
+  width: 537px;
+  float: left;
+  height: 527px;
+  position: relative;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -khtml-border-radius: 50%;
+  background: #eee;
+  left: 100px;
+}
+.x3 {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+  float: left;
+  height: 100%;
+  background-color: #ffafac;
+  color: #000;
+  font-weight: bold;
+}
+/* BEG Content */
+
+.x4,
+.x5,
+.x6 {
+  width: 100%;
+}
+.x7,
+.x8 {
+  width: 50%;
+  float: left;
+  height: 100%;
+}
+.x4,
+.x5,
+.x7,
+.x8 {
+  text-align: center;
+}
+.x7-heading {
+  font-size: 20px;
+  color: #05396b;
+  font-weight: bold;
+}
+.x7-margin {
+  font-size: 11px;
+  margin-top: 82px;
+}
+.eligibility-margin {
+  font-size: 11px;
+  padding: 90px;
+}
+.overview-image {
+  height: 62px;
+  margin-bottom: 10px;
+}
+
+.x5 {
+  background-color: #ffafac;
+  height: 40%;
+  border-top: 5px solid #fff;
+  padding: 10px;
+}
+.x6 {
+  height: 49%;
+}
+.x7 {
+  background-color: #ffafac;
+  border-right: 5px solid #fff;
+}
+/* END Content */
+@media (max-width: 320px) {
+  .x2 {
+    padding: 50%;
+  }
+}
+
+@media (min-width: 321px) and (max-width: 800px) {
+  .x2 {
+    padding: 25%;
+  }
+}
+
+@media (min-width: 801px) {
+  .x1 {
+    width: 800px;
+  }
+  .x2 {
+    padding: 12.5%;
+  }
+}
+
+.overview-college {
+  background: #379683;
+  border: 1px solid #00512f;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px #006239, 0px 4px 4px #00512f;
+  border-radius: 10px;
+  height: 45px;
+  font-weight: 800;
+  font-size: 16px;
+  border-radius: 10px;
+}
+.fees-structure {
+  background-image: url(/assets/images/eclipse.png);
+  /* border: 2px solid #379683; */
+  height: 223px;
+  background-repeat: round;
+  width: 284px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 46px;
+}
+.heading-overview-fees {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 27px;
+  line-height: 18px;
+  color: #379683;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.badge-1-colleges {
+  color: #000;
+  font-weight: 500;
+  width: 200px;
+  background: #c5ffe7;
+  border: 1px solid #18a76b;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25),
+    0px 4px 4px #18a76b;
+  border-radius: 10px;
+}
+
+// Breadcrumb CSS
+ul.breadcrumb {
+  list-style: none;
+  margin-top: 18px;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li + li:before {
+  padding: 6px;
+  color: #05396b;
+  content: "»";
+  font-size: 18px;
+}
+ul.breadcrumb li a {
+  color: #05396b;
+  text-decoration: none;
+  font-weight: 500;
+}
+ul.breadcrumb li a:hover {
+  color: #05396b;
+  text-decoration: underline;
+}
+.badge-overview {
+  margin-top: 10px;
+}
+.text-career {
+  color: #000 !important;
+  text-align: justify;
+  line-height: 2.5em;
+  font-weight: 500;
+}
+.fee-image {
+  height: 40px;
+  margin-bottom: 14px;
+  margin-right: 21px;
+}

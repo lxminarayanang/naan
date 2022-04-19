@@ -1,0 +1,63 @@
+<!-- <div class="custom-multi-select  custom-ng-select">
+    <ng-select 
+        id="{{printName}}-{{fieldKey}}-{{randomId}}" 
+        [items]="listItems" 
+        [multiple]="isMultiselect"
+        [searchable]="(isMultiselect || search)" 
+        [bindLabel]="printName" 
+        [bindValue]="fieldKey" 
+        [placeholder]="multiPlaceholder"
+        [(ngModel)]="multiSelectedItems" 
+        [closeOnSelect]="false"
+        (change)="(isMultiselect == false || listMode == false)? selectItems() : ''" 
+        [disabled]="fieldDisabled"
+        [selectableGroup]="true" 
+        [selectableGroupAsModel]="false" 
+        groupBy="all"
+        class="form-control auto-grow cursor-pointer">
+        <ng-template ng-multi-label-tmp let-items="items" let-clear="clear">
+            <div class="ng-value" *ngFor="let item of items | slice:0:2">
+                <span class="ng-value-label ellipse">
+                    {{ (printName != 'branchName' && item ? (item[printName] | titlecase) : item[printName])}}
+                </span>
+            </div>
+            <div class="ng-value" *ngIf="items.length > 2">
+                <span class="ng-value-label">{{items.length - 2}} more...</span>
+            </div>
+        </ng-template>
+        <ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">
+            <div *ngIf="isMultiselect" class="custom-control custom-checkbox checkbox-lg">
+                <input id="{{fieldKey}}-item-{{index}}" type="checkbox" [ngModel]="item$.selected" class="custom-control-input"/>
+                <label class="custom-control-label sub-header-sub-menu">{{item.all | uppercase}}</label>
+            </div>
+        </ng-template>
+        <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">
+            <div *ngIf="isMultiselect" class="custom-control custom-checkbox checkbox-lg">
+                <input id="{{fieldKey}}-{{index}}" type="checkbox" [ngModel]="item$.selected" class="custom-control-input"/>
+                <label class="custom-control-label sub-header-sub-menu">
+                    {{printName != 'branchName' ? (item[printName] | titlecase) : item[printName]}}
+                </label>
+            </div>
+            <label *ngIf="!isMultiselect" class="sub-header-sub-menu">{{(printName != 'branchName' ? (item[printName] | titlecase) : item[printName])}}</label>
+        </ng-template>
+        <ng-template ng-footer-tmp *ngIf="isMultiselect && listItems?.length > 0">
+            <div class="row justify-content-between mx-auto p-2">
+                <div class="col-6 text-left px-0">
+                    <button class="btn btn-outline-primary input-label" id="clear-{{fieldKey}}-{{printName}}" (click)="clearAll()">
+                        Clear
+                    </button>
+                </div>
+                <div class="col-6 px-0" *ngIf="listMode">
+                    <button class="btn btn-primary input-label" id="filter-{{fieldKey}}-{{printName}}" (click)="selectItems()"  matTooltip="Clear">
+                        Apply
+                    </button>
+                </div>
+                <div class="col-6 px-0" *ngIf="closeMode">
+                    <button class="btn btn-primary input-label" id="filter-{{fieldKey}}-{{printName}}" (click)="closeDropdown()" matTooltip="Clear">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+    </ng-select>
+</div> -->

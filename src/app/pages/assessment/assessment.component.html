@@ -1,0 +1,85 @@
+<section class="p-5">
+
+    <div class="container  mt-4rem">
+
+        <div class="d-flex justify-content-center">
+            <h1 class="section-header">
+                Choose your interest
+            </h1>
+        </div>
+
+        <div class="section-content mt-5 mb-5">
+            <p>
+                பட்டியலில் கொடுக்கப்பட்ட ஒவ்வொரு வார்த்தையையும் கவனமாகப் படிக்கவும். உங்கள் பணி வாழ்க்கையில் நீங்கள்
+                எந்த விதத்தில் செயல்பட விரும்புகிறீர்கள் என்பதை அறியும் விதமாக வாக்கியங்கள் கொடுக்கப்பட்டுள்ளன. அதற்கு
+                உங்கள் விருப்பத்திற்கு ஏற்றவாறு மதிப்பீடு கொடுக்கவும்.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="card-body text-center">
+                <div>
+                    <img src="/assets/images/icons/exampad.png" height="35px">
+                    <span class="ps-2">மதிப்பெண்</span>
+                </div>
+                <div class="d-flex justify-content-around pt-3">
+                    <span>மிகக்குறைந்த ஆர்வம் - 1</span>
+                    <span>ஓரளவு ஆர்வம் - 2</span>
+                    <span>ஆர்வம் - 3</span>
+                    <span>மிக ஆர்வம் - 4</span>
+                    <span>மிக அதிக ஆர்வம் - 5</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <div class="d-flex">
+                <div class="section-header">மொழிசார் உள்ளாற்றல்</div>
+            </div>
+
+            <div class="container mb-5">
+                <div class="row">
+
+                    <div class="col-12" *ngFor="let item of questions;let i=index">
+                        <p class="fw-bold pt-3">{{i+1}}. {{item.questions}}</p>
+                        <div>
+                            <div class="row d-flex justify-content-around">
+                                <div class="col-md-2">
+                                    <input type="radio" id="1" name="drone" value="1">
+                                    <label for="1" class="ps-2 cursor-pointer">மிகக்குறைந்த ஆர்வம்</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="radio" id="2" name="drone" value="2">
+                                    <label for="2" class="ps-2 cursor-pointer">ஓரளவு ஆர்வம்</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="radio" id="3" name="drone" value="3">
+                                    <label for="3" class="ps-2 cursor-pointer">ஆர்வம்</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="radio" id="4" name="drone" value="4">
+                                    <label for="4" class="ps-2 cursor-pointer">மிக ஆர்வம்</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="radio" id="5" name="drone" value="5">
+                                    <label for="5" class="ps-2 cursor-pointer">மிக அதிக ஆர்வம்</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-12 mt-5">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-secondary px-4 py-1" (click)="moveTo()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</section>

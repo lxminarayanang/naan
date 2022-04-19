@@ -1,0 +1,404 @@
+<div class="container-fluid mt-4rem">
+  <div class="row" *ngIf="user">
+    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="mt-3" style="position: relative" (click)="goTo()">
+        <a (click)="goTo()" class="cursor-pointer">
+          <h3 class="surveyHeading">
+            <img
+              class="survey-icon"
+              src="/assets/images/icons/survey-icon.png"
+              alt=""
+            />
+            {{ this.lang.language.survey }}
+            <img
+              class="survey-arrow"
+              src="/assets/images/icons/arrow-icon.png"
+              alt=""
+            />
+          </h3>
+        </a>
+
+        <img src="/assets/images/survey.png" class="survey-banner" />
+        <!-- <div class="centered fs-30">
+          <span class="fs-24 fw-800">{{ title }}</span>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class=" mt-5 container-fluid">
+                <img src="/assets/images/banner/banner-1.png" class="w-100" height="170">
+                <div class="centered fs-16 cursor-pointer hover-text head-overflow">
+                    {{lang.language.bannerCareer1}}
+                    {{lang.language.bannerCareer2}}<br>
+                    {{lang.language.bannerCareer3}}<br>
+                    {{lang.language.bannerCareer4}}
+                    <i class="bi bi-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </div> -->
+  <!-- <div class="d-flex justify-content-around">
+        <div class="w-75 m-4 mt-5">
+            <div class="input-group col-12">
+                <div class="input-group-btn search-panel col-2">
+                    <select class="form-select shadow-none" aria-label="Default select example">
+                        <option selected>{{lang.language.all}}</option>
+                        <option value="1">{{lang.language.entranceExam}}</option>
+                        <option value="2">{{lang.language.colleges}}</option>
+                        <option value="3">{{lang.language.scholarships}}</option>
+                        <option value="3">{{lang.language.careers}}</option>
+                    </select>
+                </div>
+                <div class="col-8">
+                    <div class="form-group has-search">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        <input type="text" class="form-control" [placeholder]="lang.language.search">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-secondary">{{lang.language.search}}</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+  <div class="m-3 pt-5 d-flex justify-content-evenly row">
+    <!-- Courses -->
+    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+      <div
+        class="card-banner card-banner-courses text-center cursor-pointer mb-3"
+        (click)="chooseType('courses', lang.language.courses)"
+        [ngClass]="
+          section == 'courses' ? ' card-banner-courses cards-hover-courses' : ''
+        "
+      >
+        <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
+          {{ lang.language.courses }}
+        </div>
+        <div class="card-footer bg-color-courses">
+          <div class="icon-up">
+            <img
+              src="/assets/images/exams/certificate.png"
+              class=""
+              height="45"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Colleges -->
+    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+      <div
+        class="card-banner card-banner-college text-center cursor-pointer mb-3"
+        (click)="chooseType('colleges', lang.language.colleges)"
+      >
+        <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
+          {{ lang.language.colleges }}
+        </div>
+        <div class="card-footer bg-color-college">
+          <div class="icon-up">
+            <img src="/assets/images/exams/colleges.png" class="" height="45" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Entrance exams -->
+
+    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+      <div
+        class="card-banner card-banner-exams text-center cursor-pointer mb-3"
+        (click)="chooseType('exams', lang.language.entranceExam)"
+        [ngClass]="section == 'exams' ? 'cards-hover cards-hover-exam' : ''"
+      >
+        <div class="py-5 my-3 fs-14 fw-600 ellipse-oneline">
+          {{ lang.language.entranceExam }}
+        </div>
+        <div class="card-footer">
+          <div class="icon-up">
+            <img src="/assets/images/exams/exams.png" class="" height="40" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scholarships -->
+    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+      <div
+        class="card-banner card-banner-scholarships text-center cursor-pointer mb-3"
+        (click)="chooseType('scholarships', lang.language.scholarships)"
+        [ngClass]="
+          section == 'scholarships'
+            ? 'cards-hover cards-hover-scholarships'
+            : ''
+        "
+      >
+        <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
+          {{ lang.language.scholarships }}
+        </div>
+        <div class="card-footer bg-color-scholarships">
+          <div class="icon-up">
+            <img
+              src="/assets/images/exams/scholarships.png"
+              class=""
+              height="45"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Educational Loans -->
+    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+      <div
+        class="card-banner card-banner-loans text-center cursor-pointer mb-3"
+        (click)="moveToLoans()"
+        [ngClass]="
+          section == 'educationLoans'
+            ? 'cards-hover cards-hover-loans text-white'
+            : ''
+        "
+      >
+        <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
+          {{ lang.language.educationLoans }}
+        </div>
+        <div class="card-footer bg-color-loan">
+          <div class="icon-up">
+            <img
+              src="/assets/images/exams/rupee-icon.svg"
+              class=""
+              height="45"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Careers -->
+    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+      <div
+        class="card-banner card-banner-careers text-center cursor-pointer mb-3"
+        (click)="chooseType('careers', lang.language.careers)"
+        [ngClass]="
+          section == 'careers' ? 'cards-hover cards-hover-careers' : ''
+        "
+      >
+        <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
+          {{ lang.language.careers }}
+        </div>
+        <div class="card-footer bg-color-careers">
+          <div class="icon-up">
+            <img src="/assets/images/exams/careers.png" class="" height="45" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="m-4">
+        <h4 class="text-center d-blue underline"> {{lang.language.explore}}</h4>
+    </div> -->
+
+  <div class="mx-4 my-4 mb-5">
+    <div class="card-overflow">
+      <!-- <div class="py-1">
+                <h5 class="text-center font-dark-grey fw-500"> {{title}}</h5>
+            </div> -->
+
+      <!-- ////////////// Arun Code //////////////////////////// -->
+
+      <div
+        *ngIf="section == 'courses' && loadMore == false"
+        class="d-flex justify-content-around row"
+      >
+        <div
+          class="card-courses card_hover col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center cards-hover my-4 mx-2"
+          *ngFor="let item of specilaztions; let i = index"
+        >
+          <!-- <img src="\assets\images\icons\courses.png" class="mx-3 mt-3" height="75"> -->
+
+          <div
+            *ngIf="section == 'courses'"
+            (click)="selectedCourse(item.field)"
+          >
+            <img
+              [src]="
+                'assets/images/Specilizations/' +
+                item.field.toLowerCase().trim() +
+                '.png'
+              "
+              class="mx-3 mt-3 cardLeft"
+              height="75"
+              style="float: left"
+            />
+            <h5
+              class="px-3 my-2 mx-2 fw-500 overflow-hidden line-clamp cardTextPadding"
+              style="color: #000; float: revert"
+            >
+              {{ item?.field }}
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <div
+        *ngIf="section == 'courses' && loadMore == true"
+        style="
+          height: 600px;
+          overflow-y: scroll;
+          scrollbar-color: rgb(250, 242, 242);
+        "
+        class="d-flex justify-content-around row"
+      >
+        <div
+          class="card-courses card_hover col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center cards-hover my-4 mx-2 pb-3"
+          *ngFor="let item of specilaztions; let i = index"
+        >
+          <!-- <img src="\assets\images\icons\courses.png" class="mx-3 mt-3" height="75"> -->
+          <div
+            *ngIf="section == 'courses'"
+            (click)="selectedCourse(item.field)"
+          >
+            <img
+              [src]="
+                'assets/images/Specilizations/' + item.field.trim() + '.png'
+              "
+              class="mx-3 mt-3"
+              height="75"
+              style="float: right"
+            />
+            <h5
+              class="px-3 py-1 my-2 mx-2 fw-500 overflow-hidden line-clamp cardTextPadding"
+              style="color: #000; float: revert"
+            >
+              {{ item?.field }}
+            </h5>
+          </div>
+        </div>
+      </div>
+
+      <!-- //////////End//////////////////////// -->
+
+      <div
+        *ngIf="section != 'courses'"
+        class="d-flex justify-content-around row"
+      >
+        <div
+          [ngClass]="section == 'exams' ? ' card-exams ' : 'card-colleges'"
+          class="card_hover col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center cards-hover my-4 mx-2 pb-3"
+          *ngFor="let item of specilaztions; let i = index"
+        >
+          <!-- <img src="\assets\images\icons\courses.png" class="mx-3 mt-3" height="75"> -->
+          <div *ngIf="section == 'exams'" (click)="selectedCourse(item.field)">
+            <img
+              [src]="
+                'assets/images/entrance-exams/' + item.field.trim() + '.png'
+              "
+              class="mx-3 mt-3"
+              height="75"
+              style="float: left"
+            />
+            <h5
+              class="px-3 py-1 my-2 mx-2 fw-500 overflow-hidden line-clamp cardTextPadding"
+              style="color: #000; float: revert"
+            >
+              {{ item?.field }}
+            </h5>
+          </div>
+          <div
+            *ngIf="section == 'colleges'"
+            (click)="selectedCourse(item.field)"
+          >
+            <img
+              [src]="'assets/images/colleges/' + item.field.trim() + '.png'"
+              class="mx-3 mt-3"
+              height="75"
+              style="float: left"
+            />
+            <h5
+              class="px-3 py-1 my-2 mx-2 fw-500 overflow-hidden line-clamp cardTextPadding"
+              style="color: #000; float: revert"
+            >
+              {{ item?.field }}
+            </h5>
+          </div>
+
+          <!-- Scholarships -->
+          <div
+            *ngIf="section == 'scholarships'"
+            (click)="examOverview(item.id)"
+          >
+            <img
+              src="\assets\images\icons\blue-scholar.png"
+              class="mx-3 mt-2"
+              height="60"
+            />
+            <div
+              class="px-3 py-1 my-2 mx-2 fw-500 fs-14 overflow-hidden line-clamp text-dark"
+            >
+              {{ item?.name }}
+            </div>
+            <div
+              class="badge badge-2 rounded-pill bg-warning px-3 py-1 my-1 mx-2"
+            >
+              {{ item?.header_1 }}
+            </div>
+          </div>
+
+          <!-- Creers -->
+          <div *ngIf="section == 'careers'" (click)="examOverview(item.id)">
+            <img
+              *ngIf="item.field == 'Science'"
+              src="\assets\images\icons\blue-pipet.png"
+              class="mx-3 mt-3 mb-2"
+              height="60"
+            />
+            <img
+              *ngIf="item.field != 'Science'"
+              src="\assets\images\icons\grey-gear.png"
+              class="mx-3 mt-3 mb-2"
+              height="60"
+            />
+            <div class="px-3 py-1 my-2 mx-2 fw-500 overflow-hidden line-clamp">
+              {{ item?.name }}
+            </div>
+            <div class="badge badge-2 text-light fs-14 font-grey px-3 mx-2">
+              {{ item?.field }}
+            </div>
+            <div class="fs-14 font-grey px-3 py-1 mx-2 text-primary">
+              {{ item?.header_2 }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-2">
+        <button
+          *ngIf="specilaztions.length > 0"
+          type="button"
+          class="btn btn-light card-banner br-1 cards-hover viewall-btn"
+          (click)="moveTo(title)"
+          style="color: #e7556c"
+        >
+          {{ lang.language.viewAll }} <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="text-center mt-2">
+        <div
+          *ngIf="specilaztions.length == 0"
+          class="d-flex justify-content-center no-data"
+        >
+          <img
+            src="/assets/images/norecord.png"
+            height="333px"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

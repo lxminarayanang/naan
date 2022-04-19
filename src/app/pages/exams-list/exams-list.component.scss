@@ -1,0 +1,270 @@
+@import "../../../styles/styles.scss";
+
+.card-banner {
+  border-radius: 15px;
+  border-color: 2px solid #e7556c;
+}
+.container {
+  position: relative;
+  // text-align: center;
+  // color: white;
+  // padding: 0;
+}
+.container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.bg-grey {
+  background: #d7a241;
+}
+.margin-x {
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+
+.centered-2 {
+  top: 75% !important;
+}
+
+.font-55 {
+  font-size: 55px;
+}
+
+.form-check {
+  padding-bottom: 3px;
+  color: $d-grey;
+}
+
+.card-exams {
+  border-radius: 15px;
+  border-color: rgb(163, 162, 162) 1px solid;
+  box-shadow: 4px 6px 8px #b3b0b0;
+  border: 1px solid rgb(224, 224, 224);
+  background-color: $white;
+}
+
+.badge-1 {
+  background-color: #ff5652 !important;
+  font-weight: 400;
+}
+.badge-2 {
+  background-color: #14a39a !important;
+  font-weight: 400;
+}
+.badge-3 {
+  background-color: #14a39a !important;
+  font-weight: 400;
+}
+
+.btn {
+  line-height: 1 !important;
+  font-size: 14px;
+}
+.scroll {
+  // height: 80%;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(141, 140, 140);
+  border-radius: 1px;
+}
+input[type="checkbox"]:checked + label {
+  color: black;
+}
+.vh-100 {
+  height: 100vh;
+}
+.marquee {
+  letter-spacing: 1.5px;
+  background: #407bff;
+  color: white;
+  font-weight: 500;
+}
+.sub-head {
+  font-size: 14px;
+}
+u:hover {
+  color: blue;
+}
+.career-border {
+  border: 2px solid #e7556c;
+}
+.menu-select {
+  background-color: #f3eaf5;
+  border-left: 3px solid #ff8533;
+  padding-left: 4px;
+  color: $d-blue;
+  cursor: pointer;
+}
+.menu-select:selected {
+  background-color: #f3eaf5;
+  border-left: 3px solid #ff8533;
+  padding-left: 4px;
+  color: $d-blue;
+  cursor: pointer;
+}
+.bg-color {
+  background: #877467;
+  color: white;
+}
+
+.centered-back {
+  position: absolute;
+  top: 37%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  color: $white;
+}
+.form-check .form-check-input {
+  margin-left: -1em;
+}
+.form-check-label {
+  padding-left: 10px;
+}
+.my-pagination {
+  background: red;
+  text-align: right;
+}
+.searchBoxTop {
+  margin-top: 126px;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2px solid #c0c4c7;
+  /* border-right: none; */
+  padding: 15px;
+  height: 50px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #dddde6;
+}
+
+.searchTerm:focus {
+  color: #3b3b3d;
+}
+
+.searchButton {
+  width: 40px;
+  height: 50px;
+  border: 1px solid #08386b;
+  background: #08386b;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.w-96 {
+  width: 96%;
+}
+.searchButton1 {
+  position: absolute;
+  top: 9px;
+  border-radius: 5px;
+  right: 0px;
+  z-index: 2;
+  width: 125px;
+  border: none;
+  top: 8px;
+  height: 34px;
+  /* left: 47px; */
+  right: 27px;
+  cursor: pointer;
+  color: white;
+  background-color: #09396b;
+}
+
+.card-colleges {
+  border-radius: 15px;
+  border: 2px solid #b5b5b5;
+  background-color: $white;
+  // height: 250px;
+}
+.card-exams {
+  border-radius: 15px;
+  border: 2px solid #b5b5b5;
+  background-color: $white;
+  // height: 250px;
+}
+.card-courses {
+  border-radius: 15px;
+  border: 2px solid #b5b5b5;
+  background-color: $white;
+}
+
+.collegeImage {
+  float: left;
+  height: 69px;
+}
+.cardText {
+  height: 80px;
+  margin-top: 28px;
+}
+.cardMargin {
+  margin-right: 2.25rem !important;
+  margin-left: 2.25rem !important;
+}
+.fieldHeading {
+  margin-top: 60px;
+}
+.filterHeading {
+  color: #05396b;
+}
+.bg-list {
+  background: rgba(173, 19, 19, 0.15);
+}
+.bg-college-list {
+  background: rgba(24, 167, 107, 0.2);
+}
+.paginationMargin {
+  margin-top: 10px;
+}
+
+// Breadcrumb CSS
+ul.breadcrumb {
+  list-style: none;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li + li:before {
+  padding: 6px;
+  color: #05396b;
+  content: "»";
+  font-size: 18px;
+}
+ul.breadcrumb li a {
+  color: #05396b;
+  text-decoration: none;
+  font-weight: 500;
+}
+ul.breadcrumb li a:hover {
+  color: #05396b;
+  text-decoration: underline;
+}

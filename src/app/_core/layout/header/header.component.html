@@ -1,0 +1,243 @@
+<!-- landing page header -->
+
+<div class="landing-page-header">
+  <div class="container-fluid header-row py-2">
+    <div class="row px-5">
+      <a class="app-logo-container col-xl-2 col-lg-2" [routerLink]="['/home']">
+        <img
+          src="./assets/images/tn_logo.png"
+          alt="TN_LOGO"
+          height="50"
+          width="100"
+          class=""
+        />
+
+        <!-- <h3> {{lang.language.embalam}} </h3> -->
+      </a>
+
+      <div class="col-xl-10 col-lg-10 mt-lg-0 mt-3 mb-1">
+        <div class="d-flex align-items-center justify-content-end">
+          <form #myform="ngForm">
+            <input
+              type="checkbox"
+              name="lang"
+              [ngModel]="language"
+              class="translate-toggle-switch"
+              (change)="languageChange()"
+              checked
+              ngModel
+            />
+
+            <a
+              class="screen-reader-btn"
+              [style.background]="
+                service.screenReaderMode == 'on' ? '#eaeaea' : '#fff'
+              "
+              (click)="
+                service.screenReaderMode =
+                  service.screenReaderMode == 'off' ? 'on' : 'off'
+              "
+            >
+              <span
+                class="d-none d-sm-block"
+                [ngClass]="{ blink: service.screenReaderMode == 'on' }"
+              >
+                {{ lang.language.screenReader }}
+              </span>
+
+              <img
+                src="./assets/images/landing-page/screen-reader-icon.png"
+                [ngClass]="{ blink: service.screenReaderMode == 'on' }"
+                class="d-block d-sm-none"
+                alt=""
+                style="width: 20px"
+            /></a>
+
+            <div class="ms-3">
+              <img
+                src="/assets/images/icons/phone.png"
+                height="25px"
+                class="cursor-pointer"
+                data-bs-toggle="modal"
+                data-bs-target="#helplineModal"
+              />
+            </div>
+            <!-- <div *ngIf="isLoggedIn" class="ms-3">
+                            <i class="bi bi-bell-fill notifi-bell cursor-pointer"></i>
+                        </div> -->
+
+            <!-- <div class="dropdown">
+              <img
+                *ngIf="isLoggedIn"
+                class="dropdown-toggle"
+                id="dropdownMenuButton"
+                data-bs-toggle="dropdown"
+                src="/assets/images/avatar.png"
+                class="rounded-circle ms-3 cursor-pointer"
+                style="width: 4%"
+              />
+
+              <ul
+                class="dropdown-menu mobile-dd"
+                aria-labelledby="dropdownMenuButton"
+              >
+                <li>
+                  <a class="dropdown-item" (click)="career()">Career portal</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="/home" (click)="logout()"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div> -->
+            <div class="dropdown">
+              <img
+                style="width: 4%"
+                *ngIf="isLoggedIn"
+                src="/assets/images/avatar.png"
+                alt="Avatar"
+                class="dropbtn rounded-circle ms-3 cursor-pointer"
+              />
+
+              <div class="dropdown-content">
+                <a class="dropdown-item" (click)="career()">Career portal</a>
+
+                <a class="dropdown-item" href="/home" (click)="logout()"
+                  >Logout</a
+                >
+              </div>
+            </div>
+            <div *ngIf="isLoggedIn" class="ms-1">
+              <i
+                class="bi bi-chevron-down cursor-pointer"
+                class="dropdown-toggle"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+              ></i>
+            </div>
+
+            <div class="d-flex" *ngIf="!isLoggedIn">
+              <input
+                type="text"
+                name="username"
+                id="username"
+                maxlength="50"
+                class="d-none d-md-block langing-page-input"
+                [placeholder]="lang.language.username"
+                *ngIf="loginModalState != 'open'"
+                ngModel
+              />
+
+              <input
+                type="password"
+                name="password"
+                id="password"
+                maxlength="25"
+                class="d-none d-md-block langing-page-input"
+                [placeholder]="lang.language.password"
+                *ngIf="loginModalState != 'open'"
+                ngModel
+              />
+
+              <a
+                class="screen-reader-btn login-btn d-none d-md-block"
+                (click)="login(myform)"
+              >
+                {{ lang.language.login }}</a
+              >
+
+              <a
+                class="screen-reader-btn login-btn d-block d-md-none"
+                (click)="openLoginModal()"
+                >Login</a
+              >
+            </div>
+            <div [routerLink]="['/home']">
+              <img
+                src="./assets/images/tn_logo1.png"
+                alt="TN_LOGO"
+                height="50"
+                class="ps-3 app-logo cursor-pointer"
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal
+  #loginModal
+  [showHeader]="false"
+  className="common-modal login-modal"
+  size="md"
+  [cancelSaveBtn]="false"
+  [showSaveBtn]="false"
+>
+  <a class="modal-close" (click)="closeModal()"> <i class="bi bi-x"></i> </a>
+  <form #myform="ngForm">
+    <div class="row mx-0 p-3 pb-0">
+      <div class="col-12">
+        <input
+          type="text"
+          name="emis"
+          id="username"
+          class="login-modal-input"
+          [placeholder]="lang.language.username"
+          ngModel
+        />
+      </div>
+      <div class="col-12">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          class="login-modal-input mb-0"
+          [placeholder]="lang.language.password"
+          ngModel
+        />
+      </div>
+    </div>
+    <div class="modal-footer d-flex justify-content-center">
+      <a class="screen-reader-btn login-btn" (click)="login(myform)">Login</a>
+    </div>
+  </form>
+</modal>
+
+<!--Phone Modal -->
+<div
+  class="modal fade"
+  id="helplineModal"
+  tabindex="-1"
+  aria-labelledby="helplineModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content br-20">
+      <div class="text-end pe-3 pt-2">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-center pt-0">
+        <div class="d-flex justify-content-center">
+          <img src="/assets/images/icons/phone.png" height="25px" />
+          <h5 class="ps-3 d-blue">
+            {{ lang.language.helpline }} <br /><span *ngIf="lang.type">
+              {{ lang.language.helpline2 }}</span
+            >
+          </h5>
+        </div>
+        <h1 class="d-blue">144117</h1>
+        <div>
+          <p *ngIf="!lang.type" class="d-blue">{{ lang.language.helpline2 }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

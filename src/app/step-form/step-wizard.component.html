@@ -1,0 +1,555 @@
+<div class="container step-wizard-container">
+  <mat-stepper
+    class="example-stepper"
+    [orientation]="(stepperOrientation | async)!"
+  >
+    <mat-step [stepControl]="profileInfoFormGroup" label="Personal Profile">
+      <form [formGroup]="profileInfoFormGroup">
+        <div class="row">
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.emis }}</mat-label>
+              <input
+                matInput
+                type="number"
+                placeholder=""
+                value=""
+                formControlName="emid"
+                readonly
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.fullName }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="fullName"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.studentMedium }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.studentMediumHint }}
+              </mat-hint>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="studentMedium"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.homeLocation }}</mat-label>
+              <mat-hint align="start"
+                  >{{ lang.language.homeLocationHint }}
+                </mat-hint>
+              <mat-select formControlName="studentHome">
+                <ng-container
+                  *ngFor="let item of lang.language.homeLocationData"
+                >
+                  <mat-option [value]="item">{{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.fatherOccupation }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.fatherOccupationHint }}
+              </mat-hint>
+              <mat-select formControlName="fatherOccupation">
+                <ng-container
+                  *ngFor="let item of lang.language.fatherOccupationData"
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.fatherOccupationDetail }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="fatherOccupationDetail"
+              />
+            </mat-form-field>
+          </div> -->
+
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.fatherEducation }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.fatherEducationHint }}
+              </mat-hint>
+              <mat-select formControlName="fatherQualification">
+                <ng-container
+                  *ngFor="let item of lang.language.fatherEducationData"
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.motheOccupationType }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.motheOccupationTypeHint }}
+              </mat-hint>
+              <mat-select formControlName="motherOccupation">
+                <ng-container
+                  *ngFor="let item of lang.language.motheOccupationTypeData"
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.motherOccupationDetails }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="motherOccupationDetail"
+              />
+            </mat-form-field>
+          </div> -->
+
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{
+                lang.language.motherEducationalQualification
+              }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.motherEducationalQualificationHint }}
+              </mat-hint>
+              <mat-select formControlName="motherQualification">
+                <ng-container
+                  *ngFor="
+                    let item of lang.language.motherEducationalQualificationData
+                  "
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.familyAnnualIncome }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.familyAnnualIncomeHint }}
+              </mat-hint>
+              <mat-select formControlName="familyAnnualIncome">
+                <ng-container
+                  *ngFor="let item of lang.language.familyAnnualIncomeData"
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+          <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.sibilings }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.sibilingsHint }}
+              </mat-hint>
+              <input
+                matInput
+                type="number"
+                placeholder=""
+                value=""
+                formControlName="siblings"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+        <p class="mat-danger labelRow">(*) mandatory</p>
+        <div>
+          <button mat-button class="matButton" matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="academicInfoForm" label="Academic Interest">
+      <form [formGroup]="academicInfoForm">
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.intrestedSubject }}</mat-label>
+              <mat-select formControlName="likedSubject">
+                <ng-container
+                  *ngFor="let item of lang.language.intrestedSubjectData"
+                >
+                  <mat-option [value]="item">{{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.unInrestedSubject }}</mat-label>
+              <mat-select formControlName="unlikedSubject">
+                <ng-container
+                  *ngFor="let item of lang.language.intrestedSubjectData"
+                >
+                  <mat-option [value]="item">{{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <p class="mat-danger labelRow">(*) mandatory</p>
+        <div>
+          <button mat-button class="matBackButton" matStepperPrevious>
+            Back
+          </button>
+          <button mat-button matStepperNext class="matButton">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="higherEducationInfoForm"
+      label="Higher Education Interest & Aspirations"
+    >
+      <form [formGroup]="higherEducationInfoForm">
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="pursueHigherEducation"
+            >
+              <mat-label class="radioLabel">{{
+                lang.language.pursueHigherEducation
+              }}</mat-label>
+              <ng-container *ngFor="let item of lang.language.radioButton">
+                <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="interestedCourse"
+            >
+              <mat-label class="radioLabel">{{
+                lang.language.IntrestedCourse
+              }}</mat-label>
+              <ng-container *ngFor="let item of lang.language.radioButton">
+                <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="interestedCollege"
+            >
+              <mat-label class="radioLabel">{{
+                lang.language.IntrestedCollege
+              }}</mat-label>
+              <ng-container *ngFor="let item of lang.language.radioButton">
+                <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+
+          <div class="col-md-12 labelRow">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="worriedAboutCollege"
+            >
+              <mat-label class="radioLabel">{{
+                lang.language.worriedAboutSelectedCollege
+              }}</mat-label>
+              <ng-container *ngFor="let item of lang.language.radioButton">
+                <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="worriedAboutFees"
+            >
+              <mat-label class="radioLabel">{{
+                lang.language.worriedAboutCollgeFees
+              }}</mat-label>
+              <ng-container *ngFor="let item of lang.language.radioButton">
+                <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-radio-group
+              aria-label="Select an option"
+              formControlName="higherEducationAwayFromHometown"
+            >
+              <mat-label class="radioLabel">{{
+                lang.language.higherEducationAwayFromHometown
+              }}</mat-label>
+              <ng-container *ngFor="let item of lang.language.radioButton">
+                <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+              </ng-container>
+            </mat-radio-group>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{
+                lang.language.challengesInHigherEducation
+              }}</mat-label>
+              <mat-select formControlName="challengesInHigherEducation">
+                <ng-container
+                  *ngFor="
+                    let item of lang.language.challengesInHigherEducationData
+                  "
+                >
+                  <mat-option [value]="item">{{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.specilaztions }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.specilaztionsHint }}
+              </mat-hint>
+              <br />
+
+              <mat-select
+                [(ngModel)]="selectedSpecialization"
+                (ngModelChange)="getCourseData(selectedSpecialization)"
+                placeholder=""
+                formControlName="specilaztions"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let item of specilaztions"
+                  [value]="item.field"
+                  >{{ item.field }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.specilaztionsCourses }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.specilaztionsCoursesHint }}
+              </mat-hint>
+              <br />
+
+              <mat-select
+                placeholder=""
+                formControlName="specilaztionsCourses"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let item of coursesData"
+                  [value]="item.name"
+                  >{{ item.name }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.entranceExamPvt }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.entranceExamPvtHint }}
+              </mat-hint>
+              <mat-select
+                placeholder=""
+                formControlName="entranceExams"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let item of entranceExamData"
+                  [value]="item.entanceExams"
+                  >{{ item.entanceExams }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.interestedForStudy }}</mat-label>
+              <mat-select formControlName="interestedForStudy">
+                <mat-option
+                  *ngFor="let item of lang.language.interestedForStudyData"
+                  [value]="item.name"
+                  [value]="item"
+                >
+                  {{ item }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <p class="mat-danger labelRow">(*) mandatory</p>
+        <div>
+          <button class="matBackButton" mat-button matStepperPrevious>
+            Back
+          </button>
+          <button class="matButton" mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step
+      [stepControl]="carrerInfoForm"
+      label="Career Interests & Aspirations"
+    >
+      <form [formGroup]="carrerInfoForm">
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.preferJob }}</mat-label>
+              <mat-select
+                formControlName="preferJob"
+                [(ngModel)]="preferedJobValue"
+                (ngModelChange)="getPreferedJobData(preferedJobValue)"
+              >
+                <mat-option
+                  *ngFor="let item of lang.language.preferJobData"
+                  [value]="item"
+                  >{{ item }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.entranceGovExam }}</mat-label>
+              <mat-select formControlName="interestedGoverementJobs">
+                <mat-option
+                  *ngFor="let item of lang.language.entranceGovExamJobsData"
+                  [value]="item"
+                  >{{ item }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.interestedSectors }}</mat-label>
+              <mat-select
+                placeholder=""
+                formControlName="interestedSectors"
+                multiple
+              >
+                <mat-option
+                  *ngFor="let item of careersData"
+                  [value]="item.field"
+                  >{{ item.field }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <p class="mat-danger labelRow">(*) mandatory</p>
+        <div>
+          <button class="matBackButton" mat-button matStepperPrevious>
+            Back
+          </button>
+          <button
+            mat-button
+            class="matButton"
+            type="submit"
+            (click)="clickFormSubmit()"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-stepper>
+  <!--Phone Modal -->
+  <div
+    class="modal fade"
+    id="successModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="successModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content br-20">
+        <div class="text-end pe-3 pt-2">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="toBack()"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="d-flex justify-content-center pb-2">
+            <img src="/assets/images/icons/education.png" height="60" />
+          </div>
+          <h1 class="d-blue pb-2">Submitted successfully!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="alertModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="successModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content br-20">
+        <div class="text-end pe-3 pt-2">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="toClose()"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <p
+            class="d-blue pb-4"
+            style="font-size: 28px !important; color: #dc3545"
+          >
+            Please fill all mandatory fields!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

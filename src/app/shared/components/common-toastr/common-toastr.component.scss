@@ -1,0 +1,44 @@
+::ng-deep{
+    
+    // Snackbar background color
+    .mat-snack-bar-container{
+        background : var(--white-color);
+    }
+
+    // Image position
+    .iconImage{
+        position: absolute !important;
+        top: 20px !important;
+    }
+
+    .imgContainer{
+        width: 40px !important;
+        height: 40px !important;
+        vertical-align: middle !important;
+        border-radius: 50% !important;
+    }
+
+    // *** Message Type Styles ***
+    
+    .success{
+        background-color  : var(--success-background);
+        color             : var(--success-foreground);
+    }
+    .error{
+        background-color  : var(--error-background);
+        color             : var(--error-foreground);
+    }
+    .warn{
+        background-color  : var(--warn-background);
+        color             : var(--warn-foreground);
+    }
+    .info{
+        background-color  : var(--info-background);
+        color             : var(--info-foreground);
+    }
+}
+
+.btn-close {
+    outline: none !important;
+    box-shadow: none !important;
+}

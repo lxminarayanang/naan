@@ -1,0 +1,47 @@
+.section-header {
+    text-align: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #05396b;
+    position: relative;
+    display: inherit;
+    margin-bottom: 3rem;
+}
+.section-header:after {
+    content: "";
+    background: #379683;
+    height: 0.25rem;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    top: 2rem;
+    left: 0;
+}
+.img-radius {
+    height: 350px;
+    width: 400px;
+    border-radius: 45px;
+}
+.bg-blue {
+    background: #e2ebff;
+}
+.space {
+    margin: 0px 2px 18px 29px;
+}
+input,
+select {
+    padding: 12px !important;
+}
+
+::placeholder,
+.form-control,
+.form-select {
+    color: #555353;
+    opacity: 1;
+}
+.vh-66 {
+    height: 66vh;
+}

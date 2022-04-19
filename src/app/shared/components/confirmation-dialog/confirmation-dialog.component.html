@@ -1,0 +1,24 @@
+<!-- confirmation modal starts -->
+  <div class="confirmationModal">
+    <div class="modal-body">
+      <div class="end-0 position-absolute pe-4 pt-2">
+        <button matRipple type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="decline()"></button>
+      </div>
+        <div class="confirm-body d-flex flex-column flex-sm-row px-3 pt-3 pb-4 align-items-center text-center text-sm-start">
+          <div class="confirm-img me-3 p-2 rounded-circle" [ngClass]="iconColor">
+            <i [class]='iconClass'></i>
+          </div>
+          <div class="confirm-content mt-3 d-flex flex-column flex-row">
+            <div class="content-heading  fs-5 lh-lg">{{title | titlecase}}</div>
+            <div class="content-text text-secondary">{{message}}</div>
+          </div>
+        </div>
+    </div>
+    <!-- Confirmation Modal Footer -->
+    <div class="modal-footer bg-light bg-gradient justify-content-center justify-content-sm-end" *ngIf="btnCancelShow || btnOkShow">
+      <button matRipple class="btn btn-cancel" (click)="decline()" *ngIf="btnCancelShow">{{btnCancelText | titlecase}}</button>
+      <button matRipple class="btn btn-confirm" (click)="accept()" *ngIf="btnOkShow">{{btnOkText | titlecase}}</button>
+    </div>
+  </div>
+     
+    <!-- confirmation modal end -->

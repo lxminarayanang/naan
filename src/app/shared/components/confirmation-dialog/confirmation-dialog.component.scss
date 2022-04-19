@@ -1,0 +1,86 @@
+$footer-color : rgba(248,250,252);
+$btn-warn-color : rgb(220 59 48);
+
+// ** Alter Image Icon Color schemes
+
+.close:hover{
+    background : #eaedf1 !important;
+}
+
+.btn{
+    padding: 8px 22px!important;
+    // border-radius: 9999px!important
+}
+
+.btn-close{
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.btn-close:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+.btn-confirm{
+    background-color: $btn-warn-color;
+    border: none;
+    color: #fff !important;
+    font-weight: 600 !important;
+}
+
+.btn-cancel{
+    background: $footer-color!important;
+    box-shadow: 0 0 0 0 #0003, 0 0 0 0 #00000024, 0 0 0 0 #0000001f;
+    color: #000 !important;
+    border-color: #e2e8f0;
+}
+
+
+.confirm-img.error{
+    color       :  var(--error-foreground) !important;
+    background  :  var(--error-background) !important;
+}
+
+.confirm-img.basic{
+    color       :  var(--basic-foreground) !important;
+    background  :  var(--basic-background) !important;
+}
+
+.confirm-img.info{
+    color       :  var(--info-foreground) !important;
+    background  :  var(--info-background) !important;
+}
+
+.confirm-img.success{
+    color       :  var(--success-foreground) !important;
+    background  :  var(--success-background) !important;
+}
+
+.confirm-img.warn{
+    color       :  var(--warn-foreground) !important;
+    background  :  var(--warn-background) !important;
+}
+
+.content-heading { font-weight : 500 }
+
+.modal-footer{
+    border-bottom-right-radius: 15px !important;
+    border-bottom-left-radius: 15px !important;
+    background : $footer-color !important;
+}
+
+    ::ng-deep .confirmationModal .modal-content{
+        border-radius: 5px !important;
+        border: 0 !important;
+        max-width: 380px !important;
+        min-height: 206px !important;
+        box-shadow: 0px 0px 8px 0px;
+        vertical-align: middle !important;
+    }
+
+    @media (min-width: 960px){
+        ::ng-deep .confirmationModal .modal-content{
+            min-width: 512px;
+        }
+    }

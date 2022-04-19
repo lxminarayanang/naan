@@ -1,0 +1,401 @@
+<div class="container mt-4rem">
+  <div class="row">
+    <div class="position-sticky">
+      <ul class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <!-- <li>
+          <a href="#">{{ param_id }}</a>
+        </li> -->
+        <ng-container *ngIf="section && section != ' '">
+          <li>
+            <a (click)="onClickRedirection()">{{ section }}</a>
+          </li>
+        </ng-container>
+        <li>
+          <a style="cursor: none"> {{ section }} Overview</a>
+        </li>
+      </ul>
+      <!-- <div>
+                <i class="bi bi-arrow-left font-36 cursor-pointer" (click)="moveTo()"></i>
+            </div> -->
+      <img
+        [src]="
+          section === 'colleges'
+            ? '/assets/images/banner/college-overview.png'
+            : '/assets/images/banner/courses.png'
+        "
+        class="w-100 mt-3"
+        height="250"
+      />
+      <div class="" (click)="moveTo()">
+        <!-- <img
+          class="centered-back cursor-pointer"
+          src="/assets/images/icons/back-icon.png"
+          alt=""
+        /> -->
+      </div>
+      <div
+        class="centered head-overflow"
+        [ngClass]="language == 'tamil' ? 'fs-26' : 'fs-30'"
+        [ngStyle]="{
+          'background-color': section === 'colleges' ? '#379683' : '#ffdddd'
+        }"
+        [style.color]="section === 'colleges' ? '#fff' : '#000'"
+      >
+        {{ bannerTitle }}
+      </div>
+      <div class="centered-badge d-flex mx-1">
+        <div
+          class="badge rounded px-3 py-2 mx-2 d-block-1 badge-ellipse"
+          [ngClass]="section === 'colleges' ? 'badge-1-colleges' : 'badge-1'"
+        >
+          {{ badge1 }}
+        </div>
+        <div
+          class="badge rounded px-3 py-2 mx-2 badge-ellipse"
+          [ngClass]="section === 'colleges' ? 'badge-1-colleges' : 'badge-1'"
+        >
+          {{ badge2 }}
+        </div>
+        <div *ngIf="badge3" class="badge rounded badge-1 px-3 py-2 mx-1">
+          Exp: {{ badge3 | date: "dd/MM/yyyy" }}
+        </div>
+      </div>
+      <div class="centered-button" *ngIf="items?.link">
+        <!-- *ngIf="this.service.dateCompare(badge3)" -->
+        <button
+          type="button"
+          class="btn apply-now"
+          (click)="goToUrl(items?.link)"
+        >
+          {{
+            section === "colleges" ? "Visit Website" : lang.language.applyNow
+          }}
+          <i class="bi bi-chevron-right"></i>
+        </button>
+        <!-- <button *ngIf="!this.service.dateCompare(badge3)" class="btn expired">{{lang.language.applyNow}}</button> -->
+      </div>
+    </div>
+  </div>
+  {{ section }}
+  <!-- New Overview Design Started -->
+  <ng-container *ngIf="section === 'courses'">
+    <div class="container">
+      <div class="badge-overview">
+        <div class="centered-badge d-flex mx-1">
+          <div
+            class="badge rounded overview-badge px-3 py-2 mx-2 d-block-1 badge-ellipse"
+            href="#brief"
+          >
+            Course Brief
+          </div>
+          <div
+            class="badge rounded overview-badge px-3 py-2 mx-2 badge-ellipse"
+          >
+            Higher Education
+          </div>
+          <div
+            class="badge rounded overview-badge px-3 py-2 mx-2 badge-ellipse"
+          >
+            Career Opportunities
+          </div>
+          <div
+            class="badge rounded overview-badge px-3 py-2 mx-2 badge-ellipse"
+          >
+            Where to Study
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="overview-detail-card">
+        <section id="brief">
+          <div class="row">
+            <div class="col-md-6" style="margin-bottom: 40px">
+              <h3 class="heading-overview">Brief About the Course</h3>
+
+              <p class="pre-line-1" style="color: #000; text-align: justify">
+                {{ generalDetails }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div class="x0">
+                <div class="x1">
+                  <div class="x2">
+                    <div class="x3">
+                      <!-- BEG Content -->
+
+                      <div class="x6">
+                        <div class="x7">
+                          <div class="x7-margin">
+                            <img
+                              src="./assets/images/icons/course-duration.png"
+                              alt="career image"
+                              class="ps-3 app-logo cursor-pointer overview-image"
+                            />
+                            <p class="x7-heading">Course Duration</p>
+                            <p style="font-size: 13px !important">
+                              {{ this.items?.duration }}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="eligibility-margin">
+                          <img
+                            src="./assets/images/icons/eligibility.jpg"
+                            alt="Eligibility image"
+                            class="ps-3 app-logo cursor-pointer overview-image"
+                          />
+                          <p class="x7-heading">Eligibility</p>
+                          <p
+                            style="
+                              font-size: 13px !important;
+                              font-weight: bold;
+                            "
+                          >
+                            {{ this.items?.admissionProcedure }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="x5">
+                        <img
+                          src="./assets/images/icons/entrance.png"
+                          alt="Etrance Exams image"
+                          class="ps-3 app-logo cursor-pointer overview-image"
+                        />
+                        <p class="x7-heading">Entrance Exams</p>
+                        <p>
+                          {{ this.items.entanceExams }}
+                        </p>
+                      </div>
+                      <!-- END Content -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card-carreer">
+                <img
+                  src="./assets/images/icons/carreer.png"
+                  alt="career image"
+                  height="50"
+                  class="ps-3 app-logo cursor-pointer"
+                  style="float: left"
+                />
+                <div class="card-carreer-content">
+                  <h3 class="heading-overview">Career Opportunities</h3>
+                  <p class="pre-line-1 text-career">
+                    {{ items?.jobs }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card-carreer">
+                <img
+                  src="./assets/images/icons/higher-education.png"
+                  alt="career image"
+                  height="70"
+                  class="ps-3 app-logo cursor-pointer"
+                  style="float: left"
+                />
+                <div class="card-carreer-content">
+                  <h3 class="heading-overview">Higher Education</h3>
+                  <p class="pre-line-1 text-career">
+                    {{ items?.higherEducation }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="row colleges-card">
+          <div class="col-md-6">
+            <div class="">
+              <div class="card-college-content">
+                <h3 class="heading-overview">
+                  National Level Colleges
+                  <img
+                    src="./assets/images/icons/india.png"
+                    alt="career image"
+                    height="64"
+                    class="ps-3 app-logo cursor-pointer"
+                  />
+                </h3>
+                <ng-container
+                  *ngFor="let item of items.colleges; let i = index"
+                >
+                  <p
+                    class="pre-line-1 text-career"
+                    *ngIf="item.state !== 'Tamil Nadu'"
+                  >
+                    {{ i + 1 }}) {{ item?.name }}
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="">
+              <div class="card-college-content">
+                <h3 class="heading-overview">
+                  Colleges in Tamilnadu
+                  <img
+                    src="./assets/images/icons/tamilnadu.png"
+                    alt="career image"
+                    height="64"
+                    class="ps-3 app-logo cursor-pointer"
+                  />
+                </h3>
+                <ng-container *ngFor="let item of colleges; let i = index">
+                  <p
+                    class="pre-line-1 text-career"
+                    *ngIf="item.state === 'Tamil Nadu'"
+                  >
+                    {{ i + 1 }})
+                    {{ item?.name }}
+                  </p>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="section === 'colleges'">
+    <div class="container">
+      <div class="badge-overview">
+        <div class="centered-badge d-flex mx-1">
+          <div
+            class="rounded overview-college px-3 py-2 mx-2 d-block-1 badge-ellipse"
+          >
+            Course Brief
+          </div>
+          <div class="rounded overview-college px-3 py-2 mx-2 badge-ellipse">
+            Courses Offered
+          </div>
+          <div class="rounded overview-college px-3 py-2 mx-2 badge-ellipse">
+            Fee Structure
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="overview-detail-card">
+        <div class="row">
+          <div class="col-md-6" style="margin-bottom: 40px">
+            <h3 class="heading-overview">
+              Brief About the Colleges
+              <img
+                src="./assets/images/icons/about-college.png"
+                alt="career image"
+                height="50"
+                class="ps-3 app-logo cursor-pointer"
+              />
+            </h3>
+
+            <p class="pre-line-1 text-career">
+              {{ items.brief }}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <div class="fees-structure">
+              <img
+                src="./assets/images/icons/fee.png"
+                alt="career image"
+                class="ps-3 app-logo fee-image cursor-pointer"
+              />
+              <h3 class="heading-overview-fees" style="text-align: center">
+                Fee Structure
+              </h3>
+              <p class="pre-line-1" style="color: #000">
+                {{ items.fees }}
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="">
+              <div class="">
+                <h3 class="heading-overview">
+                  Courses Offered
+                  <img
+                    src="./assets/images/icons/courses-offered.png"
+                    alt="career image"
+                    height="40"
+                    class="ps-3 app-logo cursor-pointer"
+                  />
+                </h3>
+                <p class="pre-line-1 text-career">
+                  {{ items?.coursesOffered }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- New Overview Design Started end -->
+  <!-- <div
+    class="d-flex mt-4 p-3"
+    style="background-image: url(/assets/images/eclipse.png)"
+  >
+    <div class="col-lg-3 col-xl-3 d-block-overwiew fs-14">
+      <div class="d-flex" *ngIf="sideHeadings?.length != 0">
+        <h4 class="d-flex align-items-center d-blue mb-3 fw-500">Overview</h4>
+      </div>
+      <div
+        *ngFor="let item of sideHeadings; let i = index"
+        (click)="selected(i)"
+      >
+        <a
+          class="d-flex align-items-center py-1 d-grey menu-select text-ellipsis"
+          data-bs-toggle="collapse"
+          href="#indexCollapse{{ i }}"
+          >{{ item.title }}</a
+        >
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9 mb-3">
+      <div *ngIf="sideHeadings?.length == 0" class="d-flex ps-5">
+        <img src="/assets/images/norecord.png" alt="" srcset="" />
+      </div>
+
+      <div
+        class="m-4"
+        [ngClass]="pageTitle ? 'card-courses' : 'card-exams'"
+        *ngFor="let item of sideHeadings; let i = index"
+      >
+        <a
+          data-bs-toggle="collapse"
+          href="#indexCollapse{{ i }}"
+          class="collapsible card-banner d-flex justify-content-between"
+          (click)="collapse[i] = !collapse[i]"
+        >
+          <u>
+            <h5 class="d-blue">{{ item.title }}</h5>
+          </u>
+          <span
+            ><i
+              [ngClass]="{
+                'bi bi-chevron-up': collapse[i],
+                'bi bi-chevron-down': !collapse[i]
+              }"
+            ></i
+          ></span>
+        </a>
+        <div class="content collapse" id="indexCollapse{{ i }}">
+          <p class="pre-line-1">{{ item.content }}</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</div>

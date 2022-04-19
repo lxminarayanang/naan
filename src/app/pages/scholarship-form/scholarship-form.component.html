@@ -1,0 +1,168 @@
+<div class="container-fluid mt-4rem pt-2">
+    <div class="d-flex justify-content-center mt-5">
+        <img src="/assets/images/icons/rupee.png" class="h-50">
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <h3 class="section-header">{{lang.language.scholarFormTitle}}</h3>
+    </div>
+</div>
+<!-- <img class="" src="/assets/images/icons/dots.png" height="">
+<img class="" src="/assets/images/icons/dots.png" height=""> -->
+
+<div class="container mt-3" [formGroup]="regForm">
+    <div class="justify-content-between align-items-center">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 d-flex justify-content-center">
+                <img class="img-radius me-5 vh-66" src="/assets/images/banner/mentor.png">
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6  d-flex justify-content-center">
+                <div class="w-100">
+                    <div class="mb-4">
+                        <input type="text" maxlength="45" class="form-control" formControlName="organizationName"
+                            [placeholder]="lang.language.orgName">
+                        <small *ngIf="submitted && f.organizationName.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" maxlength="45" class="form-control" formControlName="email"
+                            [placeholder]="lang.language.email">
+                        <small *ngIf="submitted && f.email.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" maxlength="45" class="form-control" formControlName="contactPersonName"
+                            [placeholder]="lang.language.contactPersonName">
+                        <small *ngIf="submitted && f.contactPersonName.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" maxlength="45" class="form-control"
+                            formControlName="contactPersonDesignation"
+                            [placeholder]="lang.language.contactPersonDesignation">
+                        <small *ngIf="submitted && f.contactPersonDesignation.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                    </div>
+                    <div class="mb-4">
+                        <input type="number" class="form-control" formControlName="mobileNumber"
+                            [placeholder]="lang.language.mobileNumber">
+                        <small *ngIf="submitted && f.mobileNumber.errors"
+                            class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-4">
+
+        <div class="row d-flex justify-content-evenly px-5 ">
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                <div class="mb-3">
+                    <input type="text" maxlength="150" formControlName="address" class="form-control"
+                        [placeholder]="lang.language.orgAddress">
+                    <small *ngIf="submitted && f.address.errors"
+                        class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="mb-3">
+                    <input type="number" formControlName="pincode" class="form-control"
+                        [placeholder]="lang.language.pincode">
+                    <small *ngIf="submitted && f.pincode.errors"
+                        class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row px-5">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center">
+                <input type="text" maxlength="150" class="form-control" formControlName="scholarshipDetails"
+                    [placeholder]="lang.language.scholarshipDetails">
+                <small *ngIf="submitted && f.scholarshipDetails.errors"
+                    class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-evenly pb-2 pt-3 px-5">
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                <div class="mb-3">
+                    <select id="disabledSelect" formControlName="district" class="form-select">
+                        <option value=null disabled selected>{{lang.language.orgDistrict}}</option>
+                        <option *ngFor="let item of jsondata.districts" [value]="item?.district_name">
+                            {{item?.id}}.{{item?.district_name}}</option>
+                    </select>
+                    <small *ngIf="submitted && f.district.errors"
+                        class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7">
+                <div class="mb-3">
+                    <input type="text" maxlength="50" class="form-control" formControlName="ableToProvideNoOfStudents"
+                        [placeholder]="lang.language.ableToProvideNoOfStudents">
+                    <small *ngIf="submitted && f.ableToProvideNoOfStudents.errors"
+                        class="error-small-msg">{{lang.language.fieldRequired}}</small>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row px-5 pb-4">
+            <div class="col-sm-12 col-md-12 col-lg-7 col-xl-7 d-flex justify-content-center">
+                <input type="text" maxlength="150" class="form-control" formControlName="eligibilityCriteria"
+                    [placeholder]="lang.language.orgEligibility">
+                <small *ngIf="submitted && f.eligibilityCriteria.errors"
+                    class="error-small-msg">{{lang.language.fieldRequired}}</small>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 d-flex justify-content-center">
+                <input [placeholder]="lang.language.applicationDeadline" formControlName="applicationDeadline"
+                    min='2022-03-01' max='2022-12-31' class="form-control" type="text" onfocus="(this.type='date')"
+                    onblur="(this.type='text')">
+                <div>
+                    <small *ngIf="submitted && f.applicationDeadline.errors"
+                        class="error-small-msg">{{lang.language.fieldRequired}}</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pb-4">
+            <button class="btn me-3 btn-secondary" (click)="toBack()">{{lang.language.back}}</button>
+            <button class="btn me-3 btn-danger" (click)="resetForm()">{{lang.language.reset}}</button>
+            <button class="btn btn-success" (click)="submitForm()">{{lang.language.submit}}</button>
+        </div>
+    </div>
+</div>
+
+<!--Phone Modal -->
+<div class="modal fade" id="successModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content br-20">
+            <div class="text-end pe-3 pt-2">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="toBack()"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="d-flex justify-content-center pb-2">
+                    <img src="/assets/images/icons/rupee.png" height="60">
+                </div>
+                <h1 class="d-blue pb-2">Thank You!</h1>
+                <div class="pb-3">
+                    <h6>You will be contacted in 2 weeks</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
