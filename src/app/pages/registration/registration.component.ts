@@ -14,7 +14,7 @@ declare var $: any;
 })
 export class RegistrationComponent implements OnInit {
   regForm: any;
-  submitted = true;
+  submitted = false;
   blocksList: any = [];
   schoolList: any = [];
 
@@ -64,6 +64,7 @@ export class RegistrationComponent implements OnInit {
     }
     this.service.postService("/forms/mentor", this.regForm.value).subscribe((res: any) => {
       if (res.status == 200) {
+        this.submitted=false;
         $('#successModal').modal('show')
       }
     })

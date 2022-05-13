@@ -79,7 +79,29 @@
         </div>
 
         <div class="carousel-inner carousel-res">
-          <div class="carousel-item active h-100">
+          <!-- <div class="carousel-item active" style="height:100%">
+                        <video class="h-100" id="video" width="100%" height="100%" oncanplay="this.muted=true" controls
+                            autoplay>
+                            <source src="https://tnschools.gov.in/wp-content/themes/TNDS/assets/banner/schools.mp4"
+                                type="video/mp4">
+                        </video>
+                    </div> -->
+          <!-- <div class="carousel-item active h-100">
+            <video
+              muted
+              onplay="pauseslider()"
+              onpause="playslider()"
+              onended="resumeslider()"
+              controls
+              preload="none"
+              width="100%"
+              height="100%"
+              poster="/assets/images/banner/7.PNG"
+            >
+              <source src="assets\images\banner\6.mp4" type="video/mp4" />
+            </video>
+          </div> -->
+          <!-- <div class="carousel-item active h-100">
             <img
               src="/assets/images/banner/1.jpg"
               class="d-block w-100 h-100"
@@ -87,8 +109,8 @@
               style="transform: scale(1.2)"
               alt="..."
             />
-          </div>
-          <div class="carousel-item h-100">
+          </div> -->
+          <div class="carousel-item active h-100">
             <img
               src="/assets/images/banner/2.jpg"
               class="d-block w-100 h-100"
@@ -154,7 +176,10 @@
         style="height: 310px"
       >
         <ul class="list-group list-group-flush">
-          <li class="d-flex py-4" *ngFor="let item of examsNotifications">
+         
+          <ng-container *ngFor="let item of examsNotifications" >
+          <li class="d-flex py-4" *ngIf="item.startDate" >
+            
             <div class="col-2">
               <time class="icon">
                 <strong>{{ item?.startDate | date: "MMM" }}</strong>
@@ -168,9 +193,34 @@
                 }}</a>
               </p>
             </div>
+         
           </li>
+        </ng-container>
         </ul>
       </marquee>
+      <div>
+      <div class="d-flex py-4">
+        <!-- <div class="col-2">
+          <time class="icon">
+            <strong>{{ currentDate | date: "MMM" }}</strong>
+            <span>{{ currentDate | date: "d" }}</span>
+          </time>
+        </div> -->
+        <a
+         
+          target="_blank"
+          href="../../assets/Uyar_Kalvi_Vazhikkatti_Book.pdf"
+          ><button class="guidance">Career Guidance - Class 11&12         <img
+            src="/assets/download.jpg"
+            class=""
+            height="20"
+            style="
+            margin-left: 12px;
+        "
+          /></button></a  
+        >
+      </div>
+    </div>
     </div>
   </div>
 </div>
@@ -334,16 +384,16 @@
     </div>
     <div class="row">
       <div
-        class="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-center"
+        class="col-sm-12 col-md-12 col-lg-4 col-xl-4"
       >
         <div class="fall-item fall-effect d-flex justify-content-end-card pe-3">
           <img
             class="box-shadow-img-1 img-mobile"
             src="/assets/images/landing-page/mentor.png"
           />
-          <div class="mask d-flex justify-content-center">
-            <div class="hover-center-1">
-              <div *ngIf="lang.type" class="text-start">
+          <div class="mask d-flex justify-content-center" style="display: block ;">
+            <div class="hover-center-1" style="display: block;">
+              <div *ngIf="lang.type" class="text-start" style="display: block;" >
                 <h3>{{ lang.language.beMentor }}</h3>
                 <div class="fs-22">{{ lang.language.forStudents }}</div>
               </div>
@@ -363,10 +413,12 @@
             </div>
           </div>
         </div>
+
+        <h1 class="section-heading"> {{ lang.language.beMentor }} </h1>
       </div>
 
       <div
-        class="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-center"
+        class="col-sm-12 col-md-12 col-lg-4 col-xl-4"
       >
         <div class="fall-item fall-effect pe-3">
           <img
@@ -395,10 +447,11 @@
             </div>
           </div>
         </div>
+        <h1 class="section-heading">{{ lang.language.beSponsor }}</h1>
       </div>
 
       <div
-        class="col-sm-12 col-md-12 col-lg-4 col-xl-4 d-flex justify-content-center"
+        class="col-sm-12 col-md-12 col-lg-4 col-xl-4"
       >
         <div class="fall-item fall-effect d-flex justify-content-center pe-3">
           <img
@@ -423,6 +476,7 @@
             </div>
           </div>
         </div>
+        <h1 class="section-heading">{{ lang.language.beScholarship }} </h1>
       </div>
     </div>
   </div>

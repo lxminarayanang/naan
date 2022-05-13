@@ -14,7 +14,7 @@ import { Buffer } from 'buffer';
 export class HeaderComponent implements OnInit {
   @ViewChild('loginModal') loginModal!: ModalComponent;
   loginModalState: string = 'close';
-  language: any = localStorage.getItem('language') == 'tamil' ? true : false;
+  language: any = true;
   isLoggedIn: boolean = false;
   public token: any;
 
@@ -22,7 +22,9 @@ export class HeaderComponent implements OnInit {
     public service: CommonService,
     public lang: LanguageService,
     public router: Router
-  ) {}
+  ) {
+    localStorage.setItem('language', 'tamil');
+  }
 
   ngOnInit(): void {
     this.isLoggedIn = this.service.session('get', 'Authorization')
@@ -32,7 +34,7 @@ export class HeaderComponent implements OnInit {
 
   login(ngForm: NgForm) {
     const loginData = ngForm.form.value;
-    debugger;
+
     const payload = {
       username: loginData.username,
       password: loginData.password,
@@ -89,7 +91,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('userDetails');
     this.service.logout();
   }
-  languageChange() {
+  languageChange(language: any) {
     this.lang.changeLang();
     this.lang.newEvent('clicked!');
   }

@@ -13,7 +13,7 @@ declare var $: any;
 })
 export class ScholarshipFormComponent implements OnInit {
   regForm: any;
-  submitted = true;
+  submitted = false;
 
   constructor(
     private router: Router,
@@ -55,6 +55,7 @@ export class ScholarshipFormComponent implements OnInit {
     }
     this.service.postService("/forms/scholar", this.regForm.value).subscribe((res: any) => {
       if (res.status == 200) {
+        this.submitted=false;
         $('#successModal').modal('show')
       }
     })

@@ -25,6 +25,9 @@ export class ExamsOverviewComponent implements OnInit {
   public pageTitle: boolean = false;
   public generalDetails: any;
   public colleges: any;
+  ImportantDates : string = ''
+  graduate : string = '';
+  public currentUrl:any;
 
   constructor(
     private location: Location,
@@ -36,11 +39,16 @@ export class ExamsOverviewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    debugger;
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+});
+    this.currentUrl=this.router.url;
     this.pageTitle = this.router.url.includes('courses');
-    window.scrollTo(0, 0);
+   
     this.language = localStorage.getItem('language');
-    debugger;
+    
     this.section = this._Activatedroute.snapshot.paramMap.get('id1');
     //  this.section = this.section.charAt(0).toUpperCase() + this.section.slice(1);
     this.param_id = this._Activatedroute.snapshot.paramMap.get('id2');
@@ -65,7 +73,7 @@ export class ExamsOverviewComponent implements OnInit {
     this.location.back();
   }
   goToUrl(url: any): void {
-    window.open(url, '_blank');
+    window.open('https://'+`${url}`, '_blank');
   }
   fetchRecord(section: any, id: any) {
     this.service
@@ -80,16 +88,16 @@ export class ExamsOverviewComponent implements OnInit {
             (item: any) => item.state === 'Tamil Nadu'
           );
         }
-
-        console.log(this.items);
         this.bannerTitle = this.items?.name || '';
         this.badge1 =
           this.section === 'colleges'
-            ? this.items?.collgeType
+            ? this.items?.collegeType
             : this.items?.level;
         this.badge2 = this.items?.field || '';
         this.badge3 = this.items?.endDate || '';
         this.generalDetails = this.items.generalDetails;
+        this.ImportantDates = this.items?.importantDates;
+        this.graduate = this.items?.graduate;
 
         if (this.language == 'english') {
           switch (section) {
@@ -137,30 +145,14 @@ export class ExamsOverviewComponent implements OnInit {
 
             case 'exams':
               this.sideHeadings = [
-                {
-                  title: 'General Information',
-                  content: this.items.generalDetails || this.noData,
-                },
-                {
-                  title: 'Eligibility',
-                  content: this.items.eligibility || this.noData,
-                },
-                {
-                  title: 'Exam Pattern',
-                  content: this.items.pattern || this.noData,
-                },
-                {
-                  title: 'Available Seats',
-                  content: this.items.seats || this.noData,
-                },
-                {
-                  title: 'Application Fees',
-                  content: this.items.fees || this.noData,
-                },
-                {
-                  title: 'Application Procedure',
-                  content: this.items.procedure || this.noData,
-                },
+                { title: "General Information", content: this.items.generalDetails || this.noData },
+              { title: "Exam Language", content: this.items.language || this.noData },
+              { title: "Eligibility", content: this.items.eligibility || this.noData },
+              { title: "Available Seats", content: this.items.seats || this.noData },
+              { title: "Exam Pattern", content: this.items.pattern || this.noData },         
+              { title: "Application Fees", content: this.items.fees || this.noData },
+              { title: "Link To Download Q/A", content: this.items.linktodownload || this.noData },
+              { title: "Application Procedure", content: this.items.procedure || this.noData },
               ];
               break;
 
@@ -242,21 +234,30 @@ export class ExamsOverviewComponent implements OnInit {
                   title: 'General Information',
                   content: this.items.generalDetails || this.noData,
                 },
+                { 
+                  title: "Exam Language", 
+                content: this.items.language || this.noData 
+                },
                 {
                   title: 'Eligibility',
                   content: this.items.eligibility || this.noData,
-                },
-                {
-                  title: 'Exam Pattern',
-                  content: this.items.pattern || this.noData,
                 },
                 {
                   title: 'Available Seats',
                   content: this.items.seats || this.noData,
                 },
                 {
+                  title: 'Exam Pattern',
+                  content: this.items.pattern || this.noData,
+                },
+                
+                {
                   title: 'Application Fees',
                   content: this.items.fees || this.noData,
+                },
+                { 
+                  title: "Link To Download Q/A", 
+                  content: this.items.linktodownload || this.noData 
                 },
                 {
                   title: 'Application Procedure',

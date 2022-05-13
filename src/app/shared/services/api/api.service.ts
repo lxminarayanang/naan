@@ -52,7 +52,6 @@ export class ApiService {
 
   // POST API Method While Pass JSON Data
   postService(url: string, data?: any, params?: any): any {
-    debugger;
     if (this.encryptedReq) {
       data = { data: this.encryptData(JSON.stringify(data)) };
       url = this.encryptData(url);

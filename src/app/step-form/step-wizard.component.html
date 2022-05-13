@@ -16,6 +16,7 @@
                 value=""
                 formControlName="emid"
                 readonly
+                maxlength="100"
               />
             </mat-form-field>
           </div>
@@ -369,6 +370,8 @@
                 placeholder=""
                 formControlName="specilaztionsCourses"
                 multiple
+                [(ngModel)]="selectedSpecializationCourses"
+               
               >
                 <mat-option
                   *ngFor="let item of coursesData"
@@ -384,12 +387,19 @@
               <mat-hint align="start"
                 >{{ lang.language.entranceExamPvtHint }}
               </mat-hint>
+             
               <mat-select
                 placeholder=""
                 formControlName="entranceExams"
                 multiple
               >
-                <mat-option
+              <mat-option
+              *ngIf="entranceExamData.length===0"
+              value="None"
+              >None</mat-option
+            >
+           
+                <mat-option 
                   *ngFor="let item of entranceExamData"
                   [value]="item.entanceExams"
                   >{{ item.entanceExams }}</mat-option
@@ -446,14 +456,18 @@
           <div class="col-md-12 labelRow">
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>{{ lang.language.entranceGovExam }}</mat-label>
-              <mat-select formControlName="interestedGoverementJobs">
-                <mat-option
-                  *ngFor="let item of lang.language.entranceGovExamJobsData"
-                  [value]="item"
-                  >{{ item }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+              <mat-select
+              placeholder=""
+              formControlName="interestedGoverementJobs"
+              multiple
+            >
+              <mat-option
+                *ngFor="let item of lang.language.entranceGovExamJobsData"
+                [value]="item"
+                >{{ item }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
           </div>
         </div>
         <div class="row">

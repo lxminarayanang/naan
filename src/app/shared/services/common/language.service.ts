@@ -19,6 +19,7 @@ export class LanguageService {
   }
 
   constructor(public service: CommonService) {
+    debugger;
     this.tempLang = localStorage.getItem('language');
     if (this.tempLang) {
       this.changeLang('nochange');
@@ -28,12 +29,13 @@ export class LanguageService {
   }
 
   changeLang(change?: any) {
+    debugger;
     if (!change) {
       this.type = this.type ? false : true;
     }
-    localStorage.setItem('language', this.type ? 'english' : 'tamil');
+    localStorage.setItem('language', this.type ? 'tamil' : 'english');
 
-    if (!this.type) {
+    if (localStorage.getItem('language') === 'tamil') {
       window.document.title = 'நான் முதல்வன்';
       this.language = {
         survey:
@@ -190,7 +192,7 @@ export class LanguageService {
         homeLocationHint:
           'சேர்க்கையின் போது வழங்கப்பட்ட தகவலைப் புதுப்பிக்க இந்தத் தரவு சேகரிக்கப்படுகிறது',
         homeLocationData: ['மாவட்டம்', 'தாலுகா', 'கிராமம்'],
-        fatherOccupation: 'தந்தையின் பணியின் தன்மை',
+        fatherOccupation: 'தந்தையின் பணி',
         fatherOccupationHint:
           'சேர்க்கையின் போது வழங்கப்பட்ட தகவலைப் புதுப்பிக்க இந்தத் தரவு சேகரிக்கப்படுகிறது',
         fatherOccupationData: [
@@ -215,7 +217,7 @@ export class LanguageService {
           '12-வது முடித்தவர்',
           'பட்டப்படிப்பு முடித்தவர்',
         ],
-        motheOccupationType: 'தாயின் பணியின் தன்மை ',
+        motheOccupationType: 'தாயின் பணி',
         motheOccupationTypeHint:
           'சேர்க்கையின் போது வழங்கப்பட்ட தகவலைப் புதுப்பிக்க இந்தத் தரவு சேகரிக்கப்படுகிறது',
         motheOccupationTypeData: [
@@ -223,7 +225,7 @@ export class LanguageService {
           'மாதாந்திர சம்பளம்',
           'சுய வேலை',
           'வேலையில்லை',
-          'தந்தை இறந்து விட்டார்',
+          'தாய் இறந்து விட்டார்',
           'சொல்ல விருப்பம்மில்லை',
         ],
         motherOccupationDetails:
@@ -262,42 +264,42 @@ export class LanguageService {
         intrestedSubject: 'உங்களுக்கு மிகவும் பிடித்த பாடம் எது?',
 
         intrestedSubjectData: [
-          "தமிழ்", 
-          "ஆங்கிலம்", 
-          "இயற்பியல்", 
-          "வேதியியல்", 
-          "உயிரியல்",
-          "கணினி அறிவியல்", 
-          "கணிதம்", 
-          "பொருளாதாரம்", 
-          "வணிகம்",
-          "கணக்கியல்", 
-          "கணினிப் பயன்பாடு", 
-          "தாவரவியல்", 
-          "விலங்கியல்", 
-          "வரலாறு", 
-          "வணிகக்கணிதம் & புள்ளியியல்", 
-          "கணக்கியல் மற்றும் தணிக்கை", 
-          "வேளாண் அறிவியல்", 
-          "புள்ளியியல்", 
-          "புவியியல் ", 
-          "அலுவலக மேலாண்மை & பணி செயலர்", 
-          "அடிப்படை மின் பொறியியல்", 
-          "அடிப்படை இயந்திரவியல் பொறியியல்", 
-          "ஆடை மற்றும் ஆடை வடிவமைப்பு",
-          "அடிப்படை மின்னணு பொறியியல்", 
-          "உணவு சேவை மேலாண்மை", 
-          "தகவல்தொடர்பு ஆங்கிலம்", 
-          "ஆடை  வடிவமைப்புத்தொழில்நுட்பம்", 
-          "அடிப்படை கட்டடப் பொறியியல்", 
-          "அடிப்படை ஊர்திப்  பொறியியல்", 
-          "அரசியல் அறிவியல்", 
-          "சிறப்புத்தமிழ்", 
-          "நுண்ணுயிரியல்", 
-          "மனையியல்", 
-          "ஊட்டச்சத்து மற்றும் உணவுமுறை", 
-          "அறவியலும் இந்தியப் பண்பாடும்", 
-          "உயிர் வேதியியல்"     
+          'தமிழ்',
+          'ஆங்கிலம்',
+          'இயற்பியல்',
+          'வேதியியல்',
+          'உயிரியல்',
+          'கணினி அறிவியல்',
+          'கணிதம்',
+          'பொருளாதாரம்',
+          'வணிகம்',
+          'கணக்கியல்',
+          'கணினிப் பயன்பாடு',
+          'தாவரவியல்',
+          'விலங்கியல்',
+          'வரலாறு',
+          'வணிகக்கணிதம் & புள்ளியியல்',
+          'கணக்கியல் மற்றும் தணிக்கை',
+          'வேளாண் அறிவியல்',
+          'புள்ளியியல்',
+          'புவியியல் ',
+          'அலுவலக மேலாண்மை & பணி செயலர்',
+          'அடிப்படை மின் பொறியியல்',
+          'அடிப்படை இயந்திரவியல் பொறியியல்',
+          'ஆடை மற்றும் ஆடை வடிவமைப்பு',
+          'அடிப்படை மின்னணு பொறியியல்',
+          'உணவு சேவை மேலாண்மை',
+          'தகவல்தொடர்பு ஆங்கிலம்',
+          'ஆடை  வடிவமைப்புத்தொழில்நுட்பம்',
+          'அடிப்படை கட்டடப் பொறியியல்',
+          'அடிப்படை ஊர்திப்  பொறியியல்',
+          'அரசியல் அறிவியல்',
+          'சிறப்புத்தமிழ்',
+          'நுண்ணுயிரியல்',
+          'மனையியல்',
+          'ஊட்டச்சத்து மற்றும் உணவுமுறை',
+          'அறவியலும் இந்தியப் பண்பாடும்',
+          'உயிர் வேதியியல்',
         ],
         sibilings: 'சொந்த சகோதர சகோதரிகளின் எண்ணிக்கை',
         sibilingsHint:
@@ -437,7 +439,7 @@ export class LanguageService {
         forStudents: 'For the Students',
         beScholarship: 'Be a Scholarship',
         subTextScholarship: 'Providing Partner',
-        whatNew: 'What New',
+        whatNew: "What's New",
         mentorFormTitle: 'Mentor Registration Form ',
         name: 'Full Name',
         email: 'E-mail',
@@ -559,11 +561,12 @@ export class LanguageService {
         motheOccupationTypeHint:
           'This data is collected to update the information provided at the time of admission ',
         motheOccupationTypeData: [
-          'Below 5th',
-          'Completed 10th',
-          'Diploma/ITI',
-          'Completed  12th',
-          'Completed Graduation',
+          'Daily wage labourer',
+          'Monthly Salary',
+          'Self-employed',
+          'Unemployed',
+          'Deceased',
+          'Unwilling to share',
         ],
         motherOccupationDetails:
           "Please elaborate to share details about mother's Occupation",
@@ -600,6 +603,8 @@ export class LanguageService {
         ],
         intrestedSubject: 'Which subject do you the like the most?',
         intrestedSubjectData: [
+          'Tamil',
+          'English',
           'Physics',
           'Chemistry',
           'Biology',

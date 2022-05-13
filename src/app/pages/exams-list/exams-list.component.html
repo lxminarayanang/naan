@@ -26,7 +26,7 @@
         <ul class="breadcrumb">
           <li><a href="#">Home</a></li>
           <li>
-            <a (click)="onClickRedirection(sectionName)">{{ sectionName }}</a>
+            <a (click)="onClickRedirection(sectionName)">{{ title }}</a>
           </li>
           <ng-container *ngIf="name && name != ' '">
             <li>
@@ -70,7 +70,7 @@
           <h5 class="fw-800 filterHeading">{{ lang.language.filter }}</h5>
           <!-- <h6 class="text-danger cursor-pointer" (click)="clearFilter()">{{lang.language.clearFilter}}</h6> -->
         </div>
-
+        <!-- Exams -->
         <div *ngIf="id == 'exams'">
           <div class="pb-3">
             <h5 *ngIf="examLevel.length > 0">Exam Level</h5>
@@ -79,14 +79,16 @@
                 class="form-check"
                 *ngFor="let item of examLevel; let i = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="examLevelFilter"
-                  [value]="item.level"
-                  (change)="filterExams($event)"
-                />
-                <label class="form-check-label">{{ item?.level }}</label>
+                <ng-container *ngIf="item.level !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="examLevelFilter"
+                    [value]="item.level"
+                    (change)="changeFilterAdmissionProcedure($event, 'level')"
+                  />
+                  <label class="form-check-label">{{ item?.level }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -98,14 +100,17 @@
                 class="form-check"
                 *ngFor="let item of fields; let i = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="examFieldFilter"
-                  (change)="filterExams($event)"
-                  [value]="item.field"
-                />
-                <label class="form-check-label">{{ item.field }}</label>
+                <ng-container *ngIf="item.field !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="examFieldFilter"
+                    (change)="courseFilter($event, item, fields)"
+                    [checked]="item.selected"
+                    [value]="item.field"
+                  />
+                  <label class="form-check-label">{{ item.field }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -117,14 +122,16 @@
                 class="form-check"
                 *ngFor="let item of levels; let j = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="examEducationFilter"
-                  (change)="filterExams($event)"
-                  [value]="item?.graduate"
-                />
-                <label class="form-check-label">{{ item?.graduate }}</label>
+                <ng-container *ngIf="item.graduate !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="examEducationFilter"
+                    (change)="filterCourses($event, 'graduate')"
+                    [value]="item?.graduate"
+                  />
+                  <label class="form-check-label">{{ item?.graduate }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -138,20 +145,23 @@
                 class="form-check"
                 *ngFor="let item of examsNotificationTypes; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  name="examNotificationFilter"
-                  (change)="filterExams($event)"
-                  type="checkbox"
-                  [value]="item?.notificationStatus"
-                />
-                <label class="form-check-label">{{
-                  item?.notificationStatus
-                }}</label>
+                <ng-container *ngIf="item.notificationStatus !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    name="examNotificationFilter"
+                    (change)="filterExamsNotifications($event)"
+                    type="checkbox"
+                    [value]="item?.notificationStatus"
+                  />
+                  <label class="form-check-label">{{
+                    item?.notificationStatus
+                  }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
         </div>
+        <!--END exams -->
 
         <!-- Careers -->
         <div *ngIf="id == 'careers'">
@@ -180,14 +190,16 @@
                 class="form-check"
                 *ngFor="let item of states; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="collegeTypeFilter"
-                  (change)="changeFilterAdmissionProcedure($event, 'state')"
-                  [value]="item?.state"
-                />
-                <label class="form-check-label">{{ item?.state }}</label>
+                <ng-container *ngIf="item.state !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="collegeTypeFilter"
+                    (change)="changeFilterAdmissionProcedure($event, 'state')"
+                    [value]="item?.state"
+                  />
+                  <label class="form-check-label">{{ item?.state }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -199,14 +211,18 @@
                 class="form-check"
                 *ngFor="let item of collegeTypes; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="collegeTypeFilter"
-                  (change)="filterCourses($event, 'collegeType')"
-                  [value]="item?.collegeType"
-                />
-                <label class="form-check-label">{{ item?.collegeType }}</label>
+                <ng-container *ngIf="item.collegeType !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="collegeTypeFilter"
+                    (change)="filterCourses($event, 'collegeType')"
+                    [value]="item?.collegeType"
+                  />
+                  <label class="form-check-label">{{
+                    item?.collegeType
+                  }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -218,15 +234,17 @@
                 class="form-check"
                 *ngFor="let item of specilizationTypes; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  (change)="courseFilter($event, item, specilizationTypes)"
-                  [checked]="item.selected"
-                  name="collegeSpecilizationFilter"
-                  type="checkbox"
-                  [value]="item?.field"
-                />
-                <label class="form-check-label">{{ item?.field }}</label>
+                <ng-container *ngIf="item.field !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    (change)="courseFilter($event, item, specilizationTypes)"
+                    [checked]="item.selected"
+                    name="collegeSpecilizationFilter"
+                    type="checkbox"
+                    [value]="item?.field"
+                  />
+                  <label class="form-check-label">{{ item?.field }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -241,15 +259,17 @@
                 class="form-check"
                 *ngFor="let item of scholarshipLevels; let j = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="educationLevelFilter"
-                  (click)="filterScholarships($event)"
-                  (change)="filterExams($event)"
-                  [value]="item?.level"
-                />
-                <label class="form-check-label">{{ item?.level }}</label>
+                <ng-container *ngIf="item.level !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="educationLevelFilter"
+                    (click)="filterScholarships($event)"
+                    (change)="filterExams($event)"
+                    [value]="item?.level"
+                  />
+                  <label class="form-check-label">{{ item?.level }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -261,16 +281,18 @@
                 class="form-check"
                 *ngFor="let item of notificationStatus; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  name="examNotificationFilter"
-                  (change)="filterScholarships($event)"
-                  type="checkbox"
-                  [value]="item?.notificationStatus"
-                />
-                <label class="form-check-label">{{
-                  item?.notificationStatus
-                }}</label>
+                <ng-container *ngIf="item.notificationStatus !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    name="examNotificationFilter"
+                    (change)="filterScholarships($event)"
+                    type="checkbox"
+                    [value]="item?.notificationStatus"
+                  />
+                  <label class="form-check-label">{{
+                    item?.notificationStatus
+                  }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -282,16 +304,18 @@
                 class="form-check"
                 *ngFor="let item of scholarshipsTypes; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  type="checkbox"
-                  name="scholarshipsProviderFilter"
-                  (change)="filterScholarships($event)"
-                  [value]="item.scholarshipProvider"
-                />
-                <label class="form-check-label">{{
-                  item.scholarshipProvider
-                }}</label>
+                <ng-container *ngIf="item.scholarshipProvider !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    type="checkbox"
+                    name="scholarshipsProviderFilter"
+                    (change)="filterScholarships($event)"
+                    [value]="item.scholarshipProvider"
+                  />
+                  <label class="form-check-label">{{
+                    item.scholarshipProvider
+                  }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -306,18 +330,23 @@
                 class="form-check"
                 *ngFor="let item of admissionProcedures; let b = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  name="admissionProceduresFilter"
-                  (change)="
-                    changeFilterAdmissionProcedure($event, 'admissionProcedure')
-                  "
-                  type="checkbox"
-                  [value]="item?.admissionProcedure"
-                />
-                <label class="form-check-label">{{
-                  item?.admissionProcedure
-                }}</label>
+                <ng-container *ngIf="item.admissionProcedure !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    name="admissionProceduresFilter"
+                    (change)="
+                      changeFilterAdmissionProcedure(
+                        $event,
+                        'admissionProcedure'
+                      )
+                    "
+                    type="checkbox"
+                    [value]="item?.admissionProcedure"
+                  />
+                  <label class="form-check-label">{{
+                    item?.admissionProcedure
+                  }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -329,14 +358,16 @@
                 class="form-check"
                 *ngFor="let item of coursesLevels; let n = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  name="courseLevelFilter"
-                  (change)="filterCourses($event, 'level')"
-                  type="checkbox"
-                  [value]="item?.level"
-                />
-                <label class="form-check-label">{{ item?.level }}</label>
+                <ng-container *ngIf="item.level !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    name="courseLevelFilter"
+                    (change)="filterCourses($event, 'level')"
+                    type="checkbox"
+                    [value]="item?.level"
+                  />
+                  <label class="form-check-label">{{ item?.level }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -348,15 +379,17 @@
                 class="form-check"
                 *ngFor="let item of coursesTypes; let k = index"
               >
-                <input
-                  class="form-check-input cursor-pointer"
-                  [checked]="item.selected"
-                  name="coursesTypesFilter"
-                  (change)="courseFilter($event, item, coursesTypes)"
-                  type="checkbox"
-                  [value]="item?.field"
-                />
-                <label class="form-check-label">{{ item?.field }}</label>
+                <ng-container *ngIf="item.field !== null">
+                  <input
+                    class="form-check-input cursor-pointer"
+                    [checked]="item.selected"
+                    name="coursesTypesFilter"
+                    (change)="courseFilter($event, item, coursesTypes)"
+                    type="checkbox"
+                    [value]="item?.field"
+                  />
+                  <label class="form-check-label">{{ item?.field }}</label>
+                </ng-container>
               </div>
             </div>
           </div>
@@ -409,7 +442,14 @@
               srcset=""
             />
           </div>
-          <div *ngFor="let item of items; let i = index" class="mb-3">
+          <div
+            *ngFor="
+              let item of items
+                | paginate: { itemsPerPage: 9, currentPage: items.p };
+              let i = index
+            "
+            class="mb-3"
+          >
             <div class="card card-banner">
               <div
                 class="d-flex px-3 py-2 justify-content-between cursor-pointer"
@@ -464,7 +504,11 @@
           <div class="d-flex justify-content-around row">
             <div
               class="card-exams career-border p-3 col-sm-8 col-md-8 col-lg-3 col-xl-3 text-center cards-hover my-2 mx-1 cursor-pointer"
-              *ngFor="let item of items; let i = index"
+              *ngFor="
+                let item of items
+                  | paginate: { itemsPerPage: 9, currentPage: items.p };
+                let i = index
+              "
               (click)="moveTo(item.id)"
             >
               <img
@@ -557,7 +601,7 @@
         </div>
 
         <div class="scroll d-block-1" *ngIf="id == 'exams'">
-          <div *ngIf="items.length == 0" class="d-flex justify-content-center">
+          <div *ngIf="items?.length == 0" class="d-flex justify-content-center">
             <img
               src="/assets/images/norecord.png"
               height="333px"
@@ -566,7 +610,14 @@
             />
           </div>
 
-          <div *ngFor="let item of items; let i = index" class="mb-3">
+          <div
+            *ngFor="
+              let item of items
+                | paginate: { itemsPerPage: 9, currentPage: items.p };
+              let i = index
+            "
+            class="mb-3"
+          >
             <div class="card card-banner card-exams">
               <div class="d-flex px-4 py-2 justify-content-between">
                 <div class="d-flex cursor-pointer" (click)="moveTo(item.id)">

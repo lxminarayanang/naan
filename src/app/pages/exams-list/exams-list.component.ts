@@ -74,6 +74,8 @@ export class ExamsListComponent implements OnInit {
   public educationFilteredArray: any[] = [];
   public collegeListData: any[] = [];
   public sectionName: string = '';
+  public notificationStatusLevel: any[] = [];
+  public langData: string;
   // @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
@@ -87,7 +89,14 @@ export class ExamsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    window.scrollTo(0, 0);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    this._Activatedroute.queryParams.subscribe((params) => {
+      this.langData = params['language'];
+    });
     this.id = this._Activatedroute.snapshot.paramMap.get('id');
     this.name = this._Activatedroute.snapshot.paramMap.get('name');
     this.sectionName = this.id.charAt(0).toUpperCase() + this.id.slice(1);
@@ -96,6 +105,7 @@ export class ExamsListComponent implements OnInit {
     // this.sidemenu();
 
     if (this.id == 'exams') {
+      this.getExamsList();
       this.sidemenuLevelExam();
       this.sidemenuExamsNotificationTypes();
       this.sidemenuExamLevel();
@@ -143,6 +153,7 @@ export class ExamsListComponent implements OnInit {
           this.examsNotificationTypes,
           this.fields
         );
+        debugger;
         const res1 = temp.filter((page1: any) =>
           x.examArray?.find((page2: any) => {
             return Object.keys(page1).find((key) => page1[key] === page2);
@@ -166,7 +177,6 @@ export class ExamsListComponent implements OnInit {
             return Object.keys(page1).find((key) => page1[key] === page2);
           })
         );
-
         const obj = Object.assign({}, ...res1);
         const queryString = Object.keys(obj)
           .map((key) => key + '=' + obj[key])
@@ -179,6 +189,7 @@ export class ExamsListComponent implements OnInit {
           this.scholarshipLevels,
           this.notificationStatus
         );
+        debugger;
         const res1 = temp.filter((page1: any) =>
           x.scholarshipArray?.find((page2: any) => {
             return Object.keys(page1).find((key) => page1[key] === page2);
@@ -258,7 +269,7 @@ export class ExamsListComponent implements OnInit {
   paginationCount(req: any) {
     this.paginationSize = req.pageSize;
     this.paginationIndex = req.pageIndex;
-    debugger;
+
     this.paginationList();
   }
 
@@ -267,15 +278,41 @@ export class ExamsListComponent implements OnInit {
       pageSize: this.paginationSize || 15,
       pageIndex: this.paginationIndex || 0,
     };
+    debugger;
     const url = query ? this.id + '?' + query : this.id;
+    if (
+      this.id === 'exams' ||
+      this.id === 'scholarships' ||
+      this.id === 'careers'
+    ) {
+      data = {
+        pageSize: 100,
+        pageIndex: 10,
+      };
+    }
+
     this.service.postService('/' + url, data).subscribe((res: any) => {
       this.items = res.results.rows;
+      if (
+        this.id === 'exams' &&
+        this.name !== ' ' &&
+        this.langData === localStorage.getItem('language')
+      ) {
+        let fileteredData: any = [];
+        this.items.forEach((item: any) => {
+          if (item.field === this.name) {
+            fileteredData.push(item);
+          }
+        });
+        if (fileteredData) {
+          this.items = fileteredData;
+        }
+      }
       this.pageLength = res.results.count;
     });
   }
 
   paginationList1(query?: any) {
-    debugger;
     var data = {
       pageSize: this.paginationSize || 100,
       pageIndex: this.paginationIndex || 0,
@@ -292,6 +329,16 @@ export class ExamsListComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.status == 200) {
           this.fields = res.results;
+          this.selected = res.results;
+
+          let i = 0;
+          this.selected.forEach((w: { field: any; ShiftName: any }) => {
+            this.exams = new Examlist();
+            this.exams.field = w.field;
+            this.exams.selected = w.field == this.name ? true : false;
+            this.fields[i] = this.exams;
+            i++;
+          });
         }
       });
   }
@@ -451,7 +498,6 @@ export class ExamsListComponent implements OnInit {
   }
 
   filterExams(e: any) {
-    console.log('filer');
     const examArray: FormArray = this.filterForm.get('examArray') as FormArray;
     if (e.target.checked) {
       examArray.push(new FormControl(e.target.value));
@@ -460,29 +506,6 @@ export class ExamsListComponent implements OnInit {
       examArray.controls.forEach((item) => {
         if (item.value == e.target.value) {
           examArray.removeAt(i);
-          return;
-        }
-        i++;
-      });
-    }
-  }
-
-  public filterCollegeState(event: any): void {}
-  public filterCollegeType(event: any): void {}
-
-  public filterColleges(e: any) {
-    debugger;
-    const collegeArray: FormArray = this.filterForm.get(
-      'collegeArray'
-    ) as FormArray;
-    if (e.target.checked) {
-      debugger;
-      collegeArray.push(new FormControl(e.target.value));
-    } else {
-      let i: number = 0;
-      collegeArray.controls.forEach((item) => {
-        if (item.value == e.target.value) {
-          collegeArray.removeAt(i);
           return;
         }
         i++;
@@ -509,6 +532,7 @@ export class ExamsListComponent implements OnInit {
   }
 
   public changeFilterAdmissionProcedure(e: any, fieldType: string): void {
+    debugger;
     if (e.target.checked) {
       this.coursesAdmissionProcedure.push(e.target.value);
     } else {
@@ -526,10 +550,10 @@ export class ExamsListComponent implements OnInit {
 
   filterCourses(e: any, fieldType: string) {
     debugger;
+
     if (e.target.checked) {
       this.coursesLevel.push(e.target.value);
     } else {
-      console.log(e.target.value);
       const index = this.coursesLevel.indexOf(e.target.value);
       this.coursesLevel.splice(index, 1);
     }
@@ -547,15 +571,14 @@ export class ExamsListComponent implements OnInit {
       this.items = Array.from(new Set(newArray));
       this.educationFilteredArray = Array.from(new Set(newArray));
     } else {
-      debugger;
       this.items = this.speclFilteredArray;
     }
   }
 
   //this function used to filter the courses based on the specilizations.
   courseFilter(selected: any, data: any, fieldType: any) {
+    debugger;
     this.items = [];
-    console.log(this.specilizationTypes);
     data.selected = selected.target.checked == true ? true : false;
     this.selectedCheckbox = fieldType.filter(
       (sel: { selected: boolean }) => sel.selected == true
@@ -578,10 +601,20 @@ export class ExamsListComponent implements OnInit {
 
       if (this.coursesAdmissionProcedure.length) {
         const newArray: any = [];
-        const fieldType =
-          this.id === 'colleges' ? 'state' : 'admissionProcedure';
-        debugger;
-
+        let fieldType = '';
+        switch (this.id) {
+          case 'colleges':
+            fieldType = 'state';
+            break;
+          case 'courses':
+            fieldType = 'admissionProcedure';
+            break;
+          case 'exams':
+            fieldType = 'level';
+            break;
+          default:
+            break;
+        }
         this.coursesAdmissionProcedure.forEach((item: any) => {
           this.items.forEach((element: any) => {
             if (element[fieldType] == item) {
@@ -592,9 +625,6 @@ export class ExamsListComponent implements OnInit {
 
         this.items = newArray;
       }
-      debugger;
-
-      console.log(this.speclFilteredArray);
     } else {
       this.items = this.coursesListData;
       this.speclFilteredArray = this.items;
@@ -602,7 +632,6 @@ export class ExamsListComponent implements OnInit {
       if (this.coursesLevel.length) {
         const fieldType = this.id === 'colleges' ? 'collegeType' : 'level';
         this.items = this._filterLevelOne(fieldType);
-        console.log(this.items);
       }
       if (this.coursesAdmissionProcedure.length) {
         let fieldType = '';
@@ -610,37 +639,13 @@ export class ExamsListComponent implements OnInit {
           fieldType = 'admissionProcedure';
         } else if (this.id === 'colleges') {
           fieldType = 'state';
+        } else if (this.id === 'exams') {
+          fieldType = 'level';
         }
         this.items = this._filterLevelTwo(fieldType);
       }
     }
   }
-
-  submitForm() {}
-
-  // selectedCourses(filt: any, specilaztions: any) {
-  //   debugger;
-  //   // const courseArray: FormArray = this.filterForm.get('courseArray') as FormArray;
-  //   // console.log(courseArray);
-  //   this.items = specilaztions.filter((a: { field: any }) => a.field == filt);
-  //   //this.items = res.results.rows;
-  //   //this.pageLength =this.items;
-  //   // this.items = new MatTableDataSource<any>(this.items)
-  //   // this.paginator.pageIndex = 0 ;
-  //   // this.items.paginator = this.paginator;
-  // }
-
-  // selectTotalData(type: string) {
-  //   var data = {
-  //     pageSize: 200,
-  //     pageIndex: 0,
-  //   };
-  //   this.service.postService(`/${type}`, data).subscribe((res: any) => {
-  //     this.fullData = res.results.rows;
-  //     console.log(this.fullData);
-  //     this.selectedCourses(this.name, this.fullData);
-  //   });
-  // }
 
   public orderByData(type: string): void {
     if (type === '1') {
@@ -651,27 +656,73 @@ export class ExamsListComponent implements OnInit {
       this.items = _.orderBy(this.items, ['name'], ['desc']);
     }
   }
+  // filter exam notification data based on selected and unselected spec only for exams
+  public filterExamsNotifications(e: any): void {
+    if (e.target.checked) {
+      this.notificationStatusLevel.push(e.target.value);
+    } else {
+      const index = this.notificationStatusLevel.indexOf(e.target.value);
+      this.notificationStatusLevel.splice(index, 1);
+    }
+    if (this.notificationStatusLevel.length) {
+      let newArray: any = [];
+      this.notificationStatusLevel.forEach((element: any) => {
+        if (this.coursesAdmissionProcedure.length && this.coursesLevel.length) {
+          let firstFilteredData: any = [];
+          if (this.notificationStatusLevel.length === 1) {
+            firstFilteredData = this.items;
+          }
+          this.notificationStatusLevel.length >= 1
+            ? firstFilteredData
+            : this.items.forEach((item: any) => {
+                if (item.notificationStatus === element) {
+                  newArray.push(item);
+                }
+              });
+        } else {
+          this.coursesListData.forEach((item: any) => {
+            if (item.notificationStatus === element) {
+              newArray.push(item);
+            }
+          });
+        }
+        this.items = Array.from(new Set(newArray));
+        console.log(this.items.length);
+      });
+    } else {
+      if (this.coursesAdmissionProcedure.length && this.coursesLevel.length) {
+        this.items = this.speclFilteredArray;
+      } else {
+        this.items = this.coursesListData;
+      }
+    }
+  }
+
+  // End
 
   public getCoursesList(): void {
     this.service.getService(`/courses`).subscribe((res: any) => {
       if (res.status == 200) {
-        debugger;
         this.coursesListData = this.items = res.results;
         this.speclFilteredArray = this.items;
-        if (this.coursesListData) {
+        if (
+          this.coursesListData &&
+          this.langData === localStorage.getItem('language')
+        ) {
           this.getDefaultFilterData();
         }
       }
     });
   }
   public getCollegeList(): void {
-    debugger;
     this.service.getService(`/colleges`).subscribe((res: any) => {
       if (res.status == 200) {
-        debugger;
         this.coursesListData = this.items = res.results;
         this.speclFilteredArray = this.items;
-        if (this.coursesListData) {
+        if (
+          this.coursesListData &&
+          this.langData === localStorage.getItem('language')
+        ) {
           this.getDefaultFilterData();
         }
       }
@@ -721,5 +772,18 @@ export class ExamsListComponent implements OnInit {
       }
     });
     return newArray;
+  }
+  public getExamsList(): void {
+    this.service.getService(`/exams`).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.coursesListData = this.items = res.results;
+        if (
+          this.coursesListData &&
+          this.langData === localStorage.getItem('language')
+        ) {
+          this.getDefaultFilterData();
+        }
+      }
+    });
   }
 }

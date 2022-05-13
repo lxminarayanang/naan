@@ -18,6 +18,7 @@ export class ExamsComponent implements OnInit {
   specilaztions: any[] = [];
   examsNotifications: any = [];
   public user: any;
+  public langData: any;
 
   constructor(
     private router: Router,
@@ -28,7 +29,14 @@ export class ExamsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    debugger;
+    this.langData = localStorage.getItem('language');
     window.scrollTo(0, 0);
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     this.latestNotifications();
     this.user = JSON.parse(localStorage.getItem('userDetails') as string);
     this.section = this._Activatedroute.snapshot.paramMap.get('id1');
@@ -46,7 +54,6 @@ export class ExamsComponent implements OnInit {
   }
 
   moveTo(title: any) {
-    debugger;
     this.router.navigate([
       '/main/categories/' + this.section + '/' + ' ' + '/list',
     ]);
@@ -69,21 +76,19 @@ export class ExamsComponent implements OnInit {
   }
 
   chooseType(type: any, title: any) {
-    debugger;
     this.title = title;
     this.section = type;
     this.examsList = [];
     var data = {
-      pageSize: 9,
+      pageSize: 1000,
       pageIndex: 0,
     };
 
     this.service.postService(`/${type}`, data).subscribe((res: any) => {
-      this.examsList = res.results.rows;
-      console.log('examsList', this.examsList);
+      this.specilaztions = this.examsList = res.results.rows;
     });
 
-    this.selectSpecilaztions(this.section);
+    // this.selectSpecilaztions(this.section);
   }
 
   replaceHttps(url: any) {
@@ -92,37 +97,35 @@ export class ExamsComponent implements OnInit {
 
   selectSpecilaztions(type: string) {
     var data = {
-      pageSize: 20,
+      pageSize: 6,
       pageIndex: 0,
     };
+    debugger;
     if (type == 'scholarships') {
-      debugger;
       this.service
         .getService(`/${type}/filter?menu=scholarshipProvider`)
         .subscribe((res: any) => {
           if (res.status == 200) {
             this.specilaztions = res.results;
-            console.log(this.specilaztions);
           }
         });
     } else {
-      debugger;
       this.service
         .getService(`/${type}/filter?menu=field`)
         .subscribe((res: any) => {
           if (res.status == 200) {
+            debugger;
             this.specilaztions = res.results;
-            console.log(this.specilaztions);
           }
         });
     }
   }
 
   selectedCourse(course: any) {
-    debugger;
-    this.router.navigate([
-      '/main/categories/' + this.section + '/' + course + '/list',
-    ]);
+    this.router.navigate(
+      ['/main/categories/' + this.section + '/' + course + '/list'],
+      { queryParams: { language: this.langData } }
+    );
   }
 
   loadMores(val: boolean) {
@@ -139,8 +142,8 @@ export class ExamsComponent implements OnInit {
       pageIndex: 0,
     };
     const url = this.lang.type
-      ? 'exams?notificationStatus=Announced and Open'
-      : 'exams?notificationStatus=அறிவுப்பு வெளியாகிவிட்டது. விண்ணப்பிக்கிலாம்';
+      ? 'exams?notificationStatus=அறிவுப்பு வெளியாகிவிட்டது. விண்ணப்பிக்கிலாம்'
+      : 'exams?notificationStatus=Announced and Open';
     this.service.getService('/' + url).subscribe((res: any) => {
       this.examsNotifications = res.results;
     });

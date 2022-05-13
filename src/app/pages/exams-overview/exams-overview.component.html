@@ -1,9 +1,9 @@
 <div class="container mt-4rem">
-  <div class="row">
-    <div class="position-sticky">
+
+    <div class=" mt-4 mb-4 position-sticky">
       <ul class="breadcrumb">
         <li><a href="#">Home</a></li>
-        <!-- <li>
+        <!-- <li *ngIf="section != 'exams'">
           <a href="#">{{ param_id }}</a>
         </li> -->
         <ng-container *ngIf="section && section != ' '">
@@ -18,7 +18,8 @@
       <!-- <div>
                 <i class="bi bi-arrow-left font-36 cursor-pointer" (click)="moveTo()"></i>
             </div> -->
-      <img
+      <img *ngIf="section != 'exams' && section !==
+      'careers'"
         [src]="
           section === 'colleges'
             ? '/assets/images/banner/college-overview.png'
@@ -27,6 +28,28 @@
         class="w-100 mt-3"
         height="250"
       />
+      <img *ngIf="section === 'careers'"
+        [src]="
+        '/assets/images/banner/careers.png'
+        
+        "
+        class="w-100 mt-3"
+        height="250"
+      />
+     
+      <div *ngIf="section === 'exams'  && section !== 'careers'">
+        <img src="/assets/images/banner/exams.png" class="w-100 mt-3" height="250">
+           
+        <div class="centered head-overflow w-100 topline" [ngClass]="language =='tamil'? 'fs-26' : 'fs-30'">{{bannerTitle}}
+        </div>
+        <div class="centered-badge d-flex mx-1">
+            <div class="topbt"> <b>{{graduate}}</b></div>
+            <div class="topbt"><b>{{badge2}}</b></div>
+            
+        </div>
+      </div>
+      
+
       <div class="" (click)="moveTo()">
         <!-- <img
           class="centered-back cursor-pointer"
@@ -34,7 +57,7 @@
           alt=""
         /> -->
       </div>
-      <div
+      <div *ngIf="section != 'exams' && section!=='careers'"
         class="centered head-overflow"
         [ngClass]="language == 'tamil' ? 'fs-26' : 'fs-30'"
         [ngStyle]="{
@@ -44,7 +67,13 @@
       >
         {{ bannerTitle }}
       </div>
-      <div class="centered-badge d-flex mx-1">
+      <div *ngIf=" section==='careers'"
+      class="career-over head-overflow" style="background-color: none !important;"
+      [ngClass]="language == 'tamil' ? 'fs-26' : 'fs-30'"
+    >
+      {{ bannerTitle }}
+    </div>
+      <div *ngIf="section != 'exams'  && section !== 'careers'" class="centered-badge d-flex mx-1">
         <div
           class="badge rounded px-3 py-2 mx-2 d-block-1 badge-ellipse"
           [ngClass]="section === 'colleges' ? 'badge-1-colleges' : 'badge-1'"
@@ -61,7 +90,7 @@
           Exp: {{ badge3 | date: "dd/MM/yyyy" }}
         </div>
       </div>
-      <div class="centered-button" *ngIf="items?.link">
+      <div class="centered-button" *ngIf="section === 'colleges'">
         <!-- *ngIf="this.service.dateCompare(badge3)" -->
         <button
           type="button"
@@ -75,35 +104,52 @@
         </button>
         <!-- <button *ngIf="!this.service.dateCompare(badge3)" class="btn expired">{{lang.language.applyNow}}</button> -->
       </div>
+      <div class=" centered-button" style="top: 65%;" *ngIf="section === 'careers'">
+        
+        <!-- *ngIf="this.service.dateCompare(badge3)" -->
+        <h5 style="color: #fff;">{{badge2}}</h5>
+        <!-- <button *ngIf="!this.service.dateCompare(badge3)" class="btn expired">{{lang.language.applyNow}}</button> -->
+      </div>
     </div>
-  </div>
+  
   {{ section }}
   <!-- New Overview Design Started -->
+  <div *ngIf="section === 'exams'">
+    <ul style="padding: 0px;">
+        <li *ngFor="let st of sideHeadings" class="ex" style="font-family: 'Roboto';font-style: normal;font-weight:500;font-size: 16px;line-height: 29px;color: #FFFFFF;" >
+            <a href="/main/categories/exams/list/{{this.param_id}}#{{st.title}}">
+               {{st.title}}
+            </a>
+        </li>
+    </ul>
+</div> 
+
   <ng-container *ngIf="section === 'courses'">
     <div class="container">
       <div class="badge-overview">
         <div class="centered-badge d-flex mx-1">
-          <div
+          <a
             class="badge rounded overview-badge px-3 py-2 mx-2 d-block-1 badge-ellipse"
-            href="#brief"
+           
+            href="/main/categories/courses/list/{{this.param_id}}#brief"
           >
             Course Brief
-          </div>
-          <div
+        </a>
+          <a    href="/main/categories/courses/list/{{this.param_id}}#career"
             class="badge rounded overview-badge px-3 py-2 mx-2 badge-ellipse"
           >
             Higher Education
-          </div>
-          <div
+      </a>
+          <a   href="/main/categories/courses/list/{{this.param_id}}#career"
             class="badge rounded overview-badge px-3 py-2 mx-2 badge-ellipse"
           >
             Career Opportunities
-          </div>
-          <div
+    </a>
+          <a    href="/main/categories/courses/list/{{this.param_id}}#study"
             class="badge rounded overview-badge px-3 py-2 mx-2 badge-ellipse"
           >
             Where to Study
-          </div>
+  </a>
         </div>
       </div>
     </div>
@@ -111,7 +157,7 @@
       <div class="overview-detail-card">
         <section id="brief">
           <div class="row">
-            <div class="col-md-6" style="margin-bottom: 40px">
+            <div class="col-md-5" style="margin-bottom: 40px">
               <h3 class="heading-overview">Brief About the Course</h3>
 
               <p class="pre-line-1" style="color: #000; text-align: justify">
@@ -175,7 +221,7 @@
             </div>
           </div>
         </section>
-        <section>
+        <section id="career">
           <div class="row">
             <div class="col-md-6">
               <div class="card-carreer">
@@ -213,7 +259,7 @@
             </div>
           </div>
         </section>
-
+<section id="study">
         <div class="row colleges-card">
           <div class="col-md-6">
             <div class="">
@@ -265,6 +311,7 @@
             </div>
           </div>
         </div>
+      </section>
       </div>
     </div>
   </ng-container>
@@ -272,22 +319,24 @@
     <div class="container">
       <div class="badge-overview">
         <div class="centered-badge d-flex mx-1">
-          <div
+          <a
+          href="/main/categories/colleges/list/{{this.param_id}}#briefcourses"
             class="rounded overview-college px-3 py-2 mx-2 d-block-1 badge-ellipse"
           >
             Course Brief
-          </div>
-          <div class="rounded overview-college px-3 py-2 mx-2 badge-ellipse">
+        </a>
+          <a    href="/main/categories/colleges/list/{{this.param_id}}#courses"  class="rounded overview-college px-3 py-2 mx-2 badge-ellipse">
             Courses Offered
-          </div>
-          <div class="rounded overview-college px-3 py-2 mx-2 badge-ellipse">
+          </a>
+          <a    href="/main/categories/colleges/list/{{this.param_id}}#briefcourses" class="rounded overview-college px-3 py-2 mx-2 badge-ellipse">
             Fee Structure
-          </div>
+          </a>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="overview-detail-card">
+        <section id="briefcourses">
         <div class="row">
           <div class="col-md-6" style="margin-bottom: 40px">
             <h3 class="heading-overview">
@@ -320,6 +369,11 @@
             </div>
           </div>
 
+         
+        </div>
+        </section>
+        <section id="courses">
+        <div class="row">
           <div class="col-md-6">
             <div class="">
               <div class="">
@@ -339,13 +393,77 @@
             </div>
           </div>
         </div>
+      </section>
       </div>
     </div>
   </ng-container>
+
+  <ng-container *ngIf="section === 'exams'">
+    <section class="row">
+      <div class="col-md-9" id="General Information">
+
+      <h1 style="color: #05396B;text-align: left;"  class="gi">{{this.sideHeadings[0].title}}
+      <img src="\assets\images\icons\GI.jpg" style="height: 52.8125px;width: 52.8125px;left: 8.125px;top: 8.125px;border-radius: 0px;">
+      </h1>
+      
+          
+      <p style="color: #000000;text-align: left;">{{this.sideHeadings[0].content}}</p>
+      </div>
+      <div class="col-md-3 Eligibility" id="Exam Language"  style="height: 238px;width: 231px;left: 1137px;top: 668px;border-radius: 10px;" id="Exam Language">
+          <img src="\assets\images\icons\Language.jpg" class="lang">
+          <h1   style="color: #05396B;text-align: center;margin-top: 16px;" class="gi">{{this.sideHeadings[1].title}}
+          
+          </h1>
+          <p  style="text-align: center; color: #000000;">{{this.sideHeadings[1].content}}</p>
+          </div>
+  </section>
+  <section class="row Eligibility" id="Eligibility">
+      <h1 style="color: #05396B;text-align: left;" class="gi">{{this.sideHeadings[2].title}}
+      <img src="\assets\images\icons\Eligibility-exams.jpg" style="height: 64px;width: 64px;left: 180px;top: 931px;border-radius: 0px;">
+      </h1>
+      <div>
+      <p style="color: #000000;text-align: left;">{{this.sideHeadings[2].content}}</p>
+      </div>
+  </section>
+
+  <section id="Available Seats">
+      <h1 style="color: #05396B;text-align: left;" class="gi">{{this.sideHeadings[3].title}}
+          <img src="\assets\images\icons\Available Seats.jpg" style="height: 64px;width:64px;left: 253px;top: 1811px;border-radius: 0px;"></h1>
+      <p style="color: #000000;text-align: left;">{{this.sideHeadings[3].content}}</p>
+  </section>
+  <section class="row Eligibility">
+      <div class="col-md-6" id="Exam Pattern">
+          <h1 style="color: #05396B;text-align: left;" class="gi">{{this.sideHeadings[4].title}}
+              <img src="\assets\images\icons\Exam Pattern.jpg" style="height:64px;width:64px;left: 233.466796875px;top: 1971px;border-radius: 0px;">
+          </h1>
+          <p style="color: #000000;text-align: left;">{{this.sideHeadings[4].content}}</p>
+      </div>
+      <div class="col-md-6" id="Application Procedure">
+          <h1 style="color: #05396B;text-align: left;" class="gi">{{this.sideHeadings[7].title}}
+              <img src="\assets\images\icons\Application Procedure.jpg" style="height: 64px;width:64px;left: 1013px;top: 2196px;border-radius: 0px;">
+          </h1>
+          <p style="color: #000000;text-align: left;">{{this.sideHeadings[7].content}}</p>
+      </div>
+  </section>
+ 
+  <section class="row Eligibility" id="Application Fees">
+      <h1 style="color: #05396B;text-align: left;" class="gi">{{this.sideHeadings[5].title}}
+      </h1>
+      <p style="color: #000000;text-align: left;">{{this.sideHeadings[5].content}}</p>
+  </section>
+ 
+  <section class="row">
+      <h1 style="color: #05396B;text-align: left;" class="gi">Important Dates
+          <img src="\assets\images\icons\ImportantDates.jpg" style="height: 64px;width: 64px;left: 241px;top: 3150px;border-radius: 0px;"></h1>
+      <p style="color: #000000;text-align: center;">{{this.ImportantDates}}</p>
+  </section>
+  </ng-container>
+
+
   <!-- New Overview Design Started end -->
-  <!-- <div
+  <div *ngIf="section==='careers'"
     class="d-flex mt-4 p-3"
-    style="background-image: url(/assets/images/eclipse.png)"
+   
   >
     <div class="col-lg-3 col-xl-3 d-block-overwiew fs-14">
       <div class="d-flex" *ngIf="sideHeadings?.length != 0">
@@ -397,5 +515,5 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </div>

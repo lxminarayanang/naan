@@ -13,7 +13,7 @@ declare var $: any;
 })
 export class SponsarFormComponent implements OnInit {
   regForm: any;
-  submitted = true;
+  submitted = false;
   blocksList: any = [];
   schoolList: any = [];
   // Payment Form
@@ -62,6 +62,7 @@ export class SponsarFormComponent implements OnInit {
     }
     this.service.postService("/forms/sponsor", this.regForm.value).subscribe((res: any) => {
       if (res.status == 200) {
+        this.submitted=false;
         $('#successModal').modal('show')
       }
     })
@@ -108,7 +109,6 @@ export class SponsarFormComponent implements OnInit {
   if(this.PaymentForm.valid)
   {
     var records ={"records":{"total_amount":this.PaymentForm.value.total_amount,"udf1":this.regForm.value.mobileNumber,"udf2":"","udf3":"","user_id":this.regForm.value.mobileNumber,"con_id":""}}
-  console.log(records)
   }
   }
   cancel()

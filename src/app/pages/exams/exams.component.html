@@ -252,10 +252,12 @@
         "
         class="d-flex justify-content-around row"
       >
+    
         <div
           class="card-courses card_hover col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center cards-hover my-4 mx-2 pb-3"
-          *ngFor="let item of specilaztions; let i = index"
+          *ngFor="let item of specilaztions ; let i = index"
         >
+      
           <!-- <img src="\assets\images\icons\courses.png" class="mx-3 mt-3" height="75"> -->
           <div
             *ngIf="section == 'courses'"
@@ -343,7 +345,7 @@
             <div
               class="badge badge-2 rounded-pill bg-warning px-3 py-1 my-1 mx-2"
             >
-              {{ item?.header_1 }}
+              {{ item?.level }}
             </div>
           </div>
 

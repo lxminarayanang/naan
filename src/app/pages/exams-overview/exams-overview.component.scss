@@ -308,6 +308,7 @@
   border-radius: 10px;
   height: 45px;
   font-weight: 800;
+  min-width: 200px;
   font-size: 16px;
   border-radius: 10px;
 }
@@ -347,7 +348,7 @@
 // Breadcrumb CSS
 ul.breadcrumb {
   list-style: none;
-  margin-top: 18px;
+  margin-top: 89px;
 }
 ul.breadcrumb li {
   display: inline;
@@ -381,4 +382,113 @@ ul.breadcrumb li a:hover {
   height: 40px;
   margin-bottom: 14px;
   margin-right: 21px;
+}
+.ex {
+  display: inline-block;
+  width: 24%;
+  background-color: #1F7499;
+  margin-bottom: 20px;
+  padding: 20px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.Eligibility{
+  background: rgba(145, 179, 255, 0.2);
+}
+.examlang{
+  position: absolute;
+width: 179px;
+height: 18px;
+left: 1164px;
+top: 756px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 18px;
+/* identical to box height, or 72% */
+
+
+color: #05396B;
+}
+
+.gi{    
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0px;
+  text-align: left;}
+
+.content{
+  font-family: Roboto;
+font-size: 22px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0px;
+
+
+}
+.examp{
+  
+position: absolute;
+width: 1388px;
+height: 939px;
+left: 25px;
+top: 2170px;
+
+background: rgba(145, 179, 255, 0.2);
+}
+.gicon{
+  position: absolute;
+left: 12.5%;
+right: 6.25%;
+top: 12.5%;
+bottom: 6.25%;
+}
+
+
+.lang{
+  height: 35px;
+width: 36px;
+left: 1228px;
+top: 714px;
+border-radius: 0px;
+margin-top: 50px;
+
+}
+
+.eligi1{
+  height: 57px;
+  width: 45.6001091003418px;
+  left: 180px;
+  top: 931px;
+  border-radius: 0px;
+
+}
+
+.topbt{
+  margin: 0 10px;
+  padding: 7px 45px;
+  background: #9BE1FF;
+  border-bottom: 3px solid #07318f;
+  color: black;
+}
+
+.topline{
+  color: #ffffff;
+  background: #2c708f;
+  padding: 0px;
+  border-bottom: 3px solid #07318f;
+  margin-bottom: 20px;
+}
+.career-over{
+  position: absolute;
+    font-weight: 600;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
 }
