@@ -83,7 +83,7 @@ export class ExamsOverviewComponent implements OnInit {
           return;
         }
         this.items = res.results;
-        if (this.section === 'ccourses') {
+        if (this.section === 'courses') {
           this.colleges = this.items.colleges.filter(
             (item: any) => item.state === 'Tamil Nadu'
           );
@@ -93,7 +93,7 @@ export class ExamsOverviewComponent implements OnInit {
           this.section === 'colleges'
             ? this.items?.collegeType
             : this.items?.level;
-        this.badge2 = this.items?.field || '';
+        this.badge2 = this.section==='scholarships'? this.items.scholarshipProvider: this.items?.field || '';
         this.badge3 = this.items?.endDate || '';
         this.generalDetails = this.items.generalDetails;
         this.ImportantDates = this.items?.importantDates;

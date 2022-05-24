@@ -29,7 +29,6 @@ export class ExamsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    debugger;
     this.langData = localStorage.getItem('language');
     window.scrollTo(0, 0);
     window.scroll({
@@ -85,7 +84,21 @@ export class ExamsComponent implements OnInit {
     };
 
     this.service.postService(`/${type}`, data).subscribe((res: any) => {
-      this.specilaztions = this.examsList = res.results.rows;
+      const uniqueValuesSet = new Set();
+
+
+      const filteredArr = res.results.rows.filter((obj:any) => {
+        // check if name property value is already in the set
+        const isPresentInSet = uniqueValuesSet.has(obj.field);
+      
+        // add name property value to Set
+        uniqueValuesSet.add(obj.field);
+      
+        // return the negated value of
+        // isPresentInSet variable
+        return !isPresentInSet;
+      });
+      this.specilaztions = this.examsList = filteredArr;
     });
 
     // this.selectSpecilaztions(this.section);
