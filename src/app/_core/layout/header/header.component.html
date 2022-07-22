@@ -86,8 +86,7 @@
                 </li>
                 <li>
                   <a class="dropdown-item" href="/home" (click)="logout()"
-                    >Logout</a
-                  >
+                    >Logout</a>
                 </li>
               </ul>
             </div> -->
@@ -102,10 +101,9 @@
 
               <div class="dropdown-content">
                 <a class="dropdown-item" (click)="career()">Career portal</a>
-
-                <a class="dropdown-item" href="/home" (click)="logout()"
-                  >Logout</a
-                >
+                <!-- <a class="dropdown-item" (click)="studentForm()">1-1 Assesment</a>
+                <a class="dropdown-item" (click)="dashoard()">Dashboard</a> -->
+                <a class="dropdown-item" href="/home" (click)="logout()">Logout</a>
               </div>
             </div>
             <div *ngIf="isLoggedIn" class="ms-1">
@@ -118,40 +116,38 @@
             </div>
 
             <div class="d-flex" *ngIf="!isLoggedIn">
-              <input
-                type="text"
-                name="username"
-                id="username"
-                maxlength="50"
-                class="d-none d-md-block langing-page-input"
-                [placeholder]="lang.language.username"
-                *ngIf="loginModalState != 'open'"
-                ngModel
-              />
+              <form [formGroup]="loginForm">
+                <input 
+                  type="text"
+                  name="username"
+                  id="username"
+                  maxlength="50"
+                  class="d-none d-md-block langing-page-input"
+                  [placeholder]="lang.language.username"
+                  *ngIf="loginModalState != 'open'"
+                  formControlName="username"
+                />
 
-              <input
-                type="password"
-                name="password"
-                id="password"
-                maxlength="25"
-                class="d-none d-md-block langing-page-input"
-                [placeholder]="lang.language.password"
-                *ngIf="loginModalState != 'open'"
-                ngModel
-              />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  maxlength="25"
+                  class="d-none d-md-block langing-page-input"
+                  [placeholder]="lang.language.password"
+                  *ngIf="loginModalState != 'open'"
+                  formControlName="password"
+                />
 
-              <a
-                class="screen-reader-btn login-btn d-none d-md-block"
-                (click)="login(myform)"
-              >
-                {{ lang.language.login }}</a
-              >
+                <a
+                  class="screen-reader-btn login-btn d-none d-md-block"
+                  (click)="login(myform)">
+                  {{ lang.language.login }}</a>
 
-              <a
-                class="screen-reader-btn login-btn d-block d-md-none"
-                (click)="openLoginModal()"
-                >Login</a
-              >
+                <a
+                  class="screen-reader-btn login-btn d-block d-md-none"
+                  (click)="openLoginModal()">Login</a>
+              </form>
             </div>
             <div [routerLink]="['/home']">
               <img
@@ -177,7 +173,7 @@
   [showSaveBtn]="false"
 >
   <a class="modal-close" (click)="closeModal()"> <i class="bi bi-x"></i> </a>
-  <form #myform="ngForm">
+  <form [formGroup]="loginForm">
     <div class="row mx-0 p-3 pb-0">
       <div class="col-12">
         <input
@@ -186,7 +182,7 @@
           id="username"
           class="login-modal-input"
           [placeholder]="lang.language.username"
-          ngModel
+          formControlName="username"
         />
       </div>
       <div class="col-12">
@@ -196,12 +192,14 @@
           id="password"
           class="login-modal-input mb-0"
           [placeholder]="lang.language.password"
-          ngModel
+          formControlName="password"
         />
       </div>
     </div>
     <div class="modal-footer d-flex justify-content-center">
-      <a class="screen-reader-btn login-btn" (click)="login(myform)">Login</a>
+      <a class="screen-reader-btn login-btn" (click)="login(loginForm)"
+        >Login</a
+      >
     </div>
   </form>
 </modal>
