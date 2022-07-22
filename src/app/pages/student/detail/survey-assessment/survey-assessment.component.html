@@ -1,0 +1,134 @@
+<form action="index.html" method="post">
+  <fieldset *ngIf="isData == true">
+
+    <div class="form-group">
+      <label class="date_label" for="fromdate">From Date</label>
+      <input  type="date" class="date_field"  id="fromdate"  name="fromdate" [(ngModel)]="fromdate" />
+      
+      <label class="date_label" for="todate">To Date</label>
+      <input  type="date" class="date_field"  id="todate"  name="todate" [(ngModel)]="todate" />
+
+      <button class="btn btn-secondary px-4 py-1 date_submit" (click)="datefilter()">Submit</button>
+
+    </div>
+    
+    <label for="name">EMIS Id:</label>
+    <input  type="text"  id="emsId"  name="emsId" [(ngModel)]="emsId" readonly />
+
+    <label for="name">Full Name:</label>
+    <input  type="text"  id="fullName"  name="fullName" [(ngModel)]="fullName" readonly />
+
+    <label for="name">Date of Birth:</label>
+    <input  type="text"  id="dob"  name="dob" [(ngModel)]="dob" readonly />
+
+    <label for="name">Gender:</label>
+    <input  type="text"  id="gender"  name="gender" [(ngModel)]="gender" readonly />
+
+    <label for="name">First Graduate:</label>
+    <input  type="text"  id="firstGraduate"  name="firstGraduate" [(ngModel)]="firstGraduate" readonly />
+
+    <label for="name">Medium of the Instruction of the Student:</label>
+    <input  type="text"  id="medium"  name="medium" [(ngModel)]="medium" readonly />
+
+    <label for="name">Person with Disability:</label>
+    <input  type="text"  id="disability"  name="disability" [(ngModel)]="disability" readonly />
+
+    <label for="name">Community:</label>
+    <input  type="text"  id="community"  name="community" [(ngModel)]="community" readonly />
+
+    <label for="name">Does the student`s hometown/village come under any existing Train Route:</label>
+    <input  type="text"  id="trainRoute"  name="trainRoute" [(ngModel)]="trainRoute" readonly />
+
+    <label for="mail">Nearest major (city/town) Railway station:</label>
+    <input  type="text"  id="nearRailway"  name="nearRailway" [(ngModel)]="nearRailway" readonly />
+
+    <label for="mail">Does the student`s hometown/village come under any existing Bus Route:</label>
+    <input  type="text"  id="busRoute"  name="busRoute" [(ngModel)]="busRoute" readonly />
+
+    <label for="mail">Nearest major (city/town) Bus stand:</label>
+    <input  type="text"  id="nearBus"  name="nearBus" [(ngModel)]="nearBus" readonly />
+
+    <label for="mail">Parents:</label>
+    <input  type="text"  id="singleParent"  name="singleParent" [(ngModel)]="singleParent" readonly />
+
+    <label for="mail">If present, indicate type(s) of illness for parents:</label>
+    <input  type="text"  id="fatherPhysical"  name="fatherPhysical" [(ngModel)]="fatherPhysical" readonly />
+
+    <label for="mail">Type of Occupation (Father):</label>
+    <input  type="text"  id="fatherOccupation"  name="fatherOccupation" [(ngModel)]="fatherOccupation" readonly />
+
+    <label for="mail">Educational Qualification (Father):</label>
+    <input  type="text"  id="fatherEducation"  name="fatherEducation" [(ngModel)]="fatherEducation" readonly />
+
+    <label for="mail">Type of Occupation (Mother):</label>
+    <input  type="text"  id="motheOccupationType"  name="motheOccupationType" [(ngModel)]="motheOccupationType" readonly />
+
+    <label for="mail">Educational Qualification (Mother) :</label>
+    <input  type="text"  id="motherEducationalQualification"  name="motherEducationalQualification" [(ngModel)]="motherEducationalQualification" readonly />
+
+    <label for="mail">How many brothers and sisters do you have:</label>
+    <input  type="text"  id="sibilings"  name="sibilings" [(ngModel)]="sibilings" readonly />
+
+    <label for="mail">School Name :</label>
+    <input  type="text"  id="school"  name="school" [(ngModel)]="school" readonly />
+
+    <label for="mail">HSS Group code :</label>
+    <input  type="text"  id="hssGroupCode"  name="hssGroupCode" [(ngModel)]="hssGroupCode" readonly />
+
+    <label for="mail">Ever stayed in hostel during schooling:</label>
+    <input  type="text"  id="hosteller"  name="hosteller" [(ngModel)]="hosteller" readonly />
+
+    <label for="mail">Field to be displayed only if medium of instruction is Tamil :</label>
+    <input  type="text"  id="mediumInstruction"  name="mediumInstruction" [(ngModel)]="mediumInstruction" readonly />
+
+    <label for="mail">Whether students studied in government school from class 1 to class 12:</label>
+    <input  type="text"  id="govtSchool"  name="govtSchool" [(ngModel)]="govtSchool" readonly />
+
+    <label for="mail">Which subject do you the like the most:</label>
+    <input  type="text"  id="intrestedSubject"  name="intrestedSubject" [(ngModel)]="intrestedSubject" readonly />
+
+    <label for="mail">Clear about what course to study:</label>
+    <input  type="text"  id="courseIdea"  name="courseIdea" [(ngModel)]="courseIdea" readonly />
+
+    <label for="mail">If you know what course you want to study, do you know in which college  or university you would like to study:</label>
+    <input  type="text"  id="collegeIdea"  name="collegeIdea" [(ngModel)]="collegeIdea" readonly />
+
+    <label for="mail">Worried about not getting admission in the college of choice:</label>
+    <input  type="text"  id="worriedAboutCollege"  name="worriedAboutCollege" [(ngModel)]="worriedAboutCollege" readonly />
+
+    <label for="mail">Worried about high fees in the college of choice:</label>
+    <input  type="text"  id="worriedAboutFees"  name="worriedAboutFees" [(ngModel)]="worriedAboutFees" readonly />
+
+    <label for="mail">Any hesitation to pursue graduation away from home town:</label>
+    <input  type="text"  id="graduationAwayFromHometown"  name="graduationAwayFromHometown" [(ngModel)]="graduationAwayFromHometown" readonly />
+
+    <label for="mail">Field of interest - Higher Education:</label>
+    <input  type="text"  id="IntrestedHigherEducation"  name="IntrestedHigherEducation" [(ngModel)]="IntrestedHigherEducation" readonly />
+
+    <label for="mail">What are all the applications/Entrance exams applied till now:</label>
+    <input  type="text"  id="appliedEntranceExam"  name="appliedEntranceExam" [(ngModel)]="appliedEntranceExam" readonly />
+
+    <label for="mail">Job sector preference :</label>
+    <input  type="text"  id="jobSector"  name="jobSector" [(ngModel)]="jobSector" readonly />
+
+    <label for="mail">Which of the following sectors do you think would be of interest to  you:</label>
+    <input  type="text"  id="sectorInterested"  name="sectorInterested" [(ngModel)]="sectorInterested" readonly />
+
+    <label for="mail">Whether student got any career guidance previously:</label>
+    <input  type="text"  id="careerGuidance"  name="careerGuidance" [(ngModel)]="careerGuidance" readonly />
+
+    <label for="mail">Is the student interested in taking up courses abroad:</label>
+    <input  type="text"  id="abroadCourse"  name="abroadCourse" [(ngModel)]="abroadCourse" readonly />
+
+    <label for="mail">Additional Comments from observer:</label>
+    <input  type="text"  id="observationCommentOne"  name="observationCommentOne" [(ngModel)]="observationCommentOne" readonly />
+
+  </fieldset>
+  <fieldset  *ngIf="isImage == true">
+      <div class="no_rec">
+          <img src="./assets/images/norecord.png" class="no_rec_img">
+        </div>
+  </fieldset>
+
+  <!-- https://codepen.io/lilianab/pen/PGNOOm -->
+</form>

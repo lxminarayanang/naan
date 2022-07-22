@@ -1,0 +1,593 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="profileInfoFormGroup">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.emis }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="emsId"
+            maxlength="100"
+            readonly
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.fullName }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="fullName"
+            readonly
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.dob }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label md-no-asterisk>Choose a date</mat-label>
+          <input
+            matInput
+            readonly
+            [matDatepicker]="picker"
+            [max]="today"
+            formControlName="dob"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.gender }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+
+        <mat-radio-group
+          class="example-full-width"
+          aria-label="Select an option"
+          formControlName="gender"
+        >
+          <ng-container *ngFor="let item of lang.language.genderData">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.firstGraduate }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          class="example-full-width"
+          aria-label="Select an option"
+          formControlName="firstGraduate"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && profileInfoFormGroup.get('firstGraduate').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.studentMedium }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.studentMediumHint }}
+          </mat-hint>
+          <mat-select formControlName="studentMedium">
+            <ng-container *ngFor="let item of lang.language.languageData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.disability }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          class="example-full-width"
+          aria-label="Select an option"
+          formControlName="disability"
+          [(ngModel)]="disblilityValue"
+          (ngModelChange)="disabilityValueChange(disblilityValue)"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && profileInfoFormGroup.get('disability').invalid"
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="disblilityValue === 'Yes'">
+        <mat-label
+          >{{ lang.language.disabilitypercentage }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            formControlName="disabilitypercentage"
+            [(ngModel)]="disabilitypercentageValue"
+            (keyup)="keyPressNumericCharacter(disabilitypercentageValue)"
+          />
+          <mat-error
+            *ngIf="
+              submitted &&
+              profileInfoFormGroup.get('disabilitypercentage').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.community }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="community"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.trainRoute }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          class="example-full-width"
+          aria-label="Select an option"
+          formControlName="trainRoute"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && profileInfoFormGroup.get('trainRoute').invalid"
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.nearRailway }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="nearRailway"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.busRoute }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          class="example-full-width"
+          aria-label="Select an option"
+          formControlName="busRoute"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && profileInfoFormGroup.get('trainRoute').invalid"
+          >
+            This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.nearBus }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="nearBus"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.singleParent }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            formControlName="singleParent"
+            [(ngModel)]="singleParentModel"
+            (ngModelChange)="parentVlueChanbeBasedOnParent(singleParentModel)"
+          >
+            <ng-container *ngFor="let item of lang.language.parentData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="singleParentModel === 'Single Parent'"
+      >
+        <div>
+          <mat-label class="radioLabel">{{
+            lang.language.parentAlive
+          }}</mat-label>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <!-- <mat-hint align="start"
+            >{{ lang.language.fatherOccupationHint }}
+          </mat-hint> -->
+          <mat-select formControlName="mother">
+            <ng-container *ngFor="let item of lang.language.parentNames">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="singleParentModel !== 'Both Deceased'"
+      >
+        <div>
+          <mat-label class="radioLabel"
+            >If present, indicate type(s) of illness for parents</mat-label
+          >
+        </div>
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="singleParentModel !== 'Both Deceased'"
+      >
+        <div>
+          <mat-label class="radioLabel">{{
+            lang.language.fatherPhysical
+          }}</mat-label>
+        </div>
+
+        <mat-selection-list
+          #shoes
+          (selectionChange)="selectionChange($event)"
+          [(ngModel)]="selected"
+          formControlName="fatherPhysical"
+        >
+          <mat-list-option
+            *ngFor="let shoe of filteredOptions"
+            checkboxPosition="before"
+            [value]="shoe"
+            [selected]="physicalFatherSet.get(shoe)"
+          >
+            {{ shoe }}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-error
+          *ngIf="
+            submitted && profileInfoFormGroup.get('fatherPhysical').invalid
+          "
+          >This field is required</mat-error
+        >
+        <!-- <ng-container *ngFor="let item of lang.language.phisycalData">
+          <mat-checkbox [value]="item">{{ item }}</mat-checkbox>
+        </ng-container> -->
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="singleParentModel !== 'Both Deceased'"
+      >
+        <div>
+          <mat-label class="radioLabel">{{
+            lang.language.motherPhysical
+          }}</mat-label>
+        </div>
+        <mat-selection-list
+          #shoes
+          (selectionChange)="selectionChangeMother($event)"
+          [(ngModel)]="selected1"
+          formControlName="motherPhysical"
+        >
+          <mat-list-option
+            *ngFor="let shoe of filteredOptions1"
+            checkboxPosition="before"
+            [value]="shoe"
+            [selected]="physicalMotherSet.get(shoe)"
+          >
+            {{ shoe }}
+          </mat-list-option>
+        </mat-selection-list>
+        <mat-error
+          *ngIf="
+            submitted && profileInfoFormGroup.get('motherPhysical').invalid
+          "
+          >This field is required</mat-error
+        >
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="singleParentModel === 'Both Deceased'"
+      >
+        <mat-label>{{ lang.language.gaurdian }}</mat-label>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="gaurdian"
+          />
+        </mat-form-field>
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="singleParentModel === 'Both Deceased'"
+      >
+        <mat-label>{{ lang.language.gaurdianRelationship }}</mat-label>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="gaurdianRelationship"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.fatherOccupation }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.fatherOccupationHint }}
+          </mat-hint>
+          <mat-select formControlName="fatherOccupation">
+            <ng-container
+              *ngFor="let item of lang.language.fatherOccupationData"
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.fatherOccupationDetail }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="fatherOccupationDetail"
+              />
+            </mat-form-field>
+          </div> -->
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.fatherEducation }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.fatherEducationHint }}
+          </mat-hint>
+          <mat-select formControlName="fatherQualification">
+            <ng-container
+              *ngFor="let item of lang.language.fatherEducationData"
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.motheOccupationType }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.motheOccupationTypeHint }}
+          </mat-hint>
+          <mat-select formControlName="motherOccupation">
+            <ng-container
+              *ngFor="let item of lang.language.motheOccupationTypeData"
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.motherOccupationDetails }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="motherOccupationDetail"
+              />
+            </mat-form-field>
+          </div> -->
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.motherEducationalQualification }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.motherEducationalQualificationHint }}
+          </mat-hint>
+          <mat-select formControlName="motherQualification">
+            <ng-container
+              *ngFor="
+                let item of lang.language.motherEducationalQualificationData
+              "
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.familyAnnualIncome }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.familyAnnualIncomeHint }}
+              </mat-hint>
+              <mat-select formControlName="familyAnnualIncome">
+                <ng-container
+                  *ngFor="let item of lang.language.familyAnnualIncomeData"
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.sibilings }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start">{{ lang.language.sibilingsHint }} </mat-hint>
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value="0"
+            formControlName="siblings"
+            [(ngModel)]="siblingsValue"
+            (keyup)="keyPressNumericCharacter(siblingsValue, 'sibilings')"
+          />
+        </mat-form-field>
+        <!-- <mat-error
+          *ngIf="submitted && profileInfoFormGroup.get('siblings').invalid"
+          >This field is required</mat-error
+        > -->
+      </div>
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+    </div>
+  </form>
+</div>

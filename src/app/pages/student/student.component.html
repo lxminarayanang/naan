@@ -1,0 +1,126 @@
+<div class="dashboard">  
+  <div class="dashboard-nav">
+    <header>
+      <a class="menu-toggle"><i class="fas fa-bars"></i></a
+      ><a class="brand-logo"
+        ><i class="fas fa-anchor"></i> <span>Welcome {{student_name}}</span></a
+      >
+    </header>
+    <nav class="dashboard-nav-list">
+      <a class="dashboard-nav-item">
+        <i class="fas fa-cogs"></i> Activities 
+      </a>
+       <div class="dashboard-nav-dropdown show">
+        <a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+          ><i class="fas fa-photo-video"></i> Survey
+        </a>
+        <div class="dashboard-nav-dropdown-menu">
+          <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/survey-assessment" >1-1 Assesment</a>
+          <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/survey-report" >Career Survey</a>
+        </div>
+      </div>
+      <div class="dashboard-nav-dropdown">
+        <a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+          ><i class="fas fa-money-check-alt"></i> Academic
+        </a>
+        <div class="dashboard-nav-dropdown-menu">
+          <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/student-academic" >Accademic Record</a>
+        </div>
+      </div>
+      
+      <a class="dashboard-nav-item" routerLink="/student-detail/profile"
+        ><i class="fas fa-home"></i> Interests
+      </a>
+      <a class="dashboard-nav-item" routerLink="/student-detail/profile" (click)="moveToCareer()"
+        ><i class="fas fa-home"></i> Explore Courses
+      </a>
+      <a class="dashboard-nav-item" routerLink="/student-detail/profile"  (click)="moveToColleges()"
+        ><i class="fas fa-home"></i> Explore Colleges
+      </a>
+      <a class="dashboard-nav-item">
+        <i class="fas fa-cogs"></i> Forum 
+      </a>
+      <a class="dashboard-nav-item" routerLink="/student-detail/profile"
+        ><i class="fas fa-home"></i> Profile
+      </a>
+      <a class="dashboard-nav-item" routerLink="/student-detail/student-group"
+      ><i class="fas fa-home"></i>My Group
+    </a>
+      <a class="dashboard-nav-item" href="/home" (click)="logout()">
+        <i class="fas fa-cogs"></i> Logout 
+      </a>
+      <!-- <a
+        class="dashboard-nav-item"
+        routerLink="/student-detail/survey-assessment"
+        routerLinkActive="active"
+        ><i class="fas fa-cogs"></i> 1-1 Assesment
+      </a>
+      <a
+        class="dashboard-nav-item"
+        routerLink="/student-detail/survey-report"
+        routerLinkActive="active"
+        ><i class="fas fa-cogs"></i> Career Survey
+      </a> -->
+      <!-- <div class="dashboard-nav-dropdown">
+        <a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+          ><i class="fas fa-users"></i> Users
+        </a>
+        <div class="dashboard-nav-dropdown-menu">
+          <a class="dashboard-nav-dropdown-item">All</a
+          ><a class="dashboard-nav-dropdown-item">Subscribed</a
+          ><a class="dashboard-nav-dropdown-item">Non-subscribed</a
+          ><a class="dashboard-nav-dropdown-item">Banned</a
+          ><a class="dashboard-nav-dropdown-item">New</a>
+        </div>
+      </div>
+      <div class="dashboard-nav-dropdown">
+        <a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
+          ><i class="fas fa-money-check-alt"></i> Payments
+        </a>
+        <div class="dashboard-nav-dropdown-menu">
+          <a class="dashboard-nav-dropdown-item">All</a
+          ><a class="dashboard-nav-dropdown-item">Recent</a
+          ><a class="dashboard-nav-dropdown-item"> Projections</a>
+        </div>
+      </div> -->
+      <!-- <a class="dashboard-nav-item"><i class="fas fa-cogs"></i> My Activity </a
+      ><a class="dashboard-nav-item"
+        ><i class="fas fa-user"></i> Notifications
+      </a>
+
+      <a class="dashboard-nav-item"
+        ><i class="fas fa-sign-out-alt"></i> My Account
+      </a> -->
+    </nav>
+  </div>
+
+  <div class="dashboard-app">
+    <!-- <header class="dashboard-toolbar">
+      <a class="menu-toggle"><i class="fas fa-bars"></i></a>
+    </header> -->
+  
+    
+    <div class="dashboard-content">
+      <app-student-profile
+        *ngIf="url === '/student-detail/profile'"
+      ></app-student-profile>
+      <app-survey-report
+        *ngIf="url === '/student-detail/survey-report'"
+      ></app-survey-report>
+      <app-survey-assessment
+        *ngIf="url === '/student-detail/survey-assessment'"
+      >
+      </app-survey-assessment>
+      <app-student-academic
+        *ngIf="url === '/student-detail/student-academic'"
+      >
+      </app-student-academic>
+      <app-student-group
+      *ngIf="url === '/student-detail/student-group'"
+    >
+    </app-student-group>
+    </div>
+  </div>
+</div>
+
+<!-- https://codepen.io/corbpie/pen/LYNwGdE -->

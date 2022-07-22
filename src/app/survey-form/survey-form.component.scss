@@ -1,0 +1,47 @@
+.wizard-container {
+  margin-top: 100px;
+  min-height: 730px;
+  height: auto;
+}
+.active {
+  background: #09396b !important;
+  color: #fff !important;
+}
+
+a {
+  color: black;
+}
+
+nav a {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+nav {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  width: 100%;
+  height: auto;
+}
+
+nav a:hover {
+  background-color: #ddd;
+}
+.content {
+  //float: left;
+  padding: 0px 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.disableClick {
+  pointer-events: none;
+}

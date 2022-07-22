@@ -1,0 +1,96 @@
+<form action="index.html" method="post">
+  <fieldset *ngIf="isData == true">
+
+    <div class="form-group">
+      <label class="date_label" for="fromdate">From Date</label>
+      <input  type="date" class="date_field"  id="fromdate"  name="fromdate" [(ngModel)]="fromdate" />
+      
+      <label class="date_label" for="todate">To Date</label>
+      <input  type="date" class="date_field"  id="todate"  name="todate" [(ngModel)]="todate" />
+
+      <button class="btn btn-secondary px-4 py-1 date_submit" (click)="datefilter()">Submit</button>
+
+    </div>
+
+    <label for="name">{{ lang.language.emis }}:</label>
+    <input type="text" id="emsId" name="emsId" [(ngModel)]="emsId" readonly/>
+
+    <label for="name">{{ lang.language.fullName }}:</label>
+    <input type="text" id="fullName" name="fullName" [(ngModel)]="fullName" readonly/>
+
+    <label for="name">{{ lang.language.studentMedium }}:</label>
+    <input type="text" id="medium" name="medium" [(ngModel)]="medium" readonly/>
+
+    <label for="name">{{ lang.language.homeLocation }}:</label>
+    <input type="text" id="location" name="location" [(ngModel)]="location" readonly/>
+
+    <label for="name">{{ lang.language.fatherOccupation }} :</label>
+    <input type="text" id="fatherOccupation" name="fatherOccupation" [(ngModel)]="fatherOccupation" readonly/>
+
+    <label for="name">{{ lang.language.fatherEducation }}:</label>
+    <input type="text" id="fatherEducation" name="fatherEducation" [(ngModel)]="fatherEducation" readonly/>
+
+    <label for="name">{{ lang.language.motherEducationalQualification }}:</label>
+    <input type="text" id="motherEducationalQualification" name="motherEducationalQualification" [(ngModel)]="motherEducationalQualification" readonly/>
+
+    <label for="name">{{ lang.language.sibilings }}:</label>
+    <input type="text" id="sibilings" name="sibilings" [(ngModel)]="sibilings" readonly/>
+
+    <label for="name">{{ lang.language.intrestedSubject }}:</label>
+    <input type="text" id="user_name" name="user_name" [(ngModel)]="user_name" readonly/>
+
+    <label for="name">{{ lang.language.unInrestedSubject }}:</label>
+    <input type="text" id="intrestedSubject" name="intrestedSubject" [(ngModel)]="intrestedSubject" readonly/>
+
+    <label for="mail">{{ lang.language.pursueHigherEducation }}:</label>
+    <input type="text" id="pursueHigherEducation" name="pursueHigherEducation" [(ngModel)]="pursueHigherEducation" readonly/>
+
+    <label for="mail">{{ lang.language.IntrestedCourse }}:</label>
+    <input type="text" id="IntrestedCourse" name="IntrestedCourse" [(ngModel)]="IntrestedCourse" readonly/>
+
+    <label for="mail">{{ lang.language.IntrestedCollege }}:</label>
+    <input type="text" id="IntrestedCollege" name="IntrestedCollege" [(ngModel)]="IntrestedCollege" readonly/>
+
+    <label for="mail">{{ lang.language.worriedAboutSelectedCollege }}:</label>
+    <input type="text" id="worriedAboutCollege" name="worriedAboutCollege" [(ngModel)]="worriedAboutCollege" readonly/>
+
+    <label for="mail">{{ lang.language.worriedAboutCollgeFees }}:</label>
+    <input type="text" id="worriedAboutFees" name="worriedAboutFees" [(ngModel)]="worriedAboutFees" readonly/>
+
+    <label for="mail">{{ lang.language.higherEducationAwayFromHometown }}:</label>
+    <input type="text" id="higherEducationAwayFromHometown" name="higherEducationAwayFromHometown" [(ngModel)]="higherEducationAwayFromHometown" readonly/>
+
+    <label for="mail">{{ lang.language.challengesInHigherEducation }}:</label>
+    <input type="text" id="challengesInHigherEducation" name="challengesInHigherEducation" [(ngModel)]="challengesInHigherEducation" readonly/>
+
+    <label for="mail">{{ lang.language.specilaztions }}:</label>
+    <input type="text" id="specilaztions" name="specilaztions" [(ngModel)]="specilaztions" readonly/>
+
+    <label for="mail">{{ lang.language.specilaztionsCourses }}:</label>
+    <input type="text" id="specilaztionsCourses" name="specilaztionsCourses" [(ngModel)]="specilaztionsCourses" readonly/>
+
+    <label for="mail">{{ lang.language.entranceExamPvt }}:</label>
+    <input type="text" id="entranceExams" name="entranceExams" [(ngModel)]="entranceExams" readonly/>
+
+    <label for="mail">{{ lang.language.interestedForStudy }}:</label>
+    <input type="text" id="interestedForStudy" name="interestedForStudy" [(ngModel)]="interestedForStudy" readonly/>
+
+    <label for="mail">{{ lang.language.preferJob }}:</label>
+    <input type="text" id="preferJob" name="preferJob" [(ngModel)]="preferJob" readonly/>
+
+    <label for="mail">{{ lang.language.entranceGovExam }}:</label>
+    <input type="text" id="interestedGoverementJobs" name="interestedGoverementJobs" [(ngModel)]="interestedGoverementJobs" readonly/>
+
+    <label for="mail">{{ lang.language.interestedSectors }}:</label>
+    <input type="text" id="interestedSectors" name="interestedSectors" [(ngModel)]="interestedSectors" readonly/>
+
+  </fieldset>
+
+  <fieldset  *ngIf="isImage == true">
+    <div class="no_rec">
+        <img src="./assets/images/norecord.png" class="no_rec_img">
+      </div>
+  </fieldset>
+
+  <!-- https://codepen.io/lilianab/pen/PGNOOm -->
+</form>

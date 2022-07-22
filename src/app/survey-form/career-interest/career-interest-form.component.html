@@ -1,0 +1,128 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="carrerInfoForm">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.jobSector }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            formControlName="jobSector"
+            [(ngModel)]="preferedJobValue"
+            (ngModelChange)="getPreferedJobData(preferedJobValue)"
+          >
+            <mat-option
+              *ngFor="let item of lang.language.preferJobData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.sectorInterested }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            placeholder=""
+            formControlName="sectorInterested"
+            multiple
+          >
+            <mat-option *ngFor="let item of careersData" [value]="item.field">{{
+              item.field
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.careerGuidance }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="careerGuidance"
+          [(ngModel)]="careerDataModel"
+          (ngModelChange)="onChangecareerDataModel(careerDataModel)"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && carrerInfoForm.get('careerGuidance').invalid"
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+
+      <div class="col-md-12 labelRow" *ngIf="careerDataModelVaue === 'Yes'">
+        <div>
+          <mat-label>{{ lang.language.guide }}</mat-label>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select formControlName="guide">
+            <mat-option
+              *ngFor="let item of lang.language.guideData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.abroadCourse }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="abroadCourse"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && carrerInfoForm.get('abroadCourse').invalid"
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+      <button mat-button class="matBackButton" (click)="onClickBack()">
+        Back
+      </button>
+    </div>
+  </form>
+</div>
