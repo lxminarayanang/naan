@@ -1,0 +1,31 @@
+<div class="container wizard-container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <div class="nav-bar">
+
+        <nav md-tab-nav-bar>
+          <a
+            class="disableClick"
+            md-tab-link
+            *ngFor="let tab of tabs"
+            routerLink="{{ tab.route }}"
+            routerLinkActive="active"
+          >
+            {{ tab.label }}
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="content">
+        <app-student-profile-form *ngIf="url === '/survey/alumni2022'"></app-student-profile-form>
+        <app-academic-form
+        *ngIf="url === '/survey/profile'"
+        ></app-academic-form>
+        <app-career-form *ngIf="url === '/survey/solution-provided'"></app-career-form>
+
+      </div>
+    </div>
+  </div>
+</div>

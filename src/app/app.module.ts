@@ -15,21 +15,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { LayoutModule } from '@core/layout/layout.module';
 import { ToastrModule } from 'ngx-toastr';
+import { StepWizardModule } from './step-form/step-wizard.module';
+import { SurveyFormModule } from './survey-form/survey-form.module';
+import { StudentDetailModule } from './pages/student/student.module';
+import { StudentSurveyFormModule } from './student-survey-details/student-survey-detail.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
+    StepWizardModule,
     AppRoutingModule,
     HttpClientModule,
+    SurveyFormModule,
+    StudentDetailModule,
+    StudentSurveyFormModule,
     SharedModule,
     LayoutModule,
     BrowserAnimationsModule,
     NgbModule,
     ToastrModule.forRoot({
-      preventDuplicates: true
+      preventDuplicates: true,
     }),
     CarouselModule.forRoot(),
   ],
@@ -38,6 +44,6 @@ import { ToastrModule } from 'ngx-toastr';
     FileSizePipe,
     NgbActiveModal,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

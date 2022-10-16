@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@shared/guards/auth.guard';
+import { StepWizardComponent } from './step-form/step-wizard.component';
 
 const routes: Routes = [
   {
@@ -38,8 +38,35 @@ const routes: Routes = [
   },
   {
     path: 'main/survey',
+    component: StepWizardComponent,
+  },
+  {
+    path: 'student',
     loadChildren: () =>
-      import('./step-form/step-wizard.module').then((m) => m.StepWizardModule),
+      import('./survey-form/survey-form.module').then(
+        (m) => m.SurveyFormModule
+      ),
+  },
+  {
+    path: 'student/survey',
+    loadChildren: () =>
+      import('./student-survey-form/student-survey-form.module').then(
+        (m) => m.SurveyFormModule
+      ),
+  },
+  {
+    path: 'student-detail',
+    loadChildren: () =>
+      import('./pages/student/student.module').then(
+        (m) => m.StudentDetailModule
+      ),
+  },
+  {
+    path: 'survey',
+    loadChildren: () =>
+      import('./student-survey-details/student-survey-detail.module').then(
+        (m) => m.StudentSurveyFormModule
+      ),
   },
   {
     path: '',

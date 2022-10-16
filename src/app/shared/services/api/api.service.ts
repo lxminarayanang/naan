@@ -96,6 +96,15 @@ export class ApiService {
     );
   }
 
+  othergetService(url: string, params?: any): any {
+    if (this.encryptedReq) url = this.encryptData(url);
+
+    return this.http.get(this.baseUrl + url, { params: params }).pipe(
+      map((res) => res),
+      catchError((err) => throwError(err))
+    );
+  }
+
   // DELETE API Method
   deleteService(url: string, params?: any): any {
     if (this.encryptedReq) url = this.encryptData(url);

@@ -1,0 +1,501 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="higherEducationInfoForm">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.higherEducation }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="pursueHigherEducation"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && higherEducationInfoForm.get('pursueHigherEducation').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div
+      class="col-md-12 labelRow"
+    >
+      <div>
+        <mat-label>{{
+          lang.language.likeHigherEducation
+        }}</mat-label>
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input
+          matInput
+          type="text"
+          placeholder=""
+          value=""
+          formControlName="pursueHigherEducationImportant"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-12 labelRow">
+      <div>
+        <mat-label
+          >{{ lang.language.specilaztions }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
+          >
+            *</span
+          ></mat-label
+        >
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-hint align="start"
+          >{{ lang.language.specilaztionsHint }}
+        </mat-hint>
+        <br />
+
+        <mat-select
+          [(ngModel)]="selectedSpecialization"
+          (ngModelChange)="getCourseData(selectedSpecialization)"
+          placeholder=""
+          formControlName="specilaztions"
+          multiple
+        >
+          <mat-option
+            *ngFor="let item of specilaztions"
+            [value]="item.field"
+            >{{ item.field }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+     <div class="col-md-12 labelRow">
+      <mat-label>{{ lang.language.specilaztionsCourses }}</mat-label>
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-hint align="start"
+            >{{ lang.language.specilaztionsCoursesHint }}
+          </mat-hint>
+          <br />
+
+          <mat-select
+            placeholder=""
+            formControlName="intrestedCourse"
+            multiple
+            [(ngModel)]="selectedSpecializationCourses"
+          >
+            <mat-option *ngFor="let item of coursesData" [value]="item.name">{{
+              item.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+         <div class="col-md-12 labelRow">
+          <mat-label>{{ lang.language.entranceExamPvt }}</mat-label>
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-hint align="start"
+            >{{ lang.language.entranceExamPvtHint }}
+          </mat-hint>
+
+          <mat-select placeholder="" formControlName="entranceExams" multiple>
+            <mat-option *ngIf="entranceExamData.length === 0" value="None"
+              >None</mat-option
+            >
+
+            <mat-option
+              *ngFor="let item of entranceExamData"
+              [value]="item.admissionProcedure"
+              >{{ item.admissionProcedure }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.collegeIdea }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="intrestedCollege"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && higherEducationInfoForm.get('intrestedCollege').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+
+    </div>
+  </div>
+
+
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.worriedAboutSelectedCollege }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="worriedAboutCollege"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted &&
+              higherEducationInfoForm.get('worriedAboutCollege').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+
+
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.worriedAboutCollgeFees }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="worriedAboutFees"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted &&
+              higherEducationInfoForm.get('worriedAboutFees').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.worriedAboutFamily }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="worriedAboutFamily"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && higherEducationInfoForm.get('worriedAboutFamily').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.graduationAwayFromHometown }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="higherEducationAwayFromHometown"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted &&
+              higherEducationInfoForm.get('higherEducationAwayFromHometown').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div
+      class="col-md-12 labelRow"
+    >
+      <div>
+        <mat-label
+          >{{ lang.language.challengesInHigherEducation }}
+        </mat-label>
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-select
+          formControlName="challengesInHigherEducation"
+        >
+          <ng-container
+            *ngFor="let item of lang.language.challengesInHigherEducationData"
+          >
+            <mat-option [value]="item">{{ item }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+      <!-- <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel">{{
+            lang.language.challengesGraduationAwayFromHometown
+          }}</mat-label>
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="challengesGraduationAwayFromHometown"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+        </mat-radio-group>
+      </div> -->
+<!--
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="reasonGraduationAwayFromHometownData === 'Other'"
+      >
+        <div>
+          <mat-label>{{
+            lang.language.reasonGraduationAwayFromHometown
+          }}</mat-label>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="reasonGraduationAwayFromHometown"
+          />
+        </mat-form-field>
+      </div>
+ -->
+
+
+
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.reasonIntrestedCourse }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            formControlName="reasonIntrestedCourse"
+          >
+            <mat-option
+              *ngFor="let item of lang.language.interestedForStudyData"
+              [value]="item.name"
+              [value]="item"
+            >
+              {{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div
+      class="col-md-12 labelRow"
+    >
+      <div>
+        <mat-label>{{
+          lang.language.accessedGovtSchemes
+        }}</mat-label>
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input
+          matInput
+          type="text"
+          placeholder=""
+          value=""
+          formControlName="accessedGoverementSchemes"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-12 labelRow">
+      <div>
+        <mat-label class="radioLabel"
+          >{{ lang.language.certificates }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
+          >
+            *</span
+          ></mat-label
+        >
+      </div>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="certificateForHigherEducation"
+      >
+        <ng-container *ngFor="let item of lang.language.radioButton">
+          <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+        </ng-container>
+        <mat-error
+          *ngIf="
+            submitted &&
+            higherEducationInfoForm.get('certificateForHigherEducation').invalid
+          "
+          >This field is required</mat-error
+        >
+      </mat-radio-group>
+    </div>
+    <div class="col-md-12 labelRow"  *ngIf="higherEducationInfoForm.get('certificateForHigherEducation').value==='Yes' || higherEducationInfoForm.get('certificateForHigherEducation').value==='ஆம்'
+    ">
+      <div>
+        <mat-label
+          >{{ lang.language.CertificateList }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
+          >
+            *</span
+          ></mat-label
+        >
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-select
+          placeholder=""
+          formControlName="certificateList"
+          multiple
+        >
+          <mat-option
+            *ngFor="let item of lang.language.CertificateListData"
+            [value]="item"
+            >{{ item }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+      <!-- <div
+        class="col-md-12 labelRow"
+        *ngIf="interestedForStudyDataModelChange === 'Others'"
+      >
+        <div>
+          <mat-label
+            >{{ lang.language.otherReasonIntrestedCourse }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="otherReasonIntrestedCourse"
+          />
+        </mat-form-field>
+      </div> -->
+      <!-- <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.appliedEntranceExam }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <br />
+
+          <mat-select
+            placeholder=""
+            formControlName="appliedEntranceExam"
+            [(ngModel)]="appliedEntranceExam1"
+            multiple
+          >
+            <mat-option
+              *ngFor="let item of lang.language.appliedEntranceExamData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div
+        class="col-md-12 labelRow"
+        *ngIf="appliedEntranceExam1[0] === 'Other'"
+      >
+        <div>
+          <mat-label>{{ lang.language.listAppliedEntranceExam }}</mat-label>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="listAppliedEntranceExam"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div> -->
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+      <button mat-button class="matBackButton" (click)="onClickBack()">
+        Back
+      </button>
+    </div>
+  </form>
+
+</div>

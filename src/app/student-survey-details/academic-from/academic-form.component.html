@@ -1,0 +1,667 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="studentProfile">
+    <div class="row">
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.registerNumber }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="Register_Number">
+            <ng-container *ngFor="let item of registerNumbers">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.emisNumber }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="EMIS_number"
+            maxlength="100"
+            readonly
+
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.eFullName }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Name"
+            maxlength="100"
+            readonly
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.number }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="Phone_Number"
+            maxlength="10"
+            readonly
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.contact }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="Current_Contact_Number"
+            maxlength="10"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.whatsappNumber }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="Current_Whatsapp_Number"
+            maxlength="100"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.alternateNumber }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="Alternative_Number"
+            maxlength="100"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.areaLocated }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Location"
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.takuk }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Taluk"
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.eDistrict }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="District">
+            <ng-container *ngFor="let item of districtData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.ePinCode }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="pincode"
+            maxlength="100"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.group }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Group"
+            maxlength="100"
+            readonly
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.mark }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="total_marks"
+            maxlength="100"
+            readonly
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.pass }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Result"
+            maxlength="100"
+            readonly
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.hscPassoutYear }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="HSC_Passout_Year">
+
+              <mat-option value="2020"> 2020</mat-option>
+              <mat-option value="2021"> 2021</mat-option>
+              <mat-option value="2022"> 2022</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.emedium }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="medium"
+            readonly
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.appliedCollges }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="is_Applied_College"
+        >
+          <ng-container *ngFor="let item of lang.language.eradioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && studentProfile.get('is_Applied_College').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('is_Applied_College').value==='No'" >
+        <mat-label
+          >If No ?
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="Reason_Not_Apply">
+            <ng-container *ngFor="let item of lang.language.appliedCollgesData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('is_Applied_College').value==='No' && studentProfile.get('Reason_Not_Apply').value==='Others'" >
+        <mat-label
+          >Enter the details
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <textarea
+            matInput
+            placeholder="..."
+            formControlName="other_reason_for_appplying_college"
+            (keypress)="keyPressAlphaCharacters($event)"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.appiledEntranceExam }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="Written_Entrance_Exam"
+        >
+          <ng-container *ngFor="let item of lang.language.eradioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && studentProfile.get('Written_Entrance_Exam').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Written_Entrance_Exam').value==='Yes'" >
+        <mat-label
+          >If yes,
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="Exam_List">
+            <ng-container *ngFor="let item of lang.language.entranceExamData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Written_Entrance_Exam').value==='Yes' && studentProfile.get('Exam_List').value==='Others'" >
+        <mat-label
+          >Enter the details
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <textarea
+            matInput
+            placeholder="..."
+            formControlName="other_reason_exam_list"
+            (keypress)="keyPressAlphaCharacters($event)"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.counsiling }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="Waiting_for_Counselling"
+        >
+          <ng-container *ngFor="let item of lang.language.eradioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && studentProfile.get('Waiting_for_Counselling').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Waiting_for_Counselling').value==='Yes'" >
+        <mat-label
+          >If yes,
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="List_of_conselling">
+            <ng-container *ngFor="let item of lang.language.counsilingData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Waiting_for_Counselling').value==='Yes'&& studentProfile.get('List_of_conselling').value==='Others'" >
+        <mat-label
+          >Enter the details
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <textarea
+            matInput
+            placeholder="..."
+            formControlName="other_reason_list_of_counselling"
+            (keypress)="keyPressAlphaCharacters($event)"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.collgeName }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="College_name"
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.coursesLabel }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Course"
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.collegeType }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select
+            placeholder=""
+            formControlName="College_Type"
+            multiple
+          >
+            <mat-option
+              *ngFor="let item of lang.language.collegeTypeData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.eadmission }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="Got_Admission"
+        >
+          <ng-container *ngFor="let item of lang.language.eradioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && studentProfile.get('Got_Admission').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+      <ng-container *ngIf="studentProfile.get('Got_Admission').value==='Yes'">
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.eDistrict }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="admission_district">
+            <ng-container *ngFor="let item of districtData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.collegeName }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="admission_college"
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.coursesLabel }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="admission_course"
+            maxlength="100"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.collegeType }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select
+            placeholder=""
+            formControlName="admission_college_type"
+            multiple
+          >
+            <mat-option
+              *ngFor="let item of lang.language.collegeTypeData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </ng-container>
+    </div>
+
+
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+      <button mat-button class="matBackButton" (click)="onClickBack()">
+        Back
+      </button>
+    </div>
+  </form>
+</div>

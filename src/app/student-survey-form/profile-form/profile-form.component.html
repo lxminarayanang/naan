@@ -1,0 +1,234 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="profileInfoFormGroup">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.emis }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="emsId"
+            maxlength="100"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.fullName }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="fullName"
+
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.studentMedium }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="medium"
+
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.homeLocation }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.homeLocationHint }}
+          </mat-hint>
+          <mat-select formControlName="location">
+            <ng-container *ngFor="let item of lang.language.homeLocationData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.fatherOccupation }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.fatherOccupationHint }}
+          </mat-hint>
+          <mat-select formControlName="fatherOccupation">
+            <ng-container
+              *ngFor="let item of lang.language.fatherOccupationData"
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.fatherOccupationDetail }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="fatherOccupationDetail"
+              />
+            </mat-form-field>
+          </div> -->
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.fatherEducation }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.fatherEducationHint }}
+          </mat-hint>
+          <mat-select formControlName="fatherEducation">
+            <ng-container
+              *ngFor="let item of lang.language.fatherEducationData"
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.motheOccupationType }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.motheOccupationTypeHint }}
+          </mat-hint>
+          <mat-select formControlName="motheOccupationType">
+            <ng-container
+              *ngFor="let item of lang.language.motheOccupationTypeData"
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- <div class="col-md-6 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.motherOccupationDetails }}</mat-label>
+              <input
+                matInput
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="motherOccupationDetail"
+              />
+            </mat-form-field>
+          </div> -->
+
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.motherEducationalQualification }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start"
+            >{{ lang.language.motherEducationalQualificationHint }}
+          </mat-hint>
+          <mat-select formControlName="motherEducationalQualification">
+            <ng-container
+              *ngFor="
+                let item of lang.language.motherEducationalQualificationData
+              "
+            >
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ lang.language.familyAnnualIncome }}</mat-label>
+              <mat-hint align="start"
+                >{{ lang.language.familyAnnualIncomeHint }}
+              </mat-hint>
+              <mat-select formControlName="familyAnnualIncome">
+                <ng-container
+                  *ngFor="let item of lang.language.familyAnnualIncomeData"
+                >
+                  <mat-option [value]="item"> {{ item }}</mat-option>
+                </ng-container>
+              </mat-select>
+            </mat-form-field>
+          </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.sibilings }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-hint align="start">{{ lang.language.sibilingsHint }} </mat-hint>
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value="0"
+            formControlName="sibilings"
+            [(ngModel)]="siblingsValue"
+            (keyup)="keyPressNumericCharacter(siblingsValue, 'sibilings')"
+          />
+        </mat-form-field>
+        <!-- <mat-error
+          *ngIf="submitted && profileInfoFormGroup.get('siblings').invalid"
+          >This field is required</mat-error
+        > -->
+      </div>
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+    </div>
+  </form>
+</div>

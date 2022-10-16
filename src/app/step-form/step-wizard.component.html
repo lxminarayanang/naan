@@ -52,8 +52,8 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>{{ lang.language.homeLocation }}</mat-label>
               <mat-hint align="start"
-                  >{{ lang.language.homeLocationHint }}
-                </mat-hint>
+                >{{ lang.language.homeLocationHint }}
+              </mat-hint>
               <mat-select formControlName="studentHome">
                 <ng-container
                   *ngFor="let item of lang.language.homeLocationData"
@@ -371,7 +371,6 @@
                 formControlName="specilaztionsCourses"
                 multiple
                 [(ngModel)]="selectedSpecializationCourses"
-               
               >
                 <mat-option
                   *ngFor="let item of coursesData"
@@ -387,19 +386,17 @@
               <mat-hint align="start"
                 >{{ lang.language.entranceExamPvtHint }}
               </mat-hint>
-             
+
               <mat-select
                 placeholder=""
                 formControlName="entranceExams"
                 multiple
               >
-              <mat-option
-              *ngIf="entranceExamData.length===0"
-              value="None"
-              >None</mat-option
-            >
-           
-                <mat-option 
+                <mat-option *ngIf="entranceExamData.length === 0" value="None"
+                  >None</mat-option
+                >
+
+                <mat-option
                   *ngFor="let item of entranceExamData"
                   [value]="item.entanceExams"
                   >{{ item.entanceExams }}</mat-option
@@ -457,17 +454,17 @@
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>{{ lang.language.entranceGovExam }}</mat-label>
               <mat-select
-              placeholder=""
-              formControlName="interestedGoverementJobs"
-              multiple
-            >
-              <mat-option
-                *ngFor="let item of lang.language.entranceGovExamJobsData"
-                [value]="item"
-                >{{ item }}</mat-option
+                placeholder=""
+                formControlName="interestedGoverementJobs"
+                multiple
               >
-            </mat-select>
-          </mat-form-field>
+                <mat-option
+                  *ngFor="let item of lang.language.entranceGovExamJobsData"
+                  [value]="item"
+                  >{{ item }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
           </div>
         </div>
         <div class="row">

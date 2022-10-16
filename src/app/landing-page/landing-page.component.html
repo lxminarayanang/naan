@@ -27,160 +27,308 @@
     $("#slider").flexslider("play");
   }
 </script>
-<div class="home-carousel mt-6">
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 margin-top-25">
-      <div
-        id="carouselExampleCaptions"
-        class="carousel slide"
-        data-bs-touch="true"
-        data-bs-interval="60000"
-        data-bs-ride="carousel"
-      >
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="0"
-            class="active"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="1"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="2"
-            aria-label="Slide 3"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="3"
-            aria-label="Slide 4"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="4"
-            aria-label="Slide 5"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#carouselExampleCaptions"
-            data-bs-slide-to="5"
-            aria-label="Slide 6"
-          ></button>
-        </div>
 
-        <div class="carousel-inner carousel-res">
-          <!-- <div class="carousel-item active" style="height:100%">
-                        <video class="h-100" id="video" width="100%" height="100%" oncanplay="this.muted=true" controls
-                            autoplay>
-                            <source src="https://tnschools.gov.in/wp-content/themes/TNDS/assets/banner/schools.mp4"
-                                type="video/mp4">
-                        </video>
-                    </div> -->
-          <!-- <div class="carousel-item active h-100">
-            <video
-              muted
-              onplay="pauseslider()"
-              onpause="playslider()"
-              onended="resumeslider()"
-              controls
-              preload="none"
-              width="100%"
-              height="100%"
-              poster="/assets/images/banner/7.PNG"
+<div class="home-carousel mt-6">
+  <!-- <div class="row"> -->
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 margin-top-25">
+    <div
+      id="carouselExampleCaptions"
+      class="carousel slide"
+      data-bs-touch="true"
+      data-bs-interval="60000"
+      data-bs-ride="carousel"
+    >
+      <div class="main-banner">
+        <span class="vision" style="font-family: Play">
+          New visions for higher education towards 2025!
+        </span>
+
+        <span class="explore"> Explore More </span>
+
+        <div
+          class="d-flex flex-row bg-white justify-content-between w-100"
+          style="height: 50px; border-radius: 10px"
+        >
+          <div
+            class="d-flex flex-row justify-content-center align-items-center"
+          >
+
+            <div class="dropdown font-weight-bold" style="width: 108px;">
+              <mat-select
+
+            placeholder="Select" class="placeMat"
+          >
+            <mat-option
+              >{{ lang.language.courses }}</mat-option
             >
-              <source src="assets\images\banner\6.mp4" type="video/mp4" />
-            </video>
-          </div> -->
-          <!-- <div class="carousel-item active h-100">
-            <img
-              src="/assets/images/banner/1.jpg"
-              class="d-block w-100 h-100"
-              style="height: 480px"
-              style="transform: scale(1.2)"
-              alt="..."
-            />
-          </div> -->
-          <div class="carousel-item active h-100">
-            <img
-              src="/assets/images/banner/2.jpg"
-              class="d-block w-100 h-100"
-              style="transform: scale(1.1)"
-              alt="..."
-            />
+            <mat-option
+
+            >{{ lang.language.colleges }}</mat-option
+          >
+          <mat-option
+
+          >{{ lang.language.entranceExam }}</mat-option
+        >
+        <mat-option
+
+          >{{ lang.language.scholarships }}</mat-option
+        >
+        <mat-option
+
+          >{{ lang.language.educationLoans }}</mat-option
+        >
+        <mat-option
+
+          >{{ lang.language.careers }}</mat-option
+        >
+          </mat-select>
+            </div>
+            <div class="vertical-bar"></div>
+            <div class="form-outline">
+
+              <input
+                type="text"
+                [formControl]="myControl"
+                id="formControlLg"
+                class="form-control"
+                placeholder="Search College, Courses etc"
+                matInput
+                [matAutocomplete]="auto"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                  {{option}}
+                </mat-option>
+              </mat-autocomplete>
+
+            </div>
           </div>
-          <div class="carousel-item h-100">
+
+          <div class="search-bar">
+            <div class="search-text">Search</div>
             <img
-              src="/assets/images/banner/3.jpg"
-              class="d-block w-100 h-100"
-              style="height: 480px"
-              style="transform: scale(1.1)"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item h-100">
-            <img
-              src="/assets/images/banner/4.jpg"
-              class="d-block w-100 h-100"
-              style="height: 480px"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item h-100">
-            <img
-              src="/assets/images/banner/5.jpg"
-              class="d-block w-100 h-100"
-              style="height: 480px"
-              style="transform: scale(1.1)"
-              alt="..."
+              src="/assets/images/landing-page/search-icon.png"
+              style="height: 25px; margin-left: 10px"
             />
           </div>
         </div>
       </div>
-    </div>
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
+      </div>
 
-    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
-      <section class="fs-12 pt-0 pb-0">
-        <div class="container">
-          <div class="d-flex justify-content-center">
-            <div class="section-header mb-3">
-              <div class="">
-                <img
-                  class="pe-2"
-                  src="/assets/images/icons/exam-pad-home.png"
-                  alt=""
-                />
-                <span> {{ lang.language.whatNew }}</span>
-              </div>
+      <div class="carousel-inner carousel-res">
+        <div class="carousel-item active h-100">
+          <img
+            src="/assets/images/banner/3.jpg"
+            class="d-block w-100 h-100"
+            style="height: 480px"
+            style="transform: scale(1.1)"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item h-100">
+          <img
+            src="/assets/images/banner/4.jpg"
+            class="d-block w-100 h-100"
+            style="height: 480px"
+            alt="..."
+          />
+        </div>
+        <div class="carousel-item h-100">
+          <img
+            src="/assets/images/banner/5.jpg"
+            class="d-block w-100 h-100"
+            style="height: 480px"
+            style="transform: scale(1.1)"
+            alt="..."
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>
+
+<!-- ---------------------------------------------Section 1 - Carousel---------------------- -->
+
+<div class="m-3 d-flex row mt-5">
+  <!-- Courses -->
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
+    <div
+      class="card-banner card-banner-courses text-center cursor-pointer mb-3"
+      (click)="chooseType('courses', lang.language.courses)"
+    >
+      <div class="icon-container" style="background-color: #940242">
+        <img
+          src="/assets/images/landing-page/course-icon.svg"
+          class=""
+          height="45"
+        />
+        <div class="">
+          {{ lang.language.courses }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Colleges -->
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
+    <div
+      class="card-banner card-banner-college text-center cursor-pointer mb-3"
+      (click)="chooseType('colleges', lang.language.colleges)"
+    >
+      <div class="icon-container" style="background-color: #18a76b">
+        <img
+          src="/assets/images/landing-page/college-icon.svg"
+          class=""
+          height="45"
+        />
+        <div class="">
+          {{ lang.language.colleges }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Entrance exams -->
+
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
+    <div
+      class="card-banner card-banner-exams text-center cursor-pointer mb-3"
+      (click)="chooseType('exams', lang.language.entranceExam)"
+    >
+      <div class="icon-container" style="background-color: #1f7499">
+        <img
+          src="/assets/images/landing-page/exam-icon.svg"
+          class=""
+          height="45"
+        />
+        <div class="">
+          {{ lang.language.entranceExam }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scholarships -->
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
+    <div
+      class="card-banner card-banner-scholarships text-center cursor-pointer mb-3"
+      (click)="chooseType('scholarships', lang.language.scholarships)"
+    >
+      <div class="icon-container" style="background-color: #f9b938">
+        <img
+          src="/assets/images/landing-page/scholarship-icon.svg"
+          class=""
+          height="45"
+        />
+        <div class="">
+          {{ lang.language.scholarships }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Educational Loans -->
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
+    <div
+      class="card-banner card-banner-loans text-center cursor-pointer mb-3"
+      (click)="moveToLoans()"
+    >
+      <div class="icon-container" style="background-color: #896a98">
+        <img
+          src="/assets/images/landing-page/loans-icon.svg"
+          class=""
+          height="45"
+        />
+        <div class="">
+          {{ lang.language.educationLoans }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Careers -->
+  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
+    <div
+      class="card-banner card-banner-careers text-center cursor-pointer mb-3"
+      (click)="chooseType('careers', lang.language.careers)"
+    >
+      <div class="icon-container" style="background-color: #55b5dd">
+        <img
+          src="/assets/images/landing-page/careers-icon.svg"
+          class=""
+          height="45"
+        />
+        <div class="">
+          {{ lang.language.careers }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mt-10 row p-3">
+  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 hide-image">
+    <img src="/assets/images/landing-logo.svg" class="" />
+  </div>
+  <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
+    <section class="fs-12 pt-0 pb-0">
+      <div class="container">
+        <div class="d-flex justify-content-between">
+          <div class="section-heading mb-3 text-decoration-underline">
+            <div class="">
+              <span> {{ lang.language.whatNew }}!!</span>
             </div>
           </div>
+          <div>
+            <img
+              src="/assets/images/landing-page/options.svg"
+              class="options-button"
+              height="27"
+              style="margin-right: 10px"
+            /><img
+              src="/assets/images/landing-page/calender.svg"
+              class="pb-1"
+              height="30"
+            />
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <marquee
-        onmouseover="this.stop();"
-        onmouseout="this.start();"
-        scrollamount="5"
-        direction="up"
-        class="mt-2"
-        class="fontMarquee"
-        style="height: 310px"
-      >
-        <ul class="list-group list-group-flush">
-         
-          <ng-container *ngFor="let item of examsNotifications" >
-          <li class="d-flex py-4" *ngIf="item.startDate" >
-            
-            <div class="col-2">
+    <marquee
+      onmouseover="this.stop();"
+      onmouseout="this.start();"
+      scrollamount="5"
+      direction="up"
+      class="mt-2"
+      class="fontMarquee"
+      style="height: 310px"
+    >
+      <ul class="list-group list-group-flush">
+        <ng-container *ngFor="let item of examsNotifications">
+          <li class="d-flex py-4" *ngIf="item.startDate">
+            <div class="col-1" style="margin-right: 10px">
               <time class="icon">
                 <strong>{{ item?.startDate | date: "MMM" }}</strong>
                 <span>{{ item?.startDate | date: "d" }}</span>
@@ -193,294 +341,124 @@
                 }}</a>
               </p>
             </div>
-         
           </li>
         </ng-container>
-        </ul>
-      </marquee>
-      <div>
+      </ul>
+    </marquee>
+
+    <div>
       <div class="d-flex py-4">
-        <!-- <div class="col-2">
-          <time class="icon">
-            <strong>{{ currentDate | date: "MMM" }}</strong>
-            <span>{{ currentDate | date: "d" }}</span>
-          </time>
-        </div> -->
         <a
-         
           target="_blank"
           href="../../assets/Uyar_Kalvi_Vazhikkatti_Book.pdf"
-          ><button class="guidance">Career Guidance - Class 11&12         <img
-            src="/assets/download.jpg"
-            class=""
-            height="20"
-            style="
-            margin-left: 12px;
-        "
-          /></button></a  
-        >
-      </div>
-    </div>
-    </div>
-  </div>
-</div>
-
-<!-- ---------------------------------------------Section 1 - Carousel---------------------- -->
-
-<div class="m-3 d-flex justify-content-evenly row mt-5">
-  <!-- Courses -->
-  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
-    <div
-      class="card-banner card-banner-courses text-center cursor-pointer mb-3"
-      (click)="chooseType('courses', lang.language.courses)"
-      [ngClass]="
-        section == 'courses' ? ' card-banner-courses cards-hover-courses' : ''
-      "
-    >
-      <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
-        {{ lang.language.courses }}
-      </div>
-      <div class="card-footer bg-color-courses">
-        <div class="icon-up">
-          <img
-            src="/assets/images/exams/certificate.png"
-            class=""
-            height="45"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Colleges -->
-  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
-    <div
-      class="card-banner card-banner-college text-center cursor-pointer mb-3"
-      (click)="chooseType('colleges', lang.language.colleges)"
-      [ngClass]="
-        section == 'colleges' ? 'cards-hover cards-hover-colleges' : ''
-      "
-    >
-      <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
-        {{ lang.language.colleges }}
-      </div>
-      <div class="card-footer bg-color-college">
-        <div class="icon-up">
-          <img src="/assets/images/exams/colleges.png" class="" height="45" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Entrance exams -->
-
-  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
-    <div
-      class="card-banner card-banner-exams text-center cursor-pointer mb-3"
-      (click)="chooseType('exams', lang.language.entranceExam)"
-      [ngClass]="section == 'exams' ? 'cards-hover cards-hover-exam' : ''"
-    >
-      <div class="py-5 my-3 fs-14 fw-600 ellipse-oneline">
-        {{ lang.language.entranceExam }}
-      </div>
-      <div class="card-footer">
-        <div class="icon-up">
-          <img src="/assets/images/exams/exams.png" class="" height="40" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scholarships -->
-  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
-    <div
-      class="card-banner card-banner-scholarships text-center cursor-pointer mb-3"
-      (click)="chooseType('scholarships', lang.language.scholarships)"
-      [ngClass]="
-        section == 'scholarships' ? 'cards-hover cards-hover-scholarships' : ''
-      "
-    >
-      <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
-        {{ lang.language.scholarships }}
-      </div>
-      <div class="card-footer bg-color-scholarships">
-        <div class="icon-up">
-          <img
-            src="/assets/images/exams/scholarships.png"
-            class=""
-            height="45"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Educational Loans -->
-  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
-    <div
-      class="card-banner card-banner-loans text-center cursor-pointer mb-3"
-      (click)="moveToLoans()"
-      [ngClass]="
-        section == 'educationLoans'
-          ? 'cards-hover cards-hover-loans text-white'
-          : ''
-      "
-    >
-      <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
-        {{ lang.language.educationLoans }}
-      </div>
-      <div class="card-footer bg-color-loan">
-        <div class="icon-up">
-          <img src="/assets/images/exams/rupee-icon.svg" class="" height="45" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Careers -->
-  <div class="col-sm-6 col-md-6 col-lg-2 col-xl-2">
-    <div
-      class="card-banner card-banner-careers text-center cursor-pointer mb-3"
-      (click)="chooseType('careers', lang.language.careers)"
-      [ngClass]="section == 'careers' ? 'cards-hover cards-hover-careers' : ''"
-    >
-      <div class="py-5 my-3 fs-15 fw-600 ellipse-oneline">
-        {{ lang.language.careers }}
-      </div>
-      <div class="card-footer bg-color-careers">
-        <div class="icon-up">
-          <img src="/assets/images/exams/careers.png" class="" height="45" />
-        </div>
+          class="d-flex flex-fill"
+          ><button class="guidance flex-fill">
+            Career Guidance - Class 11&12
+            <img
+              src="/assets/download.jpg"
+              class=""
+              height="20"
+              style="margin-left: 12px"
+            /></button
+        ></a>
       </div>
     </div>
   </div>
 </div>
+
 <!-- ------------------------------------------Section 1 end------------------------------------- -->
-
-<div class="mt-5">
-  <section class="about-us-counts fs-12">
-    <div class="container-fluid">
-      <div class="count-students">
-        <img src="/assets/images/landing-page/avatar.png" height="45px" />
-        <h1 class="ps-3 mb-0">10 Lakh +</h1>
-      </div>
-      <div class="section-content">
-        <p class="text-center mt-3 d-blue fs-28 fw-600 letter-spacing-1px fs-5">
-          {{ lang.language.countText }}
-          <br />
-          {{ lang.language.countText2 }}
-        </p>
-      </div>
-    </div>
-  </section>
-</div>
 
 <section class="mentor-section py-0">
   <div class="container">
-    <div class="d-flex justify-content-center">
-      <h1 class="section-header">
-        {{ lang.language.makeChoice }}
-      </h1>
-    </div>
     <div class="row">
-      <div
-        class="col-sm-12 col-md-12 col-lg-4 col-xl-4"
-      >
-        <div class="fall-item fall-effect d-flex justify-content-end-card pe-3">
+      <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="d-flex justify-content-end-card pe-3">
           <img
-            class="box-shadow-img-1 img-mobile"
-            src="/assets/images/landing-page/mentor.png"
+            class="box-shadow-img img-mobile"
+            src="/assets/images/landing-page/mentorchoose.png"
           />
-          <div class="mask d-flex justify-content-center" style="display: block ;">
-            <div class="hover-center-1" style="display: block;">
-              <div *ngIf="lang.type" class="text-start" style="display: block;" >
-                <h3>{{ lang.language.beMentor }}</h3>
-                <div class="fs-22">{{ lang.language.forStudents }}</div>
-              </div>
-              <div *ngIf="!lang.type" class="text-start">
-                <div class="fs-22">{{ lang.language.forStudents }}</div>
-                <h3>{{ lang.language.beMentor }}</h3>
-              </div>
-            </div>
-            <div class="hover-center-2">
-              <button
-                (click)="moveToRegistration('mentor-form')"
-                type="button"
-                class="btn btn-light orange fw-600 p-2 px-3"
-              >
-                {{ lang.language.signup }} <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
+          <div
+            class="d-flex justify-content-center"
+            style="display: block"
+          ></div>
         </div>
-
-        <h1 class="section-heading"> {{ lang.language.beMentor }} </h1>
+        <div class="choose-button" style="color: #05396b">
+          {{ lang.language.beMentor }}
+        </div>
       </div>
 
-      <div
-        class="col-sm-12 col-md-12 col-lg-4 col-xl-4"
-      >
-        <div class="fall-item fall-effect pe-3">
+      <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="d-flex justify-content-end-card pe-3">
           <img
-            class="box-shadow-img-2 img-mobile"
-            src="/assets/images/landing-page/girls.png"
+            class="box-shadow-img img-mobile"
+            src="/assets/images/landing-page/sponsor.png"
           />
-          <div class="mask d-flex justify-content-center">
-            <div class="hover-center-1">
-              <div *ngIf="lang.type" class="text-start">
-                <h3>{{ lang.language.beSponsor }}</h3>
-                <div class="fs-22">{{ lang.language.forHigherEdu }}</div>
-              </div>
-              <div *ngIf="!lang.type" class="text-start">
-                <div class="fs-22">{{ lang.language.forHigherEdu }}</div>
-                <h3>{{ lang.language.beSponsor }}</h3>
-              </div>
-            </div>
-            <div class="hover-center-2">
-              <button
-                type="button"
-                (click)="moveToRegistration('sponsor-form')"
-                class="btn btn-light green fw-600 p-2 px-3"
-              >
-                {{ lang.language.signup }} <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
+          <div
+            class="d-flex justify-content-center"
+            style="display: block"
+          ></div>
         </div>
-        <h1 class="section-heading">{{ lang.language.beSponsor }}</h1>
+
+        <div class="choose-button" style="color: #ad1313">
+          {{ lang.language.beSponsor }}
+        </div>
       </div>
 
-      <div
-        class="col-sm-12 col-md-12 col-lg-4 col-xl-4"
-      >
-        <div class="fall-item fall-effect d-flex justify-content-center pe-3">
+      <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+        <div class="d-flex justify-content-end-card pe-3">
           <img
-            class="box-shadow-img-3 img-mobile"
-            src="/assets/images/landing-page/sponsar.png"
+            class="box-shadow-img img-mobile"
+            src="/assets/images/landing-page/scholar.png"
           />
-          <div class="mask d-flex justify-content-center">
-            <div class="hover-center-1">
-              <div class="ps-4 text-start">
-                <h3>{{ lang.language.beScholarship }}</h3>
-                <div class="fs-22">{{ lang.language.subTextScholarship }}</div>
-              </div>
-            </div>
-            <div class="hover-center-2">
-              <button
-                type="button"
-                (click)="moveToRegistration('scholarship-form')"
-                class="btn btn-light blue fw-600 p-2 px-3"
-              >
-                {{ lang.language.signup }} <i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
-          </div>
+          <div
+            class="d-flex justify-content-center"
+            style="display: block"
+          ></div>
         </div>
-        <h1 class="section-heading">{{ lang.language.beScholarship }} </h1>
+        <div class="choose-button" style="color: #ff206e">
+          {{ lang.language.beScholarship }}
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ------------------------------------------Section 1 Testimony ------------------------------------- -->
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let item of testimonyItems">
+      <div class="col-sm-12 col-md-6 col-lg-3 col-xl-3 box">
+        <img class="testimony-image img-fluid" src="{{ item.src }}" />
+        <div class="in-item">
+          <span
+            class="text-center"
+            style="
+              background-color: yellow;
+              font-size: 10px;
+              font-weight: bolder;
+              border-radius: 3px;
+              width: 30%;
+              margin-top: -5px;
+            "
+            >{{ item.title }}</span
+          >
+          <span
+            class="text-center"
+            style="
+              color: aliceblue;
+              margin-top: 10px;
+              margin-bottom: 10px;
+              font-size: 10px;
+              font-weight: bolder;
+            "
+            >{{ item.sentence }}</span
+          >
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
 
 <section class="about-us fs-12 mb-5">
   <div class="container">
@@ -500,87 +478,3 @@
     </div>
   </div>
 </section>
-
-<!-- <section class="">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <img class="img-mobile" src="/assets/images/landing-page/sponsar.png" alt="">
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <div class="d-grid align-items-center">
-                    <div class="card scholar-section">
-                        <div class="card-body text-center">
-                            <div class="d-flex justify-content-center align-items-center pt-3">
-                                <img src="/assets/images/icons/white-scholar.png" alt="" height="45px">
-                                <h3 class="card-title ps-2 fw-600">{{lang.language.offerScholarship}}</h3>
-                            </div>
-                            <p class="card-text pt-3 pb-2 fs-23">{{lang.language.scholarshipSubtext}}</p>
-                            <div class="my-4">
-                                <div>
-                                    <button type="button"
-                                        class="btn btn-light fw-600 p-2 px-3 register-btn">{{lang.language.registerNow}}
-                                        <i class="bi bi-arrow-right"></i></button>
-                                    <img class="dot-line" src="/assets/images/icons/dot-line.png" alt="" height="80px">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section> -->
-
-<!-- <section class="testimonials">
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <h1 class="section-header">
-                {{lang.language.testimonialsHeading}}
-            </h1>
-        </div>
-        <div class="row mx-0">
-            <div class="col-lg-4 col-md-5 px-0">
-                <div class="testimonials-img-container">
-                    <span class="top-green-circle"></span>
-                    <span class="star-ornament"></span>
-                    <img src="./assets/images/landing-page/govtschool.png" alt="">
-                    <span class="bottom-ornament"></span>
-                    <span class="bottom-green-circle"></span>
-                </div>
-            </div>
-            <div class="col-lg-8 col-md-7 px-0 mt-5 mt-md-0">
-
-                <div class="testimonials-carousel-slide">
-
-                    <img src="./assets/images/landing-page/testominal-quote-top.png" alt="">
-
-                    <div class=" pre-line">
-                        <br>
-                        <p>
-                            {{lang.language.testimonialsLine1}}
-                        </p> <br>
-                        <p>
-                            {{lang.language.testimonialsLine2}}
-                        </p>
-                        <br>
-                        <div class="me-5 text-end">
-                            <h5> - {{lang.language.testimonialsName1}}, </h5>
-                            <h6>{{lang.language.testimonialsName2}}</h6>
-                        </div>
-
-                    </div>
-
-                    <img src="./assets/images/landing-page/testominal-quote-bottom.png" alt="">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section> -->

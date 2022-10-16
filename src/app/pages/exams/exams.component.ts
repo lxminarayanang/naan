@@ -12,6 +12,7 @@ import { LanguageService } from '@shared/services/common/language.service';
 export class ExamsComponent implements OnInit {
   title = '';
   examsList: any[] = [];
+  startList:any[]=[];
   section: any;
   loadMore: boolean = false;
 
@@ -19,6 +20,8 @@ export class ExamsComponent implements OnInit {
   examsNotifications: any = [];
   public user: any;
   public langData: any;
+  public count:any=0;
+  public viewShow: boolean = false;
 
   constructor(
     private router: Router,
@@ -78,27 +81,95 @@ export class ExamsComponent implements OnInit {
     this.title = title;
     this.section = type;
     this.examsList = [];
+    this.startList = [];
+
+    
     var data = {
       pageSize: 1000,
       pageIndex: 0,
     };
+    console.log(this.title);
+    console.log(this.section);
 
     this.service.postService(`/${type}`, data).subscribe((res: any) => {
       const uniqueValuesSet = new Set();
+      let obj_name;
 
-
+      console.log(res);
       const filteredArr = res.results.rows.filter((obj:any) => {
+
+        if (obj.field != undefined || obj.field != null){
+          obj_name=obj.field;
+        }
+        else{
+          obj_name=obj.name;
+        }
+        console.log(obj_name);
         // check if name property value is already in the set
-        const isPresentInSet = uniqueValuesSet.has(obj.field);
+        const isPresentInSet = uniqueValuesSet.has(obj_name);
       
         // add name property value to Set
-        uniqueValuesSet.add(obj.field);
+        uniqueValuesSet.add(obj_name);
       
         // return the negated value of
         // isPresentInSet variable
         return !isPresentInSet;
       });
-      this.specilaztions = this.examsList = filteredArr;
+      
+     this.count =filteredArr.length;
+     if(this.count < 12){
+      this.viewShow=true;
+     }
+      for(let i=0; i<this.count; i++){
+       this.startList.push(filteredArr[i]);
+       if(i == 11){
+        break;
+       }
+      }
+      this.specilaztions=this.startList;
+      console.log(this.specilaztions.length);
+    });
+
+    // this.selectSpecilaztions(this.section);
+  }
+
+  allRow(type: any, title: any) {
+    this.title = title;
+    this.section = type;
+    this.examsList = [];
+    
+    var data = {
+      pageSize: 1000,
+      pageIndex: 0,
+    };
+    console.log(this.title);
+    console.log(this.section);
+
+    this.service.postService(`/${type}`, data).subscribe((res: any) => {
+      const uniqueValuesSet = new Set();
+      let obj_name;
+
+      const filteredArr = res.results.rows.filter((obj:any) => {
+        if (obj.field != undefined || obj.field != null){
+          obj_name=obj.field;
+        }
+        else{
+          obj_name=obj.name;
+        }
+        console.log(obj_name);
+        // check if name property value is already in the set
+        const isPresentInSet = uniqueValuesSet.has(obj_name);
+      
+        // add name property value to Set
+        uniqueValuesSet.add(obj_name);
+        // return the negated value of
+        // isPresentInSet variable
+        return !isPresentInSet;
+      });
+      // console.log(filteredArr);
+      this.specilaztions=this.examsList=filteredArr;
+      console.log(this.specilaztions);
+      this.viewShow=true;
     });
 
     // this.selectSpecilaztions(this.section);

@@ -1,0 +1,36 @@
+<div class="container wizard-container">
+  <div class="row">
+    <div class="col-md-3">
+
+      <div class="nav-bar">
+
+        <nav md-tab-nav-bar>
+          <a
+            class="disableClick"
+            md-tab-link
+            *ngFor="let tab of tabs"
+            routerLink="{{ tab.route }}"
+            routerLinkActive="active"
+          >
+            {{ tab.label }}
+          </a>
+        </nav>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <div class="content">
+        <app-profile-form *ngIf="url === '/student/survey/profile'"></app-profile-form>
+        <app-academic-form
+          *ngIf="url === '/student/survey/academic'"
+        ></app-academic-form>
+        <app-career-interest-form
+          *ngIf="url === '/student/survey/career-interest'"
+        ></app-career-interest-form>
+        <app-career-form *ngIf="url === '/student/survey/career'"></app-career-form>
+        <app-observer-form
+          *ngIf="url === '/student/survey/observer'"
+        ></app-observer-form>
+      </div>
+    </div>
+  </div>
+</div>

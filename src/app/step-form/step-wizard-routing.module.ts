@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { StepWizardComponent } from './step-wizard.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: StepWizardComponent,
-  },
+  // {
+  //   path: '',
+  //   component: StepWizardComponent,
+  // },
 ];
 
 @NgModule({

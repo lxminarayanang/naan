@@ -58,6 +58,7 @@ export class CommonService {
 
   // POST API Method While Pass JSON Data
   postService(url: string, data?: any, loaderState?: any, params?: any): any {
+    debugger
     const language = localStorage.getItem('language');
     let temp = url.indexOf('?');
     const tempUrl =
@@ -90,6 +91,13 @@ export class CommonService {
     return this.apiservice.otherGetService1(url);
   }
 
+
+  // GET API Method
+  othergetService(url: string, params?: any): any {
+
+    return this.apiservice.othergetService(url, params);
+  }
+
   // PUT API Method
   putService(url: string, data?: any, params?: any): any {
     return this.apiservice.putService(url, data, params);
@@ -97,6 +105,10 @@ export class CommonService {
 
   // GET API Method
   getService(url: string, params?: any): any {
+    debugger
+    if(url==='student_details'){
+      return this.apiservice.getService(url);
+    }
     const language = localStorage.getItem('language');
     let temp = url.indexOf('?');
     const tempUrl =

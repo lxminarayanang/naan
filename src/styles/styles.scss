@@ -5,6 +5,10 @@
 @import "./custom.scss";
 @import "./shared.scss";
 
+$primary-color:#042d56;;
+$secondary-color:#05386b;
+
+
 html,
 body {
   //height: 100%;
@@ -230,10 +234,7 @@ $font-600: 600;
     display: none !important;
   }
 }
-.responsive {
-  // width: 100%;
-  // height: auto;
-}
+
 .fs-14 {
   font-size: 14px !important;
 }
@@ -324,6 +325,7 @@ p {
   overflow: hidden;
   overflow-y: scroll;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -333,8 +335,69 @@ input::-webkit-inner-spin-button {
 .error-small-msg {
   color: red;
 }
+
 .ellipse-oneline {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+
+.example-stepper {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 13px;
+  margin-bottom: 11px;
+}
+.mat-radio-group {
+  margin-left: 10%;
+}
+.step-wizard-container {
+  margin-top: 23px;
+  min-height: 730px;
+  height: auto;
+
+  margin-bottom: 57px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.radioTop {
+  margin-top: 16px;
+}
+.mat-button {
+  background-color: $primary-color;
+  color: #fff;
+  float: right;
+}
+.matBackButton {
+  background-color: #dc3545 !important;
+  color: #fff;
+  float: left !important;
+}
+
+.radioLabel {
+  margin-right: 22px;
+}
+.mat-danger {
+  color: #dc3545;
+  margin-top: 10px;
+}
+.labelRow {
+  margin-bottom: 10px !important ;
+}
+mat-label{
+  font-size:17px;
 }

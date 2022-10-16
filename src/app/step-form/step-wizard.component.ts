@@ -35,7 +35,7 @@ export class StepWizardComponent implements OnInit {
     studentMedium: ['', Validators.required],
     studentHome: ['', Validators.required],
     fatherOccupation: ['', Validators.required],
-   // fatherOccupationDetail: ['', ''],
+    // fatherOccupationDetail: ['', ''],
     fatherQualification: ['', Validators.required],
     motherOccupation: ['', ''],
     //motherOccupationDetail: ['', Validators.required],
@@ -96,21 +96,22 @@ export class StepWizardComponent implements OnInit {
     this._getCoursesList();
     this._getCareers();
   }
+
   public getPreferedJobData(job: string) {
-    // 
+    //
     // this.carrerInfoForm.setValidators({interestedGoverementJobs:})
     // this.profileForm.get('secretPwd').updateValueAndValidity();
     // console.log({ job });
   }
   public clickFormSubmit(): void {
-    console.log(this.profileInfoFormGroup)
+    console.log(this.profileInfoFormGroup);
     if (
       this.carrerInfoForm.invalid ||
       this.profileInfoFormGroup.invalid ||
       this.academicInfoForm.invalid ||
       this.higherEducationInfoForm.invalid
     ) {
-      debugger
+      debugger;
       $('#alertModal').modal('show');
       return;
     } else {
@@ -190,36 +191,35 @@ export class StepWizardComponent implements OnInit {
   }
 
   public getCourseData(selectedData: any): void {
-  if(selectedData){
+    if (selectedData) {
       this.coursesData = [];
-      this.entranceExamData=[];
+      this.entranceExamData = [];
       selectedData.forEach((element: string) => {
         this.items.forEach((item: any) => {
           if (item.field === element) {
             this.coursesData.push(item);
-            this.entranceExamData.push(item)
+            this.entranceExamData.push(item);
           }
         });
       });
     }
-    
   }
 
   // public getExamDataBasedOnSpcl(data:any):void{
-   
+
   //   this.entranceExamData=[];
   //   if(data){
   //     data.forEach((item: any) => {
-        
+
   //       data.forEach((element: string) => {
   //         this.items.forEach((item: any) => {
   //           if (item.field === element) {
   //             this.coursesData.push(item);
-             
+
   //           }
   //         });
   //       });
-       
+
   //     });
   //   }
   //   Array.from(new Set(this.entranceExamData))
@@ -234,7 +234,7 @@ export class StepWizardComponent implements OnInit {
       .subscribe((res: any) => {
         if (res.status == 200) {
           this.specilaztions = res.results;
-        //  this.getExamDataBasedOnSpcl(res.results)
+          //  this.getExamDataBasedOnSpcl(res.results)
         }
       });
   }

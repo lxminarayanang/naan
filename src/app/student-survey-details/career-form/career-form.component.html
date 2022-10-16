@@ -1,0 +1,337 @@
+<div class="container dataSection mb-5 p-10 mt-3">
+  <h5>
+    Students are to provided solutions based on the issues they face in pursuing Higher Education. The possible solutions could be as listed below. If other solutions have been identified, please add it as Others in the drop down list along with the detail of solution provided.
+  </h5>
+  <p>
+    1. Scholarship - Sponsors are mapped to the students to grant financial support for college/ university fees
+  </p>
+  <p>
+    2. Bank Loan - Banks to issue loans under VidyaLakshmi Scheme
+  </p>
+  <p>
+    3. Skill Development Course - Identified Skill Development Course that they can undertake
+  </p>
+  <p>
+    4. Spot admission - Colleges process admission for the students at the Fair
+  </p>
+  <p>
+    5. Family/ Personal Counselling - Student facing social issues are counselled as a family or individually
+  </p>
+  <p>
+    6. Career and Re-attempt counselling - Student who have failed Class 12 or are re-attempting it are counselling on possible paths they can pursue while encouraging them to complete Class 12
+  </p>
+</div>
+<div class="container step-wizard-container">
+
+  <form [formGroup]="solutionForm">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+
+        <mat-label>{{ lang.language.solutionProvide }}</mat-label>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select
+              placeholder=""
+              formControlName="type"
+              multiple
+
+              [(ngModel)]="selectedSolution"
+            >
+              <mat-option *ngFor="let item of lang.language.solutionProvidedData" [value]="item">{{
+                item
+              }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <ng-container *ngIf="scholorship">
+        <div
+        class="col-md-12 labelRow"
+      >
+        <div>
+          <mat-label>{{
+            lang.language.sponsor
+          }}</mat-label>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="Sponsor_name"
+            (keypress)="keyPressAlphaCharacters($event)"
+          />
+        </mat-form-field>
+      </div>
+     <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.sponsorType }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <br />
+
+          <mat-select
+            placeholder=""
+            formControlName="Sponsor_type"
+          >
+            <mat-option
+              *ngFor="let item of lang.language.sponsorTypeData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div
+        class="col-md-12 labelRow"
+      >
+        <div>
+          <mat-label>{{
+            lang.language.amountLabel
+          }}</mat-label>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="Amount"
+          />
+        </mat-form-field>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="bankLoan">
+    <div class="col-md-12 labelRow">
+      <div>
+        <mat-label
+          >{{ lang.language.bankName }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
+          >
+            *</span
+          ></mat-label
+        >
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input
+          matInput
+          type="text"
+          placeholder=""
+          value=""
+          formControlName="Bank_Name"
+          (keypress)="keyPressAlphaCharacters($event)"
+        />
+      </mat-form-field>
+
+    </div>
+
+  <div
+  class="col-md-12 labelRow"
+>
+  <div>
+    <mat-label>{{
+      lang.language.Branch
+    }}</mat-label>
+  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+      matInput
+      type="text"
+      placeholder=""
+      value=""
+      formControlName="Amount"
+      (keypress)="keyPressAlphaCharacters($event)"
+    />
+  </mat-form-field>
+</div>
+    </ng-container>
+    <ng-container *ngIf="spotAdmission">
+<div class="col-md-12 labelRow">
+  <mat-label class="required"
+    >{{ lang.language.collegeName }}
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+      matInput
+      type="text"
+      placeholder=""
+      value=""
+      formControlName="Spot_admission_College_Name"
+      maxlength="100"
+      (keypress)="keyPressAlphaCharacters($event)"
+    />
+  </mat-form-field>
+</div>
+<div class="col-md-12 labelRow">
+  <mat-label class="required"
+    >{{ lang.language.coursesLabel }}
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+      matInput
+      type="text"
+      placeholder=""
+      value=""
+      formControlName="Spot_admission_Course"
+      maxlength="100"
+      (keypress)="keyPressAlphaCharacters($event)"
+    />
+  </mat-form-field>
+</div>
+<div class="col-md-12 labelRow">
+  <div>
+    <mat-label
+      >{{ lang.language.collegeType }}
+      <span
+        class="mat-placeholder-required mat-form-field-required-marker"
+      >
+        *</span
+      ></mat-label
+    >
+  </div>
+  <mat-form-field class="example-full-width" appearance="fill">
+
+    <mat-select
+      placeholder=""
+      formControlName="Spot_admission_College_Type"
+      multiple
+    >
+      <mat-option
+        *ngFor="let item of lang.language.collegeTypeData"
+        [value]="item"
+        >{{ item }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="col-md-12 labelRow">
+  <mat-label
+    >{{ lang.language.eDistrict }}
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+
+    <mat-select formControlName="Spot_admission_College_District">
+      <ng-container *ngFor="let item of districtData">
+        <mat-option [value]="item"> {{ item }}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</div>
+</ng-container>
+<ng-container *ngIf="counselling">
+<div class="col-md-12 labelRow">
+  <mat-label class="required"
+    >{{ lang.language.suggestion }}
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+      matInput
+      type="text"
+      placeholder=""
+      value=""
+      formControlName="Suggestion"
+      maxlength="100"
+      (keypress)="keyPressAlphaCharacters($event)"
+    />
+  </mat-form-field>
+</div>
+</ng-container>
+<div class="col-md-12 labelRow">
+  <mat-label class="required"
+    >{{ lang.language.filledForm }}
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+      matInput
+      type="text"
+      placeholder=""
+      value=""
+      formControlName="Form_Filled_By"
+      maxlength="100"
+      (keypress)="keyPressAlphaCharacters($event)"
+    />
+  </mat-form-field>
+</div>
+<div class="col-md-12 labelRow">
+  <mat-label class="required"
+    >{{ lang.language.contactNumber }}
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <input
+      matInput
+      type="number"
+      placeholder=""
+      value=""
+      formControlName="User_Contact_Number"
+      maxlength="10"
+    />
+  </mat-form-field>
+</div>
+  </div>
+
+
+
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Submit</button>
+      <button mat-button class="matBackButton" (click)="onClickBack()">
+        Back
+      </button>
+    </div>
+  </form>
+  <!--Phone Modal -->
+  <div
+  class="modal fade"
+  id="successModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="successModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content br-20">
+      <div class="text-end pe-3 pt-2">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="toBack()"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        <div class="d-flex justify-content-center pb-2">
+          <img src="/assets/images/icons/education.png" height="60" />
+        </div>
+        <h1 class="d-blue pb-2">Submitted successfully!</h1>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

@@ -183,6 +183,7 @@ export class LanguageService {
         loanEmail: 'மின்னஞ்சல் முகவரி',
         back: 'பின்னால் செல்ல',
         // Survey Form
+
         emis: 'EMIS எண் ',
         fullName: 'முழு பெயர்',
         studentMedium: 'மாணவரின் பயிற்று மொழி',
@@ -205,7 +206,6 @@ export class LanguageService {
         ],
         fatherOccupationDetail:
           'தந்தையின் பணி குறித்த விவரங்களை விளக்கி கூறவும்',
-
         fatherOccupationDetailData: '',
         fatherEducation: 'தந்தையின் கல்வி தகுதி ',
         fatherEducationHint:
@@ -318,6 +318,13 @@ export class LanguageService {
           'கல்லூரியின் கல்விக்கட்டணம் பற்றிக் கவலைப்படுகிறீர்களா ?',
         higherEducationAwayFromHometown:
           'உங்கள் ஊரிலிருந்து வேறு இடத்திற்கு போய் உயர்கல்வியை  தொடர விருப்பம் உள்ளதா ?',
+        higherEducationAwayFromHometownData: [
+          'சொந்த ஊரை விட்டுப் போவது பற்றிய பதற்றம்',
+          'போதுமான தகவல் இல்லாமை',
+          'குடும்பத்தின் பொருளாதாரரீதியான தடைகள்',
+          'பிற தடைகள்',
+          'தடைகள் எதுவும் இல்லை ',
+        ],
         challengesInHigherEducation:
           'உங்கள் ஊரிலிருந்து வேறு இடத்திற்கு போய் உயர்கல்வியைத் தொடர்வதில் கீழ்கண்ட சவால்களில் எதை எதிர்கொள்ள நேரிடும் என எண்ணுகிர்கள் ?',
         challengesInHigherEducationData: [
@@ -366,13 +373,220 @@ export class LanguageService {
           'இந்திய ரயில்வே பணியாளர் தேர்வு (RRB Exam)',
           'வங்கி பணிகளுக்கான தேர்வு (IBPS (Banking) Exam)',
           'தேசிய பாதுகாப்பு அகாடமி தேர்வு (NDA (Defence))',
+          ' ஒருங்கிணைந்த பாதுகாப்புப் படைத் தேர்வு (CDS (Defence))',
+          'ரிசர்வ் வங்கிப் பணியாளர் தேர்வு (RBI Exam)',
+          'பொதுத்துறை நிறுவனங்களுக்கான தேர்வு (PSU Exams)',
         ],
         interestedSectors:
           'பின்வரும் எந்தத் துறையில் உங்களுக்கு ஆர்வம் என்று நினைக்கிறீர்கள்?',
+
+        /*
+          New Student Survey form on Oct-07
+          */
+
+        //Higher Education Interest & Aspirations
+        collegeIdea:
+          'எந்தப்  படிப்பு எனத் தேர்ந்தெடுத்து இருந்தால் எந்தக் கல்லூரி அல்லது பல்கலைக்கழகத்தில் படிக்க விரும்புகிறீர்கள் என்று உங்களுக்குத் தெரியுமா?',
+
+        higherEducation: 'உயர்கல்வியைத் தொடர விரும்புகிறீர்களா?',
+        likeHigherEducation:
+          'உயர் கல்வி கற்பது அவசியம் என்று நீங்கள் ஏன் நினைக்கிறீர்கள்?',
+        worriedAboutFamily:
+          'உங்கள் ஊரிலிருந்து வேறு இடத்திற்குச் சென்று உயர்கல்வியைத் தொடர்வதில் கீழ்க்கண்ட சவால்களில் எதை எதிர்கொள்ள நேரிடும் என எண்ணுகிறீர்கள் ?',
+        graduationAwayFromHometown:
+          'உங்கள் ஊரிலிருந்து வேறு இடத்திற்குச் சென்றும்  உயர்கல்வியைத்  தொடர விருப்பம் உள்ளதா ?',
+        reasonIntrestedCourse:
+          'படிப்பதற்கு இந்தத்துறையை ஏன் தேர்ந்தெடுத்தீர்கள் ?',
+        jobSector:
+          'கீழ்க்கண்ட பணிகளில் ஒன்றைத் தேர்ந்தெடுக்க வேண்டுமென்றால், எதைத் தேர்ந்தெடுக்க விரும்புகிறீர்கள்?',
+        sectorInterested:
+          'பின்வரும் எத்துறையில்  பணிபுரிய  உங்களுக்கு ஆர்வம் என்று நினைக்கிறீர்கள்?',
+          accessedGovtSchemes:'கல்விக்கு நீங்கள் இதுவரை அணுகிய அரசு திட்டங்கள் என்ன?',
+          certificates:'உயர்கல்வியைத் தொடர தேவையான சான்றிதழ்கள் உங்களிடம் உள்ளதா?',
+          CertificateList:'ஆம் எனில் பட்டியலில் இருந்து தேர்வு செய்யவும்',
+          CertificateListData:['எஸ்.எஸ்.எல்.சி', 'மேல்நிலைக் கல்வி', 'பிறப்பு சான்றிதழ்', 'சமூக சான்றிதழ்', 'வருமானச் சான்றிதழ்', 'பரிமாற்றச் சான்றிதழ்', 'மற்றவை'],
+
+        //End
+
+/**
+ * New Form
+ *
+ * **/
+ //district:'District',
+ eddistrict:'Ed District',
+ eradioButton: ['Yes', 'No'],
+ ePinCode:'Pin Code',
+ //block:'Block',
+ eFullName:'Full Name',
+ emedium: 'Medium of Instruction',
+ eDistrict:'District',
+ schoolName:'School Name',
+ number:'Phone Number',
+ UDISE:'UDISE',
+ registerNumber:'RegisterNumber',
+ emisNumber:'EMIS Number',
+ //fullName:'Full Name'
+ contact:'Current Contact Mobile Number',
+ whatsappNumber:'Current Contact WhatApp Number',
+ alternateNumber:'Alternative Number',
+areaLocated:'City/ Town /Village',
+takuk:'Block / Taluk',
+group:'Group',
+mark:'Mark',
+pass:'Pass / Fail',
+hscPassoutYear:'HSC Passout Year',
+appliedCollges:'Have you Applied for any Colleges / Universities',
+appliedCollgesData:[
+'12th failed',
+'Attending Improvement exam',
+'Did not attend +2 Exam',
+'Doing business',
+'Family issues',
+'Family not allowing',
+'Financial Reasons',
+'Own Health issues',
+'Family Health Issues',
+'Married',
+'No near-by colleges',
+'Not interested in studying',
+'Waiting for counselling',
+'Started Working locally (to meet financial need)',
+'Others'
+],
+appiledEntranceExam:'Have you Written any Entrance Exam',
+entranceExamData:[
+  'Multiple checkbox Dropdown list',
+'JEE Mains',
+'JEE Advanced',
+'All India Law Entrance Test (AILET)',
+'Bachelor of Science - Research Program (IIsc)',
+'ISI (Indian Statistical Institute)Admission Test',
+'NEET(Nationl Eligibility cum Entrance Test) UG',
+'BITS Admission Test - BITSAT',
+'National Defence Academy & Naval Academy Examination (NDANA)',
+'National Institute of Fashion Design (NIFT) - Ability Test ',
+'NID Design Aptitude Test – DAT',
+'National Aptitude Test in Architecture – NATA',
+'CUET/CUCET',
+'CLAT',
+'Others'
+],
+counsiling:'Are You Waiting for Counseling',
+counsilingData:[
+  'Paramedical',
+'Engineering',
+'Agriculture',
+'horticulture',
+'Veterinary',
+'Fisheries',
+'Law',
+'JOSAA',
+'Neet',
+'Others',
+],
+appliedColleges:'Specific Colleges / Universities / Diploma Courses you have applied',
+collgeName:'College(s) Name',
+coursesLabel:'Course(s)',
+collegeType:'College(s) Type ',
+collegeTypeData:[
+  'Private College/ University',
+'Government College/ University',
+'ITI'
+],
+eadmission:'Have you got admission in any college/ University?',
+solutionProvide:'What solution was provided',
+solutionProvidedData:[
+'Scholarship',
+'Bank Loan',
+'Skill Development Course',
+'Spot admission',
+'Family/ Personal Counselling',
+'Career and Re-attempt counselling'
+],
+scholorship:'Scholarship',
+sponsor:'Name of Sponsor',
+sponsorType:'Type of Sponsor',
+sponsorTypeData:[
+ ' Dropdown list',
+'Individual',
+'Corporate',
+'NGO'
+],
+amountLabel:'Amount (in Rs.)',
+bankloan:'Bank Loan',
+bankName:'Bank Name',
+Branch:'Branch',
+spotAdmission:'Spot Admission',
+collegeName:'College Name',
+course:'Course',
+collegeTypeLabel:'College Type ',
+reattemptCounseling:'Family/ Career Re-attempt Counselling',
+suggestion:'Suggestion given',
+filledForm:'Who Filled the Form',
+nameLabel:'Name',
+contactNumber:'Contact Number'
+
       };
     } else {
       window.document.title = 'Naan Mudhalvan';
       this.language = {
+        dob: 'Date of Birth',
+        gender: 'Gender',
+        firstGraduate: 'First Graduate',
+        medium: 'Medium of Instruction',
+        disability: 'Person with Disability',
+        disabilitypercentage: 'If yes, Percentage',
+        community: 'Community',
+        trainRoute:
+          'Does the student`s hometown/village come under any existing Train Route?',
+        nearRailway: 'Nearest major (city/town) Railway station',
+        busRoute:
+          'Does the student`s hometown/village come under any existing Bus Route?',
+        nearBus: 'Nearest major (city/town) Bus stand',
+
+        singleParent: 'Parents',
+        parentAlive: 'Parent alive',
+        father: 'Father',
+        mother: 'Mother',
+        fatherPhysical: 'Father',
+        motherPhysical: 'Mother',
+        gaurdian: 'Gaurdian Name',
+        gaurdianRelationship: 'Gaurdian Relationship',
+        school: 'School Name',
+        hssGroupCode: 'HSS Group code',
+        hosteller: 'Ever stayed in hostel during schooling?',
+        mediumInstruction:
+          'Field to be displayed only if medium of instruction is Tamil',
+        govtSchool:
+          'Whether students studied in government school from class 1 to class 12?',
+        appliedEntranceExam:
+          'What are all the applications/Entrance exams applied till now?',
+        listAppliedEntranceExam: 'List the other exams applied ',
+        jobSector:
+          'If you had to choose between working in one of the following, which one would you prefer the most?',
+        sectorInterested:
+          'Which of the following sectors do you think would be of interest to you? Select all that apply',
+        careerGuidance: 'Whether student got any career guidance previously?',
+        guide: 'From whom did the student recieve guidance',
+        abroadCourse: 'Is the student interested in taking up courses abroad?',
+        observationCommentTwo: 'Additional Comments from observer',
+        observationCommentOne: 'Additional Comments from observer',
+        courseIdea: 'Clear about what course to study?',
+        collegeIdea:
+          'If you know what course you want to study, do you know in which college or university you would like to study?',
+        worriedAboutAdmission:
+          'Worried about not getting admission in the college of choice?',
+        worriedAboutFees:
+          'Are you worried about getting admission in the college of your choice?',
+        // graduationAwayFromHometown:
+        //   'Any hesitation to pursue graduation away from home town?',
+        challengesGraduationAwayFromHometown:
+          'Challenges in pursuing graduation away from home town?',
+        reasonGraduationAwayFromHometown: 'Your reason',
+        IntrestedHigherEducation: 'Field of interest - Higher Education',
+        reasonIntrestedCourse: 'Why did you choose to this/ these field(s)?',
+        otherReasonIntrestedCourse: 'Other reason',
+        IntrestedCourseStudent: 'Interested Courses',
         survey:
           'It is important to know yourself to spread your wings and fly high -reflect and answer these questions',
         embalam: 'Guide to Higher Education & Careers',
@@ -444,7 +658,6 @@ export class LanguageService {
         name: 'Full Name',
         email: 'E-mail',
         mobileNumber: 'Mobile Number',
-        dob: 'Date of Birth',
         address: 'Residential Address',
         pincode: 'Pincode',
         submit: 'Submit',
@@ -544,6 +757,8 @@ export class LanguageService {
           'Deceased',
           'Unwilling to share',
         ],
+        parentData: ['Both Alive', 'Single Parent', 'Both Deceased'],
+        parentNames: ['Father', 'Mother'],
         fatherOccupationDetail:
           "Please elaborate to share details about father's Occupation",
         fatherOccupationDetailData: '',
@@ -553,9 +768,10 @@ export class LanguageService {
         fatherEducationData: [
           'Below 5th',
           'Completed 10th',
+          'Completed 12th',
           'Diploma/ITI',
-          'Completed  12th',
           'Completed Graduation',
+          'Completed Post Graduation',
         ],
         motheOccupationType: 'Type of Occupation (Mother)',
         motheOccupationTypeHint:
@@ -568,6 +784,10 @@ export class LanguageService {
           'Deceased',
           'Unwilling to share',
         ],
+        aliveData: ['Alive', ' Not Alive'],
+        phisycalData: ['Physically ill', ' Mentally ill', ' Terminal illness'],
+        languageData: ['Tamil', 'English'],
+
         motherOccupationDetails:
           "Please elaborate to share details about mother's Occupation",
         motherOccupationDetailsData: '',
@@ -648,6 +868,15 @@ export class LanguageService {
         unInrestedSubject: 'Which subject do you the like the least?',
         pursueHigherEducation: 'Do you want to pursue higher education?',
         radioButton: ['Yes', 'No'],
+        genderData: ['Male', 'Female', 'Transgender'],
+        guideData: [
+          'Parents',
+          'Teachers',
+          'Friends',
+          'Career Counsellor',
+          'Other',
+        ],
+
         IntrestedCourse:
           'If you do want to pursue higher education, do you have confusion about what course to study?',
         IntrestedCollege:
@@ -658,6 +887,16 @@ export class LanguageService {
           'Are you worried about high fees in the college of your choice?',
         higherEducationAwayFromHometown:
           'Are you interested to pursue your higher graduation away from your home town ?',
+        worriedAboutFamily:
+          'Are you worried about your family pressure / situation may create disturbances leads to discontinue from Higher Education ?',
+        higherEducationAwayFromHometownData: [
+          'Nervousness of leaving home town',
+          'Lack of Proper Information',
+          'Financial Constraints in family ',
+          'Insecurity',
+          'Other',
+          'No Challenges',
+        ],
         challengesInHigherEducation:
           'Please select any of the following reasons if you expect any challenge in pursuing your higher graduation away from your home town?',
         challengesInHigherEducationData: [
@@ -666,6 +905,15 @@ export class LanguageService {
           'Financial Constraints in family',
           'Other',
           'No Challenges',
+        ],
+        appliedEntranceExamData: [
+          'JEE',
+          'NEET',
+          'CLAT',
+          'NATA',
+          'CUET',
+          'NDA',
+          'Other',
         ],
         specilaztions:
           'Which field do you want to pursue your higher education?',
@@ -690,7 +938,8 @@ export class LanguageService {
         preferJobData: [
           'Working in a Government Job',
           'Working in a Private Job',
-          ' Running my own Business',
+          'Running my own Business',
+          'No preference ',
         ],
         // entranceExamGov: '',
         entranceGovExam:
@@ -707,9 +956,172 @@ export class LanguageService {
           'IPBS (Banking) Exam',
           'NDA (Defence)',
           'CDS (Defence)',
+          'RBI Exam - Reserve Bank of India',
+          'PSU Exams ',
         ],
+
         interestedSectors:
           'Which of the following sectors do you think would be of interest to you? Select all that apply?',
+
+        /*
+New student survey form details - dated on oct 07
+*/
+
+        emsId: 'EMIS Id',
+        studentFullName: 'Full Name',
+        //studentMedium:'Medium of the Instruction',
+        studentLocation: 'Where is your home? Is it located in',
+        //fatherOccupation:'Type of Occupation (Father)',
+        //fatherOccupationDetail:"Please elaborate to share details about father's Occupation",
+        //fatherEducation:'Educational Qualification (Father)'
+        //fatherOccupation:'Type of Occupation (Mother)',
+        //fatherOccupationDetail:"Please elaborate to share details about mother's Occupation"
+        /*
+Aaademic Interest
+*/
+        /*
+Higher Education Interest & Aspirations
+*/
+        higherEducation: 'Would you like to pursue higher education?',
+        likeHigherEducation:
+          'If yes, why do you feel it is important to pursue Higher Education?',
+        graduationAwayFromHometown:
+          'Are you interested / Ready to pursue your higher graduation away from your home town?',
+          accessedGovtSchemes:'What are the Govt schemes you have accessed so far in line with Education ',
+          certificates:'Do you have the necessary certifiates currently to pursue Higher Education?',
+          CertificateList:'if yes choose from the list',
+          CertificateListData:['SSLC', 'HSC', 'Birth Certificate', 'Community Certificate', 'Income Certificate', 'Transfer Certificate', 'other'],
+
+        /*
+End student survey form
+*/
+
+/**
+ * New Form
+ *
+ * **/
+ //district:'District',
+ eddistrict:'Ed District',
+ eDistrict:'District',
+ ePinCode:'Pin Code',
+ //block:'Block',
+ eFullName:'Full Name',
+ emedium: 'Medium of Instruction',
+ schoolName:'School Name',
+ UDISE:'UDISE',
+ registerNumber:'RegisterNumber',
+ emisNumber:'EMIS Number',
+ //fullName:'Full Name'
+
+ contact:'Current Contact Mobile Number',
+ whatsappNumber:'Current Contact WhatApp Number',
+ alternateNumber:'Alternative Number',
+areaLocated:'City/ Town /Village',
+takuk:'Block / Taluk',
+group:'Group',
+mark:'Mark',
+pass:'Pass / Fail',
+hscPassoutYear:'HSC Passout Year',
+appliedCollges:'Have you Applied for any Colleges / Universities',
+appliedCollgesData:[
+'12th failed',
+'Attending Improvement exam',
+'Did not attend +2 Exam',
+'Doing business',
+'Family issues',
+'Family not allowing',
+'Financial Reasons',
+'Own Health issues',
+'Family Health Issues',
+'Married',
+'No near-by colleges',
+'Not interested in studying',
+'Waiting for counselling',
+'Started Working locally (to meet financial need)',
+'Others'
+],
+appiledEntranceExam:'Have you Written any Entrance Exam',
+entranceExamData:[
+  'Multiple checkbox Dropdown list',
+'JEE Mains',
+'JEE Advanced',
+'All India Law Entrance Test (AILET)',
+'Bachelor of Science - Research Program (IIsc)',
+'ISI (Indian Statistical Institute)Admission Test',
+'NEET(Nationl Eligibility cum Entrance Test) UG',
+'BITS Admission Test - BITSAT',
+'National Defence Academy & Naval Academy Examination (NDANA)',
+'National Institute of Fashion Design (NIFT) - Ability Test ',
+'NID Design Aptitude Test – DAT',
+'National Aptitude Test in Architecture – NATA',
+'CUET/CUCET',
+'CLAT',
+'Others'
+],
+counsiling:'Are You Waiting for Counseling',
+counsilingData:[
+  'Paramedical',
+'Engineering',
+'Agriculture',
+'horticulture',
+'Veterinary',
+'Fisheries',
+'Law',
+'JOSAA',
+'Neet',
+'Others',
+],
+eradioButton: ['Yes', 'No'],
+appliedColleges:'Specific Colleges / Universities / Diploma Courses you have applied',
+collegeName:'College(s) Name',
+coursesLabel:'Course(s)',
+collegeType:'College(s) Type ',
+collegeTypeData:[
+  'Private College/ University',
+'Government College/ University',
+'ITI'
+],
+eadmission:'Have you got admission in any college/ University?',
+solutionProvide:'What solution was provided',
+solutionProvidedData:[
+'Scholarship',
+'Bank Loan',
+'Skill Development Course',
+'Spot admission',
+'Family/ Personal Counselling',
+'Career and Re-attempt counselling'
+],
+scholorship:'Scholarship',
+sponsor:'Name of Sponsor',
+sponsorType:'Type of Sponsor',
+sponsorTypeData:[
+ ' Dropdown list',
+'Individual',
+'Corporate',
+'NGO'
+],
+amountLabel:'Amount (in Rs.)',
+bankloan:'Bank Loan',
+bankName:'Bank Name',
+Branch:'Branch',
+spotAdmission:'Spot Admission',
+course:'Course',
+collegeTypeLabel:'College Type ',
+reattemptCounseling:'Family/ Career Re-attempt Counselling',
+suggestion:'Suggestion given',
+filledForm:'Who Filled the Form',
+nameLabel:'Name',
+contactNumber:'Contact Number',
+
+
+
+
+
+/**
+ * End New Form
+ *
+ * **/
+
       };
     }
   }

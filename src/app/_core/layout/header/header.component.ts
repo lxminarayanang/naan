@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalComponent } from '@shared/components';
 import { CommonService } from '@shared/services/common/common.service';
@@ -17,9 +17,13 @@ export class HeaderComponent implements OnInit {
   language: any = true;
   isLoggedIn: boolean = false;
   public token: any;
-
+  loginForm = this._formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required],
+  });
   constructor(
     public service: CommonService,
+    private _formBuilder: FormBuilder,
     public lang: LanguageService,
     public router: Router
   ) {
@@ -32,8 +36,9 @@ export class HeaderComponent implements OnInit {
       : false;
   }
 
-  login(ngForm: NgForm) {
-    const loginData = ngForm.form.value;
+  login(ngForm: any) {
+    debugger;
+    const loginData = this.loginForm.value;
 
     const payload = {
       username: loginData.username,
@@ -77,6 +82,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/main/categories']);
   }
 
+  dashoard() {
+    this.router.navigate(['/student-detail/profile']);
+  }
+
+  studentForm(): void {
+    this.router.navigate(['/student/profile']);
+  }
   openLoginModal() {
     this.loginModalState = 'open';
     this.loginModal.open();

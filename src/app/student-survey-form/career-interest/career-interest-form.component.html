@@ -1,0 +1,215 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="carrerInfoForm">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.jobSector }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            formControlName="preferJobSectos"
+            [(ngModel)]="preferedJobValue"
+            (ngModelChange)="getPreferedJobData(preferedJobValue)"
+          >
+            <mat-option
+              *ngFor="let item of lang.language.preferJobData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.entranceGovExam }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            formControlName="interestedGoverementJobs"
+            multiple
+          >
+            <mat-option
+              *ngFor="let item of lang.language.entranceGovExamJobsData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.sectorInterested }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select
+            placeholder=""
+            formControlName="interestedSectors"
+            multiple
+          >
+            <mat-option *ngFor="let item of careersData" [value]="item.field">{{
+              item.field
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+
+      <!-- <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.careerGuidance }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="careerGuidance"
+          [(ngModel)]="careerDataModel"
+          (ngModelChange)="onChangecareerDataModel(careerDataModel)"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && carrerInfoForm.get('careerGuidance').invalid"
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div> -->
+<!--
+      <div class="col-md-12 labelRow" *ngIf="careerDataModelVaue === 'Yes'">
+        <div>
+          <mat-label>{{ lang.language.guide }}</mat-label>
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select formControlName="guide">
+            <mat-option
+              *ngFor="let item of lang.language.guideData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.abroadCourse }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="abroadCourse"
+        >
+          <ng-container *ngFor="let item of lang.language.radioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="submitted && carrerInfoForm.get('abroadCourse').invalid"
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div> -->
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onSubmit()">Submit</button>
+      <button mat-button class="matBackButton" (click)="onClickBack()">
+        Back
+      </button>
+    </div>
+  </form>
+   <!--Phone Modal -->
+   <div
+   class="modal fade"
+   id="successModal"
+   data-bs-backdrop="static"
+   data-bs-keyboard="false"
+   tabindex="-1"
+   aria-labelledby="successModalLabel"
+   aria-hidden="true"
+ >
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content br-20">
+       <div class="text-end pe-3 pt-2">
+         <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+           (click)="toBack()"
+         ></button>
+       </div>
+       <div class="modal-body text-center">
+         <div class="d-flex justify-content-center pb-2">
+           <img src="/assets/images/icons/education.png" height="60" />
+         </div>
+         <h1 class="d-blue pb-2">Submitted successfully!</h1>
+       </div>
+     </div>
+   </div>
+ </div>
+ <div
+   class="modal fade"
+   id="alertModal"
+   data-bs-backdrop="static"
+   data-bs-keyboard="false"
+   tabindex="-1"
+   aria-labelledby="successModalLabel"
+   aria-hidden="true"
+ >
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content br-20">
+       <div class="text-end pe-3 pt-2">
+         <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+           (click)="toClose()"
+         ></button>
+       </div>
+       <div class="modal-body text-center">
+         <p
+           class="d-blue pb-4"
+           style="font-size: 28px !important; color: #dc3545"
+         >
+           Please fill all mandatory fields!
+         </p>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>

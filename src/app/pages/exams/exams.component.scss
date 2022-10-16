@@ -3,11 +3,31 @@
 .card-banner {
   margin: 18px;
   border-radius: 10px;
-  border-color: rgb(128, 126, 126) 1px solid;
-  box-shadow: 1px 5px 9px 5px #dfdede;
-  border: 1px solid rgb(224, 224, 224);
-  background-size: 200% 200%;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // border-color: rgb(128, 126, 126) 1px solid;
+  // box-shadow: 1px 5px 9px 5px #dfdede;
+  // border: 1px solid rgb(224, 224, 224);
+  // background-size: 200% 200%;
 }
+.icon-container {
+  padding: 5px;
+  width: 140px;
+  // padding-left: 20px;
+  // padding-right: 20px;
+}
+
+.choose-button {
+  text-align: center;
+  background-color: #b09f0080;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 800;
+}
+
 .container {
   position: relative;
   // text-align: center;
@@ -138,20 +158,20 @@
   border-top: none !important;
 }
 
-.card-banner:hover {
-  color: #000 !important;
-  background-position: 0 100%;
-  -webkit-transition: background-position 700ms, color 700ms ease,
-    border-color 700ms ease;
-  -moz-transition: background-position 700ms, color 700ms ease,
-    border-color 700ms ease;
-  -ms-transition: background-position 700ms, color 700ms ease,
-    border-color 700ms ease;
-  -o-transition: background-position 700ms, color 700ms ease,
-    border-color 700ms ease;
-  transition: background-position 700ms, color 700ms ease,
-    border-color 700ms ease;
-}
+// .card-banner:hover {
+//   color: #000 !important;
+//   background-position: 0 100%;
+//   -webkit-transition: background-position 700ms, color 700ms ease,
+//     border-color 700ms ease;
+//   -moz-transition: background-position 700ms, color 700ms ease,
+//     border-color 700ms ease;
+//   -ms-transition: background-position 700ms, color 700ms ease,
+//     border-color 700ms ease;
+//   -o-transition: background-position 700ms, color 700ms ease,
+//     border-color 700ms ease;
+//   transition: background-position 700ms, color 700ms ease,
+//     border-color 700ms ease;
+// }
 
 .text-white {
   color: white !important;
@@ -162,10 +182,16 @@
 }
 .card-banner-courses {
   color: #ad1313;
+  background-image: url("../../../assets/images/landing-page/courses.png");
+  background-size: auto;
+  background-position: center;
+  background-origin: border-box;
+  font-weight: 700;
+  color: white;
 }
-.card-banner-courses:hover {
-  background-image: linear-gradient(to top, #ad1313 50%, transparent 50%);
-}
+// .card-banner-courses:hover {
+//   background-image: linear-gradient(to top, #ad1313 50%, transparent 50%);
+// }
 .cards-hover-courses {
   background-color: #ad1313;
   color: #fff !important;
@@ -176,10 +202,16 @@
 }
 .card-banner-exams {
   color: #1f7499;
+  background-image: url("../../../assets/images/landing-page/exam.png");
+  background-size: auto;
+  background-position: center;
+  background-origin: border-box;
+  font-weight: 700;
+  color: white;
 }
-.card-banner-exams:hover {
-  background-image: linear-gradient(to top, #1f7499 50%, transparent 50%);
-}
+// .card-banner-exams:hover {
+//   background-image: linear-gradient(to top, #1f7499 50%, transparent 50%);
+// }
 .cards-hover-exam {
   background-color: #1f7499;
   color: white !important;
@@ -190,10 +222,16 @@
 }
 .card-banner-college {
   color: #379683;
+  background-image: url("../../../assets/images/landing-page/colleges.png");
+  background-size: auto;
+  background-position: center;
+  background-origin: border-box;
+  font-weight: 700;
+  color: black;
 }
-.card-banner-college:hover {
-  background-image: linear-gradient(to top, #379683 50%, transparent 50%);
-}
+// .card-banner-college:hover {
+//   background-image: linear-gradient(to top, #379683 50%, transparent 50%);
+// }
 .cards-hover-colleges {
   background-color: #379683;
   color: #fff !important;
@@ -204,10 +242,16 @@
 }
 .card-banner-scholarships {
   color: #f0e100;
+  background-image: url("../../../assets/images/landing-page/scholarship.png");
+  background-size: auto;
+  background-position: center;
+  background-origin: border-box;
+  font-weight: 700;
+  color: white;
 }
-.card-banner-scholarships:hover {
-  background-image: linear-gradient(to top, #f0e100 50%, transparent 50%);
-}
+// .card-banner-scholarships:hover {
+//   background-image: linear-gradient(to top, #f0e100 50%, transparent 50%);
+// }
 .cards-hover-scholarships {
   background-color: #f0e100;
   color: white !important;
@@ -218,10 +262,16 @@
 }
 .card-banner-careers {
   color: #55b5dd;
+  background-image: url("../../../assets/images/landing-page/careers.png");
+  background-size: auto;
+  background-position: center;
+  background-origin: border-box;
+  font-weight: 700;
+  color: black;
 }
-.card-banner-careers:hover {
-  background-image: linear-gradient(to top, #55b5dd 50%, transparent 50%);
-}
+// .card-banner-careers:hover {
+//   background-image: linear-gradient(to top, #55b5dd 50%, transparent 50%);
+// }
 .cards-hover-careers {
   background-color: #55b5dd;
   color: white !important;
@@ -229,11 +279,17 @@
 
 .card-banner-loans {
   color: #407bff;
+  background-image: url("../../../assets/images/landing-page/loans.png");
+  background-size: auto;
+  background-position: center;
+  background-origin: border-box;
+  font-weight: 700;
+  color: white;
 }
-.card-banner-loans:hover {
-  background-image: linear-gradient(to top, #896a98 50%, transparent 50%);
-  color: #407bff;
-}
+// .card-banner-loans:hover {
+//   background-image: linear-gradient(to top, #896a98 50%, transparent 50%);
+//   color: #407bff;
+// }
 .cards-hover-loans {
   background-color: #896a98;
   color: white !important;
@@ -289,6 +345,9 @@
 .cardTextPadding {
   padding: 40px !important;
   float: left;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
 }
 .card-colleges {
   border-radius: 15px;
@@ -389,3 +448,24 @@
 .cursor-pointer {
   cursor: pointer !important;
 }
+
+@media screen and (max-width: 1400px) {
+  .cardTextPadding {
+    padding: 40px 0px !important;
+    font-size: 15px;
+    float: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  img.mx-3.mt-3.cardLeft {
+    width: 50px;
+    height: 50px;
+  }
+}
+// @media screen and (max-width: 1040px) {
+//   img.mx-3.mt-3.cardLeft {
+//     width: 50px;
+//     height: 50px;
+//   }
+// }

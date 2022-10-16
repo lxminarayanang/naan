@@ -47,3 +47,137 @@
 .labelRow {
   margin-bottom: 10px !important ;
 }
+
+////////////////////////////////
+//    GENERAL IGNORE CODE    //
+//////////////////////////////
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+$primary: #435560;
+$secondary: #939598;
+$tertiary: #414042;
+$accent: #fca500;
+$white: #fff;
+
+@mixin azo-sans-web {
+  font-family: "azo-sans-web", sans-serif;
+}
+@mixin fw-xbold {
+  font-weight: 800;
+}
+@mixin fw-bold {
+  font-weight: 700;
+}
+@mixin fw-medium {
+  font-weight: 500;
+}
+@mixin fw-regular {
+  font-weight: 400;
+}
+@mixin fw-light {
+  font-weight: 300;
+}
+@mixin fw-thin {
+  font-weight: 200;
+}
+@mixin clearfix {
+  &:before,
+  &:after {
+    clear: both;
+    display: table;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    content: "";
+  }
+}
+body {
+  width: 100%;
+  margin: 0 auto;
+  height: auto;
+  max-width: 1400px;
+  padding: 15px;
+}
+
+h5 {
+  margin-bottom: 0;
+}
+
+h5 a {
+  @include azo-sans-web;
+  @include fw-regular;
+  font-size: 22px;
+  line-height: 32px;
+  color: $primary;
+  margin: 0;
+
+  &:hover {
+    color: $primary;
+  }
+}
+
+p {
+  @include azo-sans-web;
+  @include fw-thin;
+  line-height: 26px;
+  color: $tertiary;
+  margin: 0;
+}
+////////////////////////////////
+//    Accordion Styles    //
+//////////////////////////////
+
+#accordion {
+  .card {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    border-bottom: 1px solid #d1d3d4;
+    .card-header {
+      background: none;
+      border: none;
+      padding: 25px 0;
+
+      &.top-headline {
+        padding: 0 0 25px;
+      }
+    }
+    .card-body {
+      padding: 0 0 25px;
+    }
+  }
+}
+////////////////////////////////
+//    Tab/Pills Styles    //
+//////////////////////////////
+
+.vertical-tabs {
+  .nav-link {
+    text-transform: uppercase;
+    color: $secondary;
+    @include azo-sans-web;
+    font-size: 12px;
+    @include fw-medium;
+    border-radius: 0;
+    padding: 30px;
+    @media (min-width: 768px) {
+      border-bottom: 1px solid #d1d3d4;
+    }
+  }
+  .nav-link.active {
+    background: $accent;
+    color: $white;
+    border-bottom: none;
+  }
+
+  .tab-content {
+    margin-top: 30px;
+    @media (min-width: 768px) {
+      margin-top: 22px;
+    }
+  }
+}

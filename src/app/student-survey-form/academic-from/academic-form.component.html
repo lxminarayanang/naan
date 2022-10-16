@@ -1,0 +1,58 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="academicInfoForm">
+    <div class="row">
+
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.intrestedSubject }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select formControlName="mostIntrestedSubject">
+            <ng-container
+              *ngFor="let item of lang.language.intrestedSubjectData"
+            >
+              <mat-option [value]="item">{{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label
+            >{{ lang.language.unInrestedSubject }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-select formControlName="leastintrestedSubject">
+            <ng-container
+              *ngFor="let item of lang.language.intrestedSubjectData"
+            >
+              <mat-option [value]="item">{{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+      <button mat-button class="matBackButton" (click)="onClickBack()">
+        Back
+      </button>
+    </div>
+  </form>
+</div>

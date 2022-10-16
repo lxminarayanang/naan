@@ -1,0 +1,82 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="profileInfoFormGroup">
+    <div class="row">
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.eDistrict }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="District">
+            <ng-container *ngFor="let item of distrcitData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+
+        <mat-label
+          >{{ lang.language.eddistrict }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="Sub_District">
+            <ng-container *ngFor="let item of subDistrictData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-md-12 labelRow">
+        <mat-label
+          >{{ lang.language.schoolName }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+
+          <mat-select formControlName="School_Name">
+            <ng-container *ngFor="let item of schoolData">
+              <mat-option [value]="item"> {{ item }}</mat-option>
+            </ng-container>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12 labelRow">
+        <mat-label class="required"
+          >{{ lang.language.UDISE }}
+          <span class="mat-placeholder-required mat-form-field-required-marker">
+            *</span
+          ></mat-label
+        >
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="number"
+            placeholder=""
+            value=""
+            formControlName="udise_code"
+            maxlength="100"
+            readonly
+
+          />
+        </mat-form-field>
+      </div>
+
+
+    </div>
+    <p class="mat-danger labelRow">(*) mandatory</p>
+    <div>
+      <button mat-button class="matButton" (click)="onClickNext()">Next</button>
+    </div>
+  </form>
+</div>

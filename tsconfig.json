@@ -7,7 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -17,6 +17,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "strictPropertyInitialization": false,
+
     "target": "es2017",
     "module": "es2020",
     "types": ["node", "lodash", "express", "zone.js"],

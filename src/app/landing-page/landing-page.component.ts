@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from '@shared/services/common/common.service';
 import { LanguageService } from '@shared/services/common/language.service';
+import { HttpClient,HttpErrorResponse } from "@angular/common/http";
+import {FormControl} from '@angular/forms';
+
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
 
 @Component({
   selector: 'app-landing-page',
@@ -13,19 +18,51 @@ export class LandingPageComponent implements OnInit {
   title = '';
   examsList: any[] = [];
   section: any;
+  searchKeyData:any[]=[];
+  myControl = new FormControl();
+  options: any[] = [];
+  filteredOptions: Observable<string[]>;
+
 
   examsNotifications: any = [];
 
+  testimonyItems: any = [{
+    title: "ENTERTAINMENT",
+    sentence: "The lovely duck shockingly sliced because some plastic quickly dodged on",
+    src: "/assets/images/landing-page/scholar.png",
+  }, {
+    title: "SPORTS",
+    sentence: "The lovely duck shockingly sliced because some plastic quickly dodged on",
+    src: "/assets/images/landing-page/mentorchoose.png",
+  }, {
+    title: "HEADLINE",
+    sentence: "The lovely duck shockingly sliced because some plastic quickly dodged on",
+    src: "/assets/images/landing-page/sponsor.png",
+  }, {
+    title: "MOVIE",
+    sentence: "The lovely duck shockingly sliced because some plastic quickly dodged on",
+    src: "/assets/images/landing-page/scholar.png",
+  },
+  //  {
+  //   title: "EDUCATION",
+  //   sentence: "The lovely duck shockingly sliced because some plastic quickly dodged on",
+  //   src: "/assets/images/landing-page/sponsor.png",
+  // }
+]
+   searchValue:any
   currentDate: any = '';
 
   constructor(
     public service: CommonService,
     public lang: LanguageService,
-    public route: Router
+    public route: Router,
+    private httpClient: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.currentDate = new Date();
+    this.getSearchKey();
+
     this.latestNotifications();
     this.lang.events$.forEach((event) => {
       const myArray = this.route.url.split('/');
@@ -34,6 +71,24 @@ export class LandingPageComponent implements OnInit {
         this.latestNotifications();
       }
     });
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
+  }
+
+  public changeSearchValue(data:any):void{
+    this.filteredOptions = data
+    .pipe(
+      startWith(''),
+      map((value:string) => this._filter(value))
+    );
+  }
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   latestNotifications() {
@@ -49,8 +104,18 @@ export class LandingPageComponent implements OnInit {
       debugger;
       this.examsNotifications = res.results;
       //  this.examsNotifications.push({"link":"/../../assest/Uyar_Kalvi_Vazhikkatti_Book_Draft.pdf","startDate":new Date(),"name":"Career Guidance - Class 11&12" })
-      console.log(this.examsNotifications);
+
     });
+  }
+
+  getSearchKey() {
+    this.httpClient.get<any>("assets/mock-json/search-key.json").subscribe((data)=>{
+      this.options = data.results.rows
+      console.log({"searchKeyData":this.searchKeyData})
+    }
+
+
+  )
   }
 
   moveTo(page: any) {
