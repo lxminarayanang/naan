@@ -400,7 +400,7 @@
         >
         <mat-form-field class="example-full-width" appearance="fill">
 
-          <mat-select formControlName="Exam_List">
+          <mat-select formControlName="Exam_List" multiple>
             <ng-container *ngFor="let item of lang.language.entranceExamData">
               <mat-option [value]="item"> {{ item }}</mat-option>
             </ng-container>
@@ -458,7 +458,7 @@
         >
         <mat-form-field class="example-full-width" appearance="fill">
 
-          <mat-select formControlName="List_of_conselling">
+          <mat-select formControlName="List_of_conselling" multiple>
             <ng-container *ngFor="let item of lang.language.counsilingData">
               <mat-option [value]="item"> {{ item }}</mat-option>
             </ng-container>
@@ -481,7 +481,9 @@
           ></textarea>
         </mat-form-field>
       </div>
+
       <div class="col-md-12 labelRow">
+        <p class="mb-2">{{ lang.language.appliedColleges }}</p>
         <mat-label class="required"
           >{{ lang.language.collgeName }}
           <span class="mat-placeholder-required mat-form-field-required-marker">
@@ -664,4 +666,5 @@
       </button>
     </div>
   </form>
+
 </div>

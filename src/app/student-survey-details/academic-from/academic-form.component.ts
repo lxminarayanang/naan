@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
@@ -25,10 +25,10 @@ export class AcademicFormComponent implements OnInit {
     Register_Number: ['', Validators.required],
     EMIS_number: ['', Validators.required],
     Name: ['', Validators.required],
-    Phone_Number: ['',  [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-    Current_Contact_Number: ['',  [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-    Current_Whatsapp_Number: ['',  [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
-    Alternative_Number: ['',  [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+    Phone_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
+    Current_Contact_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
+    Current_Whatsapp_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
+    Alternative_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
     Location: ['', Validators.required],
     Taluk: ['', Validators.required],
     District: ['', Validators.required],
@@ -63,8 +63,11 @@ export class AcademicFormComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public lang: LanguageService,
     private _router: Router,
-    private _commonService:CommonService
-  ) {}
+    private _commonService:CommonService,
+    private el: ElementRef
+  ) {
+
+  }
   ngOnInit() {
     window.scrollTo(0, 0);
     this.GetStudentDetails();
@@ -135,17 +138,25 @@ districtData.push(item.District)
 
   public onClickNext(): void {
     this.submitted = true;
-        JSON.stringify(this.studentProfile.value)
-    if (this.studentProfile.valid) {
+
+    if(this.studentProfile.invalid){
+      for (const key of Object.keys(this.studentProfile.controls)) {
+        if (this.studentProfile.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+  }
+    }
+   else {
       localStorage.setItem(
         'studentDetail',
         JSON.stringify(this.studentProfile.value)
       );
-
-      //this._router.navigate[('')]
       this._router.navigate(['/survey/solution-provided']);
     }
   }
+
   public onClickBack(): void {
     this._router.navigate(['/survey/alumni2022']);
   }

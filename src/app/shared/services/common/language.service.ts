@@ -1089,7 +1089,8 @@ solutionProvidedData:[
 'Skill Development Course',
 'Spot admission',
 'Family/ Personal Counselling',
-'Career and Re-attempt counselling'
+'Career and Re-attempt counselling',
+'None'
 ],
 scholorship:'Scholarship',
 sponsor:'Name of Sponsor',

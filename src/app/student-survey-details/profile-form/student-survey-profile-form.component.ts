@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import {
   AbstractControl,
@@ -38,7 +38,8 @@ export class StudentSurveyProfileFormComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public lang: LanguageService,
     private _router: Router,
-    private _commonService: CommonService
+    private _commonService: CommonService,
+    private el: ElementRef
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
@@ -96,8 +97,17 @@ export class StudentSurveyProfileFormComponent implements OnInit {
   public onClickNext(): void {
 
     this.submitted = true;
+    if(this.profileInfoFormGroup.invalid){
+      for (const key of Object.keys(this.profileInfoFormGroup.controls)) {
+        if (this.profileInfoFormGroup.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
 
-    if (this.profileInfoFormGroup.valid) {
+   else{
       localStorage.setItem(
         'profileFormValue',
         JSON.stringify(this.profileInfoFormGroup.value)
