@@ -62,7 +62,6 @@ export class CareerFormComponent implements OnInit {
       localStorage.getItem('solutionFormData') as string
     );
     this.solutionForm.controls.type.valueChanges.subscribe((value: string) => {
-      debugger;
       this.getType(value);
     });
     if (this.profileEditData) {
@@ -223,12 +222,12 @@ export class CareerFormComponent implements OnInit {
       this._commonService
         .postService('/add_student_details', payload)
         .subscribe((res: any) => {
-          debugger;
           if (res.status == 200) {
             $('#successModal').modal('show');
             localStorage.removeItem('solutionFormData');
             localStorage.removeItem('profileFormValue');
             localStorage.removeItem('studentDetail');
+            localStorage.removeItem('udise_code');
           }
         });
     }
@@ -266,7 +265,7 @@ export class CareerFormComponent implements OnInit {
   keyPressAlphaCharacters(event: any) {
     var inp = String.fromCharCode(event.keyCode);
     // Allow numbers, alpahbets, space, underscore
-    if (/[a-zA-Z]/.test(inp)) {
+    if (/[a-zA-Z_ ]/.test(inp)) {
       return true;
     } else {
       event.preventDefault();

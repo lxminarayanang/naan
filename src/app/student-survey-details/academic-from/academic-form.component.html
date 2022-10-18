@@ -206,7 +206,7 @@
             placeholder=""
             value=""
             formControlName="pincode"
-            maxlength="100"
+            maxlength="6"
           />
         </mat-form-field>
       </div>
@@ -486,9 +486,7 @@
         <p class="mb-2">{{ lang.language.appliedColleges }}</p>
         <mat-label class="required"
           >{{ lang.language.collgeName }}
-          <span class="mat-placeholder-required mat-form-field-required-marker">
-            *</span
-          ></mat-label
+          </mat-label
         >
         <mat-form-field class="example-full-width" appearance="fill">
           <input
@@ -505,9 +503,7 @@
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.coursesLabel }}
-          <span class="mat-placeholder-required mat-form-field-required-marker">
-            *</span
-          ></mat-label
+          </mat-label
         >
         <mat-form-field class="example-full-width" appearance="fill">
           <input
@@ -525,11 +521,9 @@
         <div>
           <mat-label
             >{{ lang.language.collegeType }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
+            <span *ngIf="collegeTypeValueCheck" class="mat-placeholder-required mat-form-field-required-marker">
               *</span
-            ></mat-label
+            > </mat-label
           >
         </div>
         <mat-form-field class="example-full-width" appearance="fill">

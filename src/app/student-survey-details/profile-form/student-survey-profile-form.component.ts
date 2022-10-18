@@ -44,6 +44,7 @@ export class StudentSurveyProfileFormComponent implements OnInit {
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
+    localStorage.removeItem('udise_code')
     this._getStudentDetails();
     this.profileEditData = JSON.parse(
       localStorage.getItem('profileFormValue') as string
@@ -75,6 +76,7 @@ export class StudentSurveyProfileFormComponent implements OnInit {
   }
 
   private _getuid(value: string): void {
+    localStorage.removeItem('udise_code');
     const uidData = this.studentData.find((item: any) => item.School_Name===value);
     localStorage.setItem('udise_code',JSON.stringify(uidData?.udise_code))
     this.profileInfoFormGroup.patchValue({

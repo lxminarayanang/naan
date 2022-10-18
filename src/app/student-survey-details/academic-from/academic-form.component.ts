@@ -16,35 +16,48 @@ export class AcademicFormComponent implements OnInit {
   public userDetails: any = {};
   public profileEditData: any;
   public submitted: boolean = false;
-  public studentData:any[]=[]
-  public filteredData:any;
-  public registerNumbers:any[]=[];
-  public districtData:any[]=[];
-  public schoolDetails:any[]=[];
+  public studentData: any[] = [];
+  public filteredData: any;
+  public registerNumbers: any[] = [];
+  public districtData: any[] = [];
+  public schoolDetails: any[] = [];
+  public collegeTypeValueCheck: boolean = false;
 
   studentProfile: any = this._formBuilder.group({
     Register_Number: ['', Validators.required],
     EMIS_number: ['', Validators.required],
     Name: ['', Validators.required],
-    Phone_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
-    Current_Contact_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
-    Current_Whatsapp_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
-    Alternative_Number: ['',  [Validators.required, Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
+    Phone_Number: [
+      '',
+      [Validators.required, Validators.pattern('(0|91)?[6-9][0-9]{9}')],
+    ],
+    Current_Contact_Number: [
+      '',
+      [Validators.required, Validators.pattern('(0|91)?[6-9][0-9]{9}')],
+    ],
+    Current_Whatsapp_Number: [
+      '',
+      [Validators.required, Validators.pattern('(0|91)?[6-9][0-9]{9}')],
+    ],
+    Alternative_Number: [
+      '',
+      [Validators.required, Validators.pattern('(0|91)?[6-9][0-9]{9}')],
+    ],
     Location: ['', Validators.required],
     Taluk: ['', Validators.required],
     District: ['', Validators.required],
-    pincode: ['', Validators.required],
+    pincode: ['', [Validators.required,Validators.pattern(/^\d{6}$/)]],
     Group: ['', Validators.required],
     total_marks: ['', Validators.required],
     Result: ['', Validators.required],
     HSC_Passout_Year: ['', Validators.required],
     medium: ['', Validators.required],
     is_Applied_College: ['', Validators.required],
-    Reason_Not_Apply:[''],
+    Reason_Not_Apply: [''],
     Written_Entrance_Exam: ['', Validators.required],
-    List_of_conselling:[''],
+    List_of_conselling: [''],
     Waiting_for_Counselling: ['', Validators.required],
-    Exam_List:[''],
+    Exam_List: [''],
     Got_Admission: ['', Validators.required],
     admission_college: [''],
     admission_district: [''],
@@ -53,9 +66,9 @@ export class AcademicFormComponent implements OnInit {
     College_name: [''],
     admission_course: [''],
     College_Type: [''],
-    other_reason_list_of_counselling:[''],
-    other_reason_exam_list:[''],
-    other_reason_for_appplying_college:[]
+    other_reason_list_of_counselling: [''],
+    other_reason_exam_list: [''],
+    other_reason_for_appplying_college: [],
   });
 
   stepperOrientation: Observable<StepperOrientation>;
@@ -64,24 +77,122 @@ export class AcademicFormComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public lang: LanguageService,
     private _router: Router,
-    private _commonService:CommonService,
+    private _commonService: CommonService,
     private el: ElementRef
-  ) {
-
-  }
+  ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
-    const udise_code=JSON.parse(localStorage.getItem('udise_code') as string);
+    const udise_code = JSON.parse(localStorage.getItem('udise_code') as string);
     this.GetStudentDetails(udise_code);
     this._getStudentDetails();
-    this.studentProfile.controls.Register_Number.valueChanges.subscribe((value:string) => {
-     this._studentDataBasedOnRegisterNumber(value)
-});
-this.profileEditData = JSON.parse(
-  localStorage.getItem('studentDetail') as string
-);
+    this.studentProfile.controls.Register_Number.valueChanges.subscribe(
+      (value: string) => {
+        this._studentDataBasedOnRegisterNumber(value);
+      }
+    );
 
+    this.studentProfile.controls.College_name.valueChanges.subscribe(
+      (value: string) => {
+        if (value.replace(' ', '') && value.length > 0) {
+          this.studentProfile
+            .get('College_Type')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('College_Type').updateValueAndValidity();
+          this.collegeTypeValueCheck = true;
+        } else {
+          this.studentProfile.get('College_Type').clearValidators();
+          this.studentProfile.get('College_Type').updateValueAndValidity();
+          this.collegeTypeValueCheck = false;
+        }
+      }
+    );
 
+    this.studentProfile.controls.is_Applied_College.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'No') {
+          this.studentProfile
+            .get('Reason_Not_Apply')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('Reason_Not_Apply').clearValidators();
+          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
+        }
+      }
+    );
+    this.studentProfile.controls.Written_Entrance_Exam.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'Yes') {
+          this.studentProfile
+            .get('Exam_List')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('Exam_List').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('Exam_List').clearValidators();
+          this.studentProfile.get('Exam_List').updateValueAndValidity();
+        }
+      }
+    );
+    this.studentProfile.controls.Waiting_for_Counselling.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'Yes') {
+          this.studentProfile
+            .get('List_of_conselling')
+            .setValidators([Validators.required]);
+          this.studentProfile
+            .get('List_of_conselling')
+            .updateValueAndValidity();
+        } else {
+          this.studentProfile.get('List_of_conselling').clearValidators();
+          this.studentProfile
+            .get('List_of_conselling')
+            .updateValueAndValidity();
+        }
+      }
+    );
+    this.studentProfile.controls.Got_Admission.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'Yes') {
+          this.studentProfile
+            .get('admission_district')
+            .setValidators([Validators.required]);
+          this.studentProfile
+            .get('admission_course')
+            .setValidators([Validators.required]);
+          this.studentProfile
+            .get('admission_college')
+            .setValidators([Validators.required]);
+          this.studentProfile
+            .get('admission_college_type')
+            .setValidators([Validators.required]);
+          this.studentProfile
+            .get('admission_district')
+            .updateValueAndValidity();
+          this.studentProfile.get('admission_course').updateValueAndValidity();
+          this.studentProfile.get('admission_college').updateValueAndValidity();
+          this.studentProfile
+            .get('admission_college_type')
+            .updateValueAndValidity();
+        } else {
+          this.studentProfile.get('admission_district').clearValidators();
+          this.studentProfile.get('admission_course').clearValidators();
+          this.studentProfile.get('admission_college').clearValidators();
+          this.studentProfile.get('admission_college_type').clearValidators();
+          this.studentProfile
+            .get('admission_district')
+            .updateValueAndValidity();
+          this.studentProfile.get('admission_course').updateValueAndValidity();
+          this.studentProfile.get('admission_college').updateValueAndValidity();
+          this.studentProfile
+            .get('admission_college_type')
+            .updateValueAndValidity();
+        }
+      }
+    );
+
+    this.profileEditData = JSON.parse(
+      localStorage.getItem('studentDetail') as string
+    );
     if (this.profileEditData) {
       this.studentProfile.patchValue({
         Register_Number: this.profileEditData.Register_Number,
@@ -101,11 +212,11 @@ this.profileEditData = JSON.parse(
         HSC_Passout_Year: this.profileEditData.HSC_Passout_Year,
         medium: this.profileEditData.medium,
         is_Applied_College: this.profileEditData.is_Applied_College,
-        Reason_Not_Apply:this.profileEditData.Reason_Not_Apply,
+        Reason_Not_Apply: this.profileEditData.Reason_Not_Apply,
         Written_Entrance_Exam: this.profileEditData.Written_Entrance_Exam,
-        List_of_conselling:this.profileEditData.List_of_conselling,
+        List_of_conselling: this.profileEditData.List_of_conselling,
         Waiting_for_Counselling: this.profileEditData.Waiting_for_Counselling,
-        Exam_List:this.profileEditData.Exam_List,
+        Exam_List: this.profileEditData.Exam_List,
         Got_Admission: this.profileEditData.Got_Admission,
         admission_college: this.profileEditData.admission_college,
         admission_district: this.profileEditData.admission_district,
@@ -118,8 +229,7 @@ this.profileEditData = JSON.parse(
     }
   }
 
-
-  public GetStudentDetails(udise_code:string):void{
+  public GetStudentDetails(udise_code: string): void {
     this._commonService
 
       .getService(`/student_details?udise_code=${udise_code}`)
@@ -128,34 +238,34 @@ this.profileEditData = JSON.parse(
           this.studentData = res.results;
         }
       });
-
   }
 
   private _getStudentDetails(): void {
     this._commonService.getService(`/school_details`).subscribe((res: any) => {
       if (res.status == 200) {
         this.schoolDetails = res.results;
-        this.schoolDetails.forEach((item:any)=>{
-         this.districtData.push(item.District)
-        })
-        this.districtData=[...new Set(this.districtData)]
+        this.schoolDetails.forEach((item: any) => {
+          this.districtData.push(item.District);
+        });
+        this.districtData = [...new Set(this.districtData)];
       }
-    })
+    });
   }
 
   public onClickNext(): void {
     this.submitted = true;
-
-    if(this.studentProfile.invalid){
+    this.studentProfile.updateValueAndValidity();
+    if (this.studentProfile.invalid) {
       for (const key of Object.keys(this.studentProfile.controls)) {
         if (this.studentProfile.controls[key].invalid) {
-          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          const invalidControl = this.el.nativeElement.querySelector(
+            '[formcontrolname="' + key + '"]'
+          );
           invalidControl.focus();
           break;
-       }
-  }
-    }
-   else {
+        }
+      }
+    } else {
       localStorage.setItem(
         'studentDetail',
         JSON.stringify(this.studentProfile.value)
@@ -168,10 +278,12 @@ this.profileEditData = JSON.parse(
     this._router.navigate(['/survey/alumni2022']);
   }
 
-  private _studentDataBasedOnRegisterNumber(value:string):void{
-    debugger
-    this.filteredData=this.studentData.find((data:any)=>data.Register_Number=== value)
-    if(this.filteredData){
+  private _studentDataBasedOnRegisterNumber(value: string): void {
+    debugger;
+    this.filteredData = this.studentData.find(
+      (data: any) => data.Register_Number === value
+    );
+    if (this.filteredData) {
       this.studentProfile.patchValue({
         Phone_Number: this.filteredData.mobile,
         EMIS_number: this.filteredData.emis_id,
@@ -179,21 +291,20 @@ this.profileEditData = JSON.parse(
         Group: this.filteredData.Group_Name,
         total_marks: this.filteredData.total_marks,
         Result: this.filteredData.Result,
-        //HSC_Passout_Year: this.filteredData.mobile,
-        medium: this.filteredData.mobile==="E"?'English':"Tamil",
+        medium: this.filteredData.mobile === 'E' ? 'English' : 'Tamil',
       });
+    }
+  }
 
+  public keyPressAlphaCharacters(event: any) {
+    var inp = String.fromCharCode(event.keyCode);
+    // Allow numbers, alpahbets, space, underscore
+    if (/[a-zA-Z_ ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
     }
-    }
+  }
 
-    keyPressAlphaCharacters(event: any) {
-      var inp = String.fromCharCode(event.keyCode);
-      // Allow numbers, alpahbets, space, underscore
-      if (/[a-zA-Z]/.test(inp)) {
-        return true;
-      } else {
-        event.preventDefault();
-        return false;
-      }
-    }
 }
