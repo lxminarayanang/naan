@@ -35,6 +35,7 @@
         </mat-form-field>
       </div>
       <div class="col-md-12 labelRow">
+
         <mat-label
           >{{ lang.language.schoolName }}
           <span class="mat-placeholder-required mat-form-field-required-marker">
@@ -45,7 +46,7 @@
 
           <mat-select formControlName="School_Name">
             <ng-container *ngFor="let item of schoolData">
-              <mat-option [value]="item"> {{ item }}</mat-option>
+              <mat-option [value]="item"> {{ item}}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>

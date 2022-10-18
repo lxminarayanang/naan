@@ -6,10 +6,12 @@ export const environment = {
   production: false,
   encryptedReq: false,
   secretKey: 'track#0071#',
-  domain: 'http://ec2-3-90-213-241.compute-1.amazonaws.com/api/api/',
+  //domain: 'https://vazhikaatti.tnschools.gov.in/api/',
   //domain: 'http://43.204.33.103/api',
   //domain: 'http://naanmudhalvantest.com/api',
-  //domain:'http://localhost:8080/api/'
+  //domain: 'http://ec2-3-90-213-241.compute-1.amazonaws.com/api/api',
+  //domain:'http://localhost:8080/api'
+   domain : 'https://vazhikaatti.tnschools.gov.in/api'
 };
 
 /*

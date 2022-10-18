@@ -30,6 +30,7 @@ export class CareerFormComponent implements OnInit {
   public bankLoan: boolean = false;
   public spotAdmission: boolean = false;
   public districtData: any[] = [];
+  public schoolDetails:any[]=[];
 
   solutionForm: FormGroup = new FormGroup({
     type: new FormControl('', Validators.required),
@@ -55,7 +56,7 @@ export class CareerFormComponent implements OnInit {
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.GetStudentDetails();
+    this._getStudentDetails();
 
     this.profileEditData = JSON.parse(
       localStorage.getItem('solutionFormData') as string
@@ -94,18 +95,16 @@ export class CareerFormComponent implements OnInit {
     $('#alertModal').modal('close');
   }
 
-  public GetStudentDetails(): void {
-    this._commonService.getService(`student_details`).subscribe((res: any) => {
+  private _getStudentDetails(): void {
+    this._commonService.getService(`/school_details`).subscribe((res: any) => {
       if (res.status == 200) {
-        this.studentData = res.results;
-        this.studentData = res.results;
-        let districtData: any[] = [];
-        this.studentData.forEach((item: any) => {
-          districtData.push(item.District);
-        }),
-          (this.districtData = Array.from(new Set(districtData)));
+        this.schoolDetails = res.results;
+        this.schoolDetails.forEach((item:any)=>{
+         this.districtData.push(item.District)
+        })
+        this.districtData=[...new Set(this.districtData)]
       }
-    });
+    })
   }
 
   public onClickNext(): void {

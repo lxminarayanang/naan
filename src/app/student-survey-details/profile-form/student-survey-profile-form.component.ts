@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { CommonService } from '../../shared/services/common/common.service';
 import { LanguageService } from '../../shared/services/common/language.service';
+import { uniq } from 'lodash';
 declare var $: any;
 
 @Component({
@@ -43,7 +44,7 @@ export class StudentSurveyProfileFormComponent implements OnInit {
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.GetStudentDetails();
+    this._getStudentDetails();
     this.profileEditData = JSON.parse(
       localStorage.getItem('profileFormValue') as string
     );
@@ -60,33 +61,29 @@ export class StudentSurveyProfileFormComponent implements OnInit {
     );
   }
 
-  public _getDistrictData(value: string): void {
-
-    let data: any[] = [];
-    let schoolData: any[] = [];
+  private _getDistrictData(value: string): void {
+    this.subDistrictData=[];
+    this.schoolData=[];
       this.studentData.forEach((item: any) => {
       if (item.District === value) {
-        data.push(item.Sub_District);
-        schoolData.push(item.School_Name);
+        this.subDistrictData.push(item.Sub_District);
+        this.subDistrictData=[...new Set(this.subDistrictData)]
+        this.schoolData.push(item.School_Name);
+        this.schoolData=[...new Set(this.schoolData)]
       }
     });
-    this.subDistrictData = Array.from(new Set(data));
-    this.schoolData = Array.from(new Set(schoolData));
   }
-  public _getuid(value: string): void {
 
-      this.studentData .find((item: any) => {
-      if (item.School_Name.includes(value)) {
-        this.uidData.push(item);
-      }
-    });
+  private _getuid(value: string): void {
+    const uidData = this.studentData.find((item: any) => item.School_Name===value);
+    localStorage.setItem('udise_code',JSON.stringify(uidData?.udise_code))
     this.profileInfoFormGroup.patchValue({
-      udise_code: this.uidData[0]?.udise_code,
+      udise_code: uidData?.udise_code,
     });
   }
 
-  public GetStudentDetails(): void {
-    this._commonService.getService(`student_details`).subscribe((res: any) => {
+  private _getStudentDetails(): void {
+    this._commonService.getService(`/school_details`).subscribe((res: any) => {
       if (res.status == 200) {
         this.studentData = res.results;
         this._districtDataAssigning();
@@ -129,7 +126,7 @@ export class StudentSurveyProfileFormComponent implements OnInit {
     this.studentData.forEach((item: any) => {
       data.push(item.District);
     }),
-      (this.distrcitData = Array.from(new Set(data)));
+    this.distrcitData=[...new Set(data)]
 
   }
 }

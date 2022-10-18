@@ -7,6 +7,7 @@ import { AcademicFormComponent } from './academic-from/academic-form.component';
 import { CareerFormComponent } from './career-form/career-form.component';
 import { StudentSurveyProfileFormComponent } from './profile-form/student-survey-profile-form.component';
 import { StudentSurveyDetailComponent } from './student-survey-detail.component';
+import { UniquePipe } from '../shared/pipe/unique.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { StudentSurveyDetailComponent } from './student-survey-detail.component'
     CareerFormComponent,
     StudentSurveyProfileFormComponent,
     StudentSurveyDetailComponent,
+    UniquePipe
   ],
   imports: [
     CommonModule,

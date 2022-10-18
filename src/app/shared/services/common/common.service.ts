@@ -106,7 +106,8 @@ export class CommonService {
   // GET API Method
   getService(url: string, params?: any): any {
     debugger
-    if(url==='student_details'){
+    if(url.includes('school_details')  || url.includes('student_details')){
+
       return this.apiservice.getService(url);
     }
     const language = localStorage.getItem('language');

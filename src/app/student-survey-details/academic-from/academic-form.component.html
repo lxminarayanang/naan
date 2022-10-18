@@ -12,8 +12,8 @@
         <mat-form-field class="example-full-width" appearance="fill">
 
           <mat-select formControlName="Register_Number">
-            <ng-container *ngFor="let item of registerNumbers">
-              <mat-option [value]="item"> {{ item }}</mat-option>
+            <ng-container *ngFor="let item of studentData | unique">
+              <mat-option [value]="item.Register_Number"> {{ item.Register_Number }}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>

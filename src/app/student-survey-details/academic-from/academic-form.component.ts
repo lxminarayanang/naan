@@ -20,6 +20,7 @@ export class AcademicFormComponent implements OnInit {
   public filteredData:any;
   public registerNumbers:any[]=[];
   public districtData:any[]=[];
+  public schoolDetails:any[]=[];
 
   studentProfile: any = this._formBuilder.group({
     Register_Number: ['', Validators.required],
@@ -70,9 +71,10 @@ export class AcademicFormComponent implements OnInit {
   }
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.GetStudentDetails();
+    const udise_code=JSON.parse(localStorage.getItem('udise_code') as string);
+    this.GetStudentDetails(udise_code);
+    this._getStudentDetails();
     this.studentProfile.controls.Register_Number.valueChanges.subscribe((value:string) => {
-      debugger
      this._studentDataBasedOnRegisterNumber(value)
 });
 this.profileEditData = JSON.parse(
@@ -117,23 +119,28 @@ this.profileEditData = JSON.parse(
   }
 
 
-  public GetStudentDetails():void{
+  public GetStudentDetails(udise_code:string):void{
     this._commonService
-      .getService(`student_details`)
+
+      .getService(`/student_details?udise_code=${udise_code}`)
       .subscribe((res: any) => {
         if (res.status == 200) {
           this.studentData = res.results;
-          let data:any[]=[];
-          let districtData:any[]=[];
-  this.studentData.forEach((item:any)=>{
-data.push(item.Register_Number)
-districtData.push(item.District)
-          }),
-          this.registerNumbers=Array.from(new Set(data));
-          this.districtData=Array.from(new Set(districtData));
         }
       });
 
+  }
+
+  private _getStudentDetails(): void {
+    this._commonService.getService(`/school_details`).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.schoolDetails = res.results;
+        this.schoolDetails.forEach((item:any)=>{
+         this.districtData.push(item.District)
+        })
+        this.districtData=[...new Set(this.districtData)]
+      }
+    })
   }
 
   public onClickNext(): void {
