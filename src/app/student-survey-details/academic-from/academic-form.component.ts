@@ -22,10 +22,12 @@ export class AcademicFormComponent implements OnInit {
   public districtData: any[] = [];
   public schoolDetails: any[] = [];
   public collegeTypeValueCheck: boolean = false;
+  public isRegisterNumber: boolean = false;
 
   studentProfile: any = this._formBuilder.group({
-    Register_Number: ['', Validators.required],
-    EMIS_number: ['', Validators.required],
+    isRegisterNumber: ['', Validators.required],
+    Register_Number: [''],
+    EMIS_number: [''],
     Name: ['', Validators.required],
     Phone_Number: [
       '',
@@ -47,11 +49,11 @@ export class AcademicFormComponent implements OnInit {
     Taluk: ['', Validators.required],
     District: ['', Validators.required],
     pincode: ['', [Validators.required,Validators.pattern(/^\d{6}$/)]],
-    Group: ['', Validators.required],
-    total_marks: ['', Validators.required],
-    Result: ['', Validators.required],
+    Group: [''],
+    total_marks: [''],
+    Result: [''],
     HSC_Passout_Year: ['', Validators.required],
-    medium: ['', Validators.required],
+    medium: [''],
     is_Applied_College: ['', Validators.required],
     Reason_Not_Apply: [''],
     Written_Entrance_Exam: ['', Validators.required],
@@ -85,15 +87,69 @@ export class AcademicFormComponent implements OnInit {
     const udise_code = JSON.parse(localStorage.getItem('udise_code') as string);
     this.GetStudentDetails(udise_code);
     this._getStudentDetails();
+    this.studentProfile.controls.isRegisterNumber.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'No') {
+          this.studentProfile.patchValue({Name: '', Phone_Number: ''});
+          this.isRegisterNumber=false;
+          this.studentProfile
+          .get('Register_Number')
+          .clearValidators();
+          this.studentProfile
+          .get('EMIS_number')
+          .clearValidators();
+          this.studentProfile
+          .get('Group')
+          .clearValidators();
+          this.studentProfile
+          .get('total_marks')
+          .clearValidators();
+          this.studentProfile
+          .get('medium')
+          .clearValidators();
+          this.studentProfile.get('Register_Number').updateValueAndValidity();
+          this.studentProfile.get('EMIS_number').updateValueAndValidity();
+          this.studentProfile.get('Group').updateValueAndValidity();
+          this.studentProfile.get('total_marks').updateValueAndValidity();
+          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
+          this.studentProfile.get('medium').updateValueAndValidity();
+        } else {
+          this.studentProfile.patchValue({Name: '', Phone_Number: ''});
+          this.isRegisterNumber=true;
+          this.studentProfile
+          .get('Register_Number')
+          .setValidators([Validators.required]);
+          this.studentProfile
+          .get('EMIS_number')
+          .setValidators([Validators.required]);
+          this.studentProfile
+          .get('Group')
+          .setValidators([Validators.required]);
+          this.studentProfile
+          .get('total_marks')
+          .setValidators([Validators.required]);
+          this.studentProfile
+          .get('medium')
+          .setValidators([Validators.required]);
+          this.studentProfile.get('Register_Number').updateValueAndValidity();
+          this.studentProfile.get('EMIS_number').updateValueAndValidity();
+          this.studentProfile.get('Group').updateValueAndValidity();
+          this.studentProfile.get('total_marks').updateValueAndValidity();
+          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
+          this.studentProfile.get('medium').updateValueAndValidity();
+        }
+      }
+    );
     this.studentProfile.controls.Register_Number.valueChanges.subscribe(
       (value: string) => {
         this._studentDataBasedOnRegisterNumber(value);
       }
     );
 
+
     this.studentProfile.controls.College_name.valueChanges.subscribe(
       (value: string) => {
-        if (value.replace(' ', '') && value.length > 0) {
+        if (value?.length > 0) {
           this.studentProfile
             .get('College_Type')
             .setValidators([Validators.required]);
@@ -195,6 +251,7 @@ export class AcademicFormComponent implements OnInit {
     );
     if (this.profileEditData) {
       this.studentProfile.patchValue({
+        isRegisterNumber:this.profileEditData.isRegisterNumber,
         Register_Number: this.profileEditData.Register_Number,
         EMIS_number: this.profileEditData.EMIS_number,
         Name: this.profileEditData.Name,

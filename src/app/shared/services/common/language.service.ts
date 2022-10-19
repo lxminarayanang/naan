@@ -494,6 +494,7 @@ collegeTypeData:[
 'ITI'
 ],
 eadmission:'Have you got admission in any college/ University?',
+isRegisterNumber:'Do you have Register Number?',
 solutionProvide:'What solution was provided',
 solutionProvidedData:[
 'Scholarship',
@@ -1083,6 +1084,7 @@ collegeTypeData:[
 'ITI'
 ],
 eadmission:'Have you got admission in any college/ University?',
+isRegisterNumber:'Do you have Register Number?',
 solutionProvide:'What solution was provided',
 solutionProvidedData:[
 'Scholarship',

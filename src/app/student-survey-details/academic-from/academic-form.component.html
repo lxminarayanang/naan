@@ -1,7 +1,33 @@
 <div class="container step-wizard-container">
   <form [formGroup]="studentProfile">
     <div class="row">
-
+      <div class="col-md-12 labelRow">
+        <div>
+          <mat-label class="radioLabel"
+            >{{ lang.language.isRegisterNumber }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
+        </div>
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="isRegisterNumber"
+        >
+          <ng-container *ngFor="let item of lang.language.eradioButton">
+            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+          </ng-container>
+          <mat-error
+            *ngIf="
+              submitted && studentProfile.get('isRegisterNumber').invalid
+            "
+            >This field is required</mat-error
+          >
+        </mat-radio-group>
+      </div>
+<ng-container *ngIf="studentProfile.get('isRegisterNumber').value==='Yes'" >
       <div class="col-md-12 labelRow">
         <mat-label
           >{{ lang.language.registerNumber }}
@@ -39,6 +65,7 @@
           />
         </mat-form-field>
       </div>
+    </ng-container>
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.eFullName }}
@@ -54,7 +81,7 @@
             value=""
             formControlName="Name"
             maxlength="100"
-            readonly
+            [readonly]="isRegisterNumber"
 
           />
         </mat-form-field>
@@ -74,7 +101,7 @@
             value=""
             formControlName="Phone_Number"
             maxlength="10"
-            readonly
+            [readonly]="isRegisterNumber"
 
           />
         </mat-form-field>
@@ -210,6 +237,7 @@
           />
         </mat-form-field>
       </div>
+      <ng-container *ngIf="studentProfile.get('isRegisterNumber').value==='Yes'" >
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.group }}
@@ -268,6 +296,7 @@
           />
         </mat-form-field>
       </div>
+    </ng-container>
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.hscPassoutYear }}
@@ -286,6 +315,7 @@
           </mat-select>
         </mat-form-field>
       </div>
+      <ng-container *ngIf="studentProfile.get('isRegisterNumber').value==='Yes'" >
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.emedium }}
@@ -306,7 +336,7 @@
           />
         </mat-form-field>
       </div>
-
+    </ng-container>
       <div class="col-md-12 labelRow">
         <div>
           <mat-label class="radioLabel"
