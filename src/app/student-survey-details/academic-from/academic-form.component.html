@@ -1,7 +1,35 @@
 <div class="container step-wizard-container">
+  <form [formGroup]="studentProfileNumberForm">
+    <div class="col-md-12 labelRow">
+      <div>
+        <mat-label class="radioLabel"
+          >{{ lang.language.isRegisterNumber }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
+          >
+            *</span
+          ></mat-label
+        >
+      </div>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="isRegisterNumber"
+      >
+        <ng-container *ngFor="let item of lang.language.eradioButton">
+          <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
+        </ng-container>
+        <mat-error
+          *ngIf="
+            submitted && studentProfileNumberForm.get('isRegisterNumber').invalid
+          "
+          >This field is required</mat-error
+        >
+      </mat-radio-group>
+    </div>
+  </form>
   <form [formGroup]="studentProfile">
     <div class="row">
-      <div class="col-md-12 labelRow">
+      <!-- <div class="col-md-12 labelRow">
         <div>
           <mat-label class="radioLabel"
             >{{ lang.language.isRegisterNumber }}
@@ -26,8 +54,8 @@
             >This field is required</mat-error
           >
         </mat-radio-group>
-      </div>
-<ng-container *ngIf="studentProfile.get('isRegisterNumber').value==='Yes'" >
+      </div> -->
+<ng-container *ngIf="studentProfileNumberForm.get('isRegisterNumber').value==='Yes'" >
       <div class="col-md-12 labelRow">
         <mat-label
           >{{ lang.language.registerNumber }}
@@ -77,11 +105,11 @@
           <input
             matInput
             type="text"
-            placeholder=""
-            value=""
             formControlName="Name"
             maxlength="100"
-            [readonly]="isRegisterNumber"
+            autocomplete="off"
+            [readonly]="isRegisterNumberModel"
+            (keypress)="keyPressAlphaCharacters($event)"
 
           />
         </mat-form-field>
@@ -97,11 +125,11 @@
           <input
             matInput
             type="number"
-            placeholder=""
-            value=""
+
             formControlName="Phone_Number"
             maxlength="10"
-            [readonly]="isRegisterNumber"
+
+            [readonly]="isRegisterNumberModel"
 
           />
         </mat-form-field>
@@ -237,7 +265,7 @@
           />
         </mat-form-field>
       </div>
-      <ng-container *ngIf="studentProfile.get('isRegisterNumber').value==='Yes'" >
+      <ng-container *ngIf="studentProfileNumberForm.get('isRegisterNumber').value==='Yes'" >
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.group }}
@@ -315,7 +343,7 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <ng-container *ngIf="studentProfile.get('isRegisterNumber').value==='Yes'" >
+      <ng-container *ngIf="studentProfileNumberForm.get('isRegisterNumber').value==='Yes'" >
       <div class="col-md-12 labelRow">
         <mat-label class="required"
           >{{ lang.language.emedium }}

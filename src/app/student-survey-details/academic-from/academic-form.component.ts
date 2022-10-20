@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -22,13 +22,15 @@ export class AcademicFormComponent implements OnInit {
   public districtData: any[] = [];
   public schoolDetails: any[] = [];
   public collegeTypeValueCheck: boolean = false;
-  public isRegisterNumber: boolean = false;
+  public isRegisterNumberModel: boolean = false;
 
-  studentProfile: any = this._formBuilder.group({
+  studentProfileNumberForm: any = this._formBuilder.group({
     isRegisterNumber: ['', Validators.required],
+  });
+  studentProfile: any = this._formBuilder.group({
     Register_Number: [''],
     EMIS_number: [''],
-    Name: ['', Validators.required],
+    Name: new FormControl ('', Validators.required),
     Phone_Number: [
       '',
       [Validators.required, Validators.pattern('(0|91)?[6-9][0-9]{9}')],
@@ -87,11 +89,14 @@ export class AcademicFormComponent implements OnInit {
     const udise_code = JSON.parse(localStorage.getItem('udise_code') as string);
     this.GetStudentDetails(udise_code);
     this._getStudentDetails();
-    this.studentProfile.controls.isRegisterNumber.valueChanges.subscribe(
+    this.studentProfileNumberForm.controls.isRegisterNumber.valueChanges.subscribe(
       (value: string) => {
         if (value === 'No') {
-          this.studentProfile.patchValue({Name: '', Phone_Number: ''});
-          this.isRegisterNumber=false;
+          this.studentProfile.reset()
+
+          localStorage.removeItem("studentDetail");
+
+          this.isRegisterNumberModel=false;
           this.studentProfile
           .get('Register_Number')
           .clearValidators();
@@ -107,6 +112,8 @@ export class AcademicFormComponent implements OnInit {
           this.studentProfile
           .get('medium')
           .clearValidators();
+          this.studentProfile.get('Name').updateValueAndValidity();
+          this.studentProfile.get('Phone_Number').updateValueAndValidity();
           this.studentProfile.get('Register_Number').updateValueAndValidity();
           this.studentProfile.get('EMIS_number').updateValueAndValidity();
           this.studentProfile.get('Group').updateValueAndValidity();
@@ -114,8 +121,10 @@ export class AcademicFormComponent implements OnInit {
           this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
           this.studentProfile.get('medium').updateValueAndValidity();
         } else {
-          this.studentProfile.patchValue({Name: '', Phone_Number: ''});
-          this.isRegisterNumber=true;
+
+          localStorage.removeItem("studentDetail");
+          console.log(this.studentProfile.value);
+          this.isRegisterNumberModel=true;
           this.studentProfile
           .get('Register_Number')
           .setValidators([Validators.required]);
