@@ -567,7 +567,7 @@
         >
         <mat-form-field class="example-full-width" appearance="fill">
 
-          <mat-select formControlName="reason_for_not_applying_entrance_exam" >
+          <mat-select formControlName="reason_for_not_applying_entrance_exam" multiple>
             <ng-container *ngFor="let item of lang.language.entranceExamData">
               <mat-option [value]="item"> {{ item }}</mat-option>
             </ng-container>
@@ -608,7 +608,7 @@
         </mat-form-field>
       </div>
     </ng-container>
-
+    <ng-container *ngIf="studentProfile.get('Got_Admission').value==='No'">
       <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Got_Admission').value==='No'">
         <div>
           <mat-label class="radioLabel"
@@ -752,14 +752,14 @@
         >
         <mat-form-field class="example-full-width" appearance="fill">
 
-          <mat-select formControlName="Exam_List">
+          <mat-select formControlName="Exam_List" multiple>
             <ng-container *ngFor="let item of lang.language.entranceExamData">
               <mat-option [value]="item"> {{ item }}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Written_Entrance_Exam').value && studentProfile.get('Exam_List').value==='Others'" >
+      <div class="col-md-12 labelRow" *ngIf="studentProfile.get('Exam_List').value && studentProfile.get('Exam_List').value[0]==='Others'" >
         <mat-label
           >Enter the details
           <span class="mat-placeholder-required mat-form-field-required-marker">
@@ -860,7 +860,8 @@
           >
         </mat-radio-group>
       </div>
-      <ng-container *ngIf="studentProfile.get('applied_specific_colleges').value==='Yes'">
+    </ng-container>
+      <ng-container *ngIf="studentProfile.get('applied_specific_colleges').value==='Yes' && studentProfile.get('Got_Admission').value==='No'">
         <div class="col-md-12 labelRow">
           <mat-label
             >{{ lang.language.eDistrict }}
