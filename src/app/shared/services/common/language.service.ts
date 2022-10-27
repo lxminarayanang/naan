@@ -435,13 +435,12 @@ group:'Group',
 mark:'Mark',
 pass:'Pass / Fail',
 hscPassoutYear:'HSC Passout Year',
-appliedCollges:'Have you Applied for any Colleges / Universities',
+appliedCollges:'Have you applied to any Colleges/ Universities/ Professional Courses?',
 appliedCollgesData:[
 '12th failed',
 'Attending Improvement exam',
 'Did not attend +2 Exam',
 'Doing business',
-'Family issues',
 'Family not allowing',
 'Financial Reasons',
 'Own Health issues',
@@ -451,11 +450,14 @@ appliedCollgesData:[
 'Not interested in studying',
 'Waiting for counselling',
 'Started Working locally (to meet financial need)',
+'Missed 7.5% reservation due to incorrect application process',
+'Got admission under 7.5% but no hostel facility available',
+"Awaiting scholarship entrance exam result",
+'Repeating Entrance exam',
 'Others'
 ],
 appiledEntranceExam:'Have you Written any Entrance Exam',
 entranceExamData:[
-  'Multiple checkbox Dropdown list',
 'JEE Mains',
 'JEE Advanced',
 'All India Law Entrance Test (AILET)',
@@ -482,18 +484,53 @@ counsilingData:[
 'Law',
 'JOSAA',
 'Neet',
+'Arts & Science',
 'Others',
 ],
 appliedColleges:'Specific Colleges / Universities / Diploma Courses you have applied',
 collgeName:'College(s) Name',
 coursesLabel:'Course(s)',
 collegeType:'College(s) Type ',
+specialization:'specialization',
+joiningCollege:'Will you join this college',
+notoJoiningCollege:'Why would the student not join?',
+notoJoiningCollegeData:[
+'Not nearby',
+'Fees is too high',
+'Not a course of my choice',
+'Waiting for Entrance results',
+'Waiting for counselling',
+'Others'
+],
+specializationData:[
+  'Paramedical',
+  'Nursing',
+  'Engineering',
+  'Law',
+  'Agriculture/ Horticulture',
+  'Medical',
+  'Fisheries',
+  'Law',
+  'Manufacturing Industry',
+  'Services – IT/ Electronics',
+  'Others'
+  ],
 collegeTypeData:[
   'Private College/ University',
 'Government College/ University',
 'ITI'
 ],
-eadmission:'Have you got admission in any college/ University?',
+AppliedCollegeTypeData:[
+  'Private College/ University',
+'Government College/ University',
+'ITI',
+'Company internship/ apprentice',
+'TNSDC course',
+'Others'
+],
+
+eadmission:'Have you got admission in any College/ University/ Professional Course?',
+egender:'Gender',
 isRegisterNumber:'Do you have Register Number?',
 solutionProvide:'What solution was provided',
 solutionProvidedData:[
@@ -505,11 +542,18 @@ solutionProvidedData:[
 'Career and Re-attempt counselling',
 'None'
 ],
+designationData:[
+  "HM",
+  'Teacher',
+  'BRTE',
+  'KRP',
+  'DC',
+  'Others',
+],
 scholorship:'Scholarship',
 sponsor:'Name of Sponsor',
 sponsorType:'Type of Sponsor',
 sponsorTypeData:[
- ' Dropdown list',
 'Individual',
 'Corporate',
 'NGO'
@@ -526,13 +570,15 @@ reattemptCounseling:'Family/ Career Re-attempt Counselling',
 suggestion:'Suggestion given',
 filledForm:'Who Filled the Form',
 nameLabel:'Name',
-contactNumber:'Contact Number'
+contactNumber:'Contact Number',
+egenderData: ['Male', 'Female'],
 
       };
     } else {
       window.document.title = 'Naan Mudhalvan';
       this.language = {
         dob: 'Date of Birth',
+        egender:'Gender',
         gender: 'Gender',
         firstGraduate: 'First Graduate',
         medium: 'Medium of Instruction',
@@ -871,6 +917,7 @@ contactNumber:'Contact Number'
         pursueHigherEducation: 'Do you want to pursue higher education?',
         radioButton: ['Yes', 'No'],
         genderData: ['Male', 'Female', 'Transgender'],
+        egenderData: ['Male', 'Female'],
         guideData: [
           'Parents',
           'Teachers',
@@ -1024,13 +1071,12 @@ group:'Group',
 mark:'Mark',
 pass:'Pass / Fail',
 hscPassoutYear:'HSC Passout Year',
-appliedCollges:'Have you Applied for any Colleges / Universities',
+appliedCollges:'“Have you applied to any Colleges/ Universities/ Professional Courses?”',
 appliedCollgesData:[
 '12th failed',
 'Attending Improvement exam',
 'Did not attend +2 Exam',
 'Doing business',
-'Family issues',
 'Family not allowing',
 'Financial Reasons',
 'Own Health issues',
@@ -1044,7 +1090,6 @@ appliedCollgesData:[
 ],
 appiledEntranceExam:'Have you Written any Entrance Exam',
 entranceExamData:[
-  'Multiple checkbox Dropdown list',
 'JEE Mains',
 'JEE Advanced',
 'All India Law Entrance Test (AILET)',
@@ -1083,7 +1128,15 @@ collegeTypeData:[
 'Government College/ University',
 'ITI'
 ],
-eadmission:'Have you got admission in any college/ University?',
+AppliedCollegeTypeData:[
+  'Private College/ University',
+'Government College/ University',
+'ITI',
+'Company internship/ apprentice',
+'TNSDC course',
+'Other'
+],
+eadmission:'Have you got admission in any College/ University/ Professional Course?',
 isRegisterNumber:'Do you have Register Number?',
 solutionProvide:'What solution was provided',
 solutionProvidedData:[
@@ -1095,11 +1148,18 @@ solutionProvidedData:[
 'Career and Re-attempt counselling',
 'None'
 ],
+designationData:[
+  "HM",
+  'Teacher',
+  'BRTE',
+  'KRP',
+  'DC',
+  'Others',
+],
 scholorship:'Scholarship',
 sponsor:'Name of Sponsor',
 sponsorType:'Type of Sponsor',
 sponsorTypeData:[
- ' Dropdown list',
 'Individual',
 'Corporate',
 'NGO'
@@ -1116,6 +1176,30 @@ suggestion:'Suggestion given',
 filledForm:'Who Filled the Form',
 nameLabel:'Name',
 contactNumber:'Contact Number',
+specialization:'specialization',
+joiningCollege:'Will you join this college',
+notoJoiningCollege:'Why would the student not join?',
+notoJoiningCollegeData:[
+'Not nearby',
+'Fees is too high',
+'Not a course of my choice',
+'Waiting for Entrance results',
+'Waiting for counselling',
+'Others'
+],
+specializationData:[
+'Paramedical',
+'Nursing',
+'Engineering',
+'Law',
+'Agriculture/ Horticulture',
+'Medical',
+'Fisheries',
+'Law',
+'Manufacturing Industry',
+'Services – IT/ Electronics',
+'Others'
+]
 
 
 

@@ -27,7 +27,7 @@
     <div class="row">
       <div class="col-md-12 labelRow">
 
-        <mat-label>{{ lang.language.solutionProvide }} <span
+        <mat-label>What solution would you suggest for the student?<span
           class="mat-placeholder-required mat-form-field-required-marker"
         >
           *</span
@@ -35,7 +35,7 @@
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-select
               placeholder=""
-              formControlName="type"
+              formControlName="solution_provided"
               multiple
 
               [(ngModel)]="selectedSolution"
@@ -241,7 +241,7 @@
 </ng-container>
 <div class="col-md-12 labelRow">
   <mat-label class="required"
-    >{{ lang.language.filledForm }}
+    >Who filled the form? Please enter Full Name
     </mat-label
   >
   <mat-form-field class="example-full-width" appearance="fill">
@@ -254,6 +254,37 @@
       maxlength="100"
       (keypress)="keyPressAlphaCharacters($event)"
     />
+  </mat-form-field>
+</div>
+<div class="col-md-12 labelRow">
+  <mat-label
+    >Designation
+   </mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+
+    <mat-select formControlName="designation">
+      <ng-container *ngFor="let item of lang.language.designationData">
+        <mat-option [value]="item"> {{ item }}</mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="col-md-12 labelRow" *ngIf="solutionForm.get('designation')?.value && solutionForm.get('designation')?.value==='Others'" >
+
+  <mat-label
+    >Enter the details
+    <span class="mat-placeholder-required mat-form-field-required-marker">
+      *</span
+    ></mat-label
+  >
+  <mat-form-field class="example-full-width" appearance="fill">
+    <textarea
+      matInput
+      placeholder="..."
+      formControlName="other_reason_designation"
+      (keypress)="keyPressAlphaCharacters($event)"
+    ></textarea>
   </mat-form-field>
 </div>
 <div class="col-md-12 labelRow">
@@ -273,9 +304,6 @@
   </mat-form-field>
 </div>
   </div>
-
-
-
     <p class="mat-danger labelRow">(*) mandatory</p>
     <div>
       <button mat-button class="matButton" (click)="onClickNext()">Submit</button>

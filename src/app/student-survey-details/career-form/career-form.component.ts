@@ -33,7 +33,7 @@ export class CareerFormComponent implements OnInit {
   public schoolDetails:any[]=[];
 
   solutionForm: FormGroup = new FormGroup({
-    type: new FormControl('', Validators.required),
+    solution_provided: new FormControl('', Validators.required),
     Sponsor_name: new FormControl(''),
     Sponsor_type: new FormControl(''),
     Amount: new FormControl(''),
@@ -45,6 +45,8 @@ export class CareerFormComponent implements OnInit {
     Spot_admission_College_District: new FormControl(''),
     Suggestion: new FormControl(''),
     Form_Filled_By: new FormControl(''),
+    designation: new FormControl(''),
+    other_reason_designation:new FormControl(''),
     User_Contact_Number: new FormControl('', [Validators.pattern("(0|91)?[6-9][0-9]{9}")]),
   });
 
@@ -61,12 +63,23 @@ export class CareerFormComponent implements OnInit {
     this.profileEditData = JSON.parse(
       localStorage.getItem('solutionFormData') as string
     );
-    this.solutionForm.controls.type.valueChanges.subscribe((value: string) => {
+    this.solutionForm.controls.solution_provided.valueChanges.subscribe((value: string) => {
       this.getType(value);
     });
+    this.solutionForm.controls.designation.valueChanges.subscribe((value: string) => {
+      if(value==='Others'){
+        this.solutionForm
+          .get('other_reason_designation')?.setValidators([Validators.required]);
+        this.solutionForm.get('other_reason_designation')?.updateValueAndValidity();
+      } else {
+        this.solutionForm.get('other_reason_designation')?.clearValidators();
+        this.solutionForm.get('other_reason_designation')?.updateValueAndValidity();
+      }
+    });
+
     if (this.profileEditData) {
       this.solutionForm.patchValue({
-        type: this.profileEditData.type,
+        solution_provided: this.profileEditData.solution_provided,
         Sponsor_name: this.profileEditData.Sponsor_name,
         Sponsor_type: this.profileEditData.Sponsor_type,
         Amount: this.profileEditData.Amount,
@@ -153,13 +166,34 @@ export class CareerFormComponent implements OnInit {
         admission_college,
         admission_district,
         admission_college_type,
-        Course,
-        College_name,
         admission_course,
-        College_Type,
+        gender,
+        other_reason_for_admission_college,
+        specialization,
+        other_reason_for_specialization,
+        joining_college,
+        student_not_join,
+        other_reason_for_student_not_join,
+        repeated_entrance_exam,
+        other_reason_for_student_not_apply,
+        other_reason_for_repeated_entrance_exam,
+        other_reason_for_student_not_apply_data,
+        applied_specific_colleges,
+
+        applied_college_district,
+        applied_college,
+        applied_course,
+        applied_college_type,
+        other_reason_for_applied_college,
+        applied_course_specialization,
+        other_reason_for_applied_specialization,
+        joined_college,
+        student_not_join_college,
+        other_reason_for_student_not_join_college
       } = studentDetail;
 
       const {
+        solution_provided,
         Sponsor_name,
         Sponsor_type,
         Amount,
@@ -171,7 +205,9 @@ export class CareerFormComponent implements OnInit {
         Spot_admission_College_District,
         Suggestion,
         Form_Filled_By,
+        designation,
         User_Contact_Number,
+        other_reason_designation
       } = this.solutionForm.value;
 
       let payload = {
@@ -202,10 +238,30 @@ export class CareerFormComponent implements OnInit {
         admission_college,
         admission_district,
         admission_college_type: admission_college_type?admission_college_type.toString():'',
-        Course,
-        College_name,
         admission_course,
-        College_Type:College_Type? College_Type.toString():'',
+        gender,
+        other_reason_for_admission_college,
+        specialization:specialization?specialization.toString():'',
+        other_reason_for_specialization,
+        joining_college,
+        student_not_join,
+        other_reason_for_student_not_join,
+        repeated_entrance_exam,
+        other_reason_for_student_not_apply,
+        other_reason_for_repeated_entrance_exam,
+        other_reason_for_student_not_apply_data,
+        applied_specific_colleges,
+        applied_college_district,
+        applied_college,
+        applied_course,
+        applied_college_type:applied_college_type?applied_college_type.toString():'',
+        other_reason_for_applied_college,
+        applied_course_specialization:applied_course_specialization?applied_course_specialization.toString():'',
+        other_reason_for_applied_specialization,
+        joined_college,
+        student_not_join_college:student_not_join_college?student_not_join_college:'',
+        other_reason_for_student_not_join_college,
+        solution_provided:solution_provided?solution_provided.toString():'',
         Sponsor_name,
         Sponsor_type,
         Amount,
@@ -218,6 +274,8 @@ export class CareerFormComponent implements OnInit {
         Suggestion,
         Form_Filled_By,
         User_Contact_Number,
+        designation,
+        other_reason_designation
       };
       this._commonService
         .postService('/add_student_details', payload)

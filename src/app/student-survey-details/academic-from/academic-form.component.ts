@@ -23,13 +23,11 @@ export class AcademicFormComponent implements OnInit {
   public schoolDetails: any[] = [];
   public collegeTypeValueCheck: boolean = false;
   public isRegisterNumberModel: boolean = false;
+  public isSchoolName:boolean=false;
 
-  studentProfileNumberForm: any = this._formBuilder.group({
-    isRegisterNumber: ['', Validators.required],
-  });
   studentProfile: any = this._formBuilder.group({
-    Register_Number: [''],
-    EMIS_number: [''],
+    Register_Number: ['', Validators.required],
+    EMIS_number: ['', Validators.required],
     Name: new FormControl ('', Validators.required),
     Phone_Number: [
       '',
@@ -48,6 +46,7 @@ export class AcademicFormComponent implements OnInit {
       [Validators.required, Validators.pattern('(0|91)?[6-9][0-9]{9}')],
     ],
     Location: ['', Validators.required],
+    gender:['', Validators.required],
     Taluk: ['', Validators.required],
     District: ['', Validators.required],
     pincode: ['', [Validators.required,Validators.pattern(/^\d{6}$/)]],
@@ -56,23 +55,42 @@ export class AcademicFormComponent implements OnInit {
     Result: [''],
     HSC_Passout_Year: ['', Validators.required],
     medium: [''],
-    is_Applied_College: ['', Validators.required],
+    is_Applied_College: [''],
     Reason_Not_Apply: [''],
-    Written_Entrance_Exam: ['', Validators.required],
+    Written_Entrance_Exam: [''],
     List_of_conselling: [''],
-    Waiting_for_Counselling: ['', Validators.required],
+    Waiting_for_Counselling: [''],
     Exam_List: [''],
     Got_Admission: ['', Validators.required],
     admission_college: [''],
     admission_district: [''],
     admission_college_type: [''],
-    Course: [''],
-    College_name: [''],
+
     admission_course: [''],
-    College_Type: [''],
     other_reason_list_of_counselling: [''],
     other_reason_exam_list: [''],
     other_reason_for_appplying_college: [],
+    other_reason_for_admission_college:[],
+    specialization:[],
+    other_reason_for_specialization:[],
+    joining_college:[],
+    student_not_join:[],
+    other_reason_for_student_not_join:[],
+    repeated_entrance_exam:[],
+    other_reason_for_student_not_apply:[],
+    other_reason_for_repeated_entrance_exam:[],
+    other_reason_for_student_not_apply_data:[],
+    applied_specific_colleges:[],
+
+    applied_college_district:[],
+    applied_college:[],
+    applied_course:[],
+    applied_college_type:[],
+    other_reason_for_applied_college:[],
+    applied_course_specialization:[],
+    other_reason_for_applied_specialization:[],
+    reason_for_not_applying_entrance_exam:[],
+    reason_for_not_apply_counselling:[]
   });
 
   stepperOrientation: Observable<StepperOrientation>;
@@ -89,74 +107,122 @@ export class AcademicFormComponent implements OnInit {
     const udise_code = JSON.parse(localStorage.getItem('udise_code') as string);
     this.GetStudentDetails(udise_code);
     this._getStudentDetails();
-    this.studentProfileNumberForm.controls.isRegisterNumber.valueChanges.subscribe(
+
+    this.studentProfile.controls.EMIS_number.valueChanges.subscribe(
       (value: string) => {
-        if (value === 'No') {
-          this.studentProfile.reset()
-
-          localStorage.removeItem("studentDetail");
-
-          this.isRegisterNumberModel=false;
-          this.studentProfile
-          .get('Register_Number')
-          .clearValidators();
-          this.studentProfile
-          .get('EMIS_number')
-          .clearValidators();
-          this.studentProfile
-          .get('Group')
-          .clearValidators();
-          this.studentProfile
-          .get('total_marks')
-          .clearValidators();
-          this.studentProfile
-          .get('medium')
-          .clearValidators();
-          this.studentProfile.get('Name').updateValueAndValidity();
-          this.studentProfile.get('Phone_Number').updateValueAndValidity();
-          this.studentProfile.get('Register_Number').updateValueAndValidity();
-          this.studentProfile.get('EMIS_number').updateValueAndValidity();
-          this.studentProfile.get('Group').updateValueAndValidity();
-          this.studentProfile.get('total_marks').updateValueAndValidity();
-          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
-          this.studentProfile.get('medium').updateValueAndValidity();
-        } else {
-
-          localStorage.removeItem("studentDetail");
-          console.log(this.studentProfile.value);
-          this.isRegisterNumberModel=true;
-          this.studentProfile
-          .get('Register_Number')
-          .setValidators([Validators.required]);
-          this.studentProfile
-          .get('EMIS_number')
-          .setValidators([Validators.required]);
-          this.studentProfile
-          .get('Group')
-          .setValidators([Validators.required]);
-          this.studentProfile
-          .get('total_marks')
-          .setValidators([Validators.required]);
-          this.studentProfile
-          .get('medium')
-          .setValidators([Validators.required]);
-          this.studentProfile.get('Register_Number').updateValueAndValidity();
-          this.studentProfile.get('EMIS_number').updateValueAndValidity();
-          this.studentProfile.get('Group').updateValueAndValidity();
-          this.studentProfile.get('total_marks').updateValueAndValidity();
-          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
-          this.studentProfile.get('medium').updateValueAndValidity();
+        if(value){
+          this._studentDataBasedOnRegisterNumber(value);
         }
+
       }
     );
-    this.studentProfile.controls.Register_Number.valueChanges.subscribe(
+
+    this.studentProfile.controls.admission_college_type.valueChanges.subscribe(
       (value: string) => {
-        this._studentDataBasedOnRegisterNumber(value);
+        if(value){
+          this._admissionCollgeTypeCheckMandatory(value);
+        }
+        }
+
+
+    );
+    this.studentProfile.controls.applied_course_specialization.valueChanges.subscribe(
+      (value: string) => {
+if(value && value==="Others"){
+  this.studentProfile
+            .get('other_reason_for_applied_specialization')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('other_reason_for_applied_specialization').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('other_reason_for_applied_specialization').clearValidators();
+          this.studentProfile.get('other_reason_for_applied_specialization').updateValueAndValidity();
+        }
+
+      }
+    );
+    this.studentProfile.controls.student_not_join.valueChanges.subscribe(
+      (value: string) => {
+if(value && value==="Others"){
+  this.studentProfile
+            .get('other_reason_for_student_not_join')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('other_reason_for_student_not_join').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('other_reason_for_student_not_join').clearValidators();
+          this.studentProfile.get('other_reason_for_student_not_join').updateValueAndValidity();
+        }
+
       }
     );
 
 
-    this.studentProfile.controls.College_name.valueChanges.subscribe(
+    this.studentProfile.controls.specialization.valueChanges.subscribe(
+      (value: string) => {
+if(value){
+  this._specializationCheckMandatory(value);}
+}
+
+    );
+    this.studentProfile.controls.applied_specific_colleges.valueChanges.subscribe(
+      (value: string) => {
+        if(value){
+        this._appliedCollegesCheckMandatory(value);}}
+    );
+    this.studentProfile.controls.joining_college.valueChanges.subscribe(
+      (value: string) => {
+if(value && value==="No"){
+  this.studentProfile
+            .get('student_not_join')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('student_not_join').updateValueAndValidity();
+          this.studentProfile
+            .get('student_not_join')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('student_not_join').updateValueAndValidity();
+        }
+
+        else {
+          this.studentProfile.get('reason_for_not_applying_entrance_exam').clearValidators();
+          this.studentProfile.get('reason_for_not_applying_entrance_exam').updateValueAndValidity();
+          this.studentProfile.get('reason_for_not_apply_counselling').clearValidators();
+          this.studentProfile.get('reason_for_not_apply_counselling').updateValueAndValidity();
+          this.studentProfile.get('student_not_join').clearValidators();
+          this.studentProfile.get('student_not_join').updateValueAndValidity();
+        }
+
+      }
+    );
+    this.studentProfile.controls.student_not_join.valueChanges.subscribe(
+      (value: string) => {
+if(value?.length && value==="Others"){
+  this.studentProfile
+            .get('other_reason_for_student_not_join')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('other_reason_for_student_not_join').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('other_reason_for_student_not_join').clearValidators();
+          this.studentProfile.get('other_reason_for_student_not_join').updateValueAndValidity();
+        }
+
+      }
+    );
+    this.studentProfile.controls.repeated_entrance_exam.valueChanges.subscribe(
+      (value: string) => {
+if(value && value==="Others"){
+  this.studentProfile
+            .get('other_reason_for_repeated_entrance_exam')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('other_reason_for_repeated_entrance_exam').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('other_reason_for_repeated_entrance_exam').clearValidators();
+          this.studentProfile.get('other_reason_for_repeated_entrance_exam').updateValueAndValidity();
+        }
+
+      }
+    );
+
+
+    this.studentProfile.controls.College_name?.valueChanges.subscribe(
       (value: string) => {
         if (value?.length > 0) {
           this.studentProfile
@@ -171,17 +237,93 @@ export class AcademicFormComponent implements OnInit {
         }
       }
     );
+    this.studentProfile.controls.student_not_join?.valueChanges.subscribe(
+      (value: string) => {
+        if (value==="Waiting for counselling") {
+          this.studentProfile
+            .get('reason_for_not_apply_counselling')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('reason_for_not_apply_counselling').updateValueAndValidity();
+          this.studentProfile.get('reason_for_not_applying_entrance_exam').clearValidators();
+          this.studentProfile.get('reason_for_not_applying_entrance_exam').updateValueAndValidity();
+        } else if (value==="Waiting for Entrance results"){
+          this.studentProfile
+          .get('reason_for_not_applying_entrance_exam')
+          .setValidators([Validators.required]);
+        this.studentProfile.get('reason_for_not_applying_entrance_exam').updateValueAndValidity();
+          this.studentProfile.get('reason_for_not_apply_counselling').clearValidators();
+          this.studentProfile.get('reason_for_not_apply_counselling').updateValueAndValidity();
+        }
+        else{
+          this.studentProfile.get('reason_for_not_applying_entrance_exam').clearValidators();
+          this.studentProfile.get('reason_for_not_applying_entrance_exam').updateValueAndValidity();
+          this.studentProfile.get('reason_for_not_apply_counselling').clearValidators();
+          this.studentProfile.get('reason_for_not_apply_counselling').updateValueAndValidity();
+        }
+      }
+    );
 
     this.studentProfile.controls.is_Applied_College.valueChanges.subscribe(
       (value: string) => {
-        if (value === 'No') {
+        if (value && value === 'Yes') {
           this.studentProfile
-            .get('Reason_Not_Apply')
+          .get('applied_specific_colleges')
+          .setValidators([Validators.required]);
+        this.studentProfile.get('applied_specific_colleges').updateValueAndValidity();
+          this.studentProfile
+          .get('Written_Entrance_Exam')
+          .setValidators([Validators.required]);
+        this.studentProfile.get('Written_Entrance_Exam').updateValueAndValidity();
+        this.studentProfile
+          .get('Waiting_for_Counselling')
+          .setValidators([Validators.required]);
+        this.studentProfile.get('Waiting_for_Counselling').updateValueAndValidity();
+          this.studentProfile.get('other_reason_for_student_not_apply').clearValidators();
+          this.studentProfile.get('other_reason_for_student_not_apply').updateValueAndValidity();
+
+        }
+        else if(value && value === 'No'){
+          this.studentProfile
+          .get('other_reason_for_student_not_apply')
+          .setValidators([Validators.required]);
+        this.studentProfile.get('other_reason_for_student_not_apply').updateValueAndValidity();
+        this.studentProfile.get('Written_Entrance_Exam').clearValidators();
+        this.studentProfile.get('Written_Entrance_Exam').updateValueAndValidity();
+        this.studentProfile.get('Waiting_for_Counselling').clearValidators();
+        this.studentProfile.get('Waiting_for_Counselling').updateValueAndValidity();
+        this.studentProfile.get('applied_specific_colleges').clearValidators();
+        this.studentProfile.get('applied_specific_colleges').updateValueAndValidity();
+        }
+      }
+    );
+    this.studentProfile.controls.other_reason_for_student_not_apply.valueChanges.subscribe(
+      (value: string) => {
+        if (value && value === 'Repeating Entrance exam') {
+          this.studentProfile
+            .get('repeated_entrance_exam')
             .setValidators([Validators.required]);
-          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
-        } else {
-          this.studentProfile.get('Reason_Not_Apply').clearValidators();
-          this.studentProfile.get('Reason_Not_Apply').updateValueAndValidity();
+          this.studentProfile.get('repeated_entrance_exam').updateValueAndValidity();
+          this.studentProfile
+          .get('other_reason_for_repeated_entrance_exam')
+          .clearValidators();
+        this.studentProfile.get('other_reason_for_repeated_entrance_exam').updateValueAndValidity();
+        }
+        else if(value==="Others"){
+          this.studentProfile
+          .get('other_reason_for_repeated_entrance_exam')
+          .setValidators([Validators.required]);
+        this.studentProfile.get('other_reason_for_repeated_entrance_exam').updateValueAndValidity();
+        this.studentProfile.get('repeated_entrance_exam').clearValidators();
+        this.studentProfile.get('repeated_entrance_exam').updateValueAndValidity();
+
+        }
+        else {
+          this.studentProfile
+          .get('other_reason_for_repeated_entrance_exam')
+          .clearValidators();
+        this.studentProfile.get('other_reason_for_repeated_entrance_exam').updateValueAndValidity();
+          this.studentProfile.get('repeated_entrance_exam').clearValidators();
+        this.studentProfile.get('repeated_entrance_exam').updateValueAndValidity();
         }
       }
     );
@@ -195,6 +337,32 @@ export class AcademicFormComponent implements OnInit {
         } else {
           this.studentProfile.get('Exam_List').clearValidators();
           this.studentProfile.get('Exam_List').updateValueAndValidity();
+        }
+      }
+    );
+    this.studentProfile.controls.Exam_List.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'Others') {
+          this.studentProfile
+            .get('other_reason_exam_list')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('other_reason_exam_list').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('other_reason_exam_list').clearValidators();
+          this.studentProfile.get('other_reason_exam_list').updateValueAndValidity();
+        }
+      }
+    );
+    this.studentProfile.controls.List_of_conselling.valueChanges.subscribe(
+      (value: string) => {
+        if (value === 'Others') {
+          this.studentProfile
+            .get('other_reason_list_of_counselling')
+            .setValidators([Validators.required]);
+          this.studentProfile.get('other_reason_list_of_counselling').updateValueAndValidity();
+        } else {
+          this.studentProfile.get('other_reason_list_of_counselling').clearValidators();
+          this.studentProfile.get('other_reason_list_of_counselling').updateValueAndValidity();
         }
       }
     );
@@ -217,7 +385,9 @@ export class AcademicFormComponent implements OnInit {
     );
     this.studentProfile.controls.Got_Admission.valueChanges.subscribe(
       (value: string) => {
+        debugger
         if (value === 'Yes') {
+          this.studentProfile.get('is_Applied_College').clearValidators();
           this.studentProfile
             .get('admission_district')
             .setValidators([Validators.required]);
@@ -230,6 +400,16 @@ export class AcademicFormComponent implements OnInit {
           this.studentProfile
             .get('admission_college_type')
             .setValidators([Validators.required]);
+            this.studentProfile
+            .get('specialization')
+            .setValidators([Validators.required]);
+            this.studentProfile
+            .get('joining_college')
+            .setValidators([Validators.required]);
+
+            this.studentProfile
+            .get('is_Applied_College')
+            .updateValueAndValidity();
           this.studentProfile
             .get('admission_district')
             .updateValueAndValidity();
@@ -238,18 +418,36 @@ export class AcademicFormComponent implements OnInit {
           this.studentProfile
             .get('admission_college_type')
             .updateValueAndValidity();
+            this.studentProfile
+            .get('specialization')
+            .updateValueAndValidity();
+            this.studentProfile
+            .get('joining_college')
+            .updateValueAndValidity();
+
         } else {
+
+          this.studentProfile.get('is_Applied_College').setValidators([Validators.required]);
           this.studentProfile.get('admission_district').clearValidators();
           this.studentProfile.get('admission_course').clearValidators();
           this.studentProfile.get('admission_college').clearValidators();
           this.studentProfile.get('admission_college_type').clearValidators();
+          this.studentProfile.get('specialization').clearValidators();
+          this.studentProfile.get('joining_college').clearValidators();
           this.studentProfile
             .get('admission_district')
             .updateValueAndValidity();
+            this.studentProfile.get('is_Applied_College').updateValueAndValidity();
           this.studentProfile.get('admission_course').updateValueAndValidity();
           this.studentProfile.get('admission_college').updateValueAndValidity();
           this.studentProfile
             .get('admission_college_type')
+            .updateValueAndValidity();
+            this.studentProfile
+            .get('specialization')
+            .updateValueAndValidity();
+            this.studentProfile
+            .get('joining_college')
             .updateValueAndValidity();
         }
       }
@@ -287,10 +485,26 @@ export class AcademicFormComponent implements OnInit {
         admission_college: this.profileEditData.admission_college,
         admission_district: this.profileEditData.admission_district,
         admission_college_type: this.profileEditData.admission_college_type,
-        Course: this.profileEditData.Course,
-        College_name: this.profileEditData.College_name,
         admission_course: this.profileEditData.admission_course,
-        College_Type: this.profileEditData.College_Type,
+        gender:this.profileEditData.gender,
+    other_reason_for_admission_college:this.profileEditData.other_reason_for_admission_college,
+    specialization:this.profileEditData.specialization,
+    other_reason_for_specialization:this.profileEditData.other_reason_for_specialization,
+    joining_college:this.profileEditData.joining_college,
+    student_not_join:this.profileEditData.student_not_join,
+    other_reason_for_student_not_join:this.profileEditData.other_reason_for_student_not_join,
+    repeated_entrance_exam:this.profileEditData.repeated_entrance_exam,
+    other_reason_for_student_not_apply:this.profileEditData.other_reason_for_student_not_apply,
+    other_reason_for_repeated_entrance_exam:this.profileEditData.other_reason_for_repeated_entrance_exam,
+    other_reason_for_student_not_apply_data:this.profileEditData.other_reason_for_student_not_apply_data,
+    applied_specific_colleges:this.profileEditData.applied_specific_colleges,
+    applied_college_district:this.profileEditData.applied_college_district,
+    applied_college:this.profileEditData.applied_college,
+    applied_course:this.profileEditData.applied_course,
+    applied_college_type:this.profileEditData.applied_college_type,
+    other_reason_for_applied_college:this.profileEditData.other_reason_for_applied_college,
+    applied_course_specialization:this.profileEditData.applied_course_specialization,
+    other_reason_for_applied_specialization:this.profileEditData.other_reason_for_applied_specialization
       });
     }
   }
@@ -318,10 +532,14 @@ export class AcademicFormComponent implements OnInit {
     });
   }
 
+
+
   public onClickNext(): void {
     this.submitted = true;
     this.studentProfile.updateValueAndValidity();
+    debugger;
     if (this.studentProfile.invalid) {
+      debugger
       for (const key of Object.keys(this.studentProfile.controls)) {
         if (this.studentProfile.controls[key].invalid) {
           const invalidControl = this.el.nativeElement.querySelector(
@@ -332,11 +550,17 @@ export class AcademicFormComponent implements OnInit {
         }
       }
     } else {
-      localStorage.setItem(
-        'studentDetail',
-        JSON.stringify(this.studentProfile.value)
-      );
-      this._router.navigate(['/survey/solution-provided']);
+      if(this.studentProfile.get('joining_college')?.value==='Yes' || this.studentProfile.get('joined_college')?.value==='Yes'){
+        this._saveForm();
+      }
+      else{
+        localStorage.setItem(
+          'studentDetail',
+          JSON.stringify(this.studentProfile.value)
+        );
+        this._router.navigate(['/survey/solution-provided']);
+      }
+
     }
   }
 
@@ -347,16 +571,17 @@ export class AcademicFormComponent implements OnInit {
   private _studentDataBasedOnRegisterNumber(value: string): void {
     debugger;
     this.filteredData = this.studentData.find(
-      (data: any) => data.Register_Number === value
+      (data: any) => data.emis_id === value
     );
     if (this.filteredData) {
       this.studentProfile.patchValue({
         Phone_Number: this.filteredData.mobile,
-        EMIS_number: this.filteredData.emis_id,
+        Register_Number: this.filteredData.Register_Number,
         Name: this.filteredData.name,
-        Group: this.filteredData.Group_Name,
+        Group: this.filteredData.Group_subjects,
         total_marks: this.filteredData.total_marks,
         Result: this.filteredData.Result,
+        gender:this.filteredData.gender==="F"?"Female":"Male",
         medium: this.filteredData.mobile === 'E' ? 'English' : 'Tamil',
       });
     }
@@ -373,4 +598,232 @@ export class AcademicFormComponent implements OnInit {
     }
   }
 
-}
+  private _admissionCollgeTypeCheckMandatory(value:any):void{
+    if(value.length && value[0]==="Others"){
+      this.studentProfile
+        .get('other_reason_for_admission_college')
+        .setValidators([Validators.required]);
+      this.studentProfile.get('other_reason_for_admission_college').updateValueAndValidity();
+    } else {
+      this.studentProfile.get('other_reason_for_admission_college').clearValidators();
+      this.studentProfile.get('other_reason_for_admission_college').updateValueAndValidity();
+    }
+
+  }
+  private _specializationCheckMandatory(value:any):void{
+    if(value.length && value==="Others"){
+      this.studentProfile
+        .get('other_reason_for_specialization')
+        .setValidators([Validators.required]);
+      this.studentProfile.get('other_reason_for_specialization').updateValueAndValidity();
+    } else {
+      this.studentProfile.get('other_reason_for_specialization').clearValidators();
+      this.studentProfile.get('other_reason_for_specialization').updateValueAndValidity();
+    }
+
+  }
+
+  public _appliedCollegesCheckMandatory(value:string):void{
+    if (value === 'Yes') {
+      this.studentProfile
+        .get('applied_college_district')
+        .setValidators([Validators.required]);
+      this.studentProfile
+        .get('applied_course')
+        .setValidators([Validators.required]);
+      this.studentProfile
+        .get('applied_college')
+        .setValidators([Validators.required]);
+      this.studentProfile
+        .get('applied_college_type')
+        .setValidators([Validators.required]);
+        this.studentProfile
+        .get('applied_course_specialization')
+        .setValidators([Validators.required]);
+        this.studentProfile
+        .get('joined_college')
+        .setValidators([Validators.required]);
+
+        this.studentProfile
+        .updateValueAndValidity();
+      this.studentProfile
+        .get('applied_college_district')
+        .updateValueAndValidity();
+      this.studentProfile.get('applied_course').updateValueAndValidity();
+      this.studentProfile.get('applied_college').updateValueAndValidity();
+      this.studentProfile
+        .get('applied_college_type')
+        .updateValueAndValidity();
+        this.studentProfile
+        .get('applied_course_specialization')
+        .updateValueAndValidity();
+        this.studentProfile
+        .get('joined_college')
+        .updateValueAndValidity();
+
+    } else {
+      this.studentProfile
+      .get('applied_college_district')
+      .clearValidators()
+    this.studentProfile
+      .get('applied_course')
+      .clearValidators()
+    this.studentProfile
+      .get('applied_college')
+      .clearValidators()
+    this.studentProfile
+      .get('applied_college_type')
+      .clearValidators()
+      this.studentProfile
+      .get('applied_course_specialization')
+      .clearValidators()
+      this.studentProfile
+      .get('joined_college')
+      .clearValidators()
+
+      this.studentProfile
+      .updateValueAndValidity();
+    this.studentProfile
+      .get('applied_college_district')
+      .updateValueAndValidity();
+    this.studentProfile.get('applied_course').updateValueAndValidity();
+    this.studentProfile.get('applied_college').updateValueAndValidity();
+    this.studentProfile
+      .get('applied_college_type')
+      .updateValueAndValidity();
+      this.studentProfile
+      .get('applied_course_specialization')
+      .updateValueAndValidity();
+      this.studentProfile
+      .get('joined_college')
+      .updateValueAndValidity();
+    }
+  }
+
+  private _saveForm():void {
+    const profileFormValue = JSON.parse(
+      localStorage.getItem('profileFormValue') as any
+    );
+
+    const {
+      Register_Number,
+      EMIS_number,
+      Name,
+      Phone_Number,
+      Current_Contact_Number,
+      Current_Whatsapp_Number,
+      Alternative_Number,
+      Location,
+      Taluk,
+      District,
+      pincode,
+      Group,
+      total_marks,
+      Result,
+      HSC_Passout_Year,
+      medium,
+      is_Applied_College,
+      Reason_Not_Apply,
+      Written_Entrance_Exam,
+      List_of_conselling,
+      Waiting_for_Counselling,
+      Exam_List,
+      Got_Admission,
+      admission_college,
+      admission_district,
+      admission_college_type,
+      admission_course,
+      gender,
+      other_reason_for_admission_college,
+      specialization,
+      other_reason_for_specialization,
+      joining_college,
+      student_not_join,
+      other_reason_for_student_not_join,
+      repeated_entrance_exam,
+      other_reason_for_student_not_apply,
+      other_reason_for_repeated_entrance_exam,
+      other_reason_for_student_not_apply_data,
+      applied_specific_colleges,
+
+      applied_college_district,
+      applied_college,
+      applied_course,
+      applied_college_type,
+      other_reason_for_applied_college,
+      applied_course_specialization,
+      other_reason_for_applied_specialization,
+
+    } = this.studentProfile.value;
+
+    let payload = {
+      ...profileFormValue,
+      Register_Number,
+      EMIS_number,
+      Name,
+      Phone_Number,
+      Current_Contact_Number,
+      Current_Whatsapp_Number,
+      Alternative_Number,
+      Location,
+      Taluk,
+      District,
+      pincode,
+      Group,
+      total_marks,
+      Result,
+      HSC_Passout_Year,
+      medium,
+      is_Applied_College,
+      Reason_Not_Apply,
+      Written_Entrance_Exam,
+      List_of_conselling: List_of_conselling?List_of_conselling.toString():'',
+      Waiting_for_Counselling,
+      Exam_List: Exam_List?Exam_List.toString():'',
+      Got_Admission,
+      admission_college,
+      admission_district,
+      admission_college_type: admission_college_type?admission_college_type.toString():'',
+      admission_course,
+      gender,
+      other_reason_for_admission_college,
+      specialization:specialization?specialization.toString():'',
+      other_reason_for_specialization,
+      joining_college,
+      student_not_join,
+      other_reason_for_student_not_join,
+      repeated_entrance_exam,
+      other_reason_for_student_not_apply,
+      other_reason_for_repeated_entrance_exam,
+      other_reason_for_student_not_apply_data,
+      applied_specific_colleges,
+      applied_college_district,
+      applied_college,
+      applied_course,
+      applied_college_type:applied_college_type?applied_college_type.toString():'',
+      other_reason_for_applied_college,
+      applied_course_specialization:applied_course_specialization?applied_course_specialization.toString():'',
+      other_reason_for_applied_specialization,
+
+    };
+    this._commonService
+      .postService('/add_student_details', payload)
+      .subscribe((res: any) => {
+        if (res.status == 200) {
+          $('#successModal').modal('show');
+          localStorage.removeItem('solutionFormData');
+          localStorage.removeItem('profileFormValue');
+          localStorage.removeItem('studentDetail');
+          localStorage.removeItem('udise_code');
+        }
+      });
+  }
+
+  toBack() {
+    //this._location.back();
+    this._router.navigate(['/survey/alumni2022']);
+  }
+
+  }
+
+

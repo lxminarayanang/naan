@@ -60,8 +60,25 @@ export class StudentSurveyProfileFormComponent implements OnInit {
         this._getuid(value);
       }
     );
+     this.profileInfoFormGroup.controls.Sub_District.valueChanges.subscribe(
+      (value: string) => {
+        if(value){
+          this._getSchool(value);
+        }
+
+      }
+    );
   }
 
+  private _getSchool(subdistrict:string):void{
+    this.schoolData=[];
+this.studentData.forEach((item: any) => {
+      if(item.Sub_District===subdistrict){
+        this.schoolData.push(item.School_Name);
+        this.schoolData=[...new Set(this.schoolData)]
+      }
+    });
+  }
   private _getDistrictData(value: string): void {
     this.subDistrictData=[];
     this.schoolData=[];
@@ -69,8 +86,6 @@ export class StudentSurveyProfileFormComponent implements OnInit {
       if (item.District === value) {
         this.subDistrictData.push(item.Sub_District);
         this.subDistrictData=[...new Set(this.subDistrictData)]
-        this.schoolData.push(item.School_Name);
-        this.schoolData=[...new Set(this.schoolData)]
       }
     });
   }
