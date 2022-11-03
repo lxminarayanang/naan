@@ -94,6 +94,10 @@ export class HeaderComponent implements OnInit {
     this.loginModal.open();
   }
 
+  public onClickLession():void{
+    this.router.navigate(['/main/lessions']);
+  }
+
   closeModal() {
     this.loginModalState = 'close';
     this.loginModal.close();

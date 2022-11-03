@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { StepWizardComponent } from './step-form/step-wizard.component';
+import { LessonPlansComponent } from './lesson-plans/lesson-plans.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'main/survey',
     component: StepWizardComponent,
+  },
+  {
+    path: 'main/lessons',
+    component: LessonPlansComponent,
   },
   {
     path: 'student',

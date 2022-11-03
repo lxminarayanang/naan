@@ -19,9 +19,10 @@ import { StepWizardModule } from './step-form/step-wizard.module';
 import { SurveyFormModule } from './survey-form/survey-form.module';
 import { StudentDetailModule } from './pages/student/student.module';
 import { StudentSurveyFormModule } from './student-survey-details/student-survey-detail.module';
+import { LessonPlansComponent } from './lesson-plans/lesson-plans.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LessonPlansComponent],
   imports: [
     BrowserModule,
     StepWizardModule,
