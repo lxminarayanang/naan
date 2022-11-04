@@ -29,8 +29,146 @@
 </script>
 
 <div class="home-carousel mt-6">
+    <!-- <div class="row"> -->
+      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 margin-top-25 mobileViewBanner">
+        <div
+          id="carouselExampleCaptions"
+          class="carousel slide"
+          data-bs-touch="true"
+          data-bs-interval="60000"
+          data-bs-ride="carousel"
+        >
+          <div class="main-banner">
+            <span class="vision" style="font-family: Play">
+              New visions for higher education towards 2025!
+            </span>
+
+            <span class="explore"> Explore More </span>
+
+            <!-- <div
+              class="d-flex flex-row bg-white justify-content-between w-100"
+              style="height: 50px; border-radius: 10px"
+            >
+              <div
+                class="d-flex flex-row justify-content-center align-items-center"
+              >
+
+                <div class="dropdown font-weight-bold" style="width: 108px;">
+                  <mat-select
+
+                placeholder="Select" class="placeMat"
+              >
+                <mat-option
+                  >{{ lang.language.courses }}</mat-option
+                >
+                <mat-option
+
+                >{{ lang.language.colleges }}</mat-option
+              >
+              <mat-option
+
+              >{{ lang.language.entranceExam }}</mat-option
+            >
+            <mat-option
+
+              >{{ lang.language.scholarships }}</mat-option
+            >
+            <mat-option
+
+              >{{ lang.language.educationLoans }}</mat-option
+            >
+            <mat-option
+
+              >{{ lang.language.careers }}</mat-option
+            >
+              </mat-select>
+                </div>
+                <div class="vertical-bar"></div>
+                <div class="form-outline">
+
+                  <input
+                    type="text"
+                    [formControl]="myControl"
+                    id="formControlLg"
+                    class="form-control"
+                    placeholder="Search College, Courses etc"
+                    matInput
+                    [matAutocomplete]="auto"
+                  />
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                      {{option}}
+                    </mat-option>
+                  </mat-autocomplete>
+
+                </div>
+              </div>
+
+              <div class="search-bar">
+                <div class="search-text">Search</div>
+                <img
+                  src="/assets/images/landing-page/search-icon.png"
+                  style="height: 25px; margin-left: 10px"
+                />
+              </div>
+            </div> -->
+          </div>
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="3"
+              aria-label="Slide 4"
+            ></button>
+          </div>
+
+          <div class="carousel-inner carousel-res">
+            <div class="carousel-item active h-100">
+              <img
+                src="/assets/images/banner/3.jpg"
+                class="d-block w-100 h-100"
+                style="height: 480px"
+                style="transform: scale(1.1)"
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item h-100">
+              <img
+                src="/assets/images/banner/4.jpg"
+                class="d-block w-100 h-100"
+                style="height: 480px"
+                alt="..."
+              />
+            </div>
+            <div class="carousel-item h-100">
+              <img
+                src="/assets/images/banner/5.jpg"
+                class="d-block w-100 h-100"
+                style="height: 480px"
+                style="transform: scale(1.1)"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- </div> -->
   <!-- <div class="row"> -->
-  <div class="margin-top-25">
+  <div class="margin-top-25 desktopViewBanner">
    <!-- The HTML5 video element that will create the background video on the header -->
    <video loop autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
     <source src="assets/WhatsApp Video 2022-10-13 at 11.43.02.mp4" type="video/mp4">

@@ -600,3 +600,15 @@ time.icon * {
   width: 350px;
     height: 219px;
 }
+.mobileViewBanner{
+  display: none;
+}
+
+@media only screen and (max-width: 468px){
+  .desktopViewBanner{
+display: none;
+  }
+  .mobileViewBanner{
+    display: block;
+  }
+}
