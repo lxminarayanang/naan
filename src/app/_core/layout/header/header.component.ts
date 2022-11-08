@@ -95,7 +95,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public onClickLession():void{
-    this.router.navigate(['/main/lessions']);
+    this.router.navigate(['/main/lessons']);
   }
 
   closeModal() {
@@ -106,6 +106,7 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = false;
     localStorage.removeItem('userDetails');
     this.service.logout();
+    this.router.navigate(['/home']);
   }
   languageChange(language: any) {
     this.lang.changeLang();

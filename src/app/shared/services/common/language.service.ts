@@ -59,6 +59,8 @@ export class LanguageService {
         careers: 'வேலை வாய்ப்பு',
         explore: 'ஆராயுங்கள்',
         viewAll: 'அனைத்தையும் காட்டு',
+        gender: 'Gender',
+        genderData: ['Male', 'Female', 'Transgender'],
         examBanner:
           'உங்கள் பலம் மற்றும் சாத்தியங்களை அறிந்து கொள்ள தயவுசெய்து இங்கே கிளிக் செய்யவும்',
         all: 'முழுவதும்',
@@ -572,8 +574,59 @@ filledForm:'Who Filled the Form',
 nameLabel:'Name',
 contactNumber:'Contact Number',
 egenderData: ['Male', 'Female'],
+firstGraduate: 'First Graduate',
+disability: 'Person with Disability',
+disabilitypercentage: 'If yes, Percentage',
+community: 'Community',
+trainRoute:
+'Does the student`s hometown/village come under any existing Train Route?',
+nearRailway: 'Nearest major (city/town) Railway station',
+busRoute:
+          'Does the student`s hometown/village come under any existing Bus Route?',
+        nearBus: 'Nearest major (city/town) Bus stand',
+        singleParent: 'Parents',
+        languageData: ['Tamil', 'English'],
+        parentData: ['Both Alive', 'Single Parent', 'Both Deceased'],
+        parentNames: ['Father', 'Mother'],
+        school: 'School Name',
+        hssGroupCode: 'HSS Group code',
+        hosteller: 'Ever stayed in hostel during schooling?',
+        mediumInstruction:
+          'Field to be displayed only if medium of instruction is Tamil',
+        govtSchool:
+          'Whether students studied in government school from class 1 to class 12?',
+          courseIdea: 'Clear about what course to study?',
+
+        worriedAboutAdmission:
+          'Worried about not getting admission in the college of choice?',
+        worriedAboutFees:
+          'Are you worried about getting admission in the college of your choice?',
+        // graduationAwayFromHometown:
+        //   'Any hesitation to pursue graduation away from home town?',
+        challengesGraduationAwayFromHometown:
+          'Challenges in pursuing graduation away from home town?',
+        reasonGraduationAwayFromHometown: 'Your reason',
+        IntrestedHigherEducation: 'Field of interest - Higher Education',
+        otherReasonIntrestedCourse: 'Other reason',
+        appliedEntranceExam:
+          'What are all the applications/Entrance exams applied till now?',
+        listAppliedEntranceExam: 'List the other exams applied ',
+        appliedEntranceExamData: [
+          'JEE',
+          'NEET',
+          'CLAT',
+          'NATA',
+          'CUET',
+          'NDA',
+          'Other',
+        ],
+        careerGuidance: 'Whether student got any career guidance previously?',
+        guide: 'From whom did the student recieve guidance',
+        abroadCourse: 'Is the student interested in taking up courses abroad?',
+        observationCommentOne: 'Additional Comments from observer',
 
       };
+
     } else {
       window.document.title = 'Naan Mudhalvan';
       this.language = {

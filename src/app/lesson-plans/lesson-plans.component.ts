@@ -12,7 +12,12 @@ export class LessonPlansComponent implements OnInit {
   constructor(private _router: Router) { }
 
   ngOnInit(): void {
-
+    this.userDetails = JSON.parse(
+      localStorage.getItem('userDetails') as string
+    );
+    if (!this.userDetails) {
+      this._router.navigate(['/home']);
+    }
   }
 
 }
