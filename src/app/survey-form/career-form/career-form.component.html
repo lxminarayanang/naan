@@ -9,20 +9,15 @@
             *</span
           ></mat-label>
         </div>
-        <mat-radio-group
-        aria-label="Select an option"
-        formControlName="importantForEducation"
-      >
-        <ng-container *ngFor="let item of lang.language.radioOption">
-          <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
-        </ng-container>
-        <mat-error
-          *ngIf="
-            submitted && higherEducationInfoForm.get('importantForEducation').invalid
-          "
-          >This field is required</mat-error
-        >
-      </mat-radio-group>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <input
+            matInput
+            type="text"
+            placeholder=""
+            value=""
+            formControlName="importantForEducation"
+          />
+        </mat-form-field>
 
       </div>
       <div class="col-md-6 labelRow">
