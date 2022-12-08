@@ -1809,6 +1809,7 @@ td.mat-footer-cell {
 }
 .mat-hint {
   color: rgba(0, 0, 0, 0.6);
+  font-size: 13px;
 }
 .mat-form-field.mat-focused .mat-form-field-label {
   color: #3f51b5;
@@ -2980,4 +2981,12 @@ td.mat-footer-cell {
   background-color: $primary-color;
   color: #fff;
   float: right;
+}
+
+mat-label{
+  font-size: 16px;
+}
+mat-form-field {
+  margin-top: 13px;
+  margin-bottom: 25px;
 }

@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { CommonService } from '../../shared/services/common/common.service';
 import { LanguageService } from '../../shared/services/common/language.service';
@@ -16,72 +14,54 @@ declare var $: any;
   styleUrls: ['./career-interest-form.component.scss'],
 })
 export class CareerInterestFormComponent implements OnInit {
-  public toppingList: string[] = [];
-  public specilaztions: any[] = [];
-  public coursesListData: any[] = [];
-  public items: any[] = [];
-  public speclFilteredArray: any[] = [];
-  public selectedSpecialization: any;
-  public selectedSpecializationCourses: any;
-  public coursesData: any[] = [];
-  public entranceExamData: any[] = [];
-  public careersData: any[] = [];
-  public preferedJobValue: string = '';
   public userDetails: any = {};
-  public careerDataModel: string = '';
-  public careerDataModelVaue: string = '';
+  careersData:any;
   public profileEditData: any;
   public submitted: boolean = false;
 
   carrerInfoForm: any = this._formBuilder.group({
-    jobSector: ['', Validators.required],
-    sectorInterested: ['', Validators.required],
-    careerGuidance: ['', Validators.required],
-    guide: [''],
-    abroadCourse: ['', Validators.required],
+    govtExams:['', Validators.required],
+    //interestedJobSector: ['', Validators.required],
   });
 
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
     private _formBuilder: FormBuilder,
-    breakpointObserver: BreakpointObserver,
     private _commonService: CommonService,
     private _location: Location,
     public lang: LanguageService,
-    private _router: Router
+    private _router: Router,
+    private el: ElementRef
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
-    this._getSpecialization();
-    this._getCoursesList();
     this._getCareers();
     this.profileEditData = JSON.parse(
       localStorage.getItem('careerInterestFormValue') as string
     );
 
     if (this.profileEditData) {
-      this.preferedJobValue = this.profileEditData.jobSector;
-      this.careerDataModel = this.profileEditData.careerGuidance;
       this.carrerInfoForm.patchValue({
-        sectorInterested: this.profileEditData.sectorInterested,
-        careerGuidance: this.profileEditData.careerGuidance,
-        guide: this.profileEditData.guide,
-        abroadCourse: this.profileEditData.abroadCourse,
+        interestedJobSector: this.profileEditData.interestedJobSector,
+        govtExams: this.profileEditData.govtExams,
       });
     }
   }
 
-  public getPreferedJobData(job: string) {
-    //
-    // this.carrerInfoForm.setValidators({interestedGoverementJobs:})
-    // this.profileForm.get('secretPwd').updateValueAndValidity();
-    // console.log({ job });
-  }
 
   public onClickNext(): void {
     this.submitted = true;
-    if (this.carrerInfoForm.valid) {
+    if(this.carrerInfoForm.invalid){
+      for (const key of Object.keys(this.carrerInfoForm.controls)) {
+        if (this.carrerInfoForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+ else{
       localStorage.setItem(
         'careerInterestFormValue',
         JSON.stringify(this.carrerInfoForm.value)
@@ -95,35 +75,10 @@ export class CareerInterestFormComponent implements OnInit {
     $('#alertModal').modal('close');
   }
 
-  public getCourseData(selectedData: any): void {
-    if (selectedData) {
-      this.coursesData = [];
-      this.entranceExamData = [];
-      selectedData.forEach((element: string) => {
-        this.items.forEach((item: any) => {
-          if (item.field === element) {
-            this.coursesData.push(item);
-            this.entranceExamData.push(item);
-          }
-        });
-      });
-    }
-  }
-
   toBack() {
-    this._location.back();
+    this._router.navigate(['/student/profile']);
   }
 
-  private _getSpecialization(): void {
-    this._commonService
-      .getService(`/courses/filter?menu=field`)
-      .subscribe((res: any) => {
-        if (res.status == 200) {
-          this.specilaztions = res.results;
-          //  this.getExamDataBasedOnSpcl(res.results)
-        }
-      });
-  }
   private _getCareers(): void {
     this._commonService
       .getService(`/careers/filter?menu=field`)
@@ -133,20 +88,82 @@ export class CareerInterestFormComponent implements OnInit {
         }
       });
   }
-  private _getCoursesList(): void {
-    this._commonService.getService(`/courses`).subscribe((res: any) => {
-      if (res.status == 200) {
-        this.items = res.results;
-        this.speclFilteredArray = this.items;
-      }
-    });
-  }
-
-  public onChangecareerDataModel(careerDataModel: string): void {
-    this.careerDataModelVaue = careerDataModel;
-  }
 
   public onClickBack(): void {
-    this._router.navigate(['/student/career']);
+    this._router.navigate(['/student/observer']);
   }
+
+
+  public onClickFormSubmit(): void {
+    const {govtExams,interestedJobSector}=this.carrerInfoForm.value
+    const profileData = JSON.parse(
+      localStorage.getItem('profileFormValue') as any
+    );
+    const academicFormValue = JSON.parse(
+      localStorage.getItem('academicFormValue') as any
+    );
+
+    const careerFormValue = JSON.parse(
+      localStorage.getItem('careerFormValue') as any
+    );
+    const observerFormValue = JSON.parse(
+      localStorage.getItem('observerFormValue') as any
+    );
+
+    const payload = {
+      ...profileData,
+      ...academicFormValue,
+      ...careerFormValue,
+      ...observerFormValue
+    };
+    const {
+    importantForEducation,
+    challengesInHigherEducation,
+    specilaztions,
+    intrestedCourse,
+    entranceExams,
+    accessedGoverementSchemes,
+    documentList,
+    scholorshipExams,
+    awareGovtSchemes,
+    likedColleges,
+    graduationAwayFromHometown,
+    leastInterestedSubject,
+    mostIntrestedSubject
+
+    } = payload;
+
+    const payloadUpdate = {
+    ...profileData,
+    mostIntrestedSubject: JSON.stringify(mostIntrestedSubject),
+    leastInterestedSubject: JSON.stringify(leastInterestedSubject),
+    importantForEducation,
+    challengesInHigherEducation,
+    specilaztions:JSON.stringify(specilaztions),
+    intrestedCourse:JSON.stringify(intrestedCourse),
+    entranceExams:JSON.stringify(entranceExams),
+    accessedGoverementSchemes:JSON.stringify(accessedGoverementSchemes),
+    documentList:JSON.stringify(documentList),
+    scholorshipExams:JSON.stringify(scholorshipExams),
+    awareGovtSchemes:JSON.stringify(awareGovtSchemes),
+    likedColleges,
+    graduationAwayFromHometown,
+    interestedJobSector: JSON.stringify(interestedJobSector),
+    govtExams: JSON.stringify(govtExams),
+
+    };
+    this._commonService
+      .postService('/one-to-one-assesement/add', payloadUpdate)
+      .subscribe((res: any) => {
+        if (res.status == 200) {
+          $('#successModal').modal('show');
+          localStorage.removeItem('profileFormValue');
+          localStorage.removeItem('academicFormValue');
+          localStorage.removeItem('careerFormValue');
+          localStorage.removeItem('careerInterestFormValue');
+          localStorage.removeItem('observerFormValue');
+        }
+      });
+  }
+
 }

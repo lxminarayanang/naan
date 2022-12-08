@@ -1,14 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Location } from '@angular/common';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
-  FormControl,
-  FormGroup,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonService } from '../../shared/services/common/common.service';
 import { LanguageService } from '../../shared/services/common/language.service';
 declare var $: any;
 
@@ -18,145 +14,92 @@ declare var $: any;
   styleUrls: ['./profile-form.component.scss'],
 })
 export class ProfileFormComponent implements OnInit {
-  selected: any;
-  selected1: any;
-  selectedList: any = [];
-
-  illnessData: any[] = ['Physically ill', ' Mentally ill', ' Terminal illness'];
-  illnessData1: any[] = [
-    'Physically ill',
-    ' Mentally ill',
-    ' Terminal illness',
-  ];
-  physicalFatherSet = new Map();
-  physicalMotherSet = new Map();
-  filteredOptions: any[] = [];
-  filteredOptions1: any[] = [];
-
-  public toppingList: string[] = [];
-  public specilaztions: any[] = [];
-  public coursesListData: any[] = [];
-  public items: any[] = [];
-  public speclFilteredArray: any[] = [];
-  public selectedSpecialization: any;
-  public selectedSpecializationCourses: any;
-  public coursesData: any[] = [];
-  public entranceExamData: any[] = [];
-  public careersData: any[] = [];
-  public preferedJobValue: string = '';
   public userDetails: any = {};
-  public singleParentModel: string = '';
-  public disblilityValue: string = '';
-  public today = new Date();
   public profileEditData: any;
   public submitted = false;
-  public parentsData: any;
   public siblingsValue: any;
-  public disabilitypercentageValue: any;
+
 
   profileInfoFormGroup: any = this._formBuilder.group({
     emsId: ['', Validators.required],
     fullName: ['', Validators.required],
-    dob: ['', Validators.required],
-    gender: ['', Validators.required],
-    firstGraduate: ['', Validators.required],
-    studentMedium: ['', Validators.required],
-    disability: ['', Validators.required],
-    disabilitypercentage: [''],
-    community: ['', Validators.required],
-    trainRoute: ['', Validators.required],
-    nearRailway: ['', Validators.required],
-    busRoute: ['', Validators.required],
-    nearBus: ['', Validators.required],
-    singleParent: ['', Validators.required],
-    //father: [''],
-    mother: [''],
-    fatherPhysical: [''],
-    motherPhysical: [''],
-    gaurdian: [''],
-    gaurdianRelationship: [''],
-
-    // studentHome: ['', Validators.required],
-    fatherOccupation: ['', Validators.required],
-    // fatherOccupationDetail: ['', ''],
-    fatherQualification: ['', Validators.required],
-    motherOccupation: ['', Validators.required],
-    //motherOccupationDetail: ['', Validators.required],
-    motherQualification: ['', Validators.required],
-    //familyAnnualIncome: ['', ''],
-    siblings: ['', Validators.required],
+    homeLocation:['', Validators.required],
+    studentMedium:['', Validators.required],
+    fatherOccupation:['', Validators.required],
+   // fatherOccupationDetail:[''],
+    fatherQualification:['', Validators.required],
+    motherOccupation:['', Validators.required],
+   // motherOccupationDetail:[''],
+    motherQualification:['', Validators.required],
+    familyAnnualIncome:[''],
+    studiedSchoolType:['', Validators.required],
+    siblings:['', Validators.required],
+    udise:[]
+    //residentialAddress:['', Validators.required],
   });
 
   constructor(
     private _formBuilder: FormBuilder,
     public lang: LanguageService,
-    private _router: Router
+    private _router: Router,
+    private el: ElementRef
   ) {
-    this.illnessData.forEach((item) => {
-      this.physicalFatherSet.set(item, false);
-    });
-    this.illnessData1.forEach((item) => {
-      this.physicalMotherSet.set(item, false);
-    });
-
-    this.filteredOptions = [...this.illnessData];
-    this.filteredOptions1 = [...this.illnessData1];
   }
   ngOnInit() {
     window.scrollTo(0, 0);
     this.userDetails = JSON.parse(
       localStorage.getItem('userDetails') as string
     );
+
     this.profileEditData = JSON.parse(
       localStorage.getItem('profileFormValue') as string
     );
+
     if (this.userDetails) {
       this.profileInfoFormGroup.patchValue({
         fullName: this.userDetails.student_name,
-        emsId: this.userDetails.student_id,
+        emsId: this.userDetails.school_id,
         gender: this.userDetails.gender === 1 ? 'Male' : 'Female',
+        udise: this.userDetails.udise,
       });
     }
+    else{
+      this._router.navigate(['/home']);
+    }
     if (this.profileEditData) {
-      debugger;
-      (this.disblilityValue = this.profileEditData.disability),
-        (this.singleParentModel = this.profileEditData.singleParent);
-      this.selected = this.profileEditData.fatherPhysical;
-      this.selected1 = this.profileEditData.motherPhysical;
       this.siblingsValue = this.profileEditData.siblings;
-      this.disabilitypercentageValue =
-        this.profileEditData.disabilitypercentage;
       this.profileInfoFormGroup.patchValue({
-        dob: this.profileEditData.dob,
-        firstGraduate: this.profileEditData.firstGraduate,
-        studentMedium: this.profileEditData.studentMedium,
-        disability: this.profileEditData.disability,
-        disabilitypercentage: this.profileEditData.disabilitypercentage,
-        community: this.profileEditData.community,
-        trainRoute: this.profileEditData.trainRoute,
-        nearRailway: this.profileEditData.nearRailway,
-        busRoute: this.profileEditData.busRoute,
-        nearBus: this.profileEditData.nearBus,
-        singleParent: this.profileEditData.singleParent,
-        mother: this.profileEditData.mother,
-        fatherPhysical: this.profileEditData.fatherPhysical,
-        motherPhysical: this.profileEditData.motherPhysical,
-        gaurdian: this.profileEditData.gaurdian,
-        gaurdianRelationship: this.profileEditData.gaurdianRelationship,
-        fatherOccupation: this.profileEditData.fatherOccupation,
-        fatherQualification: this.profileEditData.fatherQualification,
-        motherOccupation: this.profileEditData.motherOccupation,
-        motherQualification: this.profileEditData.motherQualification,
-        siblings: this.profileEditData.siblings,
+        emsId: this.profileEditData.emsId,
+        fullName: this.profileEditData.fullName,
+        studentMedium:this.profileEditData.studentMedium,
+        homeLocation:this.profileEditData.homeLocation,
+        fatherOccupation:this.profileEditData.fatherOccupation,
+        fatherOccupationDetail:this.profileEditData.fatherOccupationDetail,
+        fatherQualification:this.profileEditData.fatherQualification,
+        motherOccupation:this.profileEditData.motherOccupation,
+        motherOccupationDetail:this.profileEditData.motherOccupationDetail,
+        motherQualification:this.profileEditData.motherQualification,
+        familyAnnualIncome:this.profileEditData.familyAnnualIncome,
+        studiedSchoolType:this.profileEditData.studiedSchoolType,
+        siblings:this.profileEditData.siblings,
+       // residentialAddress:this.profileEditData.residentialAddress
       });
     }
   }
 
   public onClickNext(): void {
     this.submitted = true;
-    console.log(this.profileInfoFormGroup.value);
-    if (this.profileInfoFormGroup.valid) {
-      console.log(this.profileInfoFormGroup.value);
+    if(this.profileInfoFormGroup.invalid){
+      for (const key of Object.keys(this.profileInfoFormGroup.controls)) {
+        if (this.profileInfoFormGroup.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+
+   else {
       localStorage.setItem(
         'profileFormValue',
         JSON.stringify(this.profileInfoFormGroup.value)
@@ -187,8 +130,9 @@ export class ProfileFormComponent implements OnInit {
       return false;
     }
   }
+
   keyPressNumericCharacter(event: any, item?: string) {
-    if (item === 'sibilings') {
+
       var inp = parseInt(event);
       // Allow numbers, alpahbets, space, underscore
       if (0 <= inp && inp < 20) {
@@ -198,51 +142,9 @@ export class ProfileFormComponent implements OnInit {
         this.siblingsValue = '';
         return true;
       }
-    } else {
-      var inp = parseInt(event);
-      // Allow numbers, alpahbets, space, underscore
-      if (0 < inp && inp < 100) {
-        return true;
-      } else {
-        this.profileInfoFormGroup.controls['disabilitypercentage'].reset();
-        this.disabilitypercentageValue = '';
-        return true;
-      }
-    }
   }
 
-  selectionChange($event: any) {
-    this.physicalFatherSet.set(
-      $event.option.value,
-      !this.physicalFatherSet.get($event.option.value)
-    );
-    console.log(this.selected);
-  }
-  selectionChangeMother($event: any) {
-    this.physicalMotherSet.set(
-      $event.option.value,
-      !this.physicalMotherSet.get($event.option.value)
-    );
-    console.log(this.selected1);
-  }
 
-  disabilityValueChange(disabilityValue: any) {
-    debugger;
-    if (disabilityValue === 'Yes') {
-      this.profileInfoFormGroup
-        .get('disabilitypercentage')
-        .setValidators(Validators.required);
-      //this.profileInfoFormGroup.controls.disabilitypercentage.setValidators([Validators.required]);
-    }
-  }
-  parentVlueChanbeBasedOnParent(singleParentModel: string): void {
-    if (singleParentModel === 'Single Parent') {
-      this.profileInfoFormGroup
-        .get('mother')
-        .setValidators(Validators.required);
-      //this.profileInfoFormGroup.controls.disabilitypercentage.setValidators([Validators.required]);
-    }
-  }
 }
 
 export class CustomValidator {

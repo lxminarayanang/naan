@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, Validators } from '@angular/forms';
 import { BreakpointObserver } from '@angular/cdk/layout';
@@ -34,22 +34,20 @@ export class CareerFormComponent implements OnInit {
   public appliedEntranceExam1: string = '';
   public profileEditData: any;
   public submitted: boolean = false;
+  public examFileteredData:any;
+  public specilaztionsArr:any = []
 
   higherEducationInfoForm: any = this._formBuilder.group({
-    courseIdea: ['', Validators.required],
-    collegeIdea: ['', Validators.required],
-    worriedAboutAdmission: ['', Validators.required],
-    worriedAboutFees: ['', Validators.required],
-    graduationAwayFromHometown: ['', Validators.required],
-    challengesGraduationAwayFromHometown: [''],
-    reasonGraduationAwayFromHometown: [''],
-    IntrestedHigherEducation: ['', Validators.required],
-    reasonIntrestedCourse: ['', Validators.required],
-
-    //IntrestedCourse: ['', Validators.required],
-    otherReasonIntrestedCourse: [''],
-    appliedEntranceExam: ['', Validators.required],
-    listAppliedEntranceExam: [''],
+    importantForEducation: ['', Validators.required],
+    challengesInHigherEducation: ['', Validators.required],
+    specilaztions: ['', Validators.required],
+    intrestedCourse: ['', Validators.required],
+    entranceExams: ['', Validators.required],
+    accessedGoverementSchemes:['', Validators.required],
+    documentList:['', Validators.required],
+    awareGovtSchemes:['', Validators.required],
+    likedColleges:['', Validators.required],
+    graduationAwayFromHometown:['', Validators.required],
   });
 
   constructor(
@@ -58,116 +56,91 @@ export class CareerFormComponent implements OnInit {
     private _commonService: CommonService,
     private _location: Location,
     public lang: LanguageService,
-    private _router: Router
+    private _router: Router,
+    private el: ElementRef
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
-    this._getSpecialization();
     this._getCoursesList();
+    this._getSpecialization();
     this._getCareers();
     this.profileEditData = JSON.parse(
       localStorage.getItem('careerFormValue') as string
     );
+this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:any) => {
+  debugger;
+   this.getCourseData(item)
+})
     if (this.profileEditData) {
-      this.graduationAwayFromHometwn =
-        this.profileEditData.graduationAwayFromHometown;
-      this.graduationAwayFromHometwnModel =
-        this.profileEditData.challengesGraduationAwayFromHometown;
-      this.selectedSpecialization =
-        this.profileEditData.IntrestedHigherEducation;
-      this.interestedForStudyDataModel =
-        this.profileEditData.reasonIntrestedCourse;
-      this.appliedEntranceExam1 = this.profileEditData.appliedEntranceExam;
+      debugger;
+      // this.graduationAwayFromHometwn =
+      //   this.profileEditData.graduationAwayFromHometown;
+      // this.graduationAwayFromHometwnModel =
+      //   this.profileEditData.challengesGraduationAwayFromHometown;
+      // this.selectedSpecialization =
+      //   this.profileEditData.specilaztions;
 
-      this.higherEducationInfoForm.patchValue({
-        courseIdea: this.profileEditData.courseIdea,
-        collegeIdea: this.profileEditData.collegeIdea,
-        worriedAboutAdmission: this.profileEditData.worriedAboutAdmission,
-        worriedAboutFees: this.profileEditData.worriedAboutFees,
-
-        reasonGraduationAwayFromHometown:
-          this.profileEditData.reasonGraduationAwayFromHometown,
-
-        otherReasonIntrestedCourse:
-          this.profileEditData.otherReasonIntrestedCourse,
-
-        listAppliedEntranceExam: this.profileEditData.listAppliedEntranceExam,
+    this.higherEducationInfoForm.patchValue({
+    specilaztions:this.profileEditData.specilaztions,
+    importantForEducation:  this.profileEditData.importantForEducation,
+    challengesInHigherEducation:  this.profileEditData.challengesInHigherEducation,
+    intrestedCourse:  this.profileEditData.intrestedCourse,
+    entranceExams:  this.profileEditData.entranceExams,
+    accessedGoverementSchemes: this.profileEditData.accessedGoverementSchemes,
+    documentList: this.profileEditData.documentList,
+    awareGovtSchemes: this.profileEditData.awareGovtSchemes,
+    likedColleges: this.profileEditData.likedColleges,
+    graduationAwayFromHometown: this.profileEditData.graduationAwayFromHometown,
       });
     }
   }
   public onClickBack(): void {
     this._router.navigate(['/student/academic']);
   }
-  public getPreferedJobData(job: string) {
-    //
-    // this.carrerInfoForm.setValidators({interestedGoverementJobs:})
-    // this.profileForm.get('secretPwd').updateValueAndValidity();
-    // console.log({ job });
-  }
 
   public toClose(): void {
     $('#alertModal').modal('close');
   }
 
-  public getCourseData(selectedData: any): void {
+  public async getCourseData(selectedData: any): Promise<void> {
+    debugger
     if (selectedData) {
       this.coursesData = [];
       this.entranceExamData = [];
+      let results= await this._getCoursesList()
       selectedData.forEach((element: string) => {
         this.items.forEach((item: any) => {
           if (item.field === element) {
             this.coursesData.push(item);
-            this.entranceExamData.push(item);
+            this.entranceExamData.push(item.admissionProcedure);
+
           }
         });
       });
+      this.examFileteredData=Array.from(new Set(this.entranceExamData));
     }
   }
   public onClickNext(): void {
     this.submitted = true;
-    if (this.higherEducationInfoForm.valid) {
+    if(this.higherEducationInfoForm.invalid){
+      for (const key of Object.keys(this.higherEducationInfoForm.controls)) {
+        if (this.higherEducationInfoForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+  else {
       localStorage.setItem(
         'careerFormValue',
         JSON.stringify(this.higherEducationInfoForm.value)
       );
       //this._router.navigate[('')]
-      this._router.navigate(['/student/career-interest']);
-    } else {
-      return;
+      this._router.navigate(['/student/observer']);
     }
   }
 
-  public onChangeChallenges(graduationAwayFromHometwn: any): void {
-    this.graduationAwayFromHometownData = graduationAwayFromHometwn;
-    debugger;
-  }
-  public onChangeChallengesModel(graduationAwayFromHometwn: any): void {
-    this.reasonGraduationAwayFromHometownData = graduationAwayFromHometwn;
-    debugger;
-  }
-
-  public onChangeInterestedStudey(interestedForStudyDataModel: string): void {
-    this.interestedForStudyDataModelChange = interestedForStudyDataModel;
-  }
-  // public getExamDataBasedOnSpcl(data:any):void{
-
-  //   this.entranceExamData=[];
-  //   if(data){
-  //     data.forEach((item: any) => {
-
-  //       data.forEach((element: string) => {
-  //         this.items.forEach((item: any) => {
-  //           if (item.field === element) {
-  //             this.coursesData.push(item);
-
-  //           }
-  //         });
-  //       });
-
-  //     });
-  //   }
-  //   Array.from(new Set(this.entranceExamData))
-  // }
   toBack() {
     this._location.back();
   }

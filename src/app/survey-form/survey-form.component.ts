@@ -28,13 +28,14 @@ export class SurveyFormComponent implements OnInit {
         disabled: false,
       },
       {
-        label: 'Career Interests & Aspirations',
-        route: '/student/career-interest',
+        label: 'Scholarships exams ',
+        route: '/student/observer',
+
         disabled: true,
       },
       {
-        label: 'Observation',
-        route: '/student/observer',
+        label: 'Career Interests & Aspirations',
+        route: '/student/career-interest',
         disabled: true,
       },
     ];

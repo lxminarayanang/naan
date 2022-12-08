@@ -74,7 +74,7 @@ export class ExamsComponent implements OnInit {
     window.open(url, '_blank');
   }
   public goTo(): void {
-    this.router.navigate(['main/survey']);
+    this.router.navigate(['student/profile']);
   }
 
   chooseType(type: any, title: any) {
@@ -83,7 +83,7 @@ export class ExamsComponent implements OnInit {
     this.examsList = [];
     this.startList = [];
 
-    
+
     var data = {
       pageSize: 1000,
       pageIndex: 0,
@@ -107,15 +107,15 @@ export class ExamsComponent implements OnInit {
         console.log(obj_name);
         // check if name property value is already in the set
         const isPresentInSet = uniqueValuesSet.has(obj_name);
-      
+
         // add name property value to Set
         uniqueValuesSet.add(obj_name);
-      
+
         // return the negated value of
         // isPresentInSet variable
         return !isPresentInSet;
       });
-      
+
      this.count =filteredArr.length;
      if(this.count < 12){
       this.viewShow=true;
@@ -137,7 +137,7 @@ export class ExamsComponent implements OnInit {
     this.title = title;
     this.section = type;
     this.examsList = [];
-    
+
     var data = {
       pageSize: 1000,
       pageIndex: 0,
@@ -159,7 +159,7 @@ export class ExamsComponent implements OnInit {
         console.log(obj_name);
         // check if name property value is already in the set
         const isPresentInSet = uniqueValuesSet.has(obj_name);
-      
+
         // add name property value to Set
         uniqueValuesSet.add(obj_name);
         // return the negated value of

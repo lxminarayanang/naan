@@ -1,121 +1,11 @@
 <div class="container step-wizard-container">
   <form [formGroup]="academicInfoForm">
     <div class="row">
-      <div class="col-md-12 labelRow">
-        <mat-label
-          >{{ lang.language.school }}
-          <span class="mat-placeholder-required mat-form-field-required-marker">
-            *</span
-          ></mat-label
-        >
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input
-            matInput
-            type="text"
-            placeholder=""
-            value=""
-            formControlName="school"
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-md-12 labelRow">
-        <mat-label
-          >{{ lang.language.hssGroupCode }}
-          <span class="mat-placeholder-required mat-form-field-required-marker">
-            *</span
-          ></mat-label
-        >
-        <mat-form-field class="example-full-width" appearance="fill">
-          <input
-            matInput
-            type="text"
-            placeholder=""
-            value=""
-            formControlName="hssGroupCode"
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-md-12 labelRow">
-        <div>
-          <mat-label class="radioLabel"
-            >{{ lang.language.hosteller }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
-              *</span
-            ></mat-label
-          >
-        </div>
-        <mat-radio-group
-          class="example-full-width"
-          aria-label="Select an option"
-          formControlName="hosteller"
-        >
-          <ng-container *ngFor="let item of lang.language.radioButton">
-            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
-          </ng-container>
-          <mat-error
-            *ngIf="submitted && academicInfoForm.get('hosteller').invalid"
-            >This field is required</mat-error
-          >
-        </mat-radio-group>
-      </div>
-      <div class="col-md-12 labelRow">
-        <div>
-          <mat-label class="radioLabel"
-            >{{ lang.language.mediumInstruction }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
-              *</span
-            ></mat-label
-          >
-        </div>
-        <mat-radio-group
-          class="example-full-width"
-          aria-label="Select an option"
-          formControlName="mediumInstruction"
-        >
-          <ng-container *ngFor="let item of lang.language.radioButton">
-            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
-          </ng-container>
-          <mat-error
-            *ngIf="
-              submitted && academicInfoForm.get('mediumInstruction').invalid
-            "
-            >This field is required</mat-error
-          >
-        </mat-radio-group>
-      </div>
-      <div class="col-md-12 labelRow">
-        <div>
-          <mat-label class="radioLabel"
-            >{{ lang.language.govtSchool }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
-              *</span
-            ></mat-label
-          >
-        </div>
-        <mat-radio-group
-          class="example-full-width"
-          aria-label="Select an option"
-          formControlName="govtSchool"
-        >
-          <ng-container *ngFor="let item of lang.language.radioButton">
-            <mat-radio-button [value]="item">{{ item }}</mat-radio-button>
-          </ng-container>
-          <mat-error
-            *ngIf="submitted && academicInfoForm.get('govtSchool').invalid"
-            >This field is required</mat-error
-          >
-        </mat-radio-group>
-      </div>
+
       <div class="col-md-12 labelRow">
         <div>
           <mat-label
-            >{{ lang.language.intrestedSubject }}
+            >10. {{ lang.language.intrestedSubject }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -124,21 +14,20 @@
           >
         </div>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-select formControlName="intrestedSubject">
+          <mat-select formControlName="mostIntrestedSubject" multiple>
             <ng-container
               *ngFor="let item of lang.language.intrestedSubjectData"
             >
-              <mat-option [value]="item">{{ item }}</mat-option>
+              <mat-option [value]="item" [disabled]="academicInfoForm.get('mostIntrestedSubject').value.length >= 3 && !academicInfoForm.get('mostIntrestedSubject').value.includes(item)">{{ item }}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>
       </div>
-    </div>
-    <div class="row">
+
       <div class="col-md-12 labelRow">
         <div>
           <mat-label
-            >{{ lang.language.unInrestedSubject }}
+            >11. {{ lang.language.unInrestedSubject }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -147,11 +36,11 @@
           >
         </div>
         <mat-form-field class="example-full-width" appearance="fill">
-          <mat-select formControlName="unintrestedSubject">
+          <mat-select formControlName="leastInterestedSubject" multiple>
             <ng-container
               *ngFor="let item of lang.language.intrestedSubjectData"
             >
-              <mat-option [value]="item">{{ item }}</mat-option>
+              <mat-option [value]="item" [disabled]="academicInfoForm.get('leastInterestedSubject').value.length >= 3 && !academicInfoForm.get('leastInterestedSubject').value.includes(item)">{{ item }}</mat-option>
             </ng-container>
           </mat-select>
         </mat-form-field>

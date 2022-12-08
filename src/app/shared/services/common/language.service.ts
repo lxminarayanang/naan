@@ -388,7 +388,7 @@ export class LanguageService {
 
         //Higher Education Interest & Aspirations
         collegeIdea:
-          'எந்தப்  படிப்பு எனத் தேர்ந்தெடுத்து இருந்தால் எந்தக் கல்லூரி அல்லது பல்கலைக்கழகத்தில் படிக்க விரும்புகிறீர்கள் என்று உங்களுக்குத் தெரியுமா?',
+          'நீங்கள் எந்தப் படிப்பைப் படிக்க விரும்புகிறீர்கள் என்று உங்களுக்குத் தெரிந்தால், நீங்கள் எந்தக் கல்லூரி அல்லது பல்கலைக்கழகத்தில் படிக்க விரும்புகிறீர்கள் என்று உங்களுக்குத் தெரியுமா?',
 
         higherEducation: 'உயர்கல்வியைத் தொடர விரும்புகிறீர்களா?',
         likeHigherEducation:
@@ -407,6 +407,77 @@ export class LanguageService {
           certificates:'உயர்கல்வியைத் தொடர தேவையான சான்றிதழ்கள் உங்களிடம் உள்ளதா?',
           CertificateList:'ஆம் எனில் பட்டியலில் இருந்து தேர்வு செய்யவும்',
           CertificateListData:['எஸ்.எஸ்.எல்.சி', 'மேல்நிலைக் கல்வி', 'பிறப்பு சான்றிதழ்', 'சமூக சான்றிதழ்', 'வருமானச் சான்றிதழ்', 'பரிமாற்றச் சான்றிதழ்', 'மற்றவை'],
+          studiedSchoolType:'நீங்கள் 6 முதல் 12 வகுப்பு வரை அரசு பள்ளியில் படித்தவரா ?',
+          studiedSchoolTypeHint:'மாணவர் 7.5 இடஒதுக்கீடு திட்டம் மற்றும் புதுமை பெண் திட்டத்துக்கான தகவல் சேகரிப்புக்காக கேட்கப்படுகிறது ',
+specialHint:'அதிகபட்சம்  4 துறைகள் வரை தேர்ந்தெடுக்கலாம் ',
+courseHint:'அதிகபட்சம் 4 படிப்புகள் வரை தேர்ந்தெடுக்கலாம்',
+examHint:'உங்களுக்கு மிகவும் பிடித்தமான 3 நுழைவு தேர்வுகள் வரை தேர்ந்தெடுக்கவும். நீங்கள் தேர்தெடுத்த சிறப்பு தேர்வுகளுக்கான அனைத்து நுழைவு தேர்வுகளையும் தெரிந்து கொள்ள நான் முதல்வன் போர்ட்டல் பார்க்கவும் ',
+
+          importantForEducation:'உயர்கல்வி பயில்வது முக்கியமானது என நீங்கள் நினைக்க காரணம் என்ன ?',
+          challengesInEducation:'உயர்கல்வி தொடர்வதில் உங்களுக்கு என்னென்ன சிக்கல்கள் உள்ளதாக கருதுகிறீர்கள் ? ',
+
+          //new one to one assesement
+          awareSchemes:'உயர்கல்விக்கான அரசு திட்டங்களில் உங்களுக்கு தெரிந்தவை எவை ? ',
+          requireDocument:'இவை உயர்கல்வி சேர்க்கைக்கு தேவையான சான்றிதழ்கள். கீழே உள்ள பட்டியலிலிருந்து உங்களிடம் உள்ள அனைத்து ஆவணங்களையும் தேர்ந்தெடுக்கவும்',
+          requireDocumentData:[
+' பத்தாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
+       'பதினொன்றாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
+            ' பன்னிரெண்டாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
+             'மாற்றுச்  சான்றிதழ் (Transfer Certificate)',
+          'சாதிச் சான்றிதழ் (Community Certificate)',
+          'ஆதார் அடையாள அட்டை (Aadhar Card)',
+             'வருமானச் சான்றிதழ் (Income Certificate)',
+              'விளையாட்டுச் சான்றிதழ்கள் (Sports Certificates)',
+              'இருப்பிடச் சான்றிதழ் (Nativity Certificate)',
+             'முன்னாள் ராணுவத்தினரின் வாரிசுத் சான்றிதழ் (if applicable)',
+            'இலங்கைத்  தமிழ் அகதி என்பதற்கான சான்றிதழ் (if applicable)',
+            ' முதல் தலைமுறை பட்டதாரிச் சான்றிதழ் (if applicable)',
+            'மாற்றுத்  திறனாளி என்பதற்கான சான்றிதழ் (if applicable)',
+
+
+          ],
+          scholorshipExams:'உதவித்தொகைக்கான தேர்வுகளை எழுத விருப்பம் உள்ளதா ?',
+          residentialAddress:'வீட்டு முகவரி / தொலைபேசி எண் ',
+residentialData:[
+  'வாடகை வீடு ',
+'சொந்த வீடு '
+//வீடில்லை
+],
+schemeData:[
+ ' சீருடை',
+' புத்தகப்பை மற்றும் புத்தகங்கள்' ,
+'சத்துணவு',
+'மடிக்கணினி' ,
+'மிதிவண்டி',
+'பிற்படுத்தப்பட்டோர் / பழங்குடியினர் உதவித்தொகை ',
+'செல்வ மகள் திட்டம்',
+'முதலமைச்சர் காலை உணவுத் திட்டம்',
+'இடைநிற்றலை குறைப்பதற்கான சிறப்பு ஊக்கத்தொகை',
+  'காலணிகள்',
+'கணித உபகரணப் பெட்டி',
+'பேருந்து பயண அட்டை',
+'பெற்றோரை இழந்த மாணவருக்கான நிதி உதவி',
+'கொரோனாவால் பெற்றோரை இழந்த மாணவர்களுக்கான நிதி உதவி'
+],
+awareGovtSchemes:[
+'புதுமைப் பெண் திட்டம்',
+'ஒன்றிய அரசின் வித்யாலட்சுமி திட்டம்',
+'கல்விக்  கடன் திட்டங்கள்' ,
+'முதல் பட்டதாரிக்கான உதவித் தொகை'
+],
+
+scholorShipsExamData:[
+  'NMMS','தமிழ்நாடு கிராமப்புற மாணவர்கள் திறனறிதல் தேர்வு(TRUST)',
+'தேசிய திறனறிதல் தேர்வு (NTSE)',
+'இளம் சாதனையாளர் உதவித் தொகை (YASAVI)',
+'தமிழ் திறன் தேர்வு ',
+  ],
+  specilaztionsNew:'உயர்கல்வியைத் தொடர்வது விருப்பம் என்றால், துறையை தேர்ந்தெடுத்து  படிக்க விரும்புகிறீர்கள ?',
+  courseNew:'நீங்கள் விரும்பும் துறையில் உயர்கல்வி தொடர எந்த படிப்பை தேர்ந்துடுத்து படிக்க விரும்புகிறீர்கள் ? ',
+  examnew:'உயர்கல்விக்கான நுழைவுத் தேர்வுகள் / கல்லூரி சேர்க்கைக்கான நுழைவுத் தேர்வுகள் எழுத விருப்பம் உள்ளதா ?',
+  radioOption:[
+    'ஆம்','இல்லை' ,'இன்னும் முடிவு செய்யவில்லை '
+  ],
 
         //End
 
@@ -845,7 +916,7 @@ busRoute:
         homeLocation: 'Where is your home? Is it located in ',
         homeLocationHint:
           'This data is collected to update the information provided at the time of admission ',
-        homeLocationData: ['District HQ', 'Taluk', 'Village'],
+        homeLocationData: ['city','Taluk', 'Village'],
 
         fatherOccupation: 'Type of Occupation (Father)',
         fatherOccupationHint:
@@ -1094,6 +1165,8 @@ Higher Education Interest & Aspirations
           CertificateList:'if yes choose from the list',
           CertificateListData:['SSLC', 'HSC', 'Birth Certificate', 'Community Certificate', 'Income Certificate', 'Transfer Certificate', 'other'],
 
+
+
         /*
 End student survey form
 */
@@ -1252,12 +1325,74 @@ specializationData:[
 'Manufacturing Industry',
 'Services – IT/ Electronics',
 'Others'
-]
+],
 
-
-
-
-
+studiedSchoolType:'Are you studying in the Government school from 6th std to 12th std ',
+//new one to one assesement
+importantForEducation:'Why do you feel it is important to pursue Higher Education?',
+challengesInEducation:'What challenges do you expect to pursue higher education?',
+awareSchemes:'Which of these schemes for higher education are you aware of?',
+requireDocument:'These are the certificates required for Higher Education admission. Please select all documents you have as applicable to you from the list below',
+requireDocumentData:[
+'10TH Mark Sheet',
+'11th Mark Sheet',
+'12th Mark Sheet',
+'Transfer Certificate',
+'Community Certificate',
+'Aadhar Card','Income Certificate',
+'Sports Certificates',
+'Nativity Certificate',
+'Succession Certificate of Ex-Servicemen (if applicable)',
+'Certificate of Sri Lankan Tamil Refugee(if applicable)',
+'First Generation Graduate Certificate (if applicable)',
+'Certificate of differently abled (if applicable)'
+],
+scholorshipExams:'Are you willing to write the exams for scholarships ',
+residentialAddress:'Residential address / Phone Number',
+residentialData:[
+  'Rented House',
+'Own House',
+//'Homeless'
+],
+schemeData:[
+   "Uniform",
+'Bookbag and books',
+'Nutrition',
+'Laptop',
+'Bicycle',
+'Backward / Tribal Scholarship',
+'Selva daughter scheme',
+"Chief Minister's Breakfast Scheme",
+'Special incentives to reduce dropout',
+'Shoes',
+'Mathematical Toolbox',
+'Bus Travel Card',
+'Financial assistance to a student who has lost his parents',
+'Financial assistance for students who have lost their parents due to Corona'
+],
+awareGovtSchemes:[
+  'Innovative Women Project',
+  'Vidyalakshmi Scheme of Union Govt',
+  'Education Loan Schemes',
+  'Stipend for First Graduate'
+  ],
+scholorShipsExamData:[
+'National Means Cum Merit Scholarship (NMMS )',
+'Tamilnadu Rural Students Talent Search Examination ( TRUST )',
+'National Talent Search examination ( NTSE )',
+'Young Achievers Scholarship Award Scheme for Vibrant INdia ( Yasavi )',
+'Tamil Talent Test'
+],
+studiedSchoolTypeHint:'This data to be collected to connect 7.5 and Puthumai penn schemes ',
+specialHint:'Please select upto Four specialisation that interest you the most. Remember to go through Naan Mudhalvan Portal to know all the specialisations. ',
+courseHint:'Please select upto four courses that interest you the most. Please note that it is mainly to understand your choice and not mandatory to do this course.',
+examHint:'Please select upto three entrance exams that interest you the most. Remember to go through Naan Mudhalvan Portal to know all the entrance exams for your chosen specialisation(s) ',
+radioOption:[
+  'Yes',' No',' Not yet decided'
+],
+specilaztionsNew:'Which field do you want to pursue your higher education?',
+courseNew:'Which of the following courses would you like to study in your selected field? ',
+examnew:'Are you interested in writing the following college admission/entrance exams for the upcoming academic year?',
 /**
  * End New Form
  *

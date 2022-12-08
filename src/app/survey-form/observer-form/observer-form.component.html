@@ -1,16 +1,30 @@
 <div class="container step-wizard-container">
   <form [formGroup]="observerForm">
     <div class="row">
-      <div class="col-md-12 labelRow">
+      <div class="col-md-12 labelRow
+      ">
         <div>
-          <mat-label>{{ lang.language.observationCommentOne }}</mat-label>
+          <mat-label
+            >22. {{ lang.language.scholorshipExams }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label
+          >
         </div>
         <mat-form-field class="example-full-width" appearance="fill">
-          <textarea
-            matInput
-            placeholder="..."
-            formControlName="observationCommentTwo"
-          ></textarea>
+          <mat-select
+            placeholder=""
+            formControlName="scholorshipExams"
+            multiple
+          >
+            <mat-option
+              *ngFor="let item of lang.language.scholorShipsExamData"
+              [value]="item"
+              >{{ item }}</mat-option
+            >
+          </mat-select>
         </mat-form-field>
       </div>
     </div>
@@ -21,9 +35,9 @@
         mat-button
         class="matButton"
         type="submit"
-        (click)="clickFormSubmit()"
+        (click)="onClickNext()"
       >
-        Submit
+        Next
       </button>
       <button mat-button class="matBackButton" (click)="onClickBack()" style="float: left">
         Back

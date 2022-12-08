@@ -379,13 +379,13 @@ input::-webkit-inner-spin-button {
     margin-top: 8px;
 }
 
-.mat-form-field {
-    margin-top: 13px;
-    margin-bottom: 11px;
-}
-
 .mat-radio-group {
-    margin-left: 10%;
+
+    .mat-radio-button:nth-child(n+1){
+      margin-left: 10%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
 }
 
 .step-wizard-container {
@@ -405,11 +405,6 @@ input::-webkit-inner-spin-button {
     width: 100%;
 }
 
-.mat-radio-button~.mat-radio-button {
-    margin-left: 16px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-}
 
 .radioTop {
     margin-top: 16px;

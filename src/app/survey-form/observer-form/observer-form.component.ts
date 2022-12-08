@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
@@ -14,22 +14,13 @@ declare var $: any;
   styleUrls: ['./observer-form.component.scss'],
 })
 export class ObserverFormComponent implements OnInit {
-  public toppingList: string[] = [];
-  public specilaztions: any[] = [];
-  public coursesListData: any[] = [];
-  public items: any[] = [];
-  public speclFilteredArray: any[] = [];
-  public selectedSpecialization: any;
-  public selectedSpecializationCourses: any;
-  public coursesData: any[] = [];
-  public entranceExamData: any[] = [];
-  public careersData: any[] = [];
+ public submitted:boolean=false;
   public preferedJobValue: string = '';
   public userDetails: any = {};
   public profileEditData: any;
 
   observerForm = this._formBuilder.group({
-    observationCommentOne: [''],
+    scholorshipExams: [''],
   });
 
   stepperOrientation: Observable<StepperOrientation>;
@@ -40,182 +31,44 @@ export class ObserverFormComponent implements OnInit {
     private _commonService: CommonService,
     private _location: Location,
     public lang: LanguageService,
-    private _router: Router
+    private _router: Router,
+    private el: ElementRef
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
     this.profileEditData = JSON.parse(
-      localStorage.getItem('careerInterestFormValue') as string
+      localStorage.getItem('observerFormValue') as string
     );
 
     if (this.profileEditData) {
       this.observerForm.patchValue({
-        observationCommentOne: this.profileEditData.observationCommentOne,
+        scholorshipExams: this.profileEditData.scholorshipExams,
       });
     }
-  }
-
-  public clickFormSubmit(): void {
-    const profileData = JSON.parse(
-      localStorage.getItem('profileFormValue') as any
-    );
-    const academicFormValue = JSON.parse(
-      localStorage.getItem('academicFormValue') as any
-    );
-
-    const careerFormValue = JSON.parse(
-      localStorage.getItem('careerFormValue') as any
-    );
-    const careerInterestFormValue = JSON.parse(
-      localStorage.getItem('careerInterestFormValue') as any
-    );
-
-    const payload = {
-      ...profileData,
-      ...academicFormValue,
-      ...careerFormValue,
-      ...careerInterestFormValue,
-      ...this.observerForm.value,
-    };
-    const {
-      emsId,
-      fullName,
-      dob,
-      gender,
-      firstGraduate,
-
-      disability,
-      disabilitypercentage,
-      community,
-      trainRoute,
-      nearRailway,
-      busRoute,
-      nearBus,
-      singleParent,
-      father,
-      mother,
-      fatherPhysical,
-      motherPhysical,
-      gaurdian,
-      gaurdianRelationship,
-      fatherOccupation,
-      fatherQualification,
-      motherOccupation,
-      motherQualification,
-      familyAnnualIncome,
-      siblings,
-      school,
-      hssGroupCode,
-      hosteller,
-      mediumInstruction,
-      govtSchool,
-      intrestedSubject,
-      unintrestedSubject,
-      courseIdea,
-      collegeIdea,
-      worriedAboutAdmission,
-      worriedAboutFees,
-      graduationAwayFromHometown,
-      challengesGraduationAwayFromHometown,
-      reasonGraduationAwayFromHometown,
-      IntrestedHigherEducation,
-      reasonIntrestedCourse,
-
-      IntrestedCourse,
-      otherReasonIntrestedCourse,
-      appliedEntranceExam,
-      listAppliedEntranceExam,
-      jobSector,
-      sectorInterested,
-      careerGuidance,
-      guide,
-      abroadCourse,
-      observationCommentOne,
-    } = payload;
-
-    const payloadUpdate = {
-      emsId,
-      fullName,
-      dob,
-      gender,
-      firstGraduate,
-      disability,
-      disabilitypercentage,
-      community,
-      trainRoute,
-      nearRailway,
-      busRoute,
-      nearBus,
-      singleParent,
-      father,
-      mother,
-      fatherPhysical: JSON.stringify(fatherPhysical),
-      motherPhysical: JSON.stringify(motherPhysical),
-      gaurdian,
-      gaurdianRelationship,
-      fatherOccupation,
-      fatherQualification,
-      motherOccupation,
-      motherQualification,
-      familyAnnualIncome,
-      siblings,
-      school,
-      hssGroupCode,
-      hosteller,
-      mediumInstruction,
-      govtSchool,
-      intrestedSubject,
-      unintrestedSubject,
-      courseIdea,
-      collegeIdea,
-      worriedAboutAdmission,
-      worriedAboutFees,
-      graduationAwayFromHometown,
-      challengesGraduationAwayFromHometown,
-      reasonGraduationAwayFromHometown,
-      IntrestedHigherEducation: JSON.stringify(IntrestedHigherEducation),
-      reasonIntrestedCourse,
-
-      IntrestedCourse: '',
-      otherReasonIntrestedCourse,
-      appliedEntranceExam: JSON.stringify(appliedEntranceExam),
-      listAppliedEntranceExam,
-      jobSector,
-      sectorInterested: JSON.stringify(sectorInterested),
-      careerGuidance,
-      guide,
-      abroadCourse,
-      observationCommentOne,
-    };
-    this._commonService
-      .postService('/newsurvey/add', payloadUpdate)
-      .subscribe((res: any) => {
-        if (res.status == 200) {
-          $('#successModal').modal('show');
-          localStorage.removeItem('profileFormValue');
-          localStorage.removeItem('academicFormValue');
-          localStorage.removeItem('careerFormValue');
-          localStorage.removeItem('careerInterestFormValue');
-        }
-      });
   }
 
   public toClose(): void {
     $('#alertModal').modal('close');
   }
 
-  public getCourseData(selectedData: any): void {
-    if (selectedData) {
-      this.coursesData = [];
-      this.entranceExamData = [];
-      selectedData.forEach((element: string) => {
-        this.items.forEach((item: any) => {
-          if (item.field === element) {
-            this.coursesData.push(item);
-            this.entranceExamData.push(item);
-          }
-        });
-      });
+  public onClickNext(): void {
+    this.submitted = true;
+    if(this.observerForm.invalid){
+      for (const key of Object.keys(this.observerForm.controls)) {
+        if (this.observerForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+   else {
+      localStorage.setItem(
+        'observerFormValue',
+        JSON.stringify(this.observerForm.value)
+      );
+      //this._router.navigate[('')]
+      this._router.navigate(['/student/career-interest']);
     }
   }
 
@@ -223,6 +76,6 @@ export class ObserverFormComponent implements OnInit {
     this._router.navigate(['/home']);
   }
   public onClickBack(): void {
-    this._router.navigate(['/student/career-interest']);
+    this._router.navigate(['/student/career']);
   }
 }

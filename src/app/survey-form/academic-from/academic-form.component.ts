@@ -12,29 +12,13 @@ declare var $: any;
   styleUrls: ['./academic-form.component.scss'],
 })
 export class AcademicFormComponent implements OnInit {
-  public toppingList: string[] = [];
-  public specilaztions: any[] = [];
-  public coursesListData: any[] = [];
-  public items: any[] = [];
-  public speclFilteredArray: any[] = [];
-  public selectedSpecialization: any;
-  public selectedSpecializationCourses: any;
-  public coursesData: any[] = [];
-  public entranceExamData: any[] = [];
-  public careersData: any[] = [];
-  public preferedJobValue: string = '';
   public userDetails: any = {};
   public profileEditData: any;
   public submitted: boolean = false;
 
   academicInfoForm: any = this._formBuilder.group({
-    school: ['', Validators.required],
-    hssGroupCode: ['', Validators.required],
-    hosteller: ['', Validators.required],
-    mediumInstruction: ['', Validators.required],
-    govtSchool: ['', Validators.required],
-    intrestedSubject: ['', Validators.required],
-    unintrestedSubject: ['', Validators.required],
+    mostIntrestedSubject: ['', Validators.required],
+    leastInterestedSubject: ['', Validators.required],
   });
 
   stepperOrientation: Observable<StepperOrientation>;
@@ -59,12 +43,8 @@ export class AcademicFormComponent implements OnInit {
     }
     if (this.profileEditData) {
       this.academicInfoForm.patchValue({
-        hssGroupCode: this.profileEditData.hssGroupCode,
-        hosteller: this.profileEditData.hosteller,
-        mediumInstruction: this.profileEditData.mediumInstruction,
-        govtSchool: this.profileEditData.govtSchool,
-        intrestedSubject: this.profileEditData.intrestedSubject,
-        unintrestedSubject: this.profileEditData.unintrestedSubject,
+        mostIntrestedSubject: this.profileEditData.mostIntrestedSubject,
+        leastInterestedSubject: this.profileEditData.leastInterestedSubject,
       });
     }
   }
