@@ -34,8 +34,9 @@ export class CareerFormComponent implements OnInit {
   public appliedEntranceExam1: string = '';
   public profileEditData: any;
   public submitted: boolean = false;
-  public examFileteredData:any;
+  public examFileteredData:any=[];
   public specilaztionsArr:any = []
+  public exams:any;
 
   higherEducationInfoForm: any = this._formBuilder.group({
     importantForEducation: ['', Validators.required],
@@ -63,6 +64,7 @@ export class CareerFormComponent implements OnInit {
     window.scrollTo(0, 0);
     this._getCoursesList();
     this._getSpecialization();
+    this._getExams();
     this._getCareers();
     this.profileEditData = JSON.parse(
       localStorage.getItem('careerFormValue') as string
@@ -106,18 +108,18 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
     debugger
     if (selectedData) {
       this.coursesData = [];
-      this.entranceExamData = [];
+      //this.entranceExamData = [];
       let results= await this._getCoursesList()
       selectedData.forEach((element: string) => {
         this.items.forEach((item: any) => {
           if (item.field === element) {
             this.coursesData.push(item);
-            this.entranceExamData.push(item.admissionProcedure);
+            //this.entranceExamData.push(item.admissionProcedure);
 
           }
         });
       });
-      this.examFileteredData=Array.from(new Set(this.entranceExamData));
+      //this.examFileteredData=Array.from(new Set(this.entranceExamData));
     }
   }
   public onClickNext(): void {
@@ -151,6 +153,25 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
       .subscribe((res: any) => {
         if (res.status == 200) {
           this.specilaztions = res.results;
+          //  this.getExamDataBasedOnSpcl(res.results)
+        }
+      });
+  }
+    private _getExams(): void {
+    this._commonService
+      .getService(`/exams`)
+      .subscribe((res: any) => {
+        debugger
+        if (res.status == 200) {
+          this.exams = res.results;
+          this.exams.forEach((item: any) => {
+            if (item.name) {
+              this.examFileteredData.push(item.name);
+              //this.entranceExamData.push(item.admissionProcedure);
+
+            }
+          });
+          this.examFileteredData=Array.from(new Set(this.examFileteredData));
           //  this.getExamDataBasedOnSpcl(res.results)
         }
       });

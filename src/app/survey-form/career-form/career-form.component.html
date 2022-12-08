@@ -125,10 +125,9 @@
           <mat-form-field class="example-full-width " appearance="fill">
 
             <mat-select placeholder="" formControlName="entranceExams" multiple>
-              <mat-option *ngIf="entranceExamData.length === 0" value="None"
+              <mat-option *ngIf="examFileteredData.length === 0" value="None"
                 >None</mat-option
               >
-
               <mat-option
                 *ngFor="let item of examFileteredData"
                 [value]="item"
