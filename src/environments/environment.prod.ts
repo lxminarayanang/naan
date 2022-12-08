@@ -6,7 +6,6 @@ export const environment = {
   // domain: 'https://tn.itsmine.tech/api',
   //domain: 'http://43.204.33.103/api',
   //domain: 'http://ec2-3-90-213-241.compute-1.amazonaws.com/api/api',
-  //domain : 'https://vazhikaatti.tnschools.gov.in/api'
+  domain : 'https://vazhikaatti.tnschools.gov.in/api'
   //domain: 'http://ec2-3-90-213-241.compute-1.amazonaws.com/api/api',
-  domain: 'http://15.207.33.115:8080/api',
 };
