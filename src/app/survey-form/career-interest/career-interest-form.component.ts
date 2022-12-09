@@ -96,74 +96,78 @@ export class CareerInterestFormComponent implements OnInit {
 
   public onClickFormSubmit(): void {
     const {govtExams,interestedJobSector}=this.carrerInfoForm.value
-    const profileData = JSON.parse(
-      localStorage.getItem('profileFormValue') as any
-    );
-    const academicFormValue = JSON.parse(
-      localStorage.getItem('academicFormValue') as any
-    );
+    if(this.carrerInfoForm.valid){
+      const profileData = JSON.parse(
+        localStorage.getItem('profileFormValue') as any
+      );
+      const academicFormValue = JSON.parse(
+        localStorage.getItem('academicFormValue') as any
+      );
 
-    const careerFormValue = JSON.parse(
-      localStorage.getItem('careerFormValue') as any
-    );
-    const observerFormValue = JSON.parse(
-      localStorage.getItem('observerFormValue') as any
-    );
+      const careerFormValue = JSON.parse(
+        localStorage.getItem('careerFormValue') as any
+      );
+      const observerFormValue = JSON.parse(
+        localStorage.getItem('observerFormValue') as any
+      );
 
-    const payload = {
+      const payload = {
+        ...profileData,
+        ...academicFormValue,
+        ...careerFormValue,
+        ...observerFormValue
+      };
+      const {
+      importantForEducation,
+      challengesInHigherEducation,
+      specilaztions,
+      intrestedCourse,
+      entranceExams,
+      accessedGoverementSchemes,
+      documentList,
+      scholorshipExams,
+      awareGovtSchemes,
+      likedColleges,
+      graduationAwayFromHometown,
+      leastInterestedSubject,
+      mostIntrestedSubject
+
+      } = payload;
+
+      const payloadUpdate = {
       ...profileData,
-      ...academicFormValue,
-      ...careerFormValue,
-      ...observerFormValue
-    };
-    const {
-    importantForEducation,
-    challengesInHigherEducation,
-    specilaztions,
-    intrestedCourse,
-    entranceExams,
-    accessedGoverementSchemes,
-    documentList,
-    scholorshipExams,
-    awareGovtSchemes,
-    likedColleges,
-    graduationAwayFromHometown,
-    leastInterestedSubject,
-    mostIntrestedSubject
+      mostIntrestedSubject: JSON.stringify(mostIntrestedSubject),
+      leastInterestedSubject: JSON.stringify(leastInterestedSubject),
+      importantForEducation,
+      challengesInHigherEducation,
+      specilaztions:JSON.stringify(specilaztions),
+      intrestedCourse:JSON.stringify(intrestedCourse),
+      entranceExams:JSON.stringify(entranceExams),
+      accessedGoverementSchemes:JSON.stringify(accessedGoverementSchemes),
+      documentList:JSON.stringify(documentList),
+      scholorshipExams:JSON.stringify(scholorshipExams),
+      awareGovtSchemes:JSON.stringify(awareGovtSchemes),
+      likedColleges,
+      graduationAwayFromHometown,
+      interestedJobSector: JSON.stringify(interestedJobSector),
+      govtExams: JSON.stringify(govtExams),
 
-    } = payload;
+      };
+      this._commonService
+        .postService('/one-to-one-assesement/add', payloadUpdate)
+        .subscribe((res: any) => {
+          if (res.status == 200) {
+            $('#successModal').modal('show');
+            localStorage.removeItem('profileFormValue');
+            localStorage.removeItem('academicFormValue');
+            localStorage.removeItem('careerFormValue');
+            localStorage.removeItem('careerInterestFormValue');
+            localStorage.removeItem('observerFormValue');
+          }
+        });
 
-    const payloadUpdate = {
-    ...profileData,
-    mostIntrestedSubject: JSON.stringify(mostIntrestedSubject),
-    leastInterestedSubject: JSON.stringify(leastInterestedSubject),
-    importantForEducation,
-    challengesInHigherEducation,
-    specilaztions:JSON.stringify(specilaztions),
-    intrestedCourse:JSON.stringify(intrestedCourse),
-    entranceExams:JSON.stringify(entranceExams),
-    accessedGoverementSchemes:JSON.stringify(accessedGoverementSchemes),
-    documentList:JSON.stringify(documentList),
-    scholorshipExams:JSON.stringify(scholorshipExams),
-    awareGovtSchemes:JSON.stringify(awareGovtSchemes),
-    likedColleges,
-    graduationAwayFromHometown,
-    interestedJobSector: JSON.stringify(interestedJobSector),
-    govtExams: JSON.stringify(govtExams),
+    }
 
-    };
-    this._commonService
-      .postService('/one-to-one-assesement/add', payloadUpdate)
-      .subscribe((res: any) => {
-        if (res.status == 200) {
-          $('#successModal').modal('show');
-          localStorage.removeItem('profileFormValue');
-          localStorage.removeItem('academicFormValue');
-          localStorage.removeItem('careerFormValue');
-          localStorage.removeItem('careerInterestFormValue');
-          localStorage.removeItem('observerFormValue');
-        }
-      });
   }
 
 }

@@ -462,6 +462,7 @@ schemeData:[
 'கொரோனாவால் பெற்றோரை இழந்த மாணவர்களுக்கான நிதி உதவி'
 ],
 awareGovtSchemes:[
+'அரசு பள்ளி மாணவர்களுக்கான உயர் கல்விக்கு 7.5% இடஒதுக்கீடு',
 'புதுமைப் பெண் திட்டம்',
 'ஒன்றிய அரசின் வித்யாலட்சுமி திட்டம்',
 'கல்விக்  கடன் திட்டங்கள்' ,
@@ -1374,7 +1375,8 @@ schemeData:[
 'Financial assistance for students who have lost their parents due to Corona'
 ],
 awareGovtSchemes:[
-  'Innovative Women Project',
+  '7.5% reservation for Government school students',
+  'Pudhumai pen Scheme',
   'Vidyalakshmi Scheme of Union Govt',
   'Education Loan Schemes',
   'Stipend for First Graduate'
