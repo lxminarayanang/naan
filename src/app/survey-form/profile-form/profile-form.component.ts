@@ -58,9 +58,9 @@ export class ProfileFormComponent implements OnInit {
     if (this.userDetails) {
       this.profileInfoFormGroup.patchValue({
         fullName: this.userDetails.student_name,
-        emsId: this.userDetails.student_id,
+        emsId: this.userDetails.emis_username,
         gender: this.userDetails.gender === 1 ? 'Male' : 'Female',
-        udise: this.userDetails.school_id,
+        udise: this.userDetails.udise_code,
       });
     }
     else{

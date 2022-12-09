@@ -1,6 +1,6 @@
 <div class="container step-wizard-container">
   <form [formGroup]="profileInfoFormGroup">
-    <h5 class="mb-4" *ngIf="this.userDetails?.student_id">{{ this.userDetails?.student_id }} - {{ this.userDetails.student_name }} - {{this.userDetails.school_id}}</h5>
+    <h5 class="mb-4" *ngIf="this.userDetails?.student_id">{{ this.userDetails?.emis_username }} - {{ this.userDetails.student_name }} - {{this.userDetails.udise_code}}</h5>
     <div class="row">
       <div class="col-md-6 labelRow">
         <mat-label
