@@ -1,0 +1,76 @@
+<div class="container matTable">
+  <h5>Survey Form List</h5>
+  <div class="row">
+<div class="offset-md-7 offset-sm-0 col-md-3">
+  <form>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dp" placeholder="Choose a date" [formControl]="date">
+      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
+    </mat-form-field>
+    </form>
+
+</div>
+<div class="col-md-2">
+  <button mat-raised-button color="primary" class="excelBtn" (click)="onClickDateSearch(date.value)">Search</button>
+</div>
+
+  </div>
+  <div class="row">
+    <div class="offset-md-9 offset-sm-0 col-md-3">
+      <button mat-raised-button color="primary" class="mb-3 float-right" (click)="exportAsXLSX()"><i class="bi bi-file-excel"></i> Export as Excel</button>
+    </div>
+
+  </div>
+
+</div>
+<div class="container mb-5">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> EMSID </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.emsId}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.fullName}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef>UDISE </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.udise}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.homeLocation}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <mat-header-cell *matHeaderCellDef> Download </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button class="btn" (click)="onClickXlxxKey(element)"><i class="bi bi-file-excel"></i></button></mat-cell>
+
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator *ngIf="surveyList.length" #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+  <div class="no_rec" *ngIf="surveyList?.length==0" >
+    <img src="/assets/images/norecord.png" alt=""class="no_rec_img" />
+  </div>
+</div>
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
