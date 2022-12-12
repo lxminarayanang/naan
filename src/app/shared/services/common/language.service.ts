@@ -462,11 +462,12 @@ schemeData:[
 'கொரோனாவால் பெற்றோரை இழந்த மாணவர்களுக்கான நிதி உதவி'
 ],
 awareGovtSchemes:[
-'அரசு பள்ளி மாணவர்களுக்கான உயர் கல்விக்கு 7.5% இடஒதுக்கீடு',
+'7.5%அரசு பள்ளி மாணவர்களுக்கான இடஒதுக்கீடு',
 'புதுமைப் பெண் திட்டம்',
-'ஒன்றிய அரசின் வித்யாலட்சுமி திட்டம்',
+'ஒன்றிய அரசின் வித்யாலட்சுமி வங்கி கல்விக்  கடன் திட்டங்கள் ',
 'கல்விக்  கடன் திட்டங்கள்' ,
-'முதல் பட்டதாரிக்கான உதவித் தொகை'
+'முதல் பட்டதாரிக்கான உதவித் தொகை',
+'ST/ SC/ OBC/ EBC/ சிறுபான்மை சமூகத்திற்கான போஸ்ட்மெட்ரிக் உதவித்தொகை'
 ],
 
 scholorShipsExamData:[
@@ -1377,9 +1378,11 @@ schemeData:[
 awareGovtSchemes:[
   '7.5% reservation for Government school students',
   'Pudhumai pen Scheme',
-  'Vidyalakshmi Scheme of Union Govt',
   'Education Loan Schemes',
-  'Stipend for First Graduate'
+  'Vidyalakshmi Education loan Scheme from Banks',
+  'Stipend for First Graduate',
+  'Postmatric scholarships for ST/ SC/ OBC/ EBC /MINORITY COMMUNITY '
+
   ],
 scholorShipsExamData:[
 'National Means Cum Merit Scholarship (NMMS )',
