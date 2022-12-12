@@ -74,7 +74,6 @@ export class CareerFormComponent implements OnInit {
       localStorage.getItem('careerFormValue') as string
     );
     if (this.profileEditData) {
-      debugger;
       this.selectedSpecialization = this.profileEditData.specilaztions;
       this.selectedSpecializationCourses = this.profileEditData.intrestedCourse;
       //   this.graduationAwayFromHometwn =
@@ -155,7 +154,6 @@ export class CareerFormComponent implements OnInit {
 
   public onChangeChallengesModel(graduationAwayFromHometwn: any): void {
     this.reasonGraduationAwayFromHometownData = graduationAwayFromHometwn;
-    debugger;
   }
 
   public onChangeInterestedStudey(interestedForStudyDataModel: string): void {
@@ -204,7 +202,6 @@ export class CareerFormComponent implements OnInit {
       });
   }
   private async _getCoursesList(): Promise<any> {
-    debugger;
     this._commonService.getService(`/courses`).subscribe((res: any) => {
       if (res.status == 200) {
         this.items = res.results;

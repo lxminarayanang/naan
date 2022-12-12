@@ -105,7 +105,6 @@ export class ProfileFormComponent implements OnInit {
       });
     }
     if (this.profileEditData) {
-      debugger;
       this.siblingsValue = this.profileEditData.sibilings;
       this.profileInfoFormGroup.patchValue({
         medium: this.profileEditData.medium,
@@ -123,9 +122,7 @@ export class ProfileFormComponent implements OnInit {
 
   public onClickNext(): void {
     this.submitted = true;
-    console.log(this.profileInfoFormGroup.value);
     if (this.profileInfoFormGroup.valid) {
-      console.log(this.profileInfoFormGroup.value);
       localStorage.setItem(
         'profileFormValue',
         JSON.stringify(this.profileInfoFormGroup.value)
@@ -173,18 +170,15 @@ export class ProfileFormComponent implements OnInit {
       $event.option.value,
       !this.physicalFatherSet.get($event.option.value)
     );
-    console.log(this.selected);
   }
   selectionChangeMother($event: any) {
     this.physicalMotherSet.set(
       $event.option.value,
       !this.physicalMotherSet.get($event.option.value)
     );
-    console.log(this.selected1);
   }
 
   disabilityValueChange(disabilityValue: any) {
-    debugger;
     if (disabilityValue === 'Yes') {
       this.profileInfoFormGroup
         .get('disabilitypercentage')

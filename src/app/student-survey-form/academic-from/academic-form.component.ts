@@ -63,7 +63,6 @@ export class AcademicFormComponent implements OnInit {
   public onClickNext(): void {
     this.submitted = true;
     if (this.academicInfoForm.valid) {
-      console.log(this.academicInfoForm.value);
       localStorage.setItem(
         'academicFormValue',
         JSON.stringify(this.academicInfoForm.value)

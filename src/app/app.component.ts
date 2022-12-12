@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'fe-tn_schools';
 
   constructor(private service: CommonService) {
-    this.service.postService('/addCount').subscribe((res: any) => {});
+    //this.service.postService('/addCount').subscribe((res: any) => {});
   }
 
   ngOnInit() {

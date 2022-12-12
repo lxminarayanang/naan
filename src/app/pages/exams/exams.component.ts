@@ -88,14 +88,11 @@ export class ExamsComponent implements OnInit {
       pageSize: 1000,
       pageIndex: 0,
     };
-    console.log(this.title);
-    console.log(this.section);
 
     this.service.postService(`/${type}`, data).subscribe((res: any) => {
       const uniqueValuesSet = new Set();
       let obj_name;
 
-      console.log(res);
       const filteredArr = res.results.rows.filter((obj:any) => {
 
         if (obj.field != undefined || obj.field != null){
@@ -104,7 +101,6 @@ export class ExamsComponent implements OnInit {
         else{
           obj_name=obj.name;
         }
-        console.log(obj_name);
         // check if name property value is already in the set
         const isPresentInSet = uniqueValuesSet.has(obj_name);
 
@@ -127,7 +123,6 @@ export class ExamsComponent implements OnInit {
        }
       }
       this.specilaztions=this.startList;
-      console.log(this.specilaztions.length);
     });
 
     // this.selectSpecilaztions(this.section);
@@ -142,8 +137,6 @@ export class ExamsComponent implements OnInit {
       pageSize: 1000,
       pageIndex: 0,
     };
-    console.log(this.title);
-    console.log(this.section);
 
     this.service.postService(`/${type}`, data).subscribe((res: any) => {
       const uniqueValuesSet = new Set();
@@ -156,7 +149,6 @@ export class ExamsComponent implements OnInit {
         else{
           obj_name=obj.name;
         }
-        console.log(obj_name);
         // check if name property value is already in the set
         const isPresentInSet = uniqueValuesSet.has(obj_name);
 
@@ -166,9 +158,7 @@ export class ExamsComponent implements OnInit {
         // isPresentInSet variable
         return !isPresentInSet;
       });
-      // console.log(filteredArr);
       this.specilaztions=this.examsList=filteredArr;
-      console.log(this.specilaztions);
       this.viewShow=true;
     });
 
@@ -184,7 +174,6 @@ export class ExamsComponent implements OnInit {
       pageSize: 6,
       pageIndex: 0,
     };
-    debugger;
     if (type == 'scholarships') {
       this.service
         .getService(`/${type}/filter?menu=scholarshipProvider`)
@@ -198,7 +187,6 @@ export class ExamsComponent implements OnInit {
         .getService(`/${type}/filter?menu=field`)
         .subscribe((res: any) => {
           if (res.status == 200) {
-            debugger;
             this.specilaztions = res.results;
           }
         });

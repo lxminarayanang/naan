@@ -104,14 +104,12 @@ export class StepWizardComponent implements OnInit {
     // console.log({ job });
   }
   public clickFormSubmit(): void {
-    console.log(this.profileInfoFormGroup);
     if (
       this.carrerInfoForm.invalid ||
       this.profileInfoFormGroup.invalid ||
       this.academicInfoForm.invalid ||
       this.higherEducationInfoForm.invalid
     ) {
-      debugger;
       $('#alertModal').modal('show');
       return;
     } else {

@@ -17,9 +17,9 @@ export class FooterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.service.getService("/count").subscribe((res: any) => {
-      this.count = res.results[0].count;
-    })
+    // this.service.getService("/count").subscribe((res: any) => {
+    //   this.count = res.results[0].count;
+    // })
   }
 
 

@@ -181,7 +181,6 @@ if(value){
           this.studentProfile.get('student_not_join').updateValueAndValidity();
         }
         else {
-          debugger;
           this._joiningCollegeValidation();
         }
 
@@ -532,7 +531,6 @@ if(value && value==="Others"){
   public onClickNext(): void {
     this.submitted = true;
     this.studentProfile.updateValueAndValidity();
-    debugger;
     if (this.studentProfile.invalid) {
       debugger
       for (const key of Object.keys(this.studentProfile.controls)) {
@@ -564,7 +562,6 @@ if(value && value==="Others"){
   }
 
   private _studentDataBasedOnRegisterNumber(value: string): void {
-    debugger;
     this.filteredData = this.studentData.find(
       (data: any) => data.emis_id === value
     );

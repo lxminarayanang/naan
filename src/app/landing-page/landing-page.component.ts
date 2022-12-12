@@ -61,7 +61,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentDate = new Date();
-    this.getSearchKey();
+    //this.getSearchKey();
 
     this.latestNotifications();
     this.lang.events$.forEach((event) => {
@@ -96,12 +96,10 @@ export class LandingPageComponent implements OnInit {
       pageSize: 15,
       pageIndex: 0,
     };
-    debugger;
     const url = this.lang.type
       ? 'exams?notificationStatus=அறிவுப்பு வெளியாகிவிட்டது. விண்ணப்பிக்கிலாம்'
       : 'exams?notificationStatus=Announced and Open';
     this.service.getService('/' + url).subscribe((res: any) => {
-      debugger;
       this.examsNotifications = res.results;
       //  this.examsNotifications.push({"link":"/../../assest/Uyar_Kalvi_Vazhikkatti_Book_Draft.pdf","startDate":new Date(),"name":"Career Guidance - Class 11&12" })
 
@@ -111,7 +109,6 @@ export class LandingPageComponent implements OnInit {
   getSearchKey() {
     this.httpClient.get<any>("assets/mock-json/search-key.json").subscribe((data)=>{
       this.options = data.results.rows
-      console.log({"searchKeyData":this.searchKeyData})
     }
 
 

@@ -37,7 +37,6 @@ export class HeaderComponent implements OnInit {
   }
 
   login(ngForm: any) {
-    debugger;
     const loginData = this.loginForm.value;
 
     const payload = {

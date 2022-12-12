@@ -70,11 +70,9 @@ export class CareerFormComponent implements OnInit {
       localStorage.getItem('careerFormValue') as string
     );
 this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:any) => {
-  debugger;
    this.getCourseData(item)
 })
     if (this.profileEditData) {
-      debugger;
       // this.graduationAwayFromHometwn =
       //   this.profileEditData.graduationAwayFromHometown;
       // this.graduationAwayFromHometwnModel =

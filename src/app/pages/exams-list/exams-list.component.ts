@@ -153,7 +153,6 @@ export class ExamsListComponent implements OnInit {
           this.examsNotificationTypes,
           this.fields
         );
-        debugger;
         const res1 = temp.filter((page1: any) =>
           x.examArray?.find((page2: any) => {
             return Object.keys(page1).find((key) => page1[key] === page2);
@@ -189,7 +188,6 @@ export class ExamsListComponent implements OnInit {
           this.scholarshipLevels,
           this.notificationStatus
         );
-        debugger;
         const res1 = temp.filter((page1: any) =>
           x.scholarshipArray?.find((page2: any) => {
             return Object.keys(page1).find((key) => page1[key] === page2);
@@ -278,7 +276,6 @@ export class ExamsListComponent implements OnInit {
       pageSize: this.paginationSize || 15,
       pageIndex: this.paginationIndex || 0,
     };
-    debugger;
     const url = query ? this.id + '?' + query : this.id;
     if (
       this.id === 'exams' ||
@@ -532,7 +529,6 @@ export class ExamsListComponent implements OnInit {
   }
 
   public changeFilterAdmissionProcedure(e: any, fieldType: string): void {
-    debugger;
     if (e.target.checked) {
       this.coursesAdmissionProcedure.push(e.target.value);
     } else {
@@ -549,7 +545,6 @@ export class ExamsListComponent implements OnInit {
   }
 
   filterCourses(e: any, fieldType: string) {
-    debugger;
 
     if (e.target.checked) {
       this.coursesLevel.push(e.target.value);
@@ -577,7 +572,6 @@ export class ExamsListComponent implements OnInit {
 
   //this function used to filter the courses based on the specilizations.
   courseFilter(selected: any, data: any, fieldType: any) {
-    debugger;
     this.items = [];
     data.selected = selected.target.checked == true ? true : false;
     this.selectedCheckbox = fieldType.filter(
@@ -687,7 +681,6 @@ export class ExamsListComponent implements OnInit {
           });
         }
         this.items = Array.from(new Set(newArray));
-        console.log(this.items.length);
       });
     } else {
       if (this.coursesAdmissionProcedure.length && this.coursesLevel.length) {

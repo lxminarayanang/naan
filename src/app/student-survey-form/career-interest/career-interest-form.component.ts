@@ -136,7 +136,6 @@ export class CareerInterestFormComponent implements OnInit {
       this._commonService
       .postService('/student-survey/add',payloadData)
       .subscribe((res: any) => {
-        debugger;
         if (res.status == 200) {
           $('#successModal').modal('show');
           localStorage.removeItem('profileFormValue');
