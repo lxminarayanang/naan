@@ -5,6 +5,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
 import { CommonService } from '../../shared/services/common/common.service';
 import { LanguageService } from '../../shared/services/common/language.service';
+import { HttpClient } from '@angular/common/http';
 declare var $: any;
 
 @Component({
@@ -53,19 +54,20 @@ export class CareerFormComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    breakpointObserver: BreakpointObserver,
     private _commonService: CommonService,
     private _location: Location,
     public lang: LanguageService,
     private _router: Router,
-    private el: ElementRef
+    private el: ElementRef,
+    private httpClient:HttpClient
   ) {}
   ngOnInit() {
+    console.log('adbjadad',this.lang)
     window.scrollTo(0, 0);
     this._getCoursesList();
     this._getSpecialization();
     this._getExams();
-    this._getCareers();
+   // this._getCareers();
     this.profileEditData = JSON.parse(
       localStorage.getItem('careerFormValue') as string
     );
@@ -103,7 +105,7 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
   }
 
   public async getCourseData(selectedData: any): Promise<void> {
-    debugger
+
     if (selectedData) {
       this.coursesData = [];
       //this.entranceExamData = [];
@@ -146,50 +148,87 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
   }
 
   private _getSpecialization(): void {
-    this._commonService
-      .getService(`/courses/filter?menu=field`)
-      .subscribe((res: any) => {
+    if(this.lang.tempLang==="tamil"){
+      this.httpClient.get<any>("assets/survey-json/specialization-tm.json").subscribe((res)=>{
         if (res.status == 200) {
           this.specilaztions = res.results;
           //  this.getExamDataBasedOnSpcl(res.results)
         }
       });
-  }
-    private _getExams(): void {
-    this._commonService
-      .getService(`/exams`)
-      .subscribe((res: any) => {
-        debugger
+    }
+    else{
+      this.httpClient.get<any>("assets/survey-json/specialization-en.json").subscribe((res)=>{
         if (res.status == 200) {
-          this.exams = res.results;
-          this.exams.forEach((item: any) => {
-            if (item.name) {
-              this.examFileteredData.push(item.name);
-              //this.entranceExamData.push(item.admissionProcedure);
-
-            }
-          });
-          this.examFileteredData=Array.from(new Set(this.examFileteredData));
+          this.specilaztions = res.results;
           //  this.getExamDataBasedOnSpcl(res.results)
         }
       });
+    }
+
+
   }
-  private _getCareers(): void {
-    this._commonService
-      .getService(`/careers/filter?menu=field`)
-      .subscribe((res: any) => {
+    private _getExams(): void {
+      if(this.lang.tempLang==="tamil"){
+        this.httpClient.get<any>("assets/survey-json/exams-tm.json").subscribe((res:any)=>{
+          if (res.status == 200) {
+            this.exams = res.results;
+            this.exams.forEach((item: any) => {
+              if (item.name) {
+                this.examFileteredData.push(item.name);
+                //this.entranceExamData.push(item.admissionProcedure);
+
+              }
+            });
+            this.examFileteredData=Array.from(new Set(this.examFileteredData));
+            //  this.getExamDataBasedOnSpcl(res.results)
+          }
+        });
+      }
+      else{
+        this.httpClient.get<any>("assets/survey-json/exams-en.json").subscribe((res:any)=>{
+          if (res.status == 200) {
+            this.exams = res.results;
+            this.exams.forEach((item: any) => {
+              if (item.name) {
+                this.examFileteredData.push(item.name);
+                //this.entranceExamData.push(item.admissionProcedure);
+
+              }
+            });
+            this.examFileteredData=Array.from(new Set(this.examFileteredData));
+            //  this.getExamDataBasedOnSpcl(res.results)
+          }
+        });
+      }
+
+  }
+  // private _getCareers(): void {
+  //   this._commonService
+  //     .getService(`/careers/filter?menu=field`)
+  //     .subscribe((res: any) => {
+  //       if (res.status == 200) {
+  //         this.careersData = res.results;
+  //       }
+  //     });
+  // }
+  private _getCoursesList(): void {
+    if(this.lang.tempLang==="tamil"){
+      this.httpClient.get<any>("assets/survey-json/courses-tm.json").subscribe((res:any)=>{
         if (res.status == 200) {
-          this.careersData = res.results;
+          this.items = res.results;
+          this.speclFilteredArray = this.items;
         }
       });
-  }
-  private _getCoursesList(): void {
-    this._commonService.getService(`/courses`).subscribe((res: any) => {
-      if (res.status == 200) {
-        this.items = res.results;
-        this.speclFilteredArray = this.items;
-      }
-    });
+    }
+    else{
+      this.httpClient.get<any>("assets/survey-json/courses-en.json").subscribe((res:any)=>{
+        if (res.status == 200) {
+          this.items = res.results;
+          this.speclFilteredArray = this.items;
+        }
+      });
+    }
+
   }
 
   keyPressAlphaCharacters(event: any) {
