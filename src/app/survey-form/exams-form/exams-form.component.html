@@ -1,0 +1,162 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="examForm">
+<div class="row">
+
+  <div class="col-md-12 labelRow">
+    <div class="matLabelHeight">
+      <mat-label
+        >13. {{ lang.language.exam_label }}
+        <span
+          class="mat-placeholder-required mat-form-field-required-marker"
+        >
+          *</span
+        ></mat-label
+      >
+      </div>
+
+ <div class="col-md-12 labelRow">
+  <div class="matLabelHeight">
+  <mat-label>a) {{ lang.language.exam1 }}<span
+    class="mat-placeholder-required mat-form-field-required-marker"
+  >
+    *</span></mat-label>
+<mat-form-field class="example-full-width " appearance="fill">
+
+  <mat-select placeholder="" formControlName="exams1">
+    <mat-option *ngIf="examFileteredData.length === 0" value="None"
+      >None</mat-option
+    >
+    <mat-option
+      *ngFor="let item of examFileteredData"
+      [value]="item"
+      >{{ item }}</mat-option
+    >
+  </mat-select>
+</mat-form-field>
+</div>
+</div>
+
+<div class="col-md-12 labelRow">
+<div class="matLabelHeight">
+<mat-label>b) {{ lang.language.exam2 }}<span
+  class="mat-placeholder-required mat-form-field-required-marker"
+>
+  *</span></mat-label>
+<mat-form-field class="example-full-width " appearance="fill">
+
+<mat-select placeholder="" formControlName="exams2">
+<mat-option *ngIf="examFileteredData.length === 0" value="None"
+>None</mat-option
+>
+<mat-option
+*ngFor="let item of examFileteredData"
+[value]="item"
+>{{ item }}</mat-option
+>
+</mat-select>
+</mat-form-field>
+</div>
+</div>
+<div class="col-md-12 labelRow">
+<div class="matLabelHeight">
+<mat-label>c) {{ lang.language.exam3 }}<span
+  class="mat-placeholder-required mat-form-field-required-marker"
+>
+  *</span></mat-label>
+<mat-form-field class="example-full-width " appearance="fill">
+
+<mat-select placeholder="" formControlName="exams3">
+<mat-option *ngIf="examFileteredData.length === 0" value="None"
+>None</mat-option
+>
+<mat-option
+*ngFor="let item of examFileteredData"
+[value]="item"
+>{{ item }}</mat-option
+>
+</mat-select>
+</mat-form-field>
+</div>
+</div>
+      </div>
+
+</div>
+
+    <!-- <p class="mat-danger labelRow">(*) mandatory</p> -->
+    <div>
+      <button
+        mat-button
+        class="matButton"
+        type="submit"
+        (click)="onClickNext()"
+      >
+        Next
+      </button>
+      <button mat-button class="matBackButton" (click)="onClickBack()" style="float: left">
+        Back
+      </button>
+    </div>
+  </form>
+
+  <!--Phone Modal -->
+  <div
+    class="modal fade"
+    id="successModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="successModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content br-20">
+        <div class="text-end pe-3 pt-2">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="toBack()"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <div class="d-flex justify-content-center pb-2">
+            <img src="/assets/images/icons/education.png" height="60" />
+          </div>
+          <h1 class="d-blue pb-2">Submitted successfully!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="alertModal"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="successModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content br-20">
+        <div class="text-end pe-3 pt-2">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            (click)="toClose()"
+          ></button>
+        </div>
+        <div class="modal-body text-center">
+          <p
+            class="d-blue pb-4"
+            style="font-size: 28px !important; color: #dc3545"
+          >
+            Please fill all mandatory fields!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

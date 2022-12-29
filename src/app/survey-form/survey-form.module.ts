@@ -11,6 +11,11 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ObserverFormComponent } from './observer-form/observer-form.component';
 import { SurveyListComponent } from './survey-list/survey-list.component';
 import { ExcelService } from './survey-list/exel-service';
+import { CertificateFormComponent } from './certificate/certificate-form.component';
+import { CoursesFormComponent } from './courses-form/courses-form.component';
+import { ExamsFormComponent } from './exams-form/exams-form.component';
+import { SpecializationFormComponent } from './specialization/specialization.component';
+import { CareerGuidanceFormComponent } from './Career-Guidance/career-guidance-form.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +25,17 @@ import { ExcelService } from './survey-list/exel-service';
     CareerInterestFormComponent,
     ProfileFormComponent,
     ObserverFormComponent,
-    SurveyListComponent
+    SurveyListComponent,
+    CertificateFormComponent,
+    CoursesFormComponent,
+    ExamsFormComponent,
+    SpecializationFormComponent,
+    CareerGuidanceFormComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,
     ReactiveFormsModule,
+    MaterialModule,
     SurveyFormRoutingModule,
   ],
   providers:[

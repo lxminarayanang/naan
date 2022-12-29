@@ -9,7 +9,7 @@ import { CommonService } from '@shared/services/common/common.service';
   styleUrls: ['./student.component.scss'],
 })
 export class StudentComponent implements OnInit {
-  @ViewChild('sidenav') sidenav: MatSidenav;  
+  @ViewChild('sidenav') sidenav: MatSidenav;
   id: any;
   isExpanded = true;
   showSubmenu: boolean = false;
@@ -36,8 +36,6 @@ export class StudentComponent implements OnInit {
       : false;
 
       // this.id = this.Activatedroute.snapshot.paramMap.get('id');
-      // console.log(this.id)
-      // console.log(this.Activatedroute.snapshot.paramMap.get('id'))
 
   }
 

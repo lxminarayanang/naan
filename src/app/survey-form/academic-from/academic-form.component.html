@@ -1,50 +1,157 @@
 <div class="container step-wizard-container">
   <form [formGroup]="academicInfoForm">
     <div class="row">
-
-      <div class="col-md-12 labelRow">
-        <div>
-          <mat-label
-            >10. {{ lang.language.intrestedSubject }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
-              *</span
-            ></mat-label
+      <div class="col-md-12 mb-2">
+        <mat-label
+          >15. {{ lang.language.subjectMostLiked }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
           >
-        </div>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-select formControlName="mostIntrestedSubject" multiple>
-            <ng-container
-              *ngFor="let item of lang.language.intrestedSubjectData"
+            *</span
+          ></mat-label
+        >
+        <div class="col-md-12 labelRow">
+          <div>
+            <mat-label
+              >a) {{ lang.language.subject1 }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
             >
-              <mat-option [value]="item" [disabled]="academicInfoForm.get('mostIntrestedSubject').value.length >= 3 && !academicInfoForm.get('mostIntrestedSubject').value.includes(item)">{{ item }}</mat-option>
-            </ng-container>
-          </mat-select>
-        </mat-form-field>
+          </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select formControlName="most_liked_subject1">
+              <ng-container
+                *ngFor="let item of lang.language.intrestedSubjectData"
+              >
+                <mat-option [value]="item">{{ item }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 labelRow">
+          <div>
+            <mat-label
+              >b) {{ lang.language.subject2 }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
+            >
+          </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select formControlName="most_liked_subject2">
+              <ng-container
+                *ngFor="let item of lang.language.intrestedSubjectData"
+              >
+                <mat-option [value]="item">{{ item }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 labelRow">
+          <div>
+            <mat-label
+              >c) {{ lang.language.subject3 }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
+            >
+          </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select formControlName="most_liked_subject3">
+              <ng-container
+                *ngFor="let item of lang.language.intrestedSubjectData"
+              >
+                <mat-option [value]="item">{{ item }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
       </div>
 
-      <div class="col-md-12 labelRow">
-        <div>
-          <mat-label
-            >11. {{ lang.language.unInrestedSubject }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
-              *</span
-            ></mat-label
+      <div class="col-md-12 mb-2">
+        <mat-label
+          >16. {{ lang.language.subjectLeastLiked }}
+          <span
+            class="mat-placeholder-required mat-form-field-required-marker"
           >
-        </div>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-select formControlName="leastInterestedSubject" multiple>
-            <ng-container
-              *ngFor="let item of lang.language.intrestedSubjectData"
+            *</span
+          ></mat-label
+        >
+        <div class="col-md-12 labelRow">
+          <div>
+            <mat-label
+              >a) {{ lang.language.subject1 }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
             >
-              <mat-option [value]="item" [disabled]="academicInfoForm.get('leastInterestedSubject').value.length >= 3 && !academicInfoForm.get('leastInterestedSubject').value.includes(item)">{{ item }}</mat-option>
-            </ng-container>
-          </mat-select>
-        </mat-form-field>
+          </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select formControlName="least_liked_subject1">
+              <ng-container
+                *ngFor="let item of lang.language.intrestedSubjectData"
+              >
+                <mat-option [value]="item">{{ item }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 labelRow">
+          <div>
+            <mat-label
+              >b) {{ lang.language.subject2 }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
+            >
+          </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select formControlName="least_liked_subject2">
+              <ng-container
+                *ngFor="let item of lang.language.intrestedSubjectData"
+              >
+                <mat-option [value]="item">{{ item }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 labelRow">
+          <div>
+            <mat-label
+              >c) {{ lang.language.subject3 }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
+            >
+          </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select formControlName="least_liked_subject3">
+              <ng-container
+                *ngFor="let item of lang.language.intrestedSubjectData"
+              >
+                <mat-option [value]="item">{{ item }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+        </div>
       </div>
+
+
+
     </div>
     <p class="mat-danger labelRow">(*) mandatory</p>
     <div>

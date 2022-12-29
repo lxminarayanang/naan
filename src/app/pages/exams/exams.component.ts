@@ -174,6 +174,7 @@ export class ExamsComponent implements OnInit {
       pageSize: 6,
       pageIndex: 0,
     };
+    ;
     if (type == 'scholarships') {
       this.service
         .getService(`/${type}/filter?menu=scholarshipProvider`)

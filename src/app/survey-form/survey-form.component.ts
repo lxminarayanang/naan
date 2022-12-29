@@ -17,14 +17,34 @@ export class SurveyFormComponent implements OnInit {
         route: '/student/profile',
         disabled: false,
       },
-      {
-        label: 'Academic Details',
-        route: '/student/academic',
-        disabled: false,
-      },
+      // {
+      //   label: 'Academic Details',
+      //   route: '/student/academic',
+      //   disabled: false,
+      // },
       {
         label: 'Higher Education Interested & Aspirations',
         route: '/student/career',
+        disabled: false,
+      },
+      {
+        label: 'Specialization',
+        route: '/student/specialization',
+        disabled: false,
+      },
+      // {
+      //   label: 'Courses',
+      //   route: '/student/courses',
+      //   disabled: false,
+      // },
+      {
+        label: 'Entrance exams',
+        route: '/student/exams',
+        disabled: false,
+      },
+      {
+        label: 'College Application Documents Checklist',
+        route: '/student/certificate',
         disabled: false,
       },
       {
@@ -38,6 +58,12 @@ export class SurveyFormComponent implements OnInit {
         route: '/student/career-interest',
         disabled: true,
       },
+      {
+        label: 'Higher Education & Career Guidance',
+        route: '/student/career-guidance',
+        disabled: true,
+      },
+
     ];
   }
   ngOnInit() {

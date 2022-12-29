@@ -47,16 +47,12 @@ export class SurveyReportComponent implements OnInit {
     this.userDetails = JSON.parse(
       localStorage.getItem('userDetails') as string
     );
-    // console.log("dsds");
     this.userDetails.student_id;
     const url = `http://naanmudhalvantest.com/api/survey?emsId=${this.userDetails.student_id}`
     this._commonService.otherGetService(url).subscribe((res: any) => {
           if (res.status == 200) {
             this.reportData = res;
-            // console.log(this.reportData);
-            // console.log(this.reportData.results[0].emsId);
                 if(this.reportData.results == ""){
-                  // console.log(this.reportData);
                     this.isImage = true;
                     this.isData = false;
                 }
@@ -245,10 +241,7 @@ export class SurveyReportComponent implements OnInit {
     this._commonService.otherGetService(dateurl).subscribe((res: any) => {
           if (res.status == 200) {
             this.reportData = res;
-            // console.log(this.reportData);
-            // console.log(this.reportData.results[0].emsId);
             if(this.reportData.results == ""){
-              // console.log(this.reportData);
                 this.isImage = true;
                 this.isData = false;
             }

@@ -154,7 +154,6 @@ export class ProfileFormComponent implements OnInit {
   //   }
   // }
   keyPressNumericCharacter(event: any, item?: string) {
-    debugger
       var inp = parseInt(event);
       // Allow numbers, alpahbets, space, underscore
       if (0 <= inp && inp < 20) {
@@ -179,6 +178,7 @@ export class ProfileFormComponent implements OnInit {
   }
 
   disabilityValueChange(disabilityValue: any) {
+    ;
     if (disabilityValue === 'Yes') {
       this.profileInfoFormGroup
         .get('disabilitypercentage')

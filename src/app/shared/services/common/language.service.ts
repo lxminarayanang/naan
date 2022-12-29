@@ -28,6 +28,7 @@ export class LanguageService {
   }
 
   changeLang(change?: any) {
+    debugger
     if (!change) {
       this.type = this.type ? false : true;
     }
@@ -212,6 +213,7 @@ export class LanguageService {
           'சேர்க்கையின் போது வழங்கப்பட்ட தகவலைப் புதுப்பிக்க இந்தத் தரவு சேகரிக்கப்படுகிறது',
         fatherEducationData: [
           '5-ஆம் வகுப்பிற்கு கீழ்',
+          '10-ஆம் வகுப்பிற்குக் கீழ்',
           '10-வது முடித்தவர்',
           'டிப்ளமோ/ஐடிஐ',
           '12-வது முடித்தவர்',
@@ -236,6 +238,7 @@ export class LanguageService {
           'சேர்க்கையின் போது வழங்கப்பட்ட தகவலைப் புதுப்பிக்க இந்தத் தரவு சேகரிக்கப்படுகிறது',
         motherEducationalQualificationData: [
           '5-ஆம் வகுப்பிற்கு கீழ்',
+          '10-ஆம் வகுப்பிற்கு கீழ்',
           '10-வது முடித்தவர்',
           'டிப்ளமோ/ஐடிஐ',
           '12-வது முடித்தவர்',
@@ -420,12 +423,12 @@ examHint:'உங்களுக்கு மிகவும் பிடித�
           awareSchemes:'உயர்கல்விக்கான அரசு திட்டங்களில் உங்களுக்கு தெரிந்தவை எவை ? ',
           requireDocument:'இவை உயர்கல்வி சேர்க்கைக்கு தேவையான சான்றிதழ்கள். கீழே உள்ள பட்டியலிலிருந்து உங்களிடம் உள்ள அனைத்து ஆவணங்களையும் தேர்ந்தெடுக்கவும்',
           requireDocumentData:[
-' பத்தாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
-       'பதினொன்றாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
-            ' பன்னிரெண்டாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
-             'மாற்றுச்  சான்றிதழ் (Transfer Certificate)',
-          'சாதிச் சான்றிதழ் (Community Certificate)',
-          'ஆதார் அடையாள அட்டை (Aadhar Card)',
+           'பத்தாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
+            'பதினொன்றாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
+            'பன்னிரெண்டாம் வகுப்பு மதிப்பெண் சான்றிதழ் (Mark Sheet)',
+            'மாற்றுச்  சான்றிதழ் (Transfer Certificate)',
+             'சாதிச் சான்றிதழ் (Community Certificate)',
+             'ஆதார் அடையாள அட்டை (Aadhar Card)',
              'வருமானச் சான்றிதழ் (Income Certificate)',
               'விளையாட்டுச் சான்றிதழ்கள் (Sports Certificates)',
               'இருப்பிடச் சான்றிதழ் (Nativity Certificate)',
@@ -437,7 +440,7 @@ examHint:'உங்களுக்கு மிகவும் பிடித�
 
           ],
           scholorshipExams:'உதவித்தொகைக்கான தேர்வுகளை எழுத விருப்பம் உள்ளதா ?',
-          residentialAddress:'வீட்டு முகவரி / தொலைபேசி எண் ',
+          residentialAddress:'வீட்டு முகவரி',
 residentialData:[
   'வாடகை வீடு ',
 'சொந்த வீடு '
@@ -481,7 +484,6 @@ scholorShipsExamData:[
     'ஆம்','இல்லை' ,'இன்னும் முடிவு செய்யவில்லை '
   ],
   scholorHint:'உங்களுக்கு மிகவும் விருப்பமான  நுழைவுத்தேர்வுகள் மூன்றைத் தேர்ந்தெடுக்கவும். நீங்கள் தேர்ந்தெடுத்த  படிப்புகளுக்கான மற்றும்  அனைத்து நுழைவுத்தேர்வுகளையும் அறிய, நான் முதல்வன் இணையத்தளத்தைப் பயன்படுத்தவும் ஸ்காலர்ஷிப்களுக்கான தேர்வில் கலந்துகொள்ள மாணவர்களுக்கு உதவுவதற்கான விவரங்களைச் சேகரிப்பது.',
-
         //End
 
 /**
@@ -496,7 +498,9 @@ scholorShipsExamData:[
  eFullName:'Full Name',
  emedium: 'Medium of Instruction',
  eDistrict:'District',
- schoolName:'School Name',
+ schoolName:'பள்ளியின் பெயர்',
+ homeAddress:'வீட்டு முகவரி ',
+ schoolLocation:'பள்ளி அமைந்துள்ள மாவட்டம்',
  number:'Phone Number',
  UDISE:'UDISE',
  registerNumber:'RegisterNumber',
@@ -698,8 +702,42 @@ busRoute:
         guide: 'From whom did the student recieve guidance',
         abroadCourse: 'Is the student interested in taking up courses abroad?',
         observationCommentOne: 'Additional Comments from observer',
+        phoneNumber:'தொலைபேசி எண்',
+        stausOfStay:' வீட்டின்நிலை',
+        currentAddress:'வீட்டு முகவரி ?',
+        statusData:[
+          'வாடகை வீடு',
+'சொந்த வீடு ',
+'வீடில்லை'
+        ],
+        disabilityStatus:'நீங்கள் மாற்றுத்திறனாளியா?',
+        disabilityStatusData:[
+          'ஆம்','இல்லை','சொல்ல விருப்பம் இல்லை'
+        ],
+        subjectMostLiked:'பள்ளியில் உங்களுக்கு பிடித்த பாடங்களில் மூன்றைத் தேர்ந்தெடுக்கவும்:',
+        subjectLeastLiked:'பள்ளியில் உங்களுக்கு பிடிக்காத  பாடங்களில் மூன்றைத் தேர்ந்தெடுக்கவும்:',
+        subject1:'பாடம் 1',
+        subject2:'பாடம் 2',
+        subject3:'பாடம் 3',
+        other_reason_higher_education:'மற்றவை எனில், என்ன சிக்கல் என்பதனை இங்கு குறிப்பிடவும் ',
+        specialization_label:'நீங்கள் உயர்கல்வி படிக்க விரும்பும் மூன்று துறைகளை தேர்ந்தெடுக்கவும்',
+        specilization1:'துறை 1',
+        specilization2:'துறை 2',
+        specilization3:'துறை 3',
+        courses_label:'கல்லூரியில் நீங்கள் படிக்க விரும்பும் 3 படிப்புகளைத் முன்னுரிமை அடிப்படையில் தேர்ந்தெடுக்கவும்',
+        courses1:'பாட பிரிவு 1',
+        courses2:'பாட பிரிவு 2',
+        courses3:'பாட பிரிவு 3',
+        exam_label:'நீங்கள் எழுத விரும்பும் மூன்று நுழைவுத் தேர்வுகளைத் தேர்ந்தெடுக்கவும்',
+        exam1:'தேர்வு 1',
+        exam2:'தேர்வு 2',
+        exam3:'தேர்வு 3',
+        studenCareerGuidance:'உயர்கல்வி வழிகாட்டி புத்தகம் பெற்றீர்களா?'
 
-      };
+      }
+
+
+
 
     } else {
       window.document.title = 'Naan Mudhalvan';
@@ -916,10 +954,10 @@ busRoute:
         studentMedium: 'Medium of the Instruction of the Student',
         studentMediumHint:
           'This data is collected to update the information provided at the time of admission ',
-        homeLocation: 'Where is your home? Is it located in ',
+        homeLocation: 'Where is your home located',
         homeLocationHint:
           'This data is collected to update the information provided at the time of admission ',
-        homeLocationData: ['city','Taluk', 'Village'],
+        homeLocationData: ['District Headquarters','Taluk', 'Village'],
 
         fatherOccupation: 'Type of Occupation (Father)',
         fatherOccupationHint:
@@ -942,6 +980,7 @@ busRoute:
           'This data is collected to update the information provided at the time of admission ',
         fatherEducationData: [
           'Below 5th',
+          'Below 10th',
           'Completed 10th',
           'Completed 12th',
           'Diploma/ITI',
@@ -971,10 +1010,13 @@ busRoute:
           'This data is collected to update the information provided at the time of admission ',
         motherEducationalQualificationData: [
           'Below 5th',
+          'Belew 10th',
+          'Below 10th',
           'Completed 10th',
           'Diploma/ITI',
           'Completed  12th',
           'Completed Graduation',
+
         ],
         familyAnnualIncome:
           'Family Annual Income/ Financial Support from Guardian',
@@ -1186,6 +1228,7 @@ End student survey form
  eFullName:'Full Name',
  emedium: 'Medium of Instruction',
  schoolName:'School Name',
+ schoolLocation:'In which District your school is located?',
  UDISE:'UDISE',
  registerNumber:'RegisterNumber',
  emisNumber:'EMIS Number',
@@ -1342,7 +1385,8 @@ requireDocumentData:[
 '12th Mark Sheet',
 'Transfer Certificate',
 'Community Certificate',
-'Aadhar Card','Income Certificate',
+'Aadhar Card',
+'Income Certificate',
 'Sports Certificates',
 'Nativity Certificate',
 'Succession Certificate of Ex-Servicemen (if applicable)',
@@ -1351,7 +1395,7 @@ requireDocumentData:[
 'Certificate of differently abled (if applicable)'
 ],
 scholorshipExams:'Are you willing to write the exams for scholarships ',
-residentialAddress:'Residential address / Phone Number',
+residentialAddress:'Residential address',
 residentialData:[
   'Rented House',
 'Own House',
@@ -1399,6 +1443,41 @@ radioOption:[
 specilaztionsNew:'Which field do you want to pursue your higher education?',
 courseNew:'Which of the following courses would you like to study in your selected field? ',
 examnew:'Are you interested in writing the following college admission/entrance exams for the upcoming academic year?',
+phoneNumber:'Phone Number currently in use',
+stausOfStay:' Status of Stay',
+statusData:[
+  'Rented',
+'Owned',
+'Homeless'
+],
+disabilityStatus:'Are you a person with disability',
+disabilityStatusData:[
+  'Yes','No','Not willing to share'
+],
+currentAddress:'Address of the place where you stay?',
+other_reason_higher_education:'Explain, If other',
+specialization_label:'Select three Specializations(Domains) you would like to do higher education in:',
+specilization1:'Specialization 1',
+specilization2:'Specialization 2',
+specilization3:'Specialization 3',
+courses_label:'Select 3 courses you  would like to study in college:',
+courses1:'Choice 1',
+courses2:'Choice 2',
+courses3:'Choice 3',
+exam_label:'Select three entrance exams you would like to write ',
+exam1:'Choice 1',
+exam2:'Choice 2',
+exam3:'Choice 3',
+subjectMostLiked:'Select three subject you like in school:',
+subjectLeastLiked:'Select three subject you do not like in school:',
+subject1:'Subject 1',
+subject2:'Subject 2',
+subject3:'Subject 3',
+studenCareerGuidance:'Have you received the Career Guidance book?'
+
+
+
+
 /**
  * End New Form
  *

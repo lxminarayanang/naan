@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { StepperOrientation } from '@angular/material/stepper';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CommonService } from '../../shared/services/common/common.service';
 import { LanguageService } from '../../shared/services/common/language.service';
-declare var $: any;
 
 @Component({
   selector: 'app-observer-form',
@@ -20,16 +19,18 @@ export class ObserverFormComponent implements OnInit {
   public profileEditData: any;
 
   observerForm = this._formBuilder.group({
-    scholorshipExams: [''],
+    scholorshipExams:[],
+    nmms:['', Validators.required],
+trust:['', Validators.required],
+ntse:['', Validators.required],
+yasavi:['', Validators.required],
+tamil_talent_test:['', Validators.required],
   });
 
   stepperOrientation: Observable<StepperOrientation>;
 
   constructor(
     private _formBuilder: FormBuilder,
-
-    private _commonService: CommonService,
-    private _location: Location,
     public lang: LanguageService,
     private _router: Router,
     private el: ElementRef
@@ -45,10 +46,6 @@ export class ObserverFormComponent implements OnInit {
         scholorshipExams: this.profileEditData.scholorshipExams,
       });
     }
-  }
-
-  public toClose(): void {
-    $('#alertModal').modal('close');
   }
 
   public onClickNext(): void {
@@ -76,6 +73,6 @@ export class ObserverFormComponent implements OnInit {
     this._router.navigate(['/home']);
   }
   public onClickBack(): void {
-    this._router.navigate(['/student/career']);
+    this._router.navigate(['/student/certificate']);
   }
 }

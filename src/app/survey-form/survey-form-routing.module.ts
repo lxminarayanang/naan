@@ -8,13 +8,13 @@ const routes: Routes = [
     path: '',
     component: SurveyFormComponent,
   },
-  {
-    path: 'academic',
-    component: SurveyFormComponent,
-    data: {
-      breadcrumb: 'academic',
-    },
-  },
+  // {
+  //   path: 'academic',
+  //   component: SurveyFormComponent,
+  //   data: {
+  //     breadcrumb: 'academic',
+  //   },
+  // },
   {
     path: 'profile',
     component: SurveyFormComponent,
@@ -44,16 +44,47 @@ const routes: Routes = [
     },
   },
   {
+    path: 'specialization',
+    component: SurveyFormComponent,
+    data: {
+      breadcrumb: 'specialization',
+    },
+  },
+  // {
+  //   path: 'courses',
+  //   component: SurveyFormComponent,
+  //   data: {
+  //     breadcrumb: 'courses',
+  //   },
+  // },
+  {
+    path: 'exams',
+    component: SurveyFormComponent,
+    data: {
+      breadcrumb: 'exams',
+    },
+  },
+  {
+    path: 'career-guidance',
+    component: SurveyFormComponent,
+    data: {
+      breadcrumb: 'academic',
+    },
+  },
+  {
+    path: 'certificate',
+    component: SurveyFormComponent,
+    data: {
+      breadcrumb: 'academic',
+    },
+  },
+  {
     path: 'list',
     component: SurveyListComponent,
     data: {
       breadcrumb: 'academic',
     },
   },
-  // {
-  //   path: 'academic',
-  //   component: AcademicFormComponent,
-  // },
 ];
 
 @NgModule({

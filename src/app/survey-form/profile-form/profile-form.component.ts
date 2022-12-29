@@ -24,18 +24,24 @@ export class ProfileFormComponent implements OnInit {
     emsId: ['', Validators.required],
     fullName: ['', Validators.required],
     homeLocation:['', Validators.required],
-    studentMedium:['', Validators.required],
-    fatherOccupation:['', Validators.required],
+    //studentMedium:['', Validators.required],
+    //fatherOccupation:[],
    // fatherOccupationDetail:[''],
-    fatherQualification:['', Validators.required],
-    motherOccupation:['', Validators.required],
+    //fatherQualification:[],
+   // motherOccupation:[],
    // motherOccupationDetail:[''],
-    motherQualification:['', Validators.required],
-    familyAnnualIncome:[''],
-    studiedSchoolType:['', Validators.required],
+   // motherQualification:[],
+    //familyAnnualIncome:[''],
+    //studiedSchoolType:['', Validators.required],
     siblings:['', Validators.required],
-    udise:[]
+    udise:[],
     //residentialAddress:['', Validators.required],
+    school_name:['', Validators.required],
+    //school_location:['', Validators.required],
+    phone_number:['', [Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
+    status_of_stay:['', Validators.required],
+    //current_address:['', Validators.required],
+    disability_status:['', Validators.required],
   });
 
   constructor(
@@ -61,6 +67,7 @@ export class ProfileFormComponent implements OnInit {
         emsId: this.userDetails.emis_username,
         gender: this.userDetails.gender === 1 ? 'Male' : 'Female',
         udise: this.userDetails.udise_code,
+        school_name:this.userDetails.school_name
       });
     }
     else{
@@ -82,6 +89,12 @@ export class ProfileFormComponent implements OnInit {
         familyAnnualIncome:this.profileEditData.familyAnnualIncome,
         studiedSchoolType:this.profileEditData.studiedSchoolType,
         siblings:this.profileEditData.siblings,
+        school_name:this.profileEditData.school_name,
+        school_location:this.profileEditData.school_location,
+        phone_number:this.profileEditData.phone_number,
+        status_of_stay:this.profileEditData.status_of_stay,
+        current_address:this.profileEditData.current_address,
+        disability_status:this.profileEditData.disability_status,
        // residentialAddress:this.profileEditData.residentialAddress
       });
     }
@@ -105,7 +118,7 @@ export class ProfileFormComponent implements OnInit {
         JSON.stringify(this.profileInfoFormGroup.value)
       );
       //this._router.navigate[('')]
-      this._router.navigate(['/student/academic']);
+      this._router.navigate(['/student/career']);
     }
   }
 

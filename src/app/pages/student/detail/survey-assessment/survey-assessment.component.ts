@@ -308,7 +308,6 @@ export class SurveyAssessmentComponent implements OnInit {
           if (res.status == 200) {
             this.reportData = res;
             if(this.reportData.results == ""){
-              // console.log(this.reportData);
                 this.isImage = true;
                 this.isData = false;
             }
@@ -317,8 +316,6 @@ export class SurveyAssessmentComponent implements OnInit {
               this.isImage = false;
               this.isData = true;
 
-            // console.log(this.reportData);
-            // console.log(this.reportData.results[0].emsId);
                   if(this.reportData.results[0].emsId != "" && this.reportData.results[0].emsId != null)
                   {
                     this.emsId = this.reportData.results[0].emsId;

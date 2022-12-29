@@ -15,7 +15,6 @@ declare var $: any;
 })
 export class CareerFormComponent implements OnInit {
   public toppingList: string[] = [];
-  public specilaztions: any[] = [];
   public coursesListData: any[] = [];
   public items: any[] = [];
   public speclFilteredArray: any[] = [];
@@ -42,14 +41,34 @@ export class CareerFormComponent implements OnInit {
   higherEducationInfoForm: any = this._formBuilder.group({
     importantForEducation: ['', Validators.required],
     challengesInHigherEducation: ['', Validators.required],
-    specilaztions: ['', Validators.required],
-    intrestedCourse: ['', Validators.required],
-    entranceExams: ['', Validators.required],
-    accessedGoverementSchemes:['', Validators.required],
-    documentList:['', Validators.required],
-    awareGovtSchemes:['', Validators.required],
+    specilaztions:[],
+    intrestedCourse: [],
+    entranceExams: [],
+    accessedGoverementSchemes:[],
+    awareGovtSchemes:[],
     likedColleges:['', Validators.required],
-    graduationAwayFromHometown:['', Validators.required],
+   // graduationAwayFromHometown:['', Validators.required],
+    other_reason_higher_education:[''],
+uniform:['', Validators.required],
+bookbags_bages:['', Validators.required],
+nutrition:['', Validators.required],
+laptop:['', Validators.required],
+bicycle:['', Validators.required],
+backward_or_tribal_scholorship:['', Validators.required],
+selva_daughter_scheme:['', Validators.required],
+cm_breakfast_scheme	:['', Validators.required],
+special_incentives:['', Validators.required],
+shoes:['', Validators.required],
+mathematical_toolbox:['', Validators.required],
+bus_travel_card:['', Validators.required],
+financial_assistance_lost_parents:['', Validators.required],
+financial_assistance_lost_parents_corona:['', Validators.required],
+reservation_for_govt_school:['', Validators.required],
+pudhumai_penn_scheme:['', Validators.required],
+vidyalakshmi_education_loan_scheme:['', Validators.required],
+stipend_for_first_graduate:['', Validators.required],
+postmatric_scholarships	:['', Validators.required],
+five_percent_seats_with_benchmark_disabilities:['', Validators.required],
   });
 
   constructor(
@@ -64,15 +83,19 @@ export class CareerFormComponent implements OnInit {
   ngOnInit() {
     console.log('adbjadad',this.lang)
     window.scrollTo(0, 0);
-    this._getCoursesList();
-    this._getSpecialization();
-    this._getExams();
    // this._getCareers();
     this.profileEditData = JSON.parse(
       localStorage.getItem('careerFormValue') as string
     );
-this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:any) => {
-   this.getCourseData(item)
+this.higherEducationInfoForm.get("challengesInHigherEducation").valueChanges.subscribe((value:any) => {
+  if(value.includes('மற்றவை','Other')){
+    this.higherEducationInfoForm
+      .get('other_reason_higher_education')?.setValidators([Validators.required]);
+    this.higherEducationInfoForm.get('other_reason_higher_education')?.updateValueAndValidity();
+  } else {
+    this.higherEducationInfoForm.get('other_reason_higher_education')?.clearValidators();
+    this.higherEducationInfoForm.get('other_reason_higher_education')?.updateValueAndValidity();
+  }
 })
     if (this.profileEditData) {
       // this.graduationAwayFromHometwn =
@@ -89,7 +112,6 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
     intrestedCourse:  this.profileEditData.intrestedCourse,
     entranceExams:  this.profileEditData.entranceExams,
     accessedGoverementSchemes: this.profileEditData.accessedGoverementSchemes,
-    documentList: this.profileEditData.documentList,
     awareGovtSchemes: this.profileEditData.awareGovtSchemes,
     likedColleges: this.profileEditData.likedColleges,
     graduationAwayFromHometown: this.profileEditData.graduationAwayFromHometown,
@@ -97,31 +119,13 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
     }
   }
   public onClickBack(): void {
-    this._router.navigate(['/student/academic']);
+    this._router.navigate(['/student/profile']);
   }
 
   public toClose(): void {
     $('#alertModal').modal('close');
   }
 
-  public async getCourseData(selectedData: any): Promise<void> {
-
-    if (selectedData) {
-      this.coursesData = [];
-      //this.entranceExamData = [];
-      let results= await this._getCoursesList()
-      selectedData.forEach((element: string) => {
-        this.items.forEach((item: any) => {
-          if (item.field === element) {
-            this.coursesData.push(item);
-            //this.entranceExamData.push(item.admissionProcedure);
-
-          }
-        });
-      });
-      //this.examFileteredData=Array.from(new Set(this.entranceExamData));
-    }
-  }
   public onClickNext(): void {
     this.submitted = true;
     if(this.higherEducationInfoForm.invalid){
@@ -139,96 +143,12 @@ this.higherEducationInfoForm.get("specilaztions").valueChanges.subscribe((item:a
         JSON.stringify(this.higherEducationInfoForm.value)
       );
       //this._router.navigate[('')]
-      this._router.navigate(['/student/observer']);
+      this._router.navigate(['/student/specialization']);
     }
   }
 
   toBack() {
     this._location.back();
-  }
-
-  private _getSpecialization(): void {
-    if(this.lang.tempLang==="tamil"){
-      this.httpClient.get<any>("assets/survey-json/specialization-tm.json").subscribe((res)=>{
-        if (res.status == 200) {
-          this.specilaztions = res.results;
-          //  this.getExamDataBasedOnSpcl(res.results)
-        }
-      });
-    }
-    else{
-      this.httpClient.get<any>("assets/survey-json/specialization-en.json").subscribe((res)=>{
-        if (res.status == 200) {
-          this.specilaztions = res.results;
-          //  this.getExamDataBasedOnSpcl(res.results)
-        }
-      });
-    }
-
-
-  }
-    private _getExams(): void {
-      if(this.lang.tempLang==="tamil"){
-        this.httpClient.get<any>("assets/survey-json/exams-tm.json").subscribe((res:any)=>{
-          if (res.status == 200) {
-            this.exams = res.results;
-            this.exams.forEach((item: any) => {
-              if (item.name) {
-                this.examFileteredData.push(item.name);
-                //this.entranceExamData.push(item.admissionProcedure);
-
-              }
-            });
-            this.examFileteredData=Array.from(new Set(this.examFileteredData));
-            //  this.getExamDataBasedOnSpcl(res.results)
-          }
-        });
-      }
-      else{
-        this.httpClient.get<any>("assets/survey-json/exams-en.json").subscribe((res:any)=>{
-          if (res.status == 200) {
-            this.exams = res.results;
-            this.exams.forEach((item: any) => {
-              if (item.name) {
-                this.examFileteredData.push(item.name);
-                //this.entranceExamData.push(item.admissionProcedure);
-
-              }
-            });
-            this.examFileteredData=Array.from(new Set(this.examFileteredData));
-            //  this.getExamDataBasedOnSpcl(res.results)
-          }
-        });
-      }
-
-  }
-  // private _getCareers(): void {
-  //   this._commonService
-  //     .getService(`/careers/filter?menu=field`)
-  //     .subscribe((res: any) => {
-  //       if (res.status == 200) {
-  //         this.careersData = res.results;
-  //       }
-  //     });
-  // }
-  private _getCoursesList(): void {
-    if(this.lang.tempLang==="tamil"){
-      this.httpClient.get<any>("assets/survey-json/courses-tm.json").subscribe((res:any)=>{
-        if (res.status == 200) {
-          this.items = res.results;
-          this.speclFilteredArray = this.items;
-        }
-      });
-    }
-    else{
-      this.httpClient.get<any>("assets/survey-json/courses-en.json").subscribe((res:any)=>{
-        if (res.status == 200) {
-          this.items = res.results;
-          this.speclFilteredArray = this.items;
-        }
-      });
-    }
-
   }
 
   keyPressAlphaCharacters(event: any) {

@@ -379,7 +379,6 @@ if(value && value==="Others"){
     );
     this.studentProfile.controls.Got_Admission.valueChanges.subscribe(
       (value: string) => {
-        debugger
         if (value === 'Yes') {
           this.studentProfile.get('is_Applied_College').clearValidators();
           this.studentProfile
@@ -532,7 +531,6 @@ if(value && value==="Others"){
     this.submitted = true;
     this.studentProfile.updateValueAndValidity();
     if (this.studentProfile.invalid) {
-      debugger
       for (const key of Object.keys(this.studentProfile.controls)) {
         if (this.studentProfile.controls[key].invalid) {
           const invalidControl = this.el.nativeElement.querySelector(
@@ -562,6 +560,7 @@ if(value && value==="Others"){
   }
 
   private _studentDataBasedOnRegisterNumber(value: string): void {
+    ;
     this.filteredData = this.studentData.find(
       (data: any) => data.emis_id === value
     );
@@ -805,7 +804,7 @@ if(value && value==="Others"){
     this._router.navigate(['/survey/alumni2022']);
   }
 private _joiningCollegeValidation():void{
-  debugger
+
 
     this.studentProfile.get('student_not_join').clearValidators();
     this.studentProfile.get('other_reason_for_student_not_join').clearValidators();

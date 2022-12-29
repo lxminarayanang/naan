@@ -1,0 +1,110 @@
+<div class="container step-wizard-container">
+  <form [formGroup]="cousesForm">
+ <div class="row">
+
+  <div class="col-md-12 labelRow">
+    <div class="matLabelHeight">
+      <mat-label
+        >24. {{ lang.language.courses_label }}
+        <span
+          class="mat-placeholder-required mat-form-field-required-marker"
+        >
+          *</span
+        ></mat-label
+      >
+      </div>
+      <div class="col-md-12 labelRow">
+        <div class="matLabelHeight">
+        <mat-label>a) {{ lang.language.courses1 }}<span
+          class="mat-placeholder-required mat-form-field-required-marker"
+        >
+          *</span
+        ></mat-label>
+        </div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-select
+              placeholder=""
+              formControlName="courses1"
+
+            >
+            <ng-container  *ngFor="let item of coursesData">
+              <mat-option
+
+               [value]="item.name">{{
+                item.name
+              }}</mat-option>
+            </ng-container>
+
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-12 labelRow">
+          <div class="matLabelHeight">
+          <mat-label>b) {{ lang.language.courses2 }}<span
+            class="mat-placeholder-required mat-form-field-required-marker"
+          >
+            *</span
+          ></mat-label>
+          </div>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-select
+                placeholder=""
+                formControlName="courses2"
+
+              >
+              <ng-container  *ngFor="let item of coursesData">
+                <mat-option
+
+                 [value]="item.name">{{
+                  item.name
+                }}</mat-option>
+              </ng-container>
+
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-12 labelRow">
+            <div class="matLabelHeight">
+            <mat-label>c) {{ lang.language.courses3}}<span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></mat-label>
+            </div>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-select
+                  placeholder=""
+                  formControlName="courses3"
+
+                >
+                <ng-container  *ngFor="let item of coursesData">
+                  <mat-option
+
+                   [value]="item.name">{{
+                    item.name
+                  }}</mat-option>
+                </ng-container>
+
+                </mat-select>
+              </mat-form-field>
+            </div>
+      </div>
+
+ </div>
+
+    <!-- <p class="mat-danger labelRow">(*) mandatory</p> -->
+    <div>
+      <button
+        mat-button
+        class="matButton"
+        type="submit"
+        (click)="onClickNext()"
+      >
+        Next
+      </button>
+      <button mat-button class="matBackButton" (click)="onClickBack()" style="float: left">
+        Back
+      </button>
+    </div>
+  </form>
+</div>

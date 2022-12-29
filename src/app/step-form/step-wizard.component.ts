@@ -101,7 +101,6 @@ export class StepWizardComponent implements OnInit {
     //
     // this.carrerInfoForm.setValidators({interestedGoverementJobs:})
     // this.profileForm.get('secretPwd').updateValueAndValidity();
-    // console.log({ job });
   }
   public clickFormSubmit(): void {
     if (

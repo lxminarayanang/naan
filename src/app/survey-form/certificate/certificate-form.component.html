@@ -1,10 +1,11 @@
 <div class="container step-wizard-container">
-  <form [formGroup]="carrerInfoForm">
+  <form [formGroup]="certificateForm">
     <div class="row">
-      <div class="col-md-12 labelRow">
-        <div>
+      <div class="col-md-12 labelRow
+      ">
+        <div class="matLabelHeight mb-3">
           <mat-label
-            >16. {{ lang.language.entranceGovExam }}
+            >14. {{ lang.language.requireDocument }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -15,7 +16,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >a) {{ lang.language.entranceGovExamJobsData[0] }}
+              >a) {{ lang.language.requireDocumentData[0] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -25,7 +26,7 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="tnpsc_exam"
+            formControlName="sslc_mark_sheet"
           >
 
             <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
@@ -33,7 +34,34 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('tnpsc_exam')?.invalid
+                certificateForm.get('sslc_mark_sheet')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group>
+        </div>
+
+        <div class="col-md-12 labelRow">
+          <div class="matLabelHeight">
+            <mat-label class="radioLabel"
+              >b) {{ lang.language.requireDocumentData[1] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
+            >
+          </div>
+          <mat-radio-group
+            aria-label="Select an option"
+            formControlName="hse_plus_one__mark_sheet"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                certificateForm.get('hse_plus_one__mark_sheet')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -42,7 +70,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >b) {{ lang.language.entranceGovExamJobsData[1] }}
+              >c) {{ lang.language.requireDocumentData[2] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -52,15 +80,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="trb_exam"
+            formControlName="hsc_plus_two_mark_sheet"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('trb_exam')?.invalid
+                certificateForm.get('hsc_plus_two_mark_sheet')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -69,7 +96,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >c) {{ lang.language.entranceGovExamJobsData[2] }}
+              >d) {{ lang.language.requireDocumentData[3] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -79,15 +106,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="tnusrb_exam"
+            formControlName="transfer_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('tnusrb_exam')?.invalid
+                certificateForm.get('transfer_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -96,7 +122,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >d) {{ lang.language.entranceGovExamJobsData[3] }}
+              >e) {{ lang.language.requireDocumentData[4] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -106,15 +132,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="ssc_exam"
+            formControlName="community_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
             <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('ssc_exam')?.invalid
+                certificateForm.get('community_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -123,7 +148,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >e) {{ lang.language.entranceGovExamJobsData[4] }}
+              >f) {{ lang.language.requireDocumentData[5] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -133,15 +158,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="upsc_exam"
+            formControlName="aadhaar_card"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
             <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('upsc_exam')?.invalid
+                certificateForm.get('aadhaar_card')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -150,7 +174,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >f) {{ lang.language.entranceGovExamJobsData[5] }}
+              >g) {{ lang.language.requireDocumentData[6] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -160,15 +184,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="rrb_exam"
+            formControlName="income_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('rrb_exam')?.invalid
+                certificateForm.get('income_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -177,7 +200,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >g) {{ lang.language.entranceGovExamJobsData[6] }}
+              >h) {{ lang.language.requireDocumentData[7] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -187,15 +210,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="ipbs_exam"
+            formControlName="sports_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('ipbs_exam')?.invalid
+                certificateForm.get('sports_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -204,7 +226,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >h) {{ lang.language.entranceGovExamJobsData[7] }}
+              >i) {{ lang.language.requireDocumentData[8] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -214,15 +236,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="nda_exam"
+            formControlName="nativity_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('nda_exam')?.invalid
+                certificateForm.get('nativity_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -231,7 +252,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >i) {{ lang.language.entranceGovExamJobsData[8] }}
+              >j) {{ lang.language.requireDocumentData[9] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -241,15 +262,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="cds_exam"
+            formControlName="ex_service_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('cds_exam')?.invalid
+                certificateForm.get('ex_service_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -258,7 +278,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >j) {{ lang.language.entranceGovExamJobsData[9] }}
+              >k) {{ lang.language.requireDocumentData[10] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -268,15 +288,14 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="rbi_exam"
+            formControlName="refugee_certificate"
           >
-
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
-            <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('rbi_exam')?.invalid
+                certificateForm.get('refugee_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -285,7 +304,7 @@
         <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
-              >k) {{ lang.language.entranceGovExamJobsData[10] }}
+              >l) {{ lang.language.requireDocumentData[11] }}
               <span
                 class="mat-placeholder-required mat-form-field-required-marker"
               >
@@ -295,15 +314,43 @@
           </div>
           <mat-radio-group
             aria-label="Select an option"
-            formControlName="psu_exam"
+            formControlName="first_graduate_certificate"
           >
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
+          <div>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                certificateForm.get('first_graduate_certificate')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </div>
+          </mat-radio-group>
 
-            <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
+        </div>
+        <div class="col-md-12 labelRow">
+          <div class="matLabelHeight">
+            <mat-label class="radioLabel"
+              >m) {{ lang.language.requireDocumentData[12] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></mat-label
+            >
+          </div>
+          <mat-radio-group
+            aria-label="Select an option"
+            formControlName="differently_abled_certificate"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]">{{ lang.language.radioButton[0] }}</mat-radio-button>
             <mat-radio-button [value]="lang.language.radioButton[1]">{{ lang.language.radioButton[1] }}</mat-radio-button>
            <div> <mat-error
               *ngIf="
                 submitted &&
-                carrerInfoForm.get('psu_exam')?.invalid
+                certificateForm.get('differently_abled_certificate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -312,40 +359,28 @@
 
 
       </div>
-      <!-- <div class="col-md-12 labelRow">
-        <div>
-          <mat-label
-            >{{ lang.language.sectorInterested }}
-            <span
-              class="mat-placeholder-required mat-form-field-required-marker"
-            >
-              *</span
-            ></mat-label
-          >
-        </div>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-select
-            placeholder=""
-            formControlName="interestedJobSector"
-            multiple
-          >
-            <mat-option *ngFor="let item of careersData" [value]="item.field">{{
-              item.field
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div> -->
-</div>
-    <p class="mat-danger labelRow">(*) mandatory</p>
+
+
+    </div>
+
+    <!-- <p class="mat-danger labelRow">(*) mandatory</p> -->
     <div>
-      <button mat-button class="matButton" (click)="onClickNext()" >Next</button>
+      <button
+        mat-button
+        class="matButton"
+        type="submit"
+        (click)="onClickNext()"
+      >
+        Next
+      </button>
       <button mat-button class="matBackButton" (click)="onClickBack()" style="float: left">
         Back
       </button>
     </div>
   </form>
-    <!--Phone Modal -->
-    <div
+
+  <!--Phone Modal -->
+  <div
     class="modal fade"
     id="successModal"
     data-bs-backdrop="static"

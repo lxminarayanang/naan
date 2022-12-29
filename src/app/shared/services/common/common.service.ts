@@ -58,7 +58,6 @@ export class CommonService {
 
   // POST API Method While Pass JSON Data
   postService(url: string, data?: any, loaderState?: any, params?: any): any {
-    debugger
     const language = localStorage.getItem('language');
     let temp = url.indexOf('?');
     const tempUrl =
@@ -105,7 +104,6 @@ export class CommonService {
 
   // GET API Method
   getService(url: string, params?: any): any {
-    debugger
     if(url.includes('school_details')  || url.includes('student_details')){
 
       return this.apiservice.getService(url);

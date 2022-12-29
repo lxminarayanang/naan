@@ -118,7 +118,6 @@ export class CareerFormComponent implements OnInit {
     //
     // this.carrerInfoForm.setValidators({interestedGoverementJobs:})
     // this.profileForm.get('secretPwd').updateValueAndValidity();
-    // console.log({ job });
   }
 
   public toClose(): void {

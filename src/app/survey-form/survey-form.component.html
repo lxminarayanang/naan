@@ -3,8 +3,7 @@
     <div class="col-md-3">
       <div class="nav-bar">
         <nav md-tab-nav-bar>
-          <a
-            class="disableClick"
+          <a class=""
             md-tab-link
             *ngFor="let tab of tabs"
             routerLink="{{ tab.route }}"
@@ -18,16 +17,31 @@
     <div class="col-md-9">
       <div class="content">
         <app-profile-form *ngIf="url === '/student/profile'"></app-profile-form>
-        <app-academic-form
+        <!-- <app-academic-form
           *ngIf="url === '/student/academic'"
-        ></app-academic-form>
+        ></app-academic-form> -->
         <app-career-interest-form
           *ngIf="url === '/student/career-interest'"
         ></app-career-interest-form>
+        <app-specialization *ngIf="url === '/student/specialization'">
+
+        </app-specialization>
+        <!-- <app-courses-form *ngIf="url === '/student/courses'">
+
+        </app-courses-form > -->
+        <app-exams-form *ngIf="url === '/student/exams'">
+
+        </app-exams-form>
+        <app-certificate-form
+        *ngIf="url === '/student/certificate'"
+      ></app-certificate-form>
         <app-career-form *ngIf="url === '/student/career'"></app-career-form>
         <app-observer-form
           *ngIf="url === '/student/observer'"
         ></app-observer-form>
+        <app-career-guidance-form *ngIf="url === '/student/career-guidance'">
+
+        </app-career-guidance-form>
       </div>
     </div>
   </div>

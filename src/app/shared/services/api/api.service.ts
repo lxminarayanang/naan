@@ -19,8 +19,6 @@ export class ApiService {
     const headers_custom = {
       headers: new Headers({
         'x-api-key': 'dhyDNulWAg2NzBsLmw4Lc6Jl9EbQI37w5RWV39uF',
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
       }),
     };
     return this.http.post(url, headers_custom).pipe(
@@ -38,8 +36,6 @@ export class ApiService {
       .get(url, {
         headers: new HttpHeaders({
           'x-api-key': 'dhyDNulWAg2NzBsLmw4Lc6Jl9EbQI37w5RWV39uF',
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
         }),
       })
       .pipe(
