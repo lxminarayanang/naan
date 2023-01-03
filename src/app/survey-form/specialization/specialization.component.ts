@@ -83,7 +83,7 @@ export class SpecializationFormComponent implements OnInit {
     this._router.navigate(['/home']);
   }
   public onClickBack(): void {
-    this._router.navigate(['/student/career']);
+    this._router.navigate(['/student/profile']);
   }
   private _getSpecialization(): void {
     debugger

@@ -39,7 +39,7 @@ export class CareerFormComponent implements OnInit {
   public exams:any;
 
   higherEducationInfoForm: any = this._formBuilder.group({
-    importantForEducation: ['', Validators.required],
+    //importantForEducation: [''],
     challengesInHigherEducation: ['', Validators.required],
     specilaztions:[],
     intrestedCourse: [],
@@ -107,7 +107,7 @@ this.higherEducationInfoForm.get("challengesInHigherEducation").valueChanges.sub
 
     this.higherEducationInfoForm.patchValue({
     specilaztions:this.profileEditData.specilaztions,
-    importantForEducation:  this.profileEditData.importantForEducation,
+   // importantForEducation:  this.profileEditData.importantForEducation,
     challengesInHigherEducation:  this.profileEditData.challengesInHigherEducation,
     intrestedCourse:  this.profileEditData.intrestedCourse,
     entranceExams:  this.profileEditData.entranceExams,
@@ -115,11 +115,32 @@ this.higherEducationInfoForm.get("challengesInHigherEducation").valueChanges.sub
     awareGovtSchemes: this.profileEditData.awareGovtSchemes,
     likedColleges: this.profileEditData.likedColleges,
     graduationAwayFromHometown: this.profileEditData.graduationAwayFromHometown,
+    other_reason_higher_education:this.profileEditData.other_reason_higher_education,
+    uniform:this.profileEditData.uniform,
+    bookbags_bages:this.profileEditData.bookbags_bages,
+    nutrition:this.profileEditData.nutrition,
+    laptop:this.profileEditData.laptop,
+    bicycle:this.profileEditData.bicycle,
+    backward_or_tribal_scholorship:this.profileEditData.backward_or_tribal_scholorship,
+    selva_daughter_scheme:this.profileEditData.selva_daughter_scheme,
+    cm_breakfast_scheme	:this.profileEditData.cm_breakfast_scheme,
+    special_incentives:this.profileEditData.special_incentives,
+    shoes:this.profileEditData.shoes,
+    mathematical_toolbox:this.profileEditData.mathematical_toolbox,
+    bus_travel_card:this.profileEditData.bus_travel_card,
+    financial_assistance_lost_parents:this.profileEditData.financial_assistance_lost_parents,
+    financial_assistance_lost_parents_corona:this.profileEditData.financial_assistance_lost_parents_corona,
+    reservation_for_govt_school:this.profileEditData.reservation_for_govt_school,
+    pudhumai_penn_scheme:this.profileEditData.pudhumai_penn_scheme,
+    vidyalakshmi_education_loan_scheme:this.profileEditData.vidyalakshmi_education_loan_scheme,
+    stipend_for_first_graduate:this.profileEditData.stipend_for_first_graduate,
+    postmatric_scholarships	:this.profileEditData.postmatric_scholarships,
+    five_percent_seats_with_benchmark_disabilities:this.profileEditData.five_percent_seats_with_benchmark_disabilities,
       });
     }
   }
   public onClickBack(): void {
-    this._router.navigate(['/student/profile']);
+    this._router.navigate(['/student/exams']);
   }
 
   public toClose(): void {
@@ -143,7 +164,7 @@ this.higherEducationInfoForm.get("challengesInHigherEducation").valueChanges.sub
         JSON.stringify(this.higherEducationInfoForm.value)
       );
       //this._router.navigate[('')]
-      this._router.navigate(['/student/specialization']);
+      this._router.navigate(['/student/certificate']);
     }
   }
 

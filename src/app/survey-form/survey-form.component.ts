@@ -22,13 +22,9 @@ export class SurveyFormComponent implements OnInit {
       //   route: '/student/academic',
       //   disabled: false,
       // },
+
       {
-        label: 'Higher Education Interested & Aspirations 1',
-        route: '/student/career',
-        disabled: false,
-      },
-      {
-        label: 'Specialization',
+        label: 'Higher Education Interest & Aspirations 1 - Specialization',
         route: '/student/specialization',
         disabled: false,
       },
@@ -38,8 +34,13 @@ export class SurveyFormComponent implements OnInit {
       //   disabled: false,
       // },
       {
-        label: 'Entrance exams',
+        label: 'Higher Education Interest & Aspirations 1 - Entrance exam',
         route: '/student/exams',
+        disabled: false,
+      },
+      {
+        label: 'Higher Education Interested & Aspirations 2',
+        route: '/student/career',
         disabled: false,
       },
       {
@@ -58,11 +59,11 @@ export class SurveyFormComponent implements OnInit {
         route: '/student/career-interest',
         disabled: true,
       },
-      {
-        label: 'Higher Education & Career Guidance',
-        route: '/student/career-guidance',
-        disabled: true,
-      },
+      // {
+      //   label: 'Higher Education & Career Guidance',
+      //   route: '/student/career-guidance',
+      //   disabled: true,
+      // },
 
     ];
   }

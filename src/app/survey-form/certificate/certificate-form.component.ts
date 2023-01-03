@@ -51,19 +51,19 @@ export class CertificateFormComponent implements OnInit {
 
     if (this.profileEditData) {
       this.certificateForm.patchValue({
-        sslcMarkSheet:this.profileEditData.sslcMarkSheet,
-        higherMarkSheet:this.profileEditData.higherMarkSheet,
-        hscMarkSheet:this.profileEditData.hscMarkSheet,
-        transferCertificate:this.profileEditData.transferCertificate,
-        CommunityCertificate:this.profileEditData.CommunityCertificate,
-        aadharCard:this.profileEditData.aadharCard,
-        incomeCertificate:this.profileEditData.incomeCertificate,
-        sportsCertificates:this.profileEditData.sportsCertificates,
-        nativityCertificate:this.profileEditData.nativityCertificate,
-        militaryCertificate:this.profileEditData.militaryCertificate,
-        tamilRefugee:this.profileEditData.tamilRefugee,
-        firstGraduateCertificate:this.profileEditData.firstGraduateCertificate,
-        differentlyAbledCertificate:this.profileEditData.differentlyAbledCertificate,
+    sslc_mark_sheet:this.profileEditData.sslc_mark_sheet,
+    hse_plus_one__mark_sheet:this.profileEditData.hse_plus_one__mark_sheet,
+    hsc_plus_two_mark_sheet:this.profileEditData.hsc_plus_two_mark_sheet,
+    transfer_certificate:this.profileEditData.transfer_certificate,
+    community_certificate:this.profileEditData.community_certificate,
+    aadhaar_card:this.profileEditData.aadhaar_card,
+    income_certificate:this.profileEditData.income_certificate,
+    sports_certificate:this.profileEditData.sports_certificate,
+    nativity_certificate:this.profileEditData.nativity_certificate,
+    ex_service_certificate:this.profileEditData.ex_service_certificate,
+    refugee_certificate:this.profileEditData.refugee_certificate,
+    first_graduate_certificate:this.profileEditData.first_graduate_certificate,
+    differently_abled_certificate:this.profileEditData.differently_abled_certificate,
       });
     }
   }
@@ -97,6 +97,6 @@ export class CertificateFormComponent implements OnInit {
     this._router.navigate(['/home']);
   }
   public onClickBack(): void {
-    this._router.navigate(['/student/exams']);
+    this._router.navigate(['/student/career']);
   }
 }

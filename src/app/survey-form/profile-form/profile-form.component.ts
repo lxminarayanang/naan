@@ -23,7 +23,7 @@ export class ProfileFormComponent implements OnInit {
   profileInfoFormGroup: any = this._formBuilder.group({
     emsId: ['', Validators.required],
     fullName: ['', Validators.required],
-    homeLocation:['', Validators.required],
+    homeLocation:[''],
     //studentMedium:['', Validators.required],
     //fatherOccupation:[],
    // fatherOccupationDetail:[''],
@@ -33,15 +33,15 @@ export class ProfileFormComponent implements OnInit {
    // motherQualification:[],
     //familyAnnualIncome:[''],
     //studiedSchoolType:['', Validators.required],
-    siblings:['', Validators.required],
+    siblings:[''],
     udise:[],
     //residentialAddress:['', Validators.required],
-    school_name:['', Validators.required],
+    school_name:[''],
     //school_location:['', Validators.required],
-    phone_number:['', [Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
-    status_of_stay:['', Validators.required],
+    phone_number:['', [Validators.pattern("(0|91)?[6-9][0-9]{9}"),Validators.required]],
+    status_of_stay:[''],
     //current_address:['', Validators.required],
-    disability_status:['', Validators.required],
+    disability_status:[''],
   });
 
   constructor(
@@ -118,7 +118,7 @@ export class ProfileFormComponent implements OnInit {
         JSON.stringify(this.profileInfoFormGroup.value)
       );
       //this._router.navigate[('')]
-      this._router.navigate(['/student/career']);
+      this._router.navigate(['/student/specialization']);
     }
   }
 

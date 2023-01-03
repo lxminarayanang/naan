@@ -21,7 +21,7 @@ export class ObserverFormComponent implements OnInit {
   observerForm = this._formBuilder.group({
     scholorshipExams:[],
     nmms:['', Validators.required],
-trust:['', Validators.required],
+//trust:['', Validators.required],
 ntse:['', Validators.required],
 yasavi:['', Validators.required],
 tamil_talent_test:['', Validators.required],
@@ -44,6 +44,11 @@ tamil_talent_test:['', Validators.required],
     if (this.profileEditData) {
       this.observerForm.patchValue({
         scholorshipExams: this.profileEditData.scholorshipExams,
+        nmms:this.profileEditData.nmms,
+        //trust:this.profileEditData.scholorshipExams,
+        ntse:this.profileEditData.ntse,
+        yasavi:this.profileEditData.yasavi,
+        tamil_talent_test:this.profileEditData.tamil_talent_test,
       });
     }
   }

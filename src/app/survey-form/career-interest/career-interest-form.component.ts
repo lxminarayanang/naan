@@ -70,10 +70,6 @@ psu_exam:['', Validators.required],
     }
   }
 
-  public toClose(): void {
-    $('#alertModal').modal('close');
-  }
-
   toBack() {
     this._router.navigate(['/student/profile']);
   }
@@ -91,6 +87,117 @@ psu_exam:['', Validators.required],
   public onClickBack(): void {
     this._router.navigate(['/student/observer']);
   }
+
+
+  public toClose(): void {
+    this._router.navigate(['/student/profile']);
+    localStorage.removeItem('profileFormValue');
+    localStorage.removeItem('careerFormValue');
+    localStorage.removeItem('careerInterestValue');
+    localStorage.removeItem('observerFormValue');
+    localStorage.removeItem('certificateFormValue');
+    localStorage.removeItem('examFormValue');
+    localStorage.removeItem('specilizationFormValue');
+    localStorage.removeItem('careerGuidanceFormValue');
+    //$('#alertModal').modal('close');
+
+  }
+
+
+  public onClickFormSubmit(): void {
+    this.submitted = true;
+    return;
+    if(this.carrerInfoForm.invalid){
+      for (const key of Object.keys(this.carrerInfoForm.controls)) {
+        if (this.carrerInfoForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+  else{
+    localStorage.setItem(
+      'careerInterestValue',
+      JSON.stringify(this.carrerInfoForm.value)
+    );
+    const payload=this._mapPayload();
+    this._commonService
+      .postService('/one-to-one-assesement/add', payload)
+      .subscribe((res:any) => {
+        debugger;
+        if (res.status == 200) {
+          $('#successModal').modal('show');
+          localStorage.removeItem('profileFormValue');
+          localStorage.removeItem('careerFormValue');
+          localStorage.removeItem('careerInterestValue');
+          localStorage.removeItem('observerFormValue');
+          localStorage.removeItem('certificateFormValue');
+          localStorage.removeItem('examFormValue');
+          localStorage.removeItem('specilizationFormValue');
+          localStorage.removeItem('careerGuidanceFormValue');
+        }
+        else if(res.status == 405){
+          $('#alertModal').modal('show');
+        }
+      },
+      (err:Error) => {
+
+        console.log(err)
+      }
+      );
+  }
+
+  }
+
+  _mapPayload(){
+    // const {career_guidance}=this.carrerGuidanceForm.value
+
+    const profileData = JSON.parse(
+      localStorage.getItem('profileFormValue') as any
+    );
+    // const academicFormValue = JSON.parse(
+    //   localStorage.getItem('academicFormValue') as any
+    // );
+
+    const careerFormValue = JSON.parse(
+      localStorage.getItem('careerFormValue') as any
+    );
+    const careerInterestFormValue = JSON.parse(
+      localStorage.getItem('careerInterestValue') as any
+    );
+    const certificateFormValue = JSON.parse(
+      localStorage.getItem('certificateFormValue') as any
+    );
+    // const coursesFormValue = JSON.parse(
+    //   localStorage.getItem('coursesFormValue') as any
+    // );
+    const observerFormValue = JSON.parse(
+      localStorage.getItem('observerFormValue') as any
+    );
+    const examFormValue = JSON.parse(
+      localStorage.getItem('examFormValue') as any
+    );
+    const specilizationFormValue = JSON.parse(
+      localStorage.getItem('specilizationFormValue') as any
+    );
+
+    const payload = {
+      ...profileData,
+      ...careerFormValue,
+      ...observerFormValue,
+      ...careerInterestFormValue,
+      ...certificateFormValue,
+      ...examFormValue,
+      ...specilizationFormValue,
+     // career_guidance
+
+
+    };
+
+    return payload;
+  }
+
 
 
   public onClickNext(): void {

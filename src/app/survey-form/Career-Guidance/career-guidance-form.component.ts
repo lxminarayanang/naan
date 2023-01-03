@@ -67,31 +67,44 @@ career_guidance:['', Validators.required],
 
 
   public onClickFormSubmit(): void {
-   const payload=this._mapPayload();
-      this._commonService
-        .postService('/one-to-one-assesement/add', payload)
-        .subscribe((res:any) => {
-          debugger;
-          if (res.status == 200) {
-            $('#successModal').modal('show');
-            localStorage.removeItem('profileFormValue');
-            localStorage.removeItem('careerFormValue');
-            localStorage.removeItem('careerInterestValue');
-            localStorage.removeItem('observerFormValue');
-            localStorage.removeItem('certificateFormValue');
-            localStorage.removeItem('examFormValue');
-            localStorage.removeItem('specilizationFormValue');
-            localStorage.removeItem('careerGuidanceFormValue');
-          }
-          else if(res.status == 405){
-            $('#alertModal').modal('show');
-          }
-        },
-        (err:Error) => {
-
-          console.log(err)
+    this.submitted = true;
+    if(this.carrerGuidanceForm.invalid){
+      for (const key of Object.keys(this.carrerGuidanceForm.controls)) {
+        if (this.carrerGuidanceForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+  else{
+    const payload=this._mapPayload();
+    this._commonService
+      .postService('/one-to-one-assesement/add', payload)
+      .subscribe((res:any) => {
+        debugger;
+        if (res.status == 200) {
+          $('#successModal').modal('show');
+          localStorage.removeItem('profileFormValue');
+          localStorage.removeItem('careerFormValue');
+          localStorage.removeItem('careerInterestValue');
+          localStorage.removeItem('observerFormValue');
+          localStorage.removeItem('certificateFormValue');
+          localStorage.removeItem('examFormValue');
+          localStorage.removeItem('specilizationFormValue');
+          localStorage.removeItem('careerGuidanceFormValue');
         }
-        );
+        else if(res.status == 405){
+          $('#alertModal').modal('show');
+        }
+      },
+      (err:Error) => {
+
+        console.log(err)
+      }
+      );
+  }
+
   }
 
   _mapPayload(){

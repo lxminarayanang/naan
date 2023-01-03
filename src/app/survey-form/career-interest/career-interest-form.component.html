@@ -5,7 +5,7 @@
       <div class="col-md-12 labelRow">
         <div>
           <mat-label
-            >16. {{ lang.language.entranceGovExam }}
+            >10. {{ lang.language.entranceGovExam }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -31,7 +31,7 @@
                 aria-label="Select an option"
                 formControlName="tnpsc_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error  *ngIf=" submitted && carrerInfoForm.get('tnpsc_exam')?.invalid " >This field is required</mat-error
@@ -49,7 +49,7 @@
                 aria-label="Select an option"
                 formControlName="trb_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -72,7 +72,7 @@
                 aria-label="Select an option"
                 formControlName="tnusrb_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -95,7 +95,7 @@
                 aria-label="Select an option"
                 formControlName="ssc_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -118,7 +118,7 @@
                 aria-label="Select an option"
                 formControlName="upsc_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -141,7 +141,7 @@
                 aria-label="Select an option"
                 formControlName="rrb_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -164,7 +164,7 @@
                 aria-label="Select an option"
                 formControlName="ipbs_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -187,7 +187,7 @@
                 aria-label="Select an option"
                 formControlName="nda_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -210,7 +210,7 @@
                 aria-label="Select an option"
                 formControlName="cds_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -233,7 +233,7 @@
                 aria-label="Select an option"
                 formControlName="rbi_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -256,7 +256,7 @@
                 aria-label="Select an option"
                 formControlName="psu_exam"
               >
-    
+
                 <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
                 <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
                <div> <mat-error
@@ -596,7 +596,7 @@
 </div>
     <p class="mat-danger labelRow">(*) mandatory</p>
     <div>
-      <button mat-button class="matButton" (click)="onClickNext()" >Next</button>
+      <button mat-button class="matButton" (click)="onClickFormSubmit()" >Submit</button>
       <button mat-button class="matBackButton" (click)="onClickBack()" style="float: left">
         Back
       </button>
@@ -657,7 +657,7 @@
             class="d-blue pb-4"
             style="font-size: 28px !important; color: #dc3545"
           >
-            Please fill all mandatory fields!
+          Your details are already submitted!
           </p>
         </div>
       </div>

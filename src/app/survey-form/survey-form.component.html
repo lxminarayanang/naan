@@ -22,7 +22,8 @@
         ></app-academic-form> -->
         <app-career-interest-form
           *ngIf="url === '/student/career-interest'"
-        ></app-career-interest-form>
+        >
+      </app-career-interest-form>
         <app-specialization *ngIf="url === '/student/specialization'">
 
         </app-specialization>
@@ -39,9 +40,9 @@
         <app-observer-form
           *ngIf="url === '/student/observer'"
         ></app-observer-form>
-        <app-career-guidance-form *ngIf="url === '/student/career-guidance'">
+        <!-- <app-career-guidance-form *ngIf="url === '/student/career-guidance'">
 
-        </app-career-guidance-form>
+        </app-career-guidance-form> -->
       </div>
     </div>
   </div>

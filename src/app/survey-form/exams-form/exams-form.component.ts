@@ -80,7 +80,7 @@ exams3:['', Validators.required],
         JSON.stringify(this.examForm.value)
       );
       //this._router.navigate[('')]
-      this._router.navigate(['/student/certificate']);
+      this._router.navigate(['/student/career']);
     }
   }
 
