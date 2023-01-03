@@ -24,7 +24,7 @@ export class SurveyFormComponent implements OnInit {
       // },
 
       {
-        label: 'Higher Education Interest & Aspirations 1 - Specialization',
+        label: 'Higher Education Interest & Aspirations - Specialization',
         route: '/student/specialization',
         disabled: false,
       },
@@ -34,12 +34,12 @@ export class SurveyFormComponent implements OnInit {
       //   disabled: false,
       // },
       {
-        label: 'Higher Education Interest & Aspirations 1 - Entrance exam',
+        label: 'Higher Education Interest & Aspirations - Entrance exam',
         route: '/student/exams',
         disabled: false,
       },
       {
-        label: 'Higher Education Interested & Aspirations 2',
+        label: 'Higher Education Interested & Aspirations',
         route: '/student/career',
         disabled: false,
       },
