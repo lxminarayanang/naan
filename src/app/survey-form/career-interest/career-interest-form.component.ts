@@ -106,7 +106,6 @@ psu_exam:['', Validators.required],
 
   public onClickFormSubmit(): void {
     this.submitted = true;
-    return;
     if(this.carrerInfoForm.invalid){
       for (const key of Object.keys(this.carrerInfoForm.controls)) {
         if (this.carrerInfoForm.controls[key].invalid) {
