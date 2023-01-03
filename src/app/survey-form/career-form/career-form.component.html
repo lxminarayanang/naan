@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-6 labelRow">
         <div class="matLabelHeight">
-          <mat-label>5. {{ lang.language.importantForEducation }}<span
+          <mat-label>7. {{ lang.language.importantForEducation }}<span
             class="mat-placeholder-required mat-form-field-required-marker"
           >
             *</span
@@ -23,7 +23,7 @@
       <div class="col-md-6 labelRow">
         <div class="matLabelHeight">
           <mat-label
-            >6. {{ lang.language.challengesInEducation }}
+            >8. {{ lang.language.challengesInEducation }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -69,7 +69,7 @@
       <div class="col-md-6 labelRow">
         <div class="matLabelHeight">
           <mat-label class="radioLabel"
-            >7. {{ lang.language.collegeIdea }}
+            >9. {{ lang.language.collegeIdea }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -124,7 +124,7 @@
       class="col-md-12 labelRow"
     >
       <div class="mb-3">
-        <mat-label>8. {{
+        <mat-label>10. {{
           lang.language.accessedGovtSchemes
         }}
         <span
@@ -134,6 +134,323 @@
       ></mat-label>
       </div>
       <div class="col-md-12 labelRow">
+        <table class="table table-striped" style="width: 100%;">
+          <tr>
+            <th style="width:70%">Govt schemes</th>
+            <th style="width:15%;text-align: center;">{{ lang.language.radioButton[0] }}</th>
+            <th style="width:15%;text-align:center;">{{ lang.language.radioButton[1] }}</th>
+          </tr>
+          <tr>
+            <td>a) {{ lang.language.schemeData[0] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"> <mat-radio-group
+              aria-label="Select an option"
+              formControlName="uniform"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('uniform')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>b) {{ lang.language.schemeData[1] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="bookbags_bages"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('bookbags_bages')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>c) {{ lang.language.schemeData[2] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="nutrition"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('nutrition')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>d) {{ lang.language.schemeData[3] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="laptop"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('laptop')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>e) {{ lang.language.schemeData[4] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"> <mat-radio-group
+              aria-label="Select an option"
+              formControlName="bicycle"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('bicycle')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>f) {{ lang.language.schemeData[5] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"> <mat-radio-group
+              aria-label="Select an option"
+              formControlName="backward_or_tribal_scholorship"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('backward_or_tribal_scholorship')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>g) {{ lang.language.schemeData[6] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="selva_daughter_scheme"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('selva_daughter_scheme')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>h) {{ lang.language.schemeData[7] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="cm_breakfast_scheme"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('cm_breakfast_scheme')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>i) {{ lang.language.schemeData[8] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="special_incentives"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('special_incentives')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>j) {{ lang.language.schemeData[9] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="shoes"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('shoes')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>k) {{ lang.language.schemeData[10] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="mathematical_toolbox"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('mathematical_toolbox')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>l) {{ lang.language.schemeData[11] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2">  <mat-radio-group
+              aria-label="Select an option"
+              formControlName="bus_travel_card"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('bus_travel_card')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>m) {{ lang.language.schemeData[12] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="financial_assistance_lost_parents"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('financial_assistance_lost_parents')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+          <tr>
+            <td>n) {{ lang.language.schemeData[13] }}
+              <span
+                class="mat-placeholder-required mat-form-field-required-marker"
+              >
+                *</span
+              ></td>
+            <td colspan="2"><mat-radio-group
+              aria-label="Select an option"
+              formControlName="financial_assistance_lost_parents_corona"
+            >
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+             <div> <mat-error
+                *ngIf="
+                  submitted &&
+                  higherEducationInfoForm.get('financial_assistance_lost_parents_corona')?.invalid
+                "
+                >This field is required</mat-error
+              ></div>
+            </mat-radio-group></td>
+          </tr>
+        </table>
+      </div>
+      <!-- <div class="col-md-12 labelRow">
         <div class="">
           <mat-label class="radioLabel"
             >a) {{ lang.language.schemeData[0] }}
@@ -496,7 +813,7 @@
             >This field is required</mat-error
           ></div>
         </mat-radio-group>
-      </div>
+      </div> -->
       </div>
       <!-- <div
       class="col-md-6 labelRow"
@@ -529,7 +846,7 @@
     class="col-md-12 labelRow"
   >
     <div class="matLabelHeight">
-      <mat-label>9. {{
+      <mat-label>11. {{
         lang.language.awareSchemes
       }}<span
       class="mat-placeholder-required mat-form-field-required-marker"
@@ -538,6 +855,151 @@
     ></mat-label>
     </div>
     <div class="col-md-12 labelRow">
+      <table class="table table-striped" style="width: 100%;">
+        <tr>
+          <th style="width:70%">Govt schemes</th>
+          <th style="width:15%;text-align: center;">{{ lang.language.radioButton[0] }}</th>
+          <th style="width:15%;text-align:center;">{{ lang.language.radioButton[1] }}</th>
+        </tr>
+        <tr>
+          <td>a) {{ lang.language.awareGovtSchemes[0] }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></td>
+          <td colspan="2"> <mat-radio-group
+            aria-label="Select an option"
+            formControlName="reservation_for_govt_school"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                higherEducationInfoForm.get('reservation_for_govt_school')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group></td>
+        </tr>
+        <tr>
+          <td>{{ lang.language.awareGovtSchemes[1] }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></td>
+          <td colspan="2"><mat-radio-group
+            aria-label="Select an option"
+            formControlName="pudhumai_penn_scheme"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                higherEducationInfoForm.get('pudhumai_penn_scheme')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group></td>
+        </tr>
+        <tr>
+          <td>b) {{ lang.language.awareGovtSchemes[2] }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></td>
+          <td colspan="2"><mat-radio-group
+            aria-label="Select an option"
+            formControlName="vidyalakshmi_education_loan_scheme"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                higherEducationInfoForm.get('vidyalakshmi_education_loan_scheme')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group></td>
+        </tr>
+        <tr>
+          <td>{{ lang.language.awareGovtSchemes[3] }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></td>
+          <td colspan="2"><mat-radio-group
+            aria-label="Select an option"
+            formControlName="stipend_for_first_graduate"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                higherEducationInfoForm.get('stipend_for_first_graduate')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group></td>
+        </tr>
+        <tr>
+          <td>c) {{ lang.language.awareGovtSchemes[4] }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></td>
+          <td colspan="2"> <mat-radio-group
+            aria-label="Select an option"
+            formControlName="postmatric_scholarships"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                higherEducationInfoForm.get('postmatric_scholarships')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group></td>
+        </tr>
+        <tr>
+          <td>d) {{ lang.language.awareGovtSchemes[5] }}
+            <span
+              class="mat-placeholder-required mat-form-field-required-marker"
+            >
+              *</span
+            ></td>
+          <td colspan="2"> <mat-radio-group
+            aria-label="Select an option"
+            formControlName="five_percent_seats_with_benchmark_disabilities"
+          >
+          <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+          <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                higherEducationInfoForm.get('five_percent_seats_with_benchmark_disabilities')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+      </div>
+    <!-- <div class="col-md-12 labelRow">
       <div class="">
         <mat-label class="radioLabel"
           >a) {{ lang.language.awareGovtSchemes[0] }}
@@ -692,7 +1154,7 @@
           >This field is required</mat-error
         ></div>
       </mat-radio-group>
-    </div>
+    </div> -->
     </div>
     <!-- <div
     class="col-md-12 labelRow"

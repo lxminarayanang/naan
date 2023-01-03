@@ -5,7 +5,7 @@
       ">
         <div>
           <mat-label
-            >13. {{ lang.language.scholorshipExams }}
+            >15. {{ lang.language.scholorshipExams }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -14,7 +14,126 @@
           >
 
         </div>
-        <div class="col-md-12 labelRow">
+        <div class="col-md-12">
+          <table class="table table-striped" style="width: 100%;">
+            <tr>
+              <th style="width:70%">Document</th>
+              <th style="width:15%;text-align: center;">{{ lang.language.radioButton[0] }}</th>
+              <th style="width:15%;text-align:center;">{{ lang.language.radioButton[1] }}</th>
+            </tr>
+            <tr>
+              <td>a) {{ lang.language.scholorShipsExamData[0] }}  <span
+                class="mat-placeholder-required mat-form-field-required-marker">*</span></td>
+              <td colspan="2">
+                <mat-radio-group aria-label="Select an option" formControlName="nmms">
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> 
+                <mat-error *ngIf="submitted &&observerForm.get('nmms')?.invalid">This field is required</mat-error></div>
+              </mat-radio-group></td>
+              <!-- <td><mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button></td> -->
+            </tr>
+            <tr>
+              <td>b) {{ lang.language.scholorShipsExamData[1] }}<span
+                  class="mat-placeholder-required mat-form-field-required-marker">*</span></td>
+              <td colspan="2">
+                <mat-radio-group
+                aria-label="Select an option"
+                formControlName="nmms"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    observerForm.get('nmms')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group>  </td>
+            </tr>
+            <tr>
+              <td>c) {{ lang.language.scholorShipsExamData[2] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2">
+                <mat-radio-group
+                aria-label="Select an option"
+                formControlName="ntse"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    observerForm.get('ntse')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td>d) {{ lang.language.scholorShipsExamData[3] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2">
+                <mat-radio-group
+                aria-label="Select an option"
+                formControlName="yasavi"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    observerForm.get('yasavi')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group>
+              </td>
+            </tr>
+            <tr>
+              <td>e) {{ lang.language.scholorShipsExamData[4] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2">
+                <mat-radio-group
+            aria-label="Select an option"
+            formControlName="tamil_talent_test"
+          >
+
+            <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+            <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+           <div> <mat-error
+              *ngIf="
+                submitted &&
+                observerForm.get('tamil_talent_test')?.invalid
+              "
+              >This field is required</mat-error
+            ></div>
+          </mat-radio-group>
+              </td>
+            </tr>
+
+          </table>
+
+        </div>
+        <!-- <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
               >a) {{ lang.language.scholorShipsExamData[0] }}
@@ -148,7 +267,7 @@
               >This field is required</mat-error
             ></div>
           </mat-radio-group>
-        </div>
+        </div> -->
       </div>
     </div>
 

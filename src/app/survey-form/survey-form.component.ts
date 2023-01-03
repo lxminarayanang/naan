@@ -23,7 +23,7 @@ export class SurveyFormComponent implements OnInit {
       //   disabled: false,
       // },
       {
-        label: 'Higher Education Interested & Aspirations',
+        label: 'Higher Education Interested & Aspirations 1',
         route: '/student/career',
         disabled: false,
       },

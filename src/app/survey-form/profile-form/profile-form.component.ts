@@ -39,9 +39,9 @@ export class ProfileFormComponent implements OnInit {
     school_name:['', Validators.required],
     //school_location:['', Validators.required],
     phone_number:['', [Validators.pattern("(0|91)?[6-9][0-9]{9}")]],
-    //status_of_stay:['', Validators.required],
+    status_of_stay:['', Validators.required],
     //current_address:['', Validators.required],
-    //disability_status:['', Validators.required],
+    disability_status:['', Validators.required],
   });
 
   constructor(

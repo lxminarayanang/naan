@@ -1,10 +1,11 @@
 <div class="container step-wizard-container">
   <form [formGroup]="carrerInfoForm">
     <div class="row">
+
       <div class="col-md-12 labelRow">
         <div>
           <mat-label
-            >14. {{ lang.language.entranceGovExam }}
+            >16. {{ lang.language.entranceGovExam }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -12,7 +13,264 @@
             ></mat-label
           >
         </div>
-        <div class="col-md-12 labelRow">
+        <div class="col-md-12">
+          <table class="table" style="width: 100%;">
+            <tr>
+              <th style="width:70%;">Document</th>
+              <th style="width:15%;text-align: center;padding-left: 1.5rem;">{{ lang.language.radioButton[0] }}</th>
+              <th style="width:15%;">{{ lang.language.radioButton[1] }}</th>
+            </tr>
+            <tr>
+              <td>a) {{ lang.language.entranceGovExamJobsData[0] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="tnpsc_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error  *ngIf=" submitted && carrerInfoForm.get('tnpsc_exam')?.invalid " >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>b) {{ lang.language.entranceGovExamJobsData[1] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="trb_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('trb_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>c) {{ lang.language.entranceGovExamJobsData[2] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="tnusrb_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('tnusrb_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>d) {{ lang.language.entranceGovExamJobsData[3] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="ssc_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('ssc_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>e) {{ lang.language.entranceGovExamJobsData[4] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="upsc_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('upsc_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>f) {{ lang.language.entranceGovExamJobsData[5] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="rrb_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('rrb_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>g) {{ lang.language.entranceGovExamJobsData[6] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="ipbs_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('ipbs_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>h) {{ lang.language.entranceGovExamJobsData[7] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="nda_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('nda_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>i) {{ lang.language.entranceGovExamJobsData[8] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="cds_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('cds_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>j) {{ lang.language.entranceGovExamJobsData[9] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="rbi_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('rbi_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>k) {{ lang.language.entranceGovExamJobsData[10] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+               <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="psu_exam"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    carrerInfoForm.get('psu_exam')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+          </table>
+          </div>
+        <!-- <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
               >a) {{ lang.language.entranceGovExamJobsData[0] }}
@@ -308,7 +566,7 @@
               >This field is required</mat-error
             ></div>
           </mat-radio-group>
-        </div>
+        </div> -->
 
 
       </div>

@@ -5,7 +5,7 @@
       ">
         <div class="matLabelHeight mb-3">
           <mat-label
-            >12. {{ lang.language.requireDocument }}
+            >14. {{ lang.language.requireDocument }}
             <span
               class="mat-placeholder-required mat-form-field-required-marker"
             >
@@ -13,7 +13,305 @@
             ></mat-label
           >
         </div>
-        <div class="col-md-12 labelRow">
+        <div class="col-md-12">
+          <table class="table table-striped" style="width: 100%;">
+            <tr>
+              <th style="width:70%">Certificate</th>
+              <th style="width:15%;text-align: center;">{{ lang.language.radioButton[0] }}</th>
+              <th style="width:15%;text-align:center;">{{ lang.language.radioButton[1] }}</th>
+            </tr>
+            <tr>
+              <td>a) {{ lang.language.requireDocumentData[0] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="sslc_mark_sheet"
+              >
+    
+                <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('sslc_mark_sheet')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>b) {{ lang.language.requireDocumentData[1] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="hse_plus_one__mark_sheet"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('hse_plus_one__mark_sheet')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>c) {{ lang.language.requireDocumentData[2] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="hsc_plus_two_mark_sheet"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('hsc_plus_two_mark_sheet')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>d) {{ lang.language.requireDocumentData[3] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="transfer_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('transfer_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>e) {{ lang.language.requireDocumentData[4] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="community_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('community_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>f) {{ lang.language.requireDocumentData[5] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"> <mat-radio-group
+                aria-label="Select an option"
+                formControlName="aadhaar_card"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('aadhaar_card')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>g) {{ lang.language.requireDocumentData[6] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="income_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('income_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>h) {{ lang.language.requireDocumentData[7] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="sports_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('sports_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>i) {{ lang.language.requireDocumentData[8] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="nativity_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('nativity_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>j) {{ lang.language.requireDocumentData[9] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="ex_service_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('ex_service_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>k) {{ lang.language.requireDocumentData[10] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="refugee_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('refugee_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>l) {{ lang.language.requireDocumentData[11] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="first_graduate_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+              <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+              <div>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('first_graduate_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </div>
+              </mat-radio-group></td>
+            </tr>
+            <tr>
+              <td>m) {{ lang.language.requireDocumentData[12] }}
+                <span
+                  class="mat-placeholder-required mat-form-field-required-marker"
+                >
+                  *</span
+                ></td>
+              <td colspan="2"><mat-radio-group
+                aria-label="Select an option"
+                formControlName="differently_abled_certificate"
+              >
+              <mat-radio-button [value]="lang.language.radioButton[0]"></mat-radio-button>
+                <mat-radio-button [value]="lang.language.radioButton[1]"></mat-radio-button>
+               <div> <mat-error
+                  *ngIf="
+                    submitted &&
+                    certificateForm.get('differently_abled_certificate')?.invalid
+                  "
+                  >This field is required</mat-error
+                ></div>
+              </mat-radio-group></td>
+            </tr>
+          </table>
+        </div>
+        <!-- <div class="col-md-12 labelRow">
           <div class="matLabelHeight">
             <mat-label class="radioLabel"
               >a) {{ lang.language.requireDocumentData[0] }}
@@ -355,7 +653,7 @@
               >This field is required</mat-error
             ></div>
           </mat-radio-group>
-        </div>
+        </div> -->
 
 
       </div>
