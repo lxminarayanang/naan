@@ -439,6 +439,10 @@ examHint:'உங்களுக்கு மிகவும் பிடித�
 
 
           ],
+          govtSchemeRadioButton:[
+            'எனக்கு தெரியும்',
+            'அறிந்துகொள்ள வேண்டும்'
+          ],
           scholorshipExams:'உதவித்தொகைக்கான தேர்வுகளை எழுத விருப்பம் உள்ளதா ?',
           residentialAddress:'வீட்டு முகவரி',
 residentialData:[
@@ -446,6 +450,7 @@ residentialData:[
 'சொந்த வீடு '
 //வீடில்லை
 ],
+formHint:'இந்தப் படிவத்தை நீங்கள் ஏற்கனவே வெற்றிகரமாகச் சமர்ப்பித்திருந்தால், தயவுசெய்து நிரப்ப வேண்டாம்.',
 schemeData:[
  ' சீருடை',
 ' புத்தகப்பை மற்றும் புத்தகங்கள்' ,
@@ -1473,8 +1478,12 @@ subjectLeastLiked:'Select three subject you do not like in school:',
 subject1:'Subject 1',
 subject2:'Subject 2',
 subject3:'Subject 3',
-studenCareerGuidance:'Have you received the Career Guidance book?'
-
+studenCareerGuidance:'Have you received the Career Guidance book?',
+govtSchemeRadioButton:[
+  'Am aware',
+  'Am not Aware'
+],
+formHint:'If you have submitted this form successfully earlier, please do not refill.',
 
 
 
