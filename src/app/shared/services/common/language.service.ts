@@ -20,7 +20,7 @@ export class LanguageService {
 
   constructor(public service: CommonService) {
     this.tempLang = localStorage.getItem('language');
-    if (this.tempLang) {
+    if (this.tempLang===null || this.tempLang) {
       this.changeLang('nochange');
     } else {
       this.changeLang();
