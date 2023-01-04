@@ -9,17 +9,17 @@
   width: 35%;
 }
 
-.matCustomLable{
+.mat-radio-button{
+  margin-top: 21px !important;
+}
+.mat-radio-group .mat-radio-button:nth-child(n+1) {
+  margin-left: 10%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.table td {
   padding: 0px;
   vertical-align: middle;
+  border-top: 1px solid #dee2e6;
 }
 
-.matcustomRadio{
-  margin-left: 10%;
-  margin-top: 25px;
-  /* margin-bottom: 10px; */
-}
-
-.TestValue{
-  margin-top: 10px;
-}

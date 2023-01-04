@@ -2,6 +2,24 @@
   color: red;
 }
 
+.matLabelHeight{
+  min-height: 91px;
+}
 .mat-radio-button{
   width: 35%;
 }
+
+.mat-radio-button{
+  margin-top: 21px !important;
+}
+.mat-radio-group .mat-radio-button:nth-child(n+1) {
+  margin-left: 10%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.table td {
+  padding: 0px;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+}
+

@@ -22,7 +22,6 @@ export class CertificateFormComponent implements OnInit {
   certificateForm = this._formBuilder.group({
     sslc_mark_sheet:['', Validators.required],
     hse_plus_one__mark_sheet:['', Validators.required],
-    hsc_plus_two_mark_sheet:['', Validators.required],
     transfer_certificate:['', Validators.required],
     community_certificate:['', Validators.required],
     aadhaar_card:['', Validators.required],
@@ -41,7 +40,8 @@ export class CertificateFormComponent implements OnInit {
     private _formBuilder: FormBuilder,
     public lang: LanguageService,
     private _router: Router,
-    private el: ElementRef
+    private el: ElementRef,
+    private _commonService: CommonService
   ) {}
   ngOnInit() {
     window.scrollTo(0, 0);
@@ -53,7 +53,6 @@ export class CertificateFormComponent implements OnInit {
       this.certificateForm.patchValue({
     sslc_mark_sheet:this.profileEditData.sslc_mark_sheet,
     hse_plus_one__mark_sheet:this.profileEditData.hse_plus_one__mark_sheet,
-    hsc_plus_two_mark_sheet:this.profileEditData.hsc_plus_two_mark_sheet,
     transfer_certificate:this.profileEditData.transfer_certificate,
     community_certificate:this.profileEditData.community_certificate,
     aadhaar_card:this.profileEditData.aadhaar_card,
@@ -66,10 +65,6 @@ export class CertificateFormComponent implements OnInit {
     differently_abled_certificate:this.profileEditData.differently_abled_certificate,
       });
     }
-  }
-
-  public toClose(): void {
-    $('#alertModal').modal('close');
   }
 
   public onClickNext(): void {
@@ -92,6 +87,109 @@ export class CertificateFormComponent implements OnInit {
       this._router.navigate(['/student/observer']);
     }
   }
+
+  public toClose(): void {
+    this._router.navigate(['/student/profile']);
+    localStorage.removeItem('profileFormValue');
+    localStorage.removeItem('careerFormValue');
+    localStorage.removeItem('certificateFormValue');
+    localStorage.removeItem('examFormValue');
+    localStorage.removeItem('specilizationFormValue');
+    //$('#alertModal').modal('close');
+
+  }
+
+
+  public onClickFormSubmit(): void {
+    this.submitted = true;
+    if(this.certificateForm.invalid){
+      for (const key of Object.keys(this.certificateForm.controls)) {
+        if (this.certificateForm.controls[key].invalid) {
+          const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
+          invalidControl.focus();
+          break;
+       }
+    }
+  }
+  else{
+    localStorage.setItem(
+      'certificateFormValue',
+      JSON.stringify(this.certificateForm.value)
+    );
+    const payload=this._mapPayload();
+    this._commonService
+      .postService('/one-to-one-assesement/add', payload)
+      .subscribe((res:any) => {
+        debugger;
+        if (res.status == 200) {
+          $('#successModal').modal('show');
+          localStorage.removeItem('profileFormValue');
+          localStorage.removeItem('careerFormValue');
+          localStorage.removeItem('certificateFormValue');
+          localStorage.removeItem('examFormValue');
+          localStorage.removeItem('specilizationFormValue');
+        }
+        else if(res.status == 405){
+          $('#alertModal').modal('show');
+        }
+      },
+      (err:Error) => {
+
+        console.log(err)
+      }
+      );
+  }
+
+  }
+
+  _mapPayload(){
+    // const {career_guidance}=this.carrerGuidanceForm.value
+
+    const profileData = JSON.parse(
+      localStorage.getItem('profileFormValue') as any
+    );
+    // const academicFormValue = JSON.parse(
+    //   localStorage.getItem('academicFormValue') as any
+    // );
+
+    const careerFormValue = JSON.parse(
+      localStorage.getItem('careerFormValue') as any
+    );
+    // const careerInterestFormValue = JSON.parse(
+    //   localStorage.getItem('careerInterestValue') as any
+    // );
+    const certificateFormValue = JSON.parse(
+      localStorage.getItem('certificateFormValue') as any
+    );
+    // const coursesFormValue = JSON.parse(
+    //   localStorage.getItem('coursesFormValue') as any
+    // );
+    // const observerFormValue = JSON.parse(
+    //   localStorage.getItem('observerFormValue') as any
+    // );
+    const examFormValue = JSON.parse(
+      localStorage.getItem('examFormValue') as any
+    );
+    const specilizationFormValue = JSON.parse(
+      localStorage.getItem('specilizationFormValue') as any
+    );
+
+    const payload = {
+      ...profileData,
+      ...careerFormValue,
+      ...certificateFormValue,
+      ...examFormValue,
+      ...specilizationFormValue,
+     // career_guidance
+     //...careerInterestFormValue
+     //...observerFormValue,
+
+
+    };
+
+    return payload;
+  }
+
 
   toBack() {
     this._router.navigate(['/home']);
