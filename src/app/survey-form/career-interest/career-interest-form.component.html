@@ -1,5 +1,5 @@
 <div class="container step-wizard-container">
-  <form [formGroup]="higherEducationInfoForm">
+  <form [formGroup]="carrerInfoForm">
     <div class="row">
       <!-- <div class="col-md-6 labelRow">
         <div class="matLabelHeight">
@@ -46,8 +46,8 @@
         </mat-form-field>
       </div>
       <div class="col-md-6 labelRow"
-       *ngIf="(higherEducationInfoForm.get('challengesInHigherEducation').value.includes('மற்றவை')) ||
-       (higherEducationInfoForm.get('challengesInHigherEducation').value.includes('Other'))">
+       *ngIf="(carrerInfoForm.get('challengesInHigherEducation').value.includes('மற்றவை')) ||
+       (carrerInfoForm.get('challengesInHigherEducation').value.includes('Other'))">
         <div class="matLabelHeight">
           <mat-label>{{ lang.language.other_reason_higher_education }}<span
             class="mat-placeholder-required mat-form-field-required-marker"
@@ -86,7 +86,7 @@
           </ng-container>
           <mat-error
             *ngIf="
-              submitted && higherEducationInfoForm.get('likedColleges').invalid
+              submitted && carrerInfoForm.get('likedColleges').invalid
             "
             >This field is required</mat-error
           >
@@ -113,7 +113,7 @@
           <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('graduationAwayFromHometown').invalid
+              carrerInfoForm.get('graduationAwayFromHometown').invalid
             "
             >This field is required</mat-error
           >
@@ -156,7 +156,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('uniform')?.invalid
+                  carrerInfoForm.get('uniform')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -178,7 +178,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('bookbags_bages')?.invalid
+                  carrerInfoForm.get('bookbags_bages')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -200,7 +200,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('nutrition')?.invalid
+                  carrerInfoForm.get('nutrition')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -222,7 +222,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('laptop')?.invalid
+                  carrerInfoForm.get('laptop')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -244,7 +244,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('bicycle')?.invalid
+                  carrerInfoForm.get('bicycle')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -266,7 +266,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('backward_or_tribal_scholorship')?.invalid
+                  carrerInfoForm.get('backward_or_tribal_scholorship')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -288,7 +288,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('selva_daughter_scheme')?.invalid
+                  carrerInfoForm.get('selva_daughter_scheme')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -310,7 +310,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('cm_breakfast_scheme')?.invalid
+                  carrerInfoForm.get('cm_breakfast_scheme')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -332,7 +332,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('special_incentives')?.invalid
+                  carrerInfoForm.get('special_incentives')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -354,7 +354,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('shoes')?.invalid
+                  carrerInfoForm.get('shoes')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -376,7 +376,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('mathematical_toolbox')?.invalid
+                  carrerInfoForm.get('mathematical_toolbox')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -398,7 +398,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('bus_travel_card')?.invalid
+                  carrerInfoForm.get('bus_travel_card')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -420,7 +420,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('financial_assistance_lost_parents')?.invalid
+                  carrerInfoForm.get('financial_assistance_lost_parents')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -442,7 +442,7 @@
              <div> <mat-error
                 *ngIf="
                   submitted &&
-                  higherEducationInfoForm.get('financial_assistance_lost_parents_corona')?.invalid
+                  carrerInfoForm.get('financial_assistance_lost_parents_corona')?.invalid
                 "
                 >This field is required</mat-error
               ></div>
@@ -470,7 +470,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('uniform')?.invalid
+              carrerInfoForm.get('uniform')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -496,7 +496,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('bookbags_bages')?.invalid
+              carrerInfoForm.get('bookbags_bages')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -522,7 +522,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('nutrition')?.invalid
+              carrerInfoForm.get('nutrition')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -548,7 +548,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('laptop')?.invalid
+              carrerInfoForm.get('laptop')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -574,7 +574,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('bicycle')?.invalid
+              carrerInfoForm.get('bicycle')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -600,7 +600,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('backward_or_tribal_scholorship')?.invalid
+              carrerInfoForm.get('backward_or_tribal_scholorship')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -626,7 +626,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('selva_daughter_scheme')?.invalid
+              carrerInfoForm.get('selva_daughter_scheme')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -652,7 +652,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('cm_breakfast_scheme')?.invalid
+              carrerInfoForm.get('cm_breakfast_scheme')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -678,7 +678,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('special_incentives')?.invalid
+              carrerInfoForm.get('special_incentives')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -704,7 +704,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('shoes')?.invalid
+              carrerInfoForm.get('shoes')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -730,7 +730,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('mathematical_toolbox')?.invalid
+              carrerInfoForm.get('mathematical_toolbox')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -756,7 +756,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('bus_travel_card')?.invalid
+              carrerInfoForm.get('bus_travel_card')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -782,7 +782,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('financial_assistance_lost_parents')?.invalid
+              carrerInfoForm.get('financial_assistance_lost_parents')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -808,7 +808,7 @@
          <div> <mat-error
             *ngIf="
               submitted &&
-              higherEducationInfoForm.get('financial_assistance_lost_parents_corona')?.invalid
+              carrerInfoForm.get('financial_assistance_lost_parents_corona')?.invalid
             "
             >This field is required</mat-error
           ></div>
@@ -878,7 +878,7 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                higherEducationInfoForm.get('reservation_for_govt_school')?.invalid
+                carrerInfoForm.get('reservation_for_govt_school')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -900,7 +900,7 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                higherEducationInfoForm.get('pudhumai_penn_scheme')?.invalid
+                carrerInfoForm.get('pudhumai_penn_scheme')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -922,7 +922,7 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                higherEducationInfoForm.get('vidyalakshmi_education_loan_scheme')?.invalid
+                carrerInfoForm.get('vidyalakshmi_education_loan_scheme')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -944,7 +944,7 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                higherEducationInfoForm.get('stipend_for_first_graduate')?.invalid
+                carrerInfoForm.get('stipend_for_first_graduate')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -966,7 +966,7 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                higherEducationInfoForm.get('postmatric_scholarships')?.invalid
+                carrerInfoForm.get('postmatric_scholarships')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -988,7 +988,7 @@
            <div> <mat-error
               *ngIf="
                 submitted &&
-                higherEducationInfoForm.get('five_percent_seats_with_benchmark_disabilities')?.invalid
+                carrerInfoForm.get('five_percent_seats_with_benchmark_disabilities')?.invalid
               "
               >This field is required</mat-error
             ></div>
@@ -1020,7 +1020,7 @@
        <div> <mat-error
           *ngIf="
             submitted &&
-            higherEducationInfoForm.get('reservation_for_govt_school')?.invalid
+            carrerInfoForm.get('reservation_for_govt_school')?.invalid
           "
           >This field is required</mat-error
         ></div>
@@ -1046,7 +1046,7 @@
        <div> <mat-error
           *ngIf="
             submitted &&
-            higherEducationInfoForm.get('pudhumai_penn_scheme')?.invalid
+            carrerInfoForm.get('pudhumai_penn_scheme')?.invalid
           "
           >This field is required</mat-error
         ></div>
@@ -1072,7 +1072,7 @@
        <div> <mat-error
           *ngIf="
             submitted &&
-            higherEducationInfoForm.get('vidyalakshmi_education_loan_scheme')?.invalid
+            carrerInfoForm.get('vidyalakshmi_education_loan_scheme')?.invalid
           "
           >This field is required</mat-error
         ></div>
@@ -1098,7 +1098,7 @@
        <div> <mat-error
           *ngIf="
             submitted &&
-            higherEducationInfoForm.get('stipend_for_first_graduate')?.invalid
+            carrerInfoForm.get('stipend_for_first_graduate')?.invalid
           "
           >This field is required</mat-error
         ></div>
@@ -1124,7 +1124,7 @@
        <div> <mat-error
           *ngIf="
             submitted &&
-            higherEducationInfoForm.get('postmatric_scholarships')?.invalid
+            carrerInfoForm.get('postmatric_scholarships')?.invalid
           "
           >This field is required</mat-error
         ></div>
@@ -1150,7 +1150,7 @@
        <div> <mat-error
           *ngIf="
             submitted &&
-            higherEducationInfoForm.get('five_percent_seats_with_benchmark_disabilities')?.invalid
+            carrerInfoForm.get('five_percent_seats_with_benchmark_disabilities')?.invalid
           "
           >This field is required</mat-error
         ></div>
