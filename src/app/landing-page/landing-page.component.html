@@ -1,528 +1,529 @@
 <script>
-    // $(window).load(function() {
-    //     $("#slider").flexslider({
-    //         slideshow: true,
-    //         animation: "fade",
-    //         animationLoop: true,
-    //         video: true,
-    //         muted: true,
+  // $(window).load(function() {
+  //     $("#slider").flexslider({
+  //         slideshow: true,
+  //         animation: "fade",
+  //         animationLoop: true,
+  //         video: true,
+  //         muted: true,
 
-    //         /* reload video on navigation */
-    //         before: function() {
-    //             $("video").each(function() {
-    //                 $(this).get(0).load();
-    //             });
-    //         },
-    //     });
-    // });
+  //         /* reload video on navigation */
+  //         before: function() {
+  //             $("video").each(function() {
+  //                 $(this).get(0).load();
+  //             });
+  //         },
+  //     });
+  // });
 
-    // function pauseslider() {
-    //     $("#slider").flexslider("pause");
-    // }
+  // function pauseslider() {
+  //     $("#slider").flexslider("pause");
+  // }
 
-    // function playslider() {
-    //     $("#slider").flexslider("play");
-    // }
+  // function playslider() {
+  //     $("#slider").flexslider("play");
+  // }
 
-    // function resumeslider() {
-    //     $("#slider").flexslider("next");
-    //     $("#slider").flexslider("play");
-    // }
+  // function resumeslider() {
+  //     $("#slider").flexslider("next");
+  //     $("#slider").flexslider("play");
+  // }
 </script>
 
 <div class="home-carousel">
-    <!-- <div class="row"> -->
-    <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 margin-top-25 mobileViewBanner">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-touch="true" data-bs-interval="60000" data-bs-ride="carousel">
-            <div class="main-banner">
-                <span class="vision" style="font-family: Play">
-              New visions for higher education towards 2025!
-            </span>
+  <!-- <div class="row"> -->
+  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 margin-top-25 mobileViewBanner">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-touch="true" data-bs-interval="60000" data-bs-ride="carousel">
+          <div class="main-banner">
+              <span class="vision" style="font-family: Play">
+            New visions for higher education towards 2025!
+          </span>
 
-                <span class="explore"> Explore More </span>
+              <span class="explore"> Explore More </span>
 
-                <!-- <div
-              class="d-flex flex-row bg-white justify-content-between w-100"
-              style="height: 50px; border-radius: 10px"
+              <!-- <div
+            class="d-flex flex-row bg-white justify-content-between w-100"
+            style="height: 50px; border-radius: 10px"
+          >
+            <div
+              class="d-flex flex-row justify-content-center align-items-center"
             >
-              <div
-                class="d-flex flex-row justify-content-center align-items-center"
-              >
 
-                <div class="dropdown font-weight-bold" style="width: 108px;">
-                  <mat-select
+              <div class="dropdown font-weight-bold" style="width: 108px;">
+                <mat-select
 
-                placeholder="Select" class="placeMat"
-              >
-                <mat-option
-                  >{{ lang.language.courses }}</mat-option
-                >
-                <mat-option
-
-                >{{ lang.language.colleges }}</mat-option
+              placeholder="Select" class="placeMat"
+            >
+              <mat-option
+                >{{ lang.language.courses }}</mat-option
               >
               <mat-option
 
-              >{{ lang.language.entranceExam }}</mat-option
+              >{{ lang.language.colleges }}</mat-option
             >
             <mat-option
 
-              >{{ lang.language.scholarships }}</mat-option
-            >
-            <mat-option
+            >{{ lang.language.entranceExam }}</mat-option
+          >
+          <mat-option
 
-              >{{ lang.language.educationLoans }}</mat-option
-            >
-            <mat-option
+            >{{ lang.language.scholarships }}</mat-option
+          >
+          <mat-option
 
-              >{{ lang.language.careers }}</mat-option
-            >
-              </mat-select>
-                </div>
-                <div class="vertical-bar"></div>
-                <div class="form-outline">
+            >{{ lang.language.educationLoans }}</mat-option
+          >
+          <mat-option
 
-                  <input
-                    type="text"
-                    [formControl]="myControl"
-                    id="formControlLg"
-                    class="form-control"
-                    placeholder="Search College, Courses etc"
-                    matInput
-                    [matAutocomplete]="auto"
-                  />
-                  <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                      {{option}}
-                    </mat-option>
-                  </mat-autocomplete>
-
-                </div>
+            >{{ lang.language.careers }}</mat-option
+          >
+            </mat-select>
               </div>
+              <div class="vertical-bar"></div>
+              <div class="form-outline">
 
-              <div class="search-bar">
-                <div class="search-text">Search</div>
-                <img
-                  src="/assets/images/landing-page/search-icon.png"
-                  style="height: 25px; margin-left: 10px"
+                <input
+                  type="text"
+                  [formControl]="myControl"
+                  id="formControlLg"
+                  class="form-control"
+                  placeholder="Search College, Courses etc"
+                  matInput
+                  [matAutocomplete]="auto"
                 />
+                <mat-autocomplete #auto="matAutocomplete">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                  </mat-option>
+                </mat-autocomplete>
+
               </div>
-            </div> -->
-            </div>
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
             </div>
 
-            <div class="carousel-inner carousel-res">
-                <div class="carousel-item active h-100">
-                    <img src="/assets/images/banner/3.jpg" class="d-block w-100 h-100" style="height: 480px" style="transform: scale(1.1)" alt="..." />
-                </div>
-                <div class="carousel-item h-100">
-                    <img src="/assets/images/banner/4.jpg" class="d-block w-100 h-100" style="height: 480px" alt="..." />
-                </div>
-                <div class="carousel-item h-100">
-                    <img src="/assets/images/banner/5.jpg" class="d-block w-100 h-100" style="height: 480px" style="transform: scale(1.1)" alt="..." />
-                </div>
+            <div class="search-bar">
+              <div class="search-text">Search</div>
+              <img
+                src="/assets/images/landing-page/search-icon.png"
+                style="height: 25px; margin-left: 10px"
+              />
             </div>
-        </div>
-    </div>
-    <!-- </div> -->
-    <!-- <div class="row">
-    <div class="margin-top-25 desktopViewBanner">-->
-    <!-- The HTML5 video element that will create the background video on the header
-        <video loop autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
-    <source src="assets/WhatsApp Video 2022-10-13 at 11.43.02.mp4" type="video/mp4">
-  </video>
+          </div> -->
+          </div>
+          <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          </div>
 
-    </div>-->
-    <div class="embed-responsive embed-responsive-16by9 video-bg desktopViewBanner">
-        <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" oncanplay="this.play()" controls id="myVideo" onloadedmetadata="this.muted = true">
+          <div class="carousel-inner carousel-res">
+              <div class="carousel-item active h-100">
+                  <img src="/assets/images/banner/3.jpg" class="d-block w-100 h-100" style="height: 480px" style="transform: scale(1.1)" alt="..." />
+              </div>
+              <div class="carousel-item h-100">
+                  <img src="/assets/images/banner/4.jpg" class="d-block w-100 h-100" style="height: 480px" alt="..." />
+              </div>
+              <div class="carousel-item h-100">
+                  <img src="/assets/images/banner/5.jpg" class="d-block w-100 h-100" style="height: 480px" style="transform: scale(1.1)" alt="..." />
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- </div> -->
+  <!-- <div class="row">
+  <div class="margin-top-25 desktopViewBanner">-->
+  <!-- The HTML5 video element that will create the background video on the header
+      <video loop autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true">
   <source src="assets/WhatsApp Video 2022-10-13 at 11.43.02.mp4" type="video/mp4">
 </video>
 
-        <div class="video-btn-wrap">
-            <img id="videoBtn" onclick="myFunction()" class="video-btn" src="images/play-button.png" alt="">
-        </div>
-    </div>
-    <!-- The header content -->
+  </div>-->
+  <!-- <div class="embed-responsive embed-responsive-16by9 video-bg desktopViewBanner">
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop" oncanplay="this.play()" controls id="myVideo" onloadedmetadata="this.muted = true">
+<source src="assets/WhatsApp Video 2022-10-13 at 11.43.02.mp4" type="video/mp4">
+</video>
 
-    <!-- </div> -->
+      <div class="video-btn-wrap">
+          <img id="videoBtn" onclick="myFunction()" class="video-btn" src="images/play-button.png" alt="">
+      </div>
+  </div> -->
+  <img src="/assets/images/banner_latest.jpg" class="d-block w-100 h-100" style="height: 480px" />
+  <!-- The header content -->
+
+  <!-- </div> -->
 </div>
 <div class="banner-content-wrap">
-    <div class="container">
-        <div class="d-flex text-center align-items-center justify-content-center">
-            <div class="text-white banner-content">
-                <h1 class="title">New visions for higher education towards 2025!</h1>
-                <a href="" class="mb-5 btn btn-lg btn-secondary">Explore More</a>
-                <!--  <div class="search">
-                <div class="row">
-                    <div class="col-lg-9 mx-auto">
-                        <form class="search-form" [formGroup]="searchForm">
-                            <div class="form-row align-items-center justify-content-center">
-                                <div class="col-lg-3 col-12 mb-2 mb-md-0">
-                                    <div class="">
-                                        <select class="form-control form-control-lg search-form-control form-select" formControlName="category">
-                                        <option selected value="All">All</option>
-                                        <option value="courses">{{ lang.language.courses }}</option>
-                                        <option value="colleges">{{ lang.language.colleges }}</option>
-                                        <option value="exams">{{ lang.language.entranceExam }}</option>
-                                        <option value="scholarships">{{ lang.language.scholarships }}</option>
-                                        <option value="loans">{{ lang.language.educationLoans }}</option>
-                                        <option value="careers">{{ lang.language.careers }}</option>
+  <div class="container">
+      <div class="d-flex text-center align-items-center justify-content-center">
+          <div class="text-white banner-content">
+              <h1 class="title">New visions for higher education towards 2025!</h1>
+              <a href="" class="mb-5 btn btn-lg btn-secondary">Explore More</a>
+              <!--  <div class="search">
+              <div class="row">
+                  <div class="col-lg-9 mx-auto">
+                      <form class="search-form" [formGroup]="searchForm">
+                          <div class="form-row align-items-center justify-content-center">
+                              <div class="col-lg-3 col-12 mb-2 mb-md-0">
+                                  <div class="">
+                                      <select class="form-control form-control-lg search-form-control form-select" formControlName="category">
+                                      <option selected value="All">All</option>
+                                      <option value="courses">{{ lang.language.courses }}</option>
+                                      <option value="colleges">{{ lang.language.colleges }}</option>
+                                      <option value="exams">{{ lang.language.entranceExam }}</option>
+                                      <option value="scholarships">{{ lang.language.scholarships }}</option>
+                                      <option value="loans">{{ lang.language.educationLoans }}</option>
+                                      <option value="careers">{{ lang.language.careers }}</option>
 
-                                                  </select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7 col-12 mb-2 mb-md-0">
-                                    <div class="">
-                                        <input type="text" class="form-control form-control-lg" placeholder="Search courses, colleges, careers, exams etc." formControlName="keyword" matInput [matAutocomplete]="auto">
+                                                </select>
+                                  </div>
+                              </div>
+                              <div class="col-lg-7 col-12 mb-2 mb-md-0">
+                                  <div class="">
+                                      <input type="text" class="form-control form-control-lg" placeholder="Search courses, colleges, careers, exams etc." formControlName="keyword" matInput [matAutocomplete]="auto">
 
-                                        <mat-autocomplete #auto="matAutocomplete">
+                                      <mat-autocomplete #auto="matAutocomplete">
 
-                                            <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option.name">
-                                                {{option.name}} in {{option.spacialization_name}}
-                                            </mat-option>
-                                        </mat-autocomplete>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-12 mb-2 mb-md-0">
-                                    <div class="">
-                                        <a (click)="selectedCourse()" class="btn btn-primary btn-lg btn-block">Search</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                                          <mat-option *ngFor="let option of (filteredOptions | async)" [value]="option.name">
+                                              {{option.name}} in {{option.spacialization_name}}
+                                          </mat-option>
+                                      </mat-autocomplete>
+                                  </div>
+                              </div>
+                              <div class="col-lg-2 col-12 mb-2 mb-md-0">
+                                  <div class="">
+                                      <a (click)="selectedCourse()" class="btn btn-primary btn-lg btn-block">Search</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
 
-            </div>-->
+          </div>-->
 
-            </div>
-        </div>
-    </div>
+          </div>
+      </div>
+  </div>
 </div>
 <!-- ---------------------------------------------Section 1 - Carousel---------------------- -->
 <!-- Page section example for content below the video header -->
 <section class="h-services section-space light-bg text-center">
-    <div class="container-fluid">
-        <div class="row d-none d-md-flex serviceMargin">
-            <div class="col-lg-2">
-                <div class="h-services-img-wrap img-1 " (click)="chooseType('courses', lang.language.courses)" [ngClass]="
-                  section == 'courses' ? ' card-banner-courses cards-hover-courses' : ''
-                ">
-                    <a><img src="assets/images/courses.svg" class="zoom imageMenu" alt=""></a>
-                </div>
-                <h4 class="secondary-title"> {{ lang.language.courses }}</h4>
-            </div>
-            <div class="col-lg-2">
-                <div class="h-services-img-wrap img-2" (click)="chooseType('colleges', lang.language.colleges)" [ngClass]="
-                  section == 'colleges' ? 'cards-hover cards-hover-colleges' : ''
-                ">
-                    <a> <img src="assets/images/colleges.svg" class="zoom imageMenu" alt=""></a>
-                </div>
-                <h4 class="secondary-title">{{ lang.language.colleges }}</h4>
-            </div>
-            <div class="col-lg-2">
-                <div class="h-services-img-wrap img-3" (click)="chooseType('exams', lang.language.entranceExam)" [ngClass]="section == 'exams' ? 'cards-hover cards-hover-exam' : ''">
-                    <a><img src="assets/images/entrance-exam.svg" class="zoom imageMenu" alt=""></a>
-                </div>
-                <h4 class="secondary-title">{{ lang.language.entranceExam }}
-                </h4>
-            </div>
-            <div class="col-lg-2">
-                <div class="h-services-img-wrap img-4" (click)="chooseType('scholarships', lang.language.scholarships)" [ngClass]="
-                  section == 'scholarships' ? 'cards-hover cards-hover-scholarships' : ''
-                ">
-                    <a><img src="assets/images/scholarships.svg" class="zoom imageMenu" alt=""></a>
-                </div>
-                <h4 class="secondary-title">{{ lang.language.scholarships }}</h4>
-            </div>
-            <div class="col-lg-2">
-                <div class="h-services-img-wrap img-5" (click)="moveToLoans()" [ngClass]="
-                  section == 'educationLoans'
-                    ? 'cards-hover cards-hover-loans text-white'
-                    : ''
-                ">
-                    <a> <img src="assets/images/educational-loan.svg" class="zoom imageMenu" alt=""></a>
-                </div>
-                <h4 class="secondary-title">{{ lang.language.educationLoans }}
-                </h4>
-            </div>
-            <div class="col-lg-2">
-                <div class="h-services-img-wrap img-6" (click)="chooseType('careers', lang.language.careers)" [ngClass]="section == 'careers' ? 'cards-hover cards-hover-careers' : ''">
-                    <a><img src="assets/images/careers.svg" alt="" class="zoom imageMenu"></a>
-                </div>
-                <h4 class="secondary-title">{{ lang.language.careers }}</h4>
-            </div>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide d-md-none" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <div class="h-services-img-wrap img-1 " (click)="chooseType('courses', lang.language.courses)" [ngClass]="
-                  section == 'courses' ? ' card-banner-courses cards-hover-courses' : ''
-                ">
-                        <img src="assets/images/courses.svg" class="zoom imageMenu" alt="">
-                    </div>
-                    <h4 class="secondary-title text-center"> {{ lang.language.courses }}</h4>
-                </div>
-                <div class="carousel-item">
-                    <div class="h-services-img-wrap img-2" (click)="chooseType('colleges', lang.language.colleges)" [ngClass]="
-                  section == 'colleges' ? 'cards-hover cards-hover-colleges' : ''
-                ">
-                        <img src="assets/images/colleges.svg" class="zoom imageMenu" alt="">
-                    </div>
-                    <h4 class="secondary-title text-center">{{ lang.language.colleges }}</h4>
-                </div>
-                <div class="carousel-item">
-                    <div class="h-services-img-wrap img-3" (click)="chooseType('exams', lang.language.entranceExam)" [ngClass]="section == 'exams' ? 'cards-hover cards-hover-exam' : ''">
-                        <img src="assets/images/entrance-exam.svg" class="zoom imageMenu" alt="">
-                    </div>
-                    <h4 class="secondary-title text-center">{{ lang.language.entranceExam }}
-                    </h4>
-                </div>
-                <div class="carousel-item">
-                    <div class="h-services-img-wrap img-4" (click)="chooseType('scholarships', lang.language.scholarships)" [ngClass]="
-                  section == 'scholarships' ? 'cards-hover cards-hover-scholarships' : ''
-                ">
-                        <img src="assets/images/scholarships.svg" class="zoom imageMenu" alt="">
-                    </div>
-                    <h4 class="secondary-title text-center">{{ lang.language.scholarships }}</h4>
-                </div>
-                <div class="carousel-item">
-                    <div class="h-services-img-wrap img-5" (click)="moveToLoans()" [ngClass]="
-                          section == 'educationLoans'
-                            ? 'cards-hover cards-hover-loans text-white'
-                            : ''
-                        ">
-                        <img src="assets/images/educational-loan.svg" class="zoom imageMenu" alt="">
-                    </div>
-                    <h4 class="secondary-title text-center">{{ lang.language.educationLoans }}
-                    </h4>
-                </div>
-                <div class="carousel-item">
-                    <div class="h-services-img-wrap img-6" (click)="chooseType('careers', lang.language.careers)" [ngClass]="section == 'careers' ? 'cards-hover cards-hover-careers' : ''">
-                        <img src="assets/images/careers.svg" alt="" class="zoom imageMenu">
-                    </div>
-                    <h4 class="secondary-title text-center">{{ lang.language.careers }}</h4>
-                </div>
-            </div>
+  <div class="container-fluid">
+      <div class="row d-none d-md-flex serviceMargin">
+          <div class="col-lg-2">
+              <div class="h-services-img-wrap img-1 " (click)="chooseType('courses', lang.language.courses)" [ngClass]="
+                section == 'courses' ? ' card-banner-courses cards-hover-courses' : ''
+              ">
+                  <a><img src="assets/images/courses.svg" class="zoom imageMenu" alt=""></a>
+              </div>
+              <h4 class="secondary-title"> {{ lang.language.courses }}</h4>
+          </div>
+          <div class="col-lg-2">
+              <div class="h-services-img-wrap img-2" (click)="chooseType('colleges', lang.language.colleges)" [ngClass]="
+                section == 'colleges' ? 'cards-hover cards-hover-colleges' : ''
+              ">
+                  <a> <img src="assets/images/colleges.svg" class="zoom imageMenu" alt=""></a>
+              </div>
+              <h4 class="secondary-title">{{ lang.language.colleges }}</h4>
+          </div>
+          <div class="col-lg-2">
+              <div class="h-services-img-wrap img-3" (click)="chooseType('exams', lang.language.entranceExam)" [ngClass]="section == 'exams' ? 'cards-hover cards-hover-exam' : ''">
+                  <a><img src="assets/images/entrance-exam.svg" class="zoom imageMenu" alt=""></a>
+              </div>
+              <h4 class="secondary-title">{{ lang.language.entranceExam }}
+              </h4>
+          </div>
+          <div class="col-lg-2">
+              <div class="h-services-img-wrap img-4" (click)="chooseType('scholarships', lang.language.scholarships)" [ngClass]="
+                section == 'scholarships' ? 'cards-hover cards-hover-scholarships' : ''
+              ">
+                  <a><img src="assets/images/scholarships.svg" class="zoom imageMenu" alt=""></a>
+              </div>
+              <h4 class="secondary-title">{{ lang.language.scholarships }}</h4>
+          </div>
+          <div class="col-lg-2">
+              <div class="h-services-img-wrap img-5" (click)="moveToLoans()" [ngClass]="
+                section == 'educationLoans'
+                  ? 'cards-hover cards-hover-loans text-white'
+                  : ''
+              ">
+                  <a> <img src="assets/images/educational-loan.svg" class="zoom imageMenu" alt=""></a>
+              </div>
+              <h4 class="secondary-title">{{ lang.language.educationLoans }}
+              </h4>
+          </div>
+          <div class="col-lg-2">
+              <div class="h-services-img-wrap img-6" (click)="chooseType('careers', lang.language.careers)" [ngClass]="section == 'careers' ? 'cards-hover cards-hover-careers' : ''">
+                  <a><img src="assets/images/careers.svg" alt="" class="zoom imageMenu"></a>
+              </div>
+              <h4 class="secondary-title">{{ lang.language.careers }}</h4>
+          </div>
+      </div>
+      <div id="carouselExampleControls" class="carousel slide d-md-none" data-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <div class="h-services-img-wrap img-1 " (click)="chooseType('courses', lang.language.courses)" [ngClass]="
+                section == 'courses' ? ' card-banner-courses cards-hover-courses' : ''
+              ">
+                      <img src="assets/images/courses.svg" class="zoom imageMenu" alt="">
+                  </div>
+                  <h4 class="secondary-title text-center"> {{ lang.language.courses }}</h4>
+              </div>
+              <div class="carousel-item">
+                  <div class="h-services-img-wrap img-2" (click)="chooseType('colleges', lang.language.colleges)" [ngClass]="
+                section == 'colleges' ? 'cards-hover cards-hover-colleges' : ''
+              ">
+                      <img src="assets/images/colleges.svg" class="zoom imageMenu" alt="">
+                  </div>
+                  <h4 class="secondary-title text-center">{{ lang.language.colleges }}</h4>
+              </div>
+              <div class="carousel-item">
+                  <div class="h-services-img-wrap img-3" (click)="chooseType('exams', lang.language.entranceExam)" [ngClass]="section == 'exams' ? 'cards-hover cards-hover-exam' : ''">
+                      <img src="assets/images/entrance-exam.svg" class="zoom imageMenu" alt="">
+                  </div>
+                  <h4 class="secondary-title text-center">{{ lang.language.entranceExam }}
+                  </h4>
+              </div>
+              <div class="carousel-item">
+                  <div class="h-services-img-wrap img-4" (click)="chooseType('scholarships', lang.language.scholarships)" [ngClass]="
+                section == 'scholarships' ? 'cards-hover cards-hover-scholarships' : ''
+              ">
+                      <img src="assets/images/scholarships.svg" class="zoom imageMenu" alt="">
+                  </div>
+                  <h4 class="secondary-title text-center">{{ lang.language.scholarships }}</h4>
+              </div>
+              <div class="carousel-item">
+                  <div class="h-services-img-wrap img-5" (click)="moveToLoans()" [ngClass]="
+                        section == 'educationLoans'
+                          ? 'cards-hover cards-hover-loans text-white'
+                          : ''
+                      ">
+                      <img src="assets/images/educational-loan.svg" class="zoom imageMenu" alt="">
+                  </div>
+                  <h4 class="secondary-title text-center">{{ lang.language.educationLoans }}
+                  </h4>
+              </div>
+              <div class="carousel-item">
+                  <div class="h-services-img-wrap img-6" (click)="chooseType('careers', lang.language.careers)" [ngClass]="section == 'careers' ? 'cards-hover cards-hover-careers' : ''">
+                      <img src="assets/images/careers.svg" alt="" class="zoom imageMenu">
+                  </div>
+                  <h4 class="secondary-title text-center">{{ lang.language.careers }}</h4>
+              </div>
+          </div>
 
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <img class="arrow-img" src="assets/images/icons/arrow-prev.svg" alt="">
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <img class="arrow-img" src="assets/images/icons/arrow-next.svg" alt="">
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <img class="arrow-img" src="assets/images/icons/arrow-prev.svg" alt="">
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <img class="arrow-img" src="assets/images/icons/arrow-next.svg" alt="">
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+  </div>
 </section>
 
 <section class="section-space h-news">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <img class="img-fluid mb-4 mb-md-0" src="assets/images/teach.svg" alt="">
-            </div>
-            <div class="col-lg-5 ml-auto p-4 p-md-0">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+              <img class="img-fluid mb-4 mb-md-0" src="assets/images/teach.svg" alt="">
+          </div>
+          <div class="col-lg-5 ml-auto p-4 p-md-0">
 
-                <div class="h-news-head">
-                    <h4 class="secondary-title mb-0">Whats news!!</h4>
+              <div class="h-news-head">
+                  <h4 class="secondary-title mb-0">Whats news!!</h4>
 
-                    <div class="ml-auto">
-                        <a href="">
-                            <img src="assets/images/list.svg" alt="">
-                        </a>
-                        <a href="" class="ml-4">
-                            <img src="assets/images/calendar.svg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <marquee onmouseover="this.stop();" onmouseout="this.start();" scrollamount="5" direction="up" class="mt-2" class="fontMarquee" style="height: 310px">
-                    <div class="h-news-list">
+                  <div class="ml-auto">
+                      <a href="">
+                          <img src="assets/images/list.svg" alt="">
+                      </a>
+                      <a href="" class="ml-4">
+                          <img src="assets/images/calendar.svg" alt="">
+                      </a>
+                  </div>
+              </div>
+              <marquee onmouseover="this.stop();" onmouseout="this.start();" scrollamount="5" direction="up" class="mt-2" class="fontMarquee" style="height: 310px">
+                  <div class="h-news-list">
 
-                        <ng-container *ngFor="let item of examsNotifications">
-                            <div class="row" *ngIf="item?.startDate">
-                                <div class="col-lg-2 col-3">
-                                    <div class="calendar">
-                                        <div class="month">{{ item?.startDate | date: "MMM" }}</div>
-                                        <div class="date">{{ item?.startDate | date: "d" }}</div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9 col-8">
-                                    <p class="h-news-content">
-                                        <a [href]="item?.link" target="_blank" class="marqueeContent">{{item?.name}}</a></p>
-                                </div>
-                            </div>
-                        </ng-container>
-                    </div>
-                </marquee>
+                      <ng-container *ngFor="let item of examsNotifications">
+                          <div class="row" *ngIf="item?.startDate">
+                              <div class="col-lg-2 col-3">
+                                  <div class="calendar">
+                                      <div class="month">{{ item?.startDate | date: "MMM" }}</div>
+                                      <div class="date">{{ item?.startDate | date: "d" }}</div>
+                                  </div>
+                              </div>
+                              <div class="col-lg-9 col-8">
+                                  <p class="h-news-content">
+                                      <a [href]="item?.link" target="_blank" class="marqueeContent">{{item?.name}}</a></p>
+                              </div>
+                          </div>
+                      </ng-container>
+                  </div>
+              </marquee>
 
-                <a target="_blank" href="../../assets/Uyar_Kalvi_Vazhikkatti_Book.pdf" class="btn btn-gold btn-block">Career Guidance - Class 11&12
-                     <img src="assets/images/download.svg" class="ml-3" alt="">
-                 </a>
-            </div>
+              <a target="_blank" href="../../assets/Uyar_Kalvi_Vazhikkatti_Book.pdf" class="btn btn-gold btn-block">Career Guidance - Class 11&12
+                   <img src="assets/images/download.svg" class="ml-3" alt="">
+               </a>
+          </div>
 
-        </div>
-    </div>
+      </div>
+  </div>
 </section>
 
 <section class="section-space h-support light-bg">
 
-    <div class="container">
-        <div class="row d-none d-md-flex">
-            <div class="col-lg-4">
-                <div class="text-center d-inline-block">
-                    <img class="img-fluid mb-2 aboutImageSize zoom customZoom" src="assets/images/mentor.png" alt="">
-                    <a href="" class="support-btn ment-btn">{{ lang.language.beMentor }}</a>
-                </div>
+  <div class="container">
+      <div class="row d-none d-md-flex">
+          <div class="col-lg-4">
+              <div class="text-center d-inline-block">
+                  <img class="img-fluid mb-2 aboutImageSize zoom customZoom" src="assets/images/mentor.png" alt="">
+                  <a href="" class="support-btn ment-btn">{{ lang.language.beMentor }}</a>
+              </div>
 
-            </div>
-            <div class="col-lg-4">
-                <div class="text-center d-inline-block">
-                    <img class="img-fluid mb-2 aboutImageSize zoom customZoom" src="assets/images/sponsor.png" alt="">
-                    <a href="" class="support-btn spons-btn">{{ lang.language.beSponsor }}</a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="text-center d-inline-block">
-                    <img class="img-fluid mb-2 aboutImageSize zoom customZoom" src="assets/images/scholar.png" alt="">
-                    <a href="" class="support-btn scholar-btn">{{ lang.language.beScholarship }}</a>
-                </div>
-            </div>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide d-md-none" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active text-center">
-                    <div class="text-center d-inline-block">
-                        <img class="img-fluid mb-2 aboutImageSize " src="assets/images/mentor.png" alt="">
-                        <a href="" class="support-btn ment-btn">{{ lang.language.beMentor }}</a>
-                    </div>
-                </div>
-                <div class="carousel-item text text-center">
-                    <div class="text-center d-inline-block">
-                        <img class="img-fluid mb-2 aboutImageSize " src="assets/images/sponsor.png" alt="">
-                        <a href="" class="support-btn spons-btn">{{ lang.language.beSponsor }}</a>
-                    </div>
-                </div>
-                <div class="carousel-item text-center">
-                    <div class="text-center d-inline-block">
-                        <img class="img-fluid mb-2 aboutImageSize " src="assets/images/scholar.png" alt="">
-                        <a href="" class="support-btn scholar-btn">{{ lang.language.beScholarship }}</a>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="text-center d-inline-block">
+                  <img class="img-fluid mb-2 aboutImageSize zoom customZoom" src="assets/images/sponsor.png" alt="">
+                  <a href="" class="support-btn spons-btn">{{ lang.language.beSponsor }}</a>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="text-center d-inline-block">
+                  <img class="img-fluid mb-2 aboutImageSize zoom customZoom" src="assets/images/scholar.png" alt="">
+                  <a href="" class="support-btn scholar-btn">{{ lang.language.beScholarship }}</a>
+              </div>
+          </div>
+      </div>
+      <div id="carouselExampleControls" class="carousel slide d-md-none" data-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active text-center">
+                  <div class="text-center d-inline-block">
+                      <img class="img-fluid mb-2 aboutImageSize " src="assets/images/mentor.png" alt="">
+                      <a href="" class="support-btn ment-btn">{{ lang.language.beMentor }}</a>
+                  </div>
+              </div>
+              <div class="carousel-item text text-center">
+                  <div class="text-center d-inline-block">
+                      <img class="img-fluid mb-2 aboutImageSize " src="assets/images/sponsor.png" alt="">
+                      <a href="" class="support-btn spons-btn">{{ lang.language.beSponsor }}</a>
+                  </div>
+              </div>
+              <div class="carousel-item text-center">
+                  <div class="text-center d-inline-block">
+                      <img class="img-fluid mb-2 aboutImageSize " src="assets/images/scholar.png" alt="">
+                      <a href="" class="support-btn scholar-btn">{{ lang.language.beScholarship }}</a>
+                  </div>
+              </div>
+          </div>
 
-        </div>
-    </div>
+      </div>
+  </div>
 
 </section>
 <section class="h-testimonials section-space">
-    <div class="container">
-        <h3 class="section-title">Testimonials</h3>
-        <div class="row d-none d-md-flex">
-            <div class="col-lg-4">
-                <div class="text-center testimonialDiv">
-                    <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
-                    <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
-                    <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி ஆசிரியர்களின்
-                        ஊக்கமும்....
-                        <a href="#" class="readMore">Read More</a>
-                        <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
-                      2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
-                       தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
-                        .</p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="text-center">
-                    <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/sivaraman.jpg" alt="">
-                    <h4 class="secondary-title">சிவபெருமான் </h4>
-                    <p class="textAlignJust">அமெரிக்காவில் அரிசோனா பல்கலைக்கழகத்தில் பிஎச்டி படிக்கச் செல்லும் தமிழ் வழியில் படித்த அரசுப் பள்ளி மாணவர்! நாஸா விண்வெளி ஆராய்ச்சி மையம் ஆதரவுடன் இயங்கும் ஆய்வகம் அரிசோனா பல்கலைக்கழகத்தில் உள்ளது. எனவே, நாஸாவிலும் பயிற்சி பெறும் வாய்ப்புக்
-                        கிடைக்கும்....
-                        <a href="#" class="readMore">Read More</a></p>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="text-center">
-                    <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
-                    <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
-                    <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி ஆசிரியர்களின்
-                        ஊக்கமும்....
-                        <a href="#" class="readMore">Read More</a>
-                        <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
+  <div class="container">
+      <h3 class="section-title">Testimonials</h3>
+      <div class="row d-none d-md-flex">
+          <div class="col-lg-4">
+              <div class="text-center testimonialDiv">
+                  <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
+                  <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
+                  <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி ஆசிரியர்களின்
+                      ஊக்கமும்....
+                      <a href="#" class="readMore">Read More</a>
+                      <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
                     2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
                      தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
-                        .</p>
-                </div>
-            </div>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide d-md-none" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active text-center">
-                    <div class="text-center">
-                        <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
-                        <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
-                        <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி
-                            ஆசிரியர்களின் ஊக்கமும்....
-                            <a href="#" class="readMore">Read More</a>
-                            <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
-                      2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
-                       தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
-                            .</p>
-                    </div>
-                </div>
-                <div class="carousel-item text text-center">
-                    <div class="text-center">
-                        <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
-                        <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
-                        <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி
-                            ஆசிரியர்களின் ஊக்கமும்....
-                            <a href="#" class="readMore">Read More</a>
-                            <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
-                      2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
-                       தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
-                            .</p>
-                    </div>
-                </div>
-                <div class="carousel-item text-center">
-                    <div class="text-center">
-                        <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
-                        <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
-                        <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி
-                            ஆசிரியர்களின் ஊக்கமும்....
-                            <a href="#" class="readMore">Read More</a>
-                            <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
-                      2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
-                       தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
-                            .</p>
-                    </div>
-                </div>
-            </div>
+                      .</p>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="text-center">
+                  <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/sivaraman.jpg" alt="">
+                  <h4 class="secondary-title">சிவபெருமான் </h4>
+                  <p class="textAlignJust">அமெரிக்காவில் அரிசோனா பல்கலைக்கழகத்தில் பிஎச்டி படிக்கச் செல்லும் தமிழ் வழியில் படித்த அரசுப் பள்ளி மாணவர்! நாஸா விண்வெளி ஆராய்ச்சி மையம் ஆதரவுடன் இயங்கும் ஆய்வகம் அரிசோனா பல்கலைக்கழகத்தில் உள்ளது. எனவே, நாஸாவிலும் பயிற்சி பெறும் வாய்ப்புக்
+                      கிடைக்கும்....
+                      <a href="#" class="readMore">Read More</a></p>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="text-center">
+                  <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
+                  <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
+                  <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி ஆசிரியர்களின்
+                      ஊக்கமும்....
+                      <a href="#" class="readMore">Read More</a>
+                      <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
+                  2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
+                   தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
+                      .</p>
+              </div>
+          </div>
+      </div>
+      <div id="carouselExampleControls" class="carousel slide d-md-none" data-ride="carousel">
+          <div class="carousel-inner">
+              <div class="carousel-item active text-center">
+                  <div class="text-center">
+                      <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
+                      <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
+                      <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி
+                          ஆசிரியர்களின் ஊக்கமும்....
+                          <a href="#" class="readMore">Read More</a>
+                          <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
+                    2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
+                     தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
+                          .</p>
+                  </div>
+              </div>
+              <div class="carousel-item text text-center">
+                  <div class="text-center">
+                      <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
+                      <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
+                      <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி
+                          ஆசிரியர்களின் ஊக்கமும்....
+                          <a href="#" class="readMore">Read More</a>
+                          <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
+                    2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
+                     தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
+                          .</p>
+                  </div>
+              </div>
+              <div class="carousel-item text-center">
+                  <div class="text-center">
+                      <img class="img-fluid mb-2 zoom testImage customZoom" src="assets/images/paramakudi.jpeg" alt="">
+                      <h4 class="secondary-title">கிருஷ்ணவேணி, பரமக்குடி</h4>
+                      <p class="textAlignJust">எனது பெயர் கிருஷ்ணவேணி நான் பரமக்குடி அரசு பெண்கள் மேல்நிலைப்பள்ளியில் பத்தாம் வகுப்பு பயின்றேன். பின்பு அங்குள்ள ஆசிரியர்களின் வழிகாட்டுதலின்படி அரசு எலைட் பள்ளியில் 2014-ம் ஆண்டு எனது பதினொன்றாம் வகுப்பை தொடர்ந்தேன். அப்பள்ளி
+                          ஆசிரியர்களின் ஊக்கமும்....
+                          <a href="#" class="readMore">Read More</a>
+                          <!-- <p>அறிவுரைகளும் என்னையும் எனது நண்பர்களையும் புத்துணர்வுடனும் ஆர்வமுடனும் உழைக்கச் செய்தது.  அதுமட்டுமல்ல வாரந்தோறும் மதிப்பெண் கோப்பை வழங்கப்பட்டது.  இந்த ஊக்கத்தின் காரணமாக,  கவனத்துடன் படித்து 1078 மதிப்பெண் மற்றும் மருத்துவ கட் ஆப் 194.75 பெற்று 2015-ஆம் ஆண்டு மதுரை அரசு மருத்துவக் கல்லூரியில் சேர்ந்து எனது மருத்துவப் படிப்பை தொடர்ந்தேன்.
+                    2021-ம் ஆண்டு எனது மருத்துவப் படிப்பை முடித்து
+                     தற்போது மதுரை அரசு மருத்துவக் கல்லூரி மருத்துவமனையில் கோவிட் மருத்துவ அதிகாரியாக பணியாற்றி வருகிறேன்.</p> -->
+                          .</p>
+                  </div>
+              </div>
+          </div>
 
-        </div>
-        <!-- <div class="text-center mt-3 mt-md-0">
-          <a href="" class="btn btn-secondary btn-lg mb-2 mb-md-0 mr-md-3">View more testimonials</a>
-          <a href="" class="btn btn-primary btn-lg">Post your testimonials</a>
-      </div> -->
-    </div>
+      </div>
+      <!-- <div class="text-center mt-3 mt-md-0">
+        <a href="" class="btn btn-secondary btn-lg mb-2 mb-md-0 mr-md-3">View more testimonials</a>
+        <a href="" class="btn btn-primary btn-lg">Post your testimonials</a>
+    </div> -->
+  </div>
 </section>
 <section class="h-about section-space light-bg">
-    <div class="container">
-        <h3 class="section-title"> {{ lang.language.aboutVazhikaatti }}</h3>
-        <div class="text-center">
-            <p class="textAlignJust">
+  <div class="container">
+      <h3 class="section-title"> {{ lang.language.aboutVazhikaatti }}</h3>
+      <div class="text-center">
+          <p class="textAlignJust">
 
-                {{ lang.language.aboutVazhikaattiContent }}
+              {{ lang.language.aboutVazhikaattiContent }}
 
-            </p>
-            <p class="textAlignJust">
-                {{ lang.language.aboutVazhikaattiContent2 }}
-            </p>
-            <!-- <a href="" class="inner-link">NaanMudhalvan</a> showcases 2000+ institutes and consequent 300+ career pathways portal also contains information of more than 150+ scholarships for higher education in India.</p> -->
-        </div>
-    </div>
+          </p>
+          <p class="textAlignJust">
+              {{ lang.language.aboutVazhikaattiContent2 }}
+          </p>
+          <!-- <a href="" class="inner-link">NaanMudhalvan</a> showcases 2000+ institutes and consequent 300+ career pathways portal also contains information of more than 150+ scholarships for higher education in India.</p> -->
+      </div>
+  </div>
 </section>
