@@ -88,7 +88,7 @@ five_percent_seats_with_benchmark_disabilities:['', Validators.required],
       localStorage.getItem('careerFormValue') as string
     );
 this.higherEducationInfoForm.get("challengesInHigherEducation").valueChanges.subscribe((value:any) => {
-  if(value.includes('மற்றவை','Other')){
+  if(value.includes('மற்றவை') | value.includes('Other')){
     this.higherEducationInfoForm
       .get('other_reason_higher_education')?.setValidators([Validators.required]);
     this.higherEducationInfoForm.get('other_reason_higher_education')?.updateValueAndValidity();
