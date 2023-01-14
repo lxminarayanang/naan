@@ -485,7 +485,7 @@ export class LanguageService {
           'ஒன்றிய அரசின் வித்யாலட்சுமி வங்கி கல்விக்  கடன் திட்டங்கள் ',
           'கல்விக்  கடன் திட்டங்கள்',
           'முதல் பட்டதாரிக்கான உதவித் தொகை',
-          'ST/ SC/ OBC சிறுபான்மை சமூகத்திற்கான போஸ்ட்மெட்ரிக் உதவித்தொகை',
+          'ST/ SC/ OBC/ சிறுபான்மை சமூகத்திற்கான போஸ்ட்மெட்ரிக் உதவித்தொகை',
         ],
 
         scholorShipsExamData: [
@@ -1459,7 +1459,7 @@ End student survey form
           'Education Loan Schemes',
           'Vidyalakshmi Education loan Scheme from Banks',
           'Stipend for First Graduate',
-          'Postmatric scholarships for ST/ SC/ OBC /MINORITY COMMUNITY ',
+          'Postmatric scholarships for ST/ SC/ OBC/ MINORITY COMMUNITY ',
         ],
         scholorShipsExamData: [
           'National Means Cum Merit Scholarship (NMMS )',
