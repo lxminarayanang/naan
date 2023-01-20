@@ -1,4 +1,4 @@
-<div class="dashboard">  
+<div class="dashboard">
   <div class="dashboard-nav">
     <header>
       <a class="menu-toggle"><i class="fas fa-bars"></i></a
@@ -8,14 +8,14 @@
     </header>
     <nav class="dashboard-nav-list">
       <a class="dashboard-nav-item">
-        <i class="fas fa-cogs"></i> Activities 
+        <i class="fas fa-cogs"></i> Activities
       </a>
        <div class="dashboard-nav-dropdown show">
         <a class="dashboard-nav-item dashboard-nav-dropdown-toggle"
           ><i class="fas fa-photo-video"></i> Survey
         </a>
         <div class="dashboard-nav-dropdown-menu">
-          <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/survey-assessment" >1-1 Assesment</a>
+          <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/survey-assessment" >Higher Education Preference</a>
           <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/survey-report" >Career Survey</a>
         </div>
       </div>
@@ -27,7 +27,7 @@
           <a class="dashboard-nav-dropdown-item" routerLink="/student-detail/student-academic" >Accademic Record</a>
         </div>
       </div>
-      
+
       <a class="dashboard-nav-item" routerLink="/student-detail/profile"
         ><i class="fas fa-home"></i> Interests
       </a>
@@ -38,7 +38,7 @@
         ><i class="fas fa-home"></i> Explore Colleges
       </a>
       <a class="dashboard-nav-item">
-        <i class="fas fa-cogs"></i> Forum 
+        <i class="fas fa-cogs"></i> Forum
       </a>
       <a class="dashboard-nav-item" routerLink="/student-detail/profile"
         ><i class="fas fa-home"></i> Profile
@@ -47,7 +47,7 @@
       ><i class="fas fa-home"></i>My Group
     </a>
       <a class="dashboard-nav-item" href="/home" (click)="logout()">
-        <i class="fas fa-cogs"></i> Logout 
+        <i class="fas fa-cogs"></i> Logout
       </a>
       <!-- <a
         class="dashboard-nav-item"
@@ -98,8 +98,8 @@
     <!-- <header class="dashboard-toolbar">
       <a class="menu-toggle"><i class="fas fa-bars"></i></a>
     </header> -->
-  
-    
+
+
     <div class="dashboard-content">
       <app-student-profile
         *ngIf="url === '/student-detail/profile'"
