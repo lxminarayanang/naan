@@ -27,7 +27,7 @@
       >None</mat-option
     >
     <mat-option
-      *ngFor="let item of lang.language.examFileteredData"
+      *ngFor="let item of lang.language.examFileteredData| slice:0:lang.language.examFileteredData.length-1"
       [value]="item"
       >{{ item }}</mat-option
     >
@@ -49,7 +49,7 @@
 >None</mat-option
 >
 <mat-option
-*ngFor="let item of lang.language.examFileteredData"
+*ngFor="let item of lang.language.examFileteredData| slice:0:lang.language.examFileteredData.length-1"
 [value]="item"
 >{{ item }}</mat-option
 >

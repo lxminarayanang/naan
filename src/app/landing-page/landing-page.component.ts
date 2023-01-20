@@ -145,4 +145,8 @@ export class LandingPageComponent implements OnInit {
   moveToList(title: any) {
     this.route.navigate(['/main/categories', this.section]);
   }
+
+  moveToCourse() {
+    this.route.navigate(['/main/categories/colleges']);
+  }
 }

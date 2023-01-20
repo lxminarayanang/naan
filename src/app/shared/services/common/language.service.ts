@@ -516,7 +516,8 @@ export class LanguageService {
 'NCHM JEE- ஹோட்டல் மேனேஜ்மென்ட்',
 'IICD- கைவினை மற்றும் வடிவமைப்புகள்',
 'KIAMS-மேலாண்மை',
-'NID-வடிவமைப்பு'
+'NID-வடிவமைப்பு',
+'எதுவும் இல்லை'
         ],
         specilaztionsNew:
           'உயர்கல்வியைத் தொடர்வது விருப்பம் என்றால், துறையை தேர்ந்தெடுத்து  படிக்க விரும்புகிறீர்கள ?',
@@ -1533,7 +1534,8 @@ End student survey form
             'NCHM JEE- National Council for Hotel Management Joint Entrance Examination',
             'IICD- The Indian Institute of Crafts & Design',
             'KIAMS- Kirloskar Institute of Advanced Management Studies',
-            'NID - National Institute of Design'
+            'NID - National Institute of Design',
+            'None of the above'
           ]
 
 
